@@ -134,7 +134,7 @@ const Header = () => {
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
             to="/d"
-            title="Prayers"
+            title="Prayers & Worship"
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
@@ -148,13 +148,18 @@ const Header = () => {
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
-            to="/h"
+            to="/news"
             title="news"
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
-            to="/k"
+            to="/gallery"
             title="Gallery"
+          />
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/resources"
+            title="resources"
           />
         </div>
       </div>
