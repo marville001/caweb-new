@@ -4,7 +4,6 @@ import { FaChevronRight, FaCalendarAlt } from "react-icons/fa";
 const Home = () => {
   return (
     <div className="py-0">
-
       {/* Hero Section */}
       <div
         className="relative -top-14 bg-['url(/assets/images/image1.jpg)']"
@@ -80,7 +79,7 @@ const Home = () => {
               href="https://bible.usccb.org/podcasts/video/2022-01-02-reflection-20"
               className="flex-1 shadow-xl bg-white"
             >
-              <h2 className="text-xl mb-4 text-slate-800 font-semibold">
+              <h2 className="text-xl mb-4 text-slate-800 font-normal uppercase">
                 Our Spotlight
               </h2>
               <div className="w-full h-48">
@@ -102,8 +101,8 @@ const Home = () => {
               rel="noopener noreferrer"
               className="flex-1 shadow-xl bg-white"
             >
-              <h2 className="text-xl mb-4 text-slate-800 font-semibold">
-                Our Spotlight
+              <h2 className="text-xl mb-4 text-slate-800 font-normal uppercase">
+                Daily Reflection
               </h2>
               <div className="w-full h-48">
                 <img
@@ -119,8 +118,29 @@ const Home = () => {
               </div>
             </a>
           </div>
-          <div className="bg-white shadow-xl md:row-start-2 md:col-start-1 md:col-span-3">
-            <FaCalendarAlt className="inline" /> Daily Readings
+          <div className="md:row-start-2 md:col-start-1 md:col-span-3 py-6">
+            <h2 className="text-slate-800 font-semibold flex items-center text-2xl">
+              <FaCalendarAlt className="inline mr-4" /> Daily Readings
+            </h2>
+            <div className="flex flex-col gap-5 pt-5">
+              <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
+                <div className="flex-shrink pr-8">Icon</div>
+                <div className="flex-1 text-center">
+                  The Epiphany of the Lord:{" "}
+                  <span className="text-sm ml-4 text-slate-600">
+                    Lectionary: 20
+                  </span>
+                </div>
+                <div className="flex-shrink pl-8">Read More</div>
+              </div>
+              <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
+                <div className="flex-shrink pr-8">Icon</div>
+                <div className="flex-1 text-center ">
+                  2022 - 01 - 02 USCCB Daily Mass Readings:
+                </div>
+                <div className="flex-shrink px-4 pl-8">Listen</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
