@@ -58,16 +58,16 @@ const Header = () => {
             </Link>
             <div className="flex">
               <Link
-                className="text-sm md:text-md uppercase text-slate-100 bg-[#236092] h-14 flex items-center px-6"
+                className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#236092] h-14 flex items-center px-6"
                 to="/"
               >
-                store
+                Library
               </Link>
               <Link
-                className="text-sm md:text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-6"
+                className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-6"
                 to="/"
               >
-                help now
+                Contact Us
               </Link>
             </div>
             <FaSearch className="hidden md:block ml-2 h-8 w-5 text-slate-100" />
@@ -134,7 +134,7 @@ const Header = () => {
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
             to="/d"
-            title="Prayer & worship"
+            title="Prayers"
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
@@ -143,8 +143,8 @@ const Header = () => {
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
-            to="/g"
-            title="Issues & action"
+            to="/scc"
+            title="SCC"
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
@@ -154,7 +154,7 @@ const Header = () => {
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
             to="/k"
-            title="Resources"
+            title="Gallery"
           />
         </div>
       </div>
