@@ -9,7 +9,7 @@ const Home = () => {
         className="relative -top-14 bg-['url(/assets/images/image1.jpg)']"
         style={{
           backgroundImage: "url(/assets/images/image1.jpg)",
-          zIndex: "-09999",
+          zIndex: "-1",
           backgroundSize: "cover",
           minHeight: "70vh",
         }}
@@ -31,7 +31,10 @@ const Home = () => {
               the feast of God becoming flesh (the Latin "in carne" means
               "enfleshment").
             </p>
-            <button className="bg-sea-green block w-40 p-2 my-4 text-slate-100 ">
+            <button
+              className="bg-sea-green block w-40 p-2 my-4 text-slate-100"
+              style={{ zIndex: 2000 }}
+            >
               LEARN MORE
             </button>
           </div>
@@ -41,6 +44,7 @@ const Home = () => {
       {/*  */}
       <div className="container py-0">
         <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-2">
+          {/* News Section */}
           <div className="bg-white shadow-xl md:row-start-1 md:col-start-4 md:col-span-2 border-t-[10px] rounded border-sea-green text-center capitalize p-5 md:ml-6 md:row-span-2">
             <h2 className="text-3xl font-semibold text-slate-800">
               Latest News
@@ -74,6 +78,8 @@ const Home = () => {
               </a>
             </div>
           </div>
+
+          {/* Cards section */}
           <div className="flex flex-col sm:flex-row gap-5 my-5 md:mt-auto  md:col-span-3">
             <a
               href="https://bible.usccb.org/podcasts/video/2022-01-02-reflection-20"
@@ -118,6 +124,8 @@ const Home = () => {
               </div>
             </a>
           </div>
+
+          {/* Daily Readings */}
           <div className="md:row-start-2 md:col-start-1 md:col-span-3 py-6">
             <h2 className="text-slate-800 font-semibold flex items-center text-2xl">
               <FaCalendarAlt className="inline mr-4" /> Daily Readings
@@ -131,19 +139,61 @@ const Home = () => {
                     Lectionary: 20
                   </span>
                 </div>
-                <div className="flex-shrink pl-8">Read More</div>
+                <a href="#ddddd" className="flex-shrink pl-8 text-dodge-blue">
+                  Read More
+                </a>
               </div>
               <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
                 <div className="flex-shrink pr-8">Icon</div>
                 <div className="flex-1 text-center ">
                   2022 - 01 - 02 USCCB Daily Mass Readings:
                 </div>
-                <div className="flex-shrink px-4 pl-8">Listen</div>
+                <a
+                  href="#listen"
+                  className="flex-shrink px-4 pl-8 text-dodge-blue"
+                >
+                  Listen
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Watch mass */}
+      <div className="bg-white my-t text-center">
+        <div className="container py-12 ">
+          <h2 className="text-2xl font-semibold text-dodge-blue">
+            Missed our Service? Catch up here <br /> or watch us live.
+          </h2>
+          <p className="text-center my-4 font-medium">
+            Did you end up missing our service? No worries, you can watch and or
+            listen to our live service, along with many of our other messages on
+            our media page.
+          </p>
+          <p className="text-center font-medium">
+            We hope that you enjoy our latest message and many other messages
+            from us.
+          </p>
+          <a
+            href="#watch"
+            className="uppercase py-2 px-8 text-lg bg-sea-green inline-block my-6 text-white"
+          >
+            Watch now
+          </a>
+        </div>
+      </div>
+      <div className="img">
+        <img
+          src="https://dekutca.dkut.ac.ke/htmlcodes/library/htmlphpcodes/include/dekutuploading/gallery/gallery.5d3d7c690a5a17.93414579"
+          alt="banner imag"
+          className="w-full h-96"
+        />
+      </div>
+
+      <br />
+      <br />
+      <br />
     </div>
   );
 };

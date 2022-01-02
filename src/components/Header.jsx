@@ -31,7 +31,9 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-slate-800 h-14 flex items-center">
+      <div className="bg-slate-800 h-14 flex items-center z-10" style={{
+          zIndex:"99999"
+        }}>
         <div className="container flex justify-between">
           <div className="logo flex items-center">
             <img
@@ -89,8 +91,10 @@ const Header = () => {
         transition-all
         ${!isMenuOpen && "translate-x-full"}
         md:translate-x-0
-        z-50
         `}
+        style={{
+          zIndex:"9999"
+        }}
       >
         <div
           className="
