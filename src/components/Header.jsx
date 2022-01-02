@@ -11,7 +11,10 @@ const NavLinkItem = ({ to, title, closeMenu }) => {
         pathname === to
           ? "text-slate-100 bg-dodge-blue "
           : "text-slate-100 md:text-slate-600 "
-      }" hover:bg-dodge-blue hover:text-slate-100`}
+      }" hover:bg-dodge-blue hover:text-slate-100
+      ${pathname === "/" ? "text-slate-100 md:text-slate-100" :""}`
+    
+    }
       to={to}
     >
       {title}
@@ -86,6 +89,7 @@ const Header = () => {
         transition-all
         ${!isMenuOpen && "translate-x-full"}
         md:translate-x-0
+        z-50
         `}
       >
         <div
@@ -110,7 +114,7 @@ const Header = () => {
         >
           <Link
             onClick={() => setIsMenuOpen(false)}
-            className="md:hidden my-2 text-sm uppercase text-slate-100"
+            className={`md:hidden my-2 text-sm uppercase text-slate-100`}
             to="/readings"
           >
             Daily Readings
