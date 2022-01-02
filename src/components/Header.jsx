@@ -6,12 +6,12 @@ const NavLinkItem = ({ to, title, closeMenu }) => {
   const { pathname } = useLocation();
   return (
     <NavLink
-    onClick={closeMenu}
+      onClick={closeMenu}
       className={`text-sm md:text-md my-2  md:px-4 uppercase font-medium md:h-14 flex items-center ${
         pathname === to
-          ? "text-slate-100 bg-[#236092] "
+          ? "text-slate-100 bg-dodge-blue "
           : "text-slate-100 md:text-slate-600 "
-      }" hover:bg-[#236092] hover:text-slate-100`}
+      }" hover:bg-dodge-blue hover:text-slate-100`}
       to={to}
     >
       {title}
@@ -20,12 +20,11 @@ const NavLinkItem = ({ to, title, closeMenu }) => {
 };
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  const toggleMenu = ()=>{
-    setIsMenuOpen(!isMenuOpen)
-  }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
@@ -39,31 +38,40 @@ const Header = () => {
             />
           </div>
           <div className="flex items-center space-x-4">
-            <Link className="hidden md:block text-md uppercase text-slate-100" to="/">
+            <Link
+              className="hidden md:block text-md uppercase text-slate-100"
+              to="/"
+            >
               Daily Readings
             </Link>
             <Link className="text-md uppercase text-slate-100" to="/">
               <FaCalendarAlt className="h-8 w-3 mx-4" />
             </Link>
-            <Link className="hidden md:block text-md uppercase text-slate-100" to="/">
+            <Link
+              className="hidden md:block text-md uppercase text-slate-100"
+              to="/"
+            >
               MASS
             </Link>
             <div className="flex">
               <Link
-                className="text-md uppercase text-slate-100 bg-[#236092] h-14 flex items-center px-6"
+                className="text-sm md:text-md uppercase text-slate-100 bg-[#236092] h-14 flex items-center px-6"
                 to="/"
               >
                 store
               </Link>
               <Link
-                className="text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-6"
+                className="text-sm md:text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-6"
                 to="/"
               >
                 help now
               </Link>
             </div>
             <FaSearch className="hidden md:block ml-2 h-8 w-5 text-slate-100" />
-            <FaBars onClick={toggleMenu} className=" cursor-pointer ml-2 h-8 w-5 text-slate-100 md:hidden" />
+            <FaBars
+              onClick={toggleMenu}
+              className=" cursor-pointer ml-2 h-8 w-5 text-slate-100 md:hidden"
+            />
           </div>
         </div>
       </div>
@@ -76,10 +84,9 @@ const Header = () => {
         transform
         duration-300
         transition-all
-        ${!isMenuOpen && 'translate-x-full'}
+        ${!isMenuOpen && "translate-x-full"}
         md:translate-x-0
         `}
-      
       >
         <div
           className="
@@ -90,7 +97,7 @@ const Header = () => {
           md:static
                 mx-auto 
                 md:min-h-fit 
-                bg-[#236092] 
+                bg-dodge-blue 
                 md:bg-transparent 
                 py-0 
                 flex 
@@ -101,18 +108,50 @@ const Header = () => {
                 md:flex-row
         "
         >
-          <Link onClick={()=>setIsMenuOpen(false)} className="md:hidden my-2 text-sm uppercase text-slate-100" to="/readings">
-              Daily Readings
-            </Link>
-            <Link onClick={()=>setIsMenuOpen(false)} className=" md:hidden my-2 text-sm uppercase text-slate-100" to="/mass">
-              Find Mass
-            </Link>
-          <NavLinkItem closeMenu={()=>setIsMenuOpen(false)} to="/" title="about dekutcc" />
-          <NavLinkItem closeMenu={()=>setIsMenuOpen(false)} to="/d" title="Prayer & worship" />
-          <NavLinkItem closeMenu={()=>setIsMenuOpen(false)} to="/f" title="Bible" />
-          <NavLinkItem closeMenu={()=>setIsMenuOpen(false)} to="/g" title="Issues & action" />
-          <NavLinkItem closeMenu={()=>setIsMenuOpen(false)} to="/h" title="news" />
-          <NavLinkItem closeMenu={()=>setIsMenuOpen(false)} to="/k" title="Resources" />
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            className="md:hidden my-2 text-sm uppercase text-slate-100"
+            to="/readings"
+          >
+            Daily Readings
+          </Link>
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            className=" md:hidden my-2 text-sm uppercase text-slate-100"
+            to="/mass"
+          >
+            Find Mass
+          </Link>
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/"
+            title="about dekutcc"
+          />
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/d"
+            title="Prayer & worship"
+          />
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/f"
+            title="Bible"
+          />
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/g"
+            title="Issues & action"
+          />
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/h"
+            title="news"
+          />
+          <NavLinkItem
+            closeMenu={() => setIsMenuOpen(false)}
+            to="/k"
+            title="Resources"
+          />
         </div>
       </div>
     </>
