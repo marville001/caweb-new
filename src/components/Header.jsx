@@ -36,13 +36,13 @@ const Header = () => {
           zIndex:"99999"
         }}>
         <div className="container flex justify-between">
-          <div className="logo flex items-center">
+          <Link to="/" className="logo flex items-center">
             <img
               className="h-7"
               src="https://www.usccb.org/themes/custom/ai/usccb-logo.svg"
               alt="ggggg"
             />
-          </div>
+          </Link>
           <div className="flex items-center space-x-4">
             <Link
               className="hidden md:block text-md uppercase text-slate-100"

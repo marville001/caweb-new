@@ -1,5 +1,6 @@
 import React from "react";
 import { FaChevronRight, FaCalendarAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -225,9 +226,9 @@ const Home = () => {
             </a>
           </div>
           <div className="py-6 flex justify-center">
-            <button className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90">
+            <Link to="/events" className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90">
               View calendar
-            </button>
+            </Link>
           </div>
         </div>
       </div>
