@@ -6,7 +6,7 @@ const Home = () => {
     <div className="py-0">
       {/* Hero Section */}
       <div
-        className="relative -top-14 bg-['url(/assets/images/image1.jpg)']"
+        className="flex items-end relative md:-top-14 bg-['url(/assets/images/image1.jpg)']"
         style={{
           backgroundImage: "url(/assets/images/image1.jpg)",
           zIndex: "-1",
@@ -15,7 +15,7 @@ const Home = () => {
         }}
       >
         <div
-          className="absolute w-full inset-x bottom-0 bg-dodge-blue  md:bg-transparent md:h-[50%]"
+          className="absolute  w-full inset-x bottom-0 bg-dodge-blue  md:bg-transparent md:h-[50%]"
           style={{
             background:
               "linear-gradient(to top,#122c41 0%,rgba(18,44,65,0)100%)",
@@ -42,7 +42,7 @@ const Home = () => {
       </div>
 
       {/*  */}
-      <div className="container py-0">
+      <div className="container py-0 mt-4">
         <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-2">
           {/* News Section */}
           <div className="bg-white shadow-xl md:row-start-1 md:col-start-4 md:col-span-2 border-t-[10px] rounded border-sea-green text-center capitalize p-5 md:ml-6 md:row-span-2">
@@ -161,7 +161,7 @@ const Home = () => {
       </div>
 
       {/* Watch mass */}
-      <div className="bg-white my-t text-center">
+      <div className="bg-white mt-4 text-center">
         <div className="container py-12 ">
           <h2 className="text-2xl font-semibold text-dodge-blue">
             Missed our Service? Catch up here <br /> or watch us live.
@@ -189,6 +189,47 @@ const Home = () => {
           alt="banner imag"
           className="w-full h-96"
         />
+      </div>
+
+      <div className="container my-8 bg-white md:p-8 lg:p-10">
+        <h2 className="text-3xl font-semibold text-dodge-blue mb-4">
+          Event Calendar
+        </h2>
+        <hr />
+        <div className="divide-y">
+          <div className="py-6 flex items-center">
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg mb-2 font-semibold">26</h3>
+              <h3 className="text-lg mb-2 font-normal">Dec 2021</h3>
+            </div>
+            <a href="#event" className="text-dodge-blue ml-10">
+              Christmas Season
+            </a>
+          </div>
+          <div className="py-6 flex items-center">
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg mb-2 font-semibold">26</h3>
+              <h3 className="text-lg mb-2 font-normal">Dec 2021</h3>
+            </div>
+            <a href="#event" className="text-dodge-blue ml-10">
+              Solemnity of Mary, the Holy Mother of God
+            </a>
+          </div>
+          <div className="py-6 flex items-center">
+            <div className="flex flex-col items-center">
+              <h3 className="text-lg mb-2 font-semibold">2</h3>
+              <h3 className="text-lg mb-2 font-normal">Feb 2021</h3>
+            </div>
+            <a href="#event" className="text-dodge-blue ml-10">
+              Lorem ipsum dolor, sit amet consectetur adipisicing
+            </a>
+          </div>
+          <div className="py-6 flex justify-center">
+            <button className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90">
+              View calendar
+            </button>
+          </div>
+        </div>
       </div>
 
       <br />

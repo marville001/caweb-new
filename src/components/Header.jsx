@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaSearch, FaCalendarAlt, FaBars } from "react-icons/fa";
 
-const NavLinkItem = ({ to, title, closeMenu }) => {
+const NavLinkItem = ({ to, title, closeMenu, ...rest }) => {
   const { pathname } = useLocation();
   return (
     <NavLink
@@ -16,6 +16,7 @@ const NavLinkItem = ({ to, title, closeMenu }) => {
     
     }
       to={to}
+      {...rest}
     >
       {title}
     </NavLink>
@@ -45,31 +46,31 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <Link
               className="hidden md:block text-md uppercase text-slate-100"
-              to="/"
+              to="/daily-readings"
             >
               Daily Readings
             </Link>
-            <Link className="text-md uppercase text-slate-100" to="/">
+            <Link className="text-md uppercase text-slate-100" to="/events">
               <FaCalendarAlt className="h-8 w-3 mx-4" />
             </Link>
             <Link
               className="hidden md:block text-md uppercase text-slate-100"
-              to="/"
+              to="/mass"
             >
               MASS
             </Link>
             <div className="flex">
               <Link
                 className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#236092] h-14 flex items-center px-6"
-                to="/"
+                to="/library"
               >
                 Library
               </Link>
               <Link
                 className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-6"
-                to="/"
+                to="/login"
               >
-                Contact Us
+                Login | Register
               </Link>
             </div>
             <FaSearch className="hidden md:block ml-2 h-8 w-5 text-slate-100" />
@@ -119,7 +120,7 @@ const Header = () => {
           <Link
             onClick={() => setIsMenuOpen(false)}
             className={`md:hidden my-2 text-sm uppercase text-slate-100`}
-            to="/readings"
+            to="/daily-readings"
           >
             Daily Readings
           </Link>
@@ -160,6 +161,13 @@ const Header = () => {
             to="/gallery"
             title="Gallery"
           />
+          <Link
+            onClick={() => setIsMenuOpen(false)}
+            className={`md:hidden my-2 text-sm uppercase text-slate-100`}
+            to="/contact-us"
+          >
+            Contact Us
+          </Link>
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
             to="/resources"
