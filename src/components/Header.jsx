@@ -43,12 +43,12 @@ const Header = () => {
               src="https://www.usccb.org/themes/custom/ai/usccb-logo.svg"
               alt="ggggg"
             /> */}
-            <FaChurch className="text-5xl mr-2 text-slate-200" />
+            <FaChurch className="text-4xl mr-2 text-slate-200" />
             <div className="flex flex-col gap-0 my-2">
-              <span className="text-slate-200 tracking-wider md:font-bold text-xs md:text-sm">
+              <span className="text-slate-200 tracking-wider md:font-bold text-xs">
                 Blessed Sister Irene Stefani
               </span>
-              <span className="text-slate-200 tracking-widest md:font-bold text-sm md:text-lg">
+              <span className="text-slate-200 tracking-widest md:font-bold text-sm">
                 Catholic Chaplaincy
               </span>
             </div>
