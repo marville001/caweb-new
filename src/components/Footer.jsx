@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container">
         <div className="flex flex-col items-center pb-6">
           <h2 className="text-3xl text-white my-4">Dive into God's Word</h2>
-          <div className="flex gap-2 mt-4">
+          <div className="flex flex-col sm:flex-row gap-2 mt-4">
             <button className="rounded-full text-sm text-white hover:bg-white hover:text-dodge-blue px-4 py-2 border border-white">
               Daily Readings
             </button>
