@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="overflow-x-hidden">
       <Header />
-      <div className="min-h-screen">
+      <div className="min-h-[75vh]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/readings" element={<Home />} />
