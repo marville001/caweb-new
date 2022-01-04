@@ -7,7 +7,7 @@ const Home = () => {
     <div className="py-0">
       {/* Hero Section */}
       <div
-        className="flex items-end relative md:-top-14 bg-['url(/assets/images/image1.jpg)']"
+        className="flex items-end md:relative md:-top-14 bg-['url(/assets/images/image1.jpg)']"
         style={{
           backgroundImage: "url(/assets/images/image1.jpg)",
           zIndex: "-1",
@@ -16,7 +16,7 @@ const Home = () => {
         }}
       >
         <div
-          className="absolute  w-full inset-x bottom-0 bg-dodge-blue  md:bg-transparent md:h-[50%]"
+          className="md:absolute  w-full inset-x bottom-0 bg-dodge-blue  md:bg-transparent md:h-[50%]"
           style={{
             background:
               "linear-gradient(to top,#122c41 0%,rgba(18,44,65,0)100%)",
@@ -32,12 +32,13 @@ const Home = () => {
               the feast of God becoming flesh (the Latin "in carne" means
               "enfleshment").
             </p>
-            <button
-              className="bg-sea-green block w-40 p-2 my-4 text-slate-100"
+            <a
+            href="#gh"
+              className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
               style={{ zIndex: 2000 }}
             >
               LEARN MORE
-            </button>
+            </a>
           </div>
         </div>
       </div>
