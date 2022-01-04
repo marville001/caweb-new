@@ -133,7 +133,7 @@ const Footer = () => {
         {/* Copyrigght and social media */}
         <div className="flex items-center my-5 justify-between flex-col sm:flex-row gap-5">
           <p className="text-slate-300 capitalize">
-            @{new Date().getFullYear()} DEKUT CATHOLIC ACTION
+            @{new Date().getFullYear()} DEKUT Catholic chaplaincy
           </p>
           <div className="flex items-center gap-2">
             <a

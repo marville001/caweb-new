@@ -84,7 +84,7 @@ const Header = () => {
                 Blessed Sister Irene Stefani
               </span>
               <span className="text-slate-200 tracking-widest md:font-bold text-sm">
-                Catholic Chaplaincy
+                DEKUT Catholic Chaplaincy
               </span>
             </div>
             <h4 className="text-white sm:hidden">DEKUT CC</h4>
