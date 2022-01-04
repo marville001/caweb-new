@@ -83,7 +83,7 @@ const Home = () => {
           {/* Cards section */}
           <div className="flex flex-col sm:flex-row gap-5 my-5 md:mt-auto  md:col-span-3">
             <a
-              href="https://bible.usccb.org/podcasts/video/2022-01-02-reflection-20"
+              href="#s"
               className="flex-1 shadow-xl bg-white"
             >
               <h2 className="text-xl mb-4 text-slate-800 font-normal uppercase">
@@ -103,7 +103,7 @@ const Home = () => {
               </div>
             </a>
             <a
-              href="https://bible.usccb.org/podcasts/video/2022-01-02-reflection-20"
+              href="#s"
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 shadow-xl bg-white"
