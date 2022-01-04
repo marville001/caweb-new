@@ -55,57 +55,44 @@ const Footer = () => {
 
               <Link
                 className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
+                to="/prayers"
               >
                 Prayers
               </Link>
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/mass">
                 Our Mass
               </Link>
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/bible">
                 The Bible
               </Link>
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/store">
                 Our Books Store
               </Link>
             </div>
           </div>
 
           <div>
-            <div className="text-2xl text-blue-300">Get Involved to Act Now</div>
+            <div className="text-2xl text-blue-300">
+              Get Involved to Act Now
+            </div>
             <div className="flex flex-col">
               <Link
                 className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
+                to="/take-action"
               >
                 Take Action
               </Link>
 
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/help">
                 Help Now
               </Link>
               <Link
                 className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
+                to="/events"
               >
                 Meetings & Events
               </Link>
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/pray">
                 Pray
               </Link>
             </div>
@@ -116,32 +103,26 @@ const Footer = () => {
             <div className="flex flex-col">
               <Link
                 className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
+                to="/events"
               >
                 Calendars
               </Link>
 
               <Link
                 className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
+                to="/get-connected"
               >
                 Social Media
               </Link>
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/news">
                 DEKUTCC News Service
               </Link>
-              <Link
-                className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
-              >
+              <Link className="text-base text-slate-100 font-light" to="/about">
                 About Us
               </Link>
               <Link
                 className="text-base text-slate-100 font-light"
-                to="/readings/calendar"
+                to="/contact"
               >
                 Contact Us
               </Link>
@@ -159,33 +140,33 @@ const Footer = () => {
               href="#youtube"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-300 p-2 rounded-full cursor-pointer"
+              className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
             >
-              <FaFacebookF className="text-lg text-white rounded-full" />
+              <FaFacebookF className="text-lg group-hover:text-blue-400 text-white rounded-full" />
             </a>
             <a
               href="#youtube"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-300 p-2 rounded-full cursor-pointer"
+              className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
             >
-              <FaYoutube className="text-lg text-white rounded-full" />
+              <FaYoutube className="text-lg group-hover:text-blue-400 text-white rounded-full" />
             </a>
             <a
               href="#youtube"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-300 p-2 rounded-full cursor-pointer"
+              className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
             >
-              <FaTwitter className="text-lg text-white rounded-full" />
+              <FaTwitter className="text-lg group-hover:text-blue-400 text-white rounded-full" />
             </a>
             <a
               href="#youtube"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-slate-300 p-2 rounded-full cursor-pointer"
+              className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
             >
-              <FaInstagram className="text-lg text-white rounded-full" />
+              <FaInstagram className="text-lg group-hover:text-blue-400 text-white rounded-full" />
             </a>
           </div>
         </div>
