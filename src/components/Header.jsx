@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaSearch, FaCalendarAlt, FaBars } from "react-icons/fa";
+import { FaSearch, FaCalendarAlt, FaBars, FaChurch } from "react-icons/fa";
 
 const NavLinkItem = ({ to, title, closeMenu, ...rest }) => {
   const { pathname } = useLocation();
@@ -12,9 +12,7 @@ const NavLinkItem = ({ to, title, closeMenu, ...rest }) => {
           ? "text-slate-100 bg-dodge-blue "
           : "text-slate-100 md:text-slate-600 "
       }" hover:bg-dodge-blue hover:text-slate-100
-      ${pathname === "/" ? "text-slate-100 md:text-slate-100" :""}`
-    
-    }
+      ${pathname === "/" ? "text-slate-100 md:text-slate-100" : ""}`}
       to={to}
       {...rest}
     >
@@ -32,16 +30,28 @@ const Header = () => {
 
   return (
     <>
-      <div className="bg-slate-800 h-14 flex items-center z-10" style={{
-          zIndex:"99999"
-        }}>
+      <div
+        className="bg-slate-800 h-15 flex items-center z-10"
+        style={{
+          zIndex: "99999",
+        }}
+      >
         <div className="container flex justify-between">
           <Link to="/" className="logo flex items-center">
-            <img
+            {/* <img
               className="h-7"
               src="https://www.usccb.org/themes/custom/ai/usccb-logo.svg"
               alt="ggggg"
-            />
+            /> */}
+            <FaChurch className="text-4xl mr-2 text-slate-200" />
+            <div className="flex flex-col gap-0 my-2">
+              <span className="text-slate-200 tracking-wider md:font-bold text-xs">
+                Blessed Sister Irene Stefani
+              </span>
+              <span className="text-slate-200 tracking-widest md:font-bold text-sm">
+                Catholic Chaplaincy
+              </span>
+            </div>
           </Link>
           <div className="flex items-center space-x-4">
             <Link
@@ -94,7 +104,7 @@ const Header = () => {
         md:translate-x-0
         `}
         style={{
-          zIndex:"9999"
+          zIndex: "9999",
         }}
       >
         <div
