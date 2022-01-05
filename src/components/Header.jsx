@@ -174,6 +174,13 @@ const Header = () => {
             Daily Readings
           </Link>
           <NavDropDownLinkItem title="about dekutcc" to="/">
+          <Link
+              onClick={() => setIsMenuOpen(false)}
+              className={`my-2 text-sm uppercase text-slate-100`}
+              to="/about"
+            >
+              our role & mission
+            </Link>
             <Link
               onClick={() => setIsMenuOpen(false)}
               className={`my-2 text-sm uppercase text-slate-100`}
