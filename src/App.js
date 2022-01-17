@@ -5,6 +5,7 @@ import About from "./pages/About";
 import GetConnected from "./pages/GetConnected";
 import Home from "./pages/Home";
 import Leadership from "./pages/Leadership";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Header />
       <div className="min-h-[75vh]">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/login" element={<Login />} />
           <Route path="/readings" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/leadership" element={<Leadership />} />
