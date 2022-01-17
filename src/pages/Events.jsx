@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import {FaChevronDown} from "react-icons/fa"
 const Events = () => {
   return (
     <div className="container  py-14">
@@ -22,6 +22,9 @@ const Events = () => {
             >
               Daily readings
             </Link>
+          </div>
+          <div className="flex gap-6">
+              <div className="flex items-center cursor-pointer">Date <FaChevronDown className="mt-[2px] ml-2" /> </div>
           </div>
         </div>
       </div>
