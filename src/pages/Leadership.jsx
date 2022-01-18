@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const LeaderCard = ({ img, name, title, group }) => {
+const LeaderCard = ({ img, name, title, group, width }) => {
   return (
-    <div className="w-full md:min-w-[280px] bg-white shadow-sm pb-3">
+    <div className={`${width && "min-w-[" + width + "]"} bg-white shadow-sm pb-3`}>
       <div className=" w-full h-60 bg-gray-500">
         <img className="h-full w-full" src={img} alt="" />
       </div>
@@ -30,6 +30,7 @@ const Leadership = () => {
           img="http://www.kccb.or.ke/home/wp-content/uploads/2013/12/Bishop_30-300x300.jpg"
           name="Name and Name"
           title="Our Chaplain"
+          width="380px"
         />
       </div>
       <div className="bg-gray-100 p-5 pb-12 mt-10">
@@ -58,7 +59,10 @@ const Leadership = () => {
         </div>
 
         <div className="flex justify-center">
-          <Link to="/leadership/scc" className="px-10 py-2 text-white rounded-md bg-dodge-blue mt-10">
+          <Link
+            to="/leadership/scc"
+            className="px-10 py-2 text-white rounded-md bg-dodge-blue mt-10"
+          >
             View SCC Leadership
           </Link>
         </div>
