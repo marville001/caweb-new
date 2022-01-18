@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LeaderCard = ({ img, name, title, group }) => {
   return (
@@ -31,8 +32,10 @@ const Leadership = () => {
           title="Our Chaplain"
         />
       </div>
-      <div className="bg-gray-100 p-5 mt-10">
-          <h4 className="text-center text-sea-green text-2xl lg:text-3xl mb-6">Main Church Commitee</h4>
+      <div className="bg-gray-100 p-5 pb-12 mt-10">
+        <h4 className="text-center text-sea-green text-2xl lg:text-3xl mb-6">
+          Main Church Commitee
+        </h4>
         <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {[
             "https://media.istockphoto.com/photos/cheerful-fashionable-adult-man-in-city-setting-picture-id1310533180?b=1&k=20&m=1310533180&s=170667a&w=0&h=EdRuvIkrMifhyZJkHXf5Pk68ri44_g7OFnU8lIdbc-c=",
@@ -43,7 +46,7 @@ const Leadership = () => {
             "https://media.istockphoto.com/photos/mixed-race-man-paying-online-on-mobile-phone-picture-id1319763191?b=1&k=20&m=1319763191&s=170667a&w=0&h=apc34sMJIHX8mQXzisVmpWtXk7-Xc_CIDn8xibFUoHU=",
             "https://media.istockphoto.com/photos/asian-chinese-senior-man-with-facial-hair-using-laptop-typing-working-picture-id1331469701?b=1&k=20&m=1331469701&s=170667a&w=0&h=I2AJQklkgjD599Rhmuj4s6lX4VJIZC3AY_mMMU3tIbQ=",
             "https://media.istockphoto.com/photos/and-then-you-came-along-and-turned-my-life-around-picture-id1300273437?b=1&k=20&m=1300273437&s=170667a&w=0&h=aBUwwJX9_OCJGcMnvbRpMo39AD3EHUbfsabWjs2iD4I=",
-            "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+            "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
           ].map((i) => (
             <LeaderCard
               img={i}
@@ -52,6 +55,12 @@ const Leadership = () => {
               group="Group Represented"
             />
           ))}
+        </div>
+
+        <div className="flex justify-center">
+          <Link to="/leadership/scc" className="px-10 py-2 text-white rounded-md bg-dodge-blue mt-10">
+            View SCC Leadership
+          </Link>
         </div>
       </div>
     </div>
