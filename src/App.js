@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import DailyReadings from "./pages/DailyReadings";
 import Events from "./pages/Events";
 import ForgotPassword from "./pages/ForgotPassword";
 import GetConnected from "./pages/GetConnected";
@@ -30,6 +31,7 @@ function App() {
           <Route exact path="/contact-us" element={<Contact />} />
           <Route exact path="/leadership" element={<Leadership />} />
           <Route exact path="/leadership/scc" element={<SccLeadership />} />
+          <Route exact path="/daily-readings" element={<DailyReadings />} />
           <Route exact path="/get-connected" element={<GetConnected />} />
         </Routes>
       </div>
