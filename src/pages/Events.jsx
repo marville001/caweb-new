@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaChevronCircleLeft, FaChevronCircleRight, FaChevronDown } from "react-icons/fa";
+import {
+  FaChevronCircleLeft,
+  FaChevronCircleRight,
+  FaChevronDown,
+} from "react-icons/fa";
 import CalendarListing from "../components/CalendarListing";
 const Events = () => {
   return (
@@ -36,10 +40,16 @@ const Events = () => {
         <CalendarListing />
 
         {/* Page switch */}
-        <div className="flex justify-between items-center px-6 w-8/12 md:w-5/12 mx-auto">
-            <FaChevronCircleLeft className=" text-gray-400 text-xl cursor-pointer" />
-            <h2 className="text-xl font-medium">Page 1</h2>
-            <FaChevronCircleRight className=" text-gray-800 text-xl cursor-pointer" />
+        <div className="flex justify-between items-center px-6 w-10/12 md:w-5/12 mx-auto">
+          <span className="flex items-center">
+            <FaChevronCircleLeft className="mt-1 mr-2 text-gray-400 text-xl cursor-pointer" />
+            <span className="hidden sm:block">previous</span>
+          </span>
+          <h2 className="text-xl font-medium">Page 1</h2>
+          <span className="flex items-center">
+            <span className="hidden sm:block">next</span>
+            <FaChevronCircleRight className="mt-1 ml-2 text-gray-800 text-xl cursor-pointer" />
+          </span>
         </div>
       </div>
     </div>
