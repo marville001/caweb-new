@@ -24,7 +24,7 @@ const Events = () => {
             </Link>
             <Link
               className="md:ml-5 border-slate-800 border-2 p-2 px-4 uppercase text-slate-800 hover:bg-slate-800 hover:text-white font-medium text-md"
-              to="events/past"
+              to="/events/past"
             >
               PAST events
             </Link>

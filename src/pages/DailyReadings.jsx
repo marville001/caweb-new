@@ -1,5 +1,6 @@
 import React from "react";
 import { FaChevronCircleLeft, FaChevronCircleRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import CalendarListing from "../components/CalendarListing";
 
 const DailyReadings = () => {
@@ -8,6 +9,18 @@ const DailyReadings = () => {
       <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
         Daily Readings
       </h1>
+
+      {/* Header */}
+      <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row gap-2 md:ml-12">
+            <Link
+              className="border-slate-800 border-2 p-2 px-4 uppercase text-slate-800 hover:bg-slate-800 hover:text-white font-medium text-md"
+              to="/events"
+            >
+              View Calendar
+            </Link>
+          </div>
+        </div>
 
       {/* Listing */}
       <CalendarListing daily />

@@ -207,14 +207,14 @@ const Header = () => {
             <Link
               onClick={() => setIsMenuOpen(false)}
               className={`my-2 text-sm uppercase text-slate-100`}
-              to="/calendar"
+              to="/daily-readings"
             >
               Daily readings calendar
             </Link>
             <Link
               onClick={() => setIsMenuOpen(false)}
               className=" my-2 text-sm uppercase text-slate-100"
-              to="/events"
+              to="/prayers"
             >
               Prayer
             </Link>
