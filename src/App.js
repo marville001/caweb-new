@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Events from "./pages/Events";
 import ForgotPassword from "./pages/ForgotPassword";
 import GetConnected from "./pages/GetConnected";
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/events" element={<Events />} />
           <Route exact path="/readings" element={<Home />} />
           <Route exact path="/about" element={<About />} />
+          <Route exact path="/contact-us" element={<Contact />} />
           <Route exact path="/leadership" element={<Leadership />} />
           <Route exact path="/leadership/scc" element={<SccLeadership />} />
           <Route exact path="/get-connected" element={<GetConnected />} />

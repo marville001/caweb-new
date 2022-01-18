@@ -198,7 +198,7 @@ const Header = () => {
             <Link
               onClick={() => setIsMenuOpen(false)}
               className=" my-2 text-sm uppercase text-slate-100"
-              to="/contact"
+              to="/contact-us"
             >
               Contact
             </Link>
@@ -221,7 +221,7 @@ const Header = () => {
             <Link
               onClick={() => setIsMenuOpen(false)}
               className=" my-2 text-sm uppercase text-slate-100"
-              to="/contact"
+              to="/mass"
             >
               Our Mass
             </Link>
