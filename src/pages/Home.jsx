@@ -202,7 +202,7 @@ const Home = () => {
           <div className="py-6 flex items-center">
             <div className="flex flex-col items-center">
               <h3 className="text-lg mb-2 font-semibold">26</h3>
-              <h3 className="text-sm sm:text-lg mb-2 font-normal">Dec 2021</h3>
+              <h3 className="text-xs sm:text-lg mb-2 font-normal">Dec 2021</h3>
             </div>
             <a href="#event" className="text-sm sm:text-lg text-dodge-blue ml-10">
               Christmas Season
@@ -211,7 +211,7 @@ const Home = () => {
           <div className="py-6 flex items-center">
             <div className="flex flex-col items-center">
               <h3 className="text-lg mb-2 font-semibold">26</h3>
-              <h3 className="text-sm sm:text-lg mb-2 font-normal">Dec 2021</h3>
+              <h3 className="text-xs sm:text-lg mb-2 font-normal">Dec 2021</h3>
             </div>
             <a href="#event" className="text-sm sm:text-lg text-dodge-blue ml-10">
               Solemnity of Mary, the Holy Mother of God
@@ -220,7 +220,7 @@ const Home = () => {
           <div className="py-6 flex items-center">
             <div className="flex flex-col items-center">
               <h3 className="text-lg mb-2 font-semibold">2</h3>
-              <h3 className="text-sm sm:text-lg mb-2 font-normal">Feb 2021</h3>
+              <h3 className="text-xs sm:text-lg mb-2 font-normal">Feb 2021</h3>
             </div>
             <a href="#event" className="text-sm sm:text-lg text-dodge-blue ml-10">
               Lorem ipsum dolor, sit amet consectetur adipisicing
