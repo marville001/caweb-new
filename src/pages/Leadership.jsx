@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const LeaderCard = ({ img, name, title, group }) => {
   return (
-    <div className="min-w-[300px] bg-white shadow-sm pb-3">
+    <div className="w-full md:min-w-[280px] bg-white shadow-sm pb-3">
       <div className=" w-full h-60 bg-gray-500">
         <img className="h-full w-full" src={img} alt="" />
       </div>
