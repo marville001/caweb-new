@@ -14,14 +14,14 @@ const DailyReadings = () => {
 
       {/* Page switch */}
       <div className="flex justify-between items-center px-6 w-10/12 md:w-5/12 mx-auto">
-        <span className="flex items-center">
-          <FaChevronCircleLeft className="mt-1 mr-2 text-gray-400 text-xl cursor-pointer" />
+        <span className="flex items-center cursor-pointer">
+          <FaChevronCircleLeft className="mt-1 mr-2 text-gray-400 text-xl" />
           <span className="hidden sm:block">previous</span>
         </span>
         <h2 className="text-xl font-medium">Page 1</h2>
-        <span className="flex items-center">
+        <span className="flex items-center cursor-pointer">
           <span className="hidden sm:block">next</span>
-          <FaChevronCircleRight className="mt-1 ml-2 text-gray-800 text-xl cursor-pointer" />
+          <FaChevronCircleRight className="mt-1 ml-2 text-gray-800 text-xl" />
         </span>
       </div>
     </div>
