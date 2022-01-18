@@ -85,9 +85,9 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row gap-5 my-5 md:mt-auto  md:col-span-3">
             <a
               href="#s"
-              className="flex-1 shadow-xl bg-white"
+              className="flex-1 shadow-xl bg-white p-1"
             >
-              <h2 className="text-xl mb-4 text-slate-800 font-normal uppercase">
+              <h2 className="text-xl p-3 mb-4 text-slate-800 font-normal uppercase">
                 Our Spotlight
               </h2>
               <div className="w-full h-48">
@@ -97,7 +97,7 @@ const Home = () => {
                   className="object-fill w-full h-full"
                 />
               </div>
-              <div className="p-5 bg-white text-xl">
+              <div className="p-3 bg-white text-xl">
                 <h2 className="text-slate-800 font-semibold">
                   Synod on Synodality
                 </h2>
@@ -107,9 +107,9 @@ const Home = () => {
               href="#s"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 shadow-xl bg-white"
+              className="flex-1 shadow-xl bg-white p-1"
             >
-              <h2 className="text-xl mb-4 text-slate-800 font-normal uppercase">
+              <h2 className="text-xl p-3 mb-4 text-slate-800 font-normal uppercase">
                 Daily Reflection
               </h2>
               <div className="w-full h-48">
@@ -233,10 +233,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      <br />
-      <br />
-      <br />
     </div>
   );
 };
