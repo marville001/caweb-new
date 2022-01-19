@@ -28,7 +28,7 @@ const Home = () => {
             <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
               Christmas
             </h1>
-            <p className="text-slate-100 md:w-4/6 text-lg font-light">
+            <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
               Christmas is one of the most important days of the Church year,
               second only to Easter itself. It is the feast of the incarnation,
               the feast of God becoming flesh (the Latin "in carne" means
