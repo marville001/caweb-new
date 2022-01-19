@@ -48,7 +48,7 @@ const NavDropDownLinkItem = ({ to, title, children, ...rest }) => {
         </span>
       </div>
       <div className={`${active ? "block my-4 ml-4" : "hidden md:block"}`}>
-        <div className="md:absolute md:px-4 flex-col md:hidden flex md:group-hover:flex md:top-full md:left-0 w-auto h-auto bg-dodge-blue">
+        <div className="md:absolute md:px-4 flex-col md:hidden flex md:group-hover:flex md:top-full min-w-[250px] md:left-0 w-auto h-auto bg-dodge-blue">
           {children}
         </div>
       </div>

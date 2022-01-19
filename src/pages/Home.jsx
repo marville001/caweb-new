@@ -9,9 +9,11 @@ const Home = () => {
       <div
         className="flex items-end md:relative md:-top-14 bg-['url(/assets/images/image1.jpg)']"
         style={{
-          backgroundImage: "url(/assets/images/image1.jpg)",
+          backgroundImage:
+            "url(/assets/images/hero-image-1.jpg)",
           zIndex: "-1",
           backgroundSize: "cover",
+          backgroundPositionY:"center",
           minHeight: "70vh",
         }}
       >
@@ -33,7 +35,7 @@ const Home = () => {
               "enfleshment").
             </p>
             <a
-            href="#gh"
+              href="#gh"
               className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
               style={{ zIndex: 2000 }}
             >
@@ -83,10 +85,7 @@ const Home = () => {
 
           {/* Cards section */}
           <div className="flex flex-col sm:flex-row gap-5 my-5 md:mt-auto  md:col-span-3">
-            <a
-              href="#s"
-              className="flex-1 shadow-xl bg-white p-1"
-            >
+            <a href="#s" className="flex-1 shadow-xl bg-white p-1">
               <h2 className="text-xl p-3 mb-4 text-slate-800 font-normal uppercase">
                 Our Spotlight
               </h2>
@@ -204,7 +203,10 @@ const Home = () => {
               <h3 className="text-lg mb-2 font-semibold">26</h3>
               <h3 className="text-xs sm:text-lg mb-2 font-normal">Dec 2021</h3>
             </div>
-            <a href="#event" className="text-sm sm:text-lg text-dodge-blue ml-10">
+            <a
+              href="#event"
+              className="text-sm sm:text-lg text-dodge-blue ml-10"
+            >
               Christmas Season
             </a>
           </div>
@@ -213,7 +215,10 @@ const Home = () => {
               <h3 className="text-lg mb-2 font-semibold">26</h3>
               <h3 className="text-xs sm:text-lg mb-2 font-normal">Dec 2021</h3>
             </div>
-            <a href="#event" className="text-sm sm:text-lg text-dodge-blue ml-10">
+            <a
+              href="#event"
+              className="text-sm sm:text-lg text-dodge-blue ml-10"
+            >
               Solemnity of Mary, the Holy Mother of God
             </a>
           </div>
@@ -222,12 +227,18 @@ const Home = () => {
               <h3 className="text-lg mb-2 font-semibold">2</h3>
               <h3 className="text-xs sm:text-lg mb-2 font-normal">Feb 2021</h3>
             </div>
-            <a href="#event" className="text-sm sm:text-lg text-dodge-blue ml-10">
+            <a
+              href="#event"
+              className="text-sm sm:text-lg text-dodge-blue ml-10"
+            >
               Lorem ipsum dolor, sit amet consectetur adipisicing
             </a>
           </div>
           <div className="py-6 flex justify-center">
-            <Link to="/events" className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90">
+            <Link
+              to="/events"
+              className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90"
+            >
               View calendar
             </Link>
           </div>
