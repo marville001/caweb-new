@@ -10,6 +10,7 @@ import GetConnected from "./pages/GetConnected";
 import Home from "./pages/Home";
 import Leadership from "./pages/Leadership";
 import Login from "./pages/Login";
+import Mass from "./pages/Mass";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import SccLeadership from "./pages/SccLeadership";
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/leadership" element={<Leadership />} />
           <Route exact path="/leadership/scc" element={<SccLeadership />} />
           <Route exact path="/daily-readings" element={<DailyReadings />} />
+          <Route exact path="/mass" element={<Mass />} />
           <Route exact path="/get-connected" element={<GetConnected />} />
         </Routes>
       </div>
