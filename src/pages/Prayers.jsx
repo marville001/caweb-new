@@ -17,7 +17,7 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
               } w-5 h-5 text-purple-500`}
             />
           </Disclosure.Button>
-          <Disclosure.Panel className="px-4 pt-4 pb-2 text-md tracking-wider leading-6 text-gray-500">
+          <Disclosure.Panel className="px-4 pt-4 pb-2 text-md tracking-wider leading-6 mx-auto text-center text-gray-500 md:max-w-[80%]">
             {prayer}
           </Disclosure.Panel>
         </>
@@ -28,7 +28,6 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
 
 const Prayers = () => {
   const [filteredPrayers, setFilteredPrayers] = useState(prayers.prayers);
-  const [searchValue, setSearchValue] = useState("");
 
   const handleSearch = (e) => {
     const tempPrayers = prayers.prayers.filter((p) =>
