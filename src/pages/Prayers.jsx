@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { HiChevronUp } from "react-icons/hi";
 
@@ -27,14 +27,35 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
 };
 
 const Prayers = () => {
-    console.log(prayers);
+  const [filteredPrayers, setFilteredPrayers] = useState(prayers.prayers);
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearch = (e) => {
+    const tempPrayers = prayers.prayers.filter((p) =>
+      p.title.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setFilteredPrayers(tempPrayers);
+  };
+
   return (
     <div className="container  py-14">
       <h1 className="text-3xl text-center text-dodge-blue font-bold">
         Catholic Prayers
       </h1>
       <div className="w-full space-y-5 max-w-2xl p-2 my-10 mx-auto rounded-2xl">
-        {prayers.prayers.map((prayer) => (
+        <div className="flex">
+          <input
+            onChange={handleSearch}
+            type="text"
+            className="p-2 text-lg ring-1 
+          focus:outline-none focus:border-0 focus:ring-dodge-blue rounded flex-1"
+            placeholder="Search prayer here..."
+          />
+          {/* <button className="p-2 bg-dodge-blue rounded ring-2 text-white uppercase hover:opacity-80">
+            Search
+          </button> */}
+        </div>
+        {filteredPrayers.map((prayer) => (
           <PrayerDisclosure key={prayer.id} prayer={prayer} />
         ))}
       </div>
