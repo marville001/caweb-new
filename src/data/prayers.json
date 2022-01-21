@@ -1,0 +1,29 @@
+{
+  "prayers": [
+    {
+      "id": "0",
+      "title": "Sign of the Cross",
+      "prayer": "In the name of the Father, and of the Son, and of the Holy Spirit."
+    },
+    {
+      "id": "1",
+      "title": "Our Father",
+      "prayer": "Our Father, who art in heaven, hallowed be thy name. Thy kingdom come, thy will be done, on earth, as it is in heaven. Give us this day our daily bread and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil."
+    },
+    {
+      "id": "2",
+      "title": "Hail Mary",
+      "prayer": "Hail Mary, <br/> Full of Grace, <br/> The Lord is with thee. <br/> Blessed art thou among women, <br/> and blessed is the fruit <br/> of thy womb, Jesus. <br/> Holy Mary, <br/> Mother of God, <br/> pray for us sinners now, <br/> and at the hour of our death."
+    },
+    {
+      "id": "3",
+      "title": "Glory Be",
+      "prayer": "Glory be to the Father,<br/> and to the Son,<br/> and to the Holy Spirit.<br/> As it was in the beginning, is now,<br/> and ever shall be,<br/> world without end."
+    },
+    {
+      "id": "4",
+      "title": "Apostles Creed",
+      "prayer": "I believe in God, the Father Almighty, Creator of Heaven and earth; and in Jesus Christ, His only Son Our Lord, Who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into Hell; the third day He rose again from the dead; He ascended into Heaven, and sitteth at the right hand of God, the Father almighty; from thence He shall come to judge the living and the dead. I believe in the Holy Spirit, the holy Catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body and life everlasting."
+    }
+  ]
+}
