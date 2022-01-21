@@ -37,7 +37,7 @@ const Prayers = () => {
   };
 
   return (
-    <div className="container  py-14">
+    <div className="container  py-8">
       <h1 className="text-3xl text-center text-dodge-blue font-bold">
         Catholic Prayers
       </h1>
