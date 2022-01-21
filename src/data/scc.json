@@ -18,5 +18,43 @@
       "image": "https://caweb.netlify.app/static/media/stpeters.49ffd5f6.jpg",
       "description": "For all students pertaking business related courses."
     }
+  ],
+  "others": [
+    {
+      "id": "0",
+      "title": "Saint John Altarservers",
+      "image": "https://caweb.netlify.app/static/media/stjohn.58cd9d3b.jpg",
+      "description": "This team entails all the altar boys and girls whose main objective is to prepare and serve mass. they also organise sacrament of confession when the priest is to come. They also lead the Christians through the Catholic Doctrines."
+    },
+    {
+      "id": "1",
+      "title": "Saint Cecilia Choir",
+      "image": "https://caweb.netlify.app/static/media/choir.833cf0e7.jpg",
+      "description": "This absorbs students from the all schools within the institution with the main objective being to sing during the mass. the Choir has also recorded various songs. the participation goes beyond church service as they also pertake in various events within and outside the university."
+    },
+    {
+      "id": "2",
+      "title": "Saint Vitus Innovetia",
+      "image": "https://caweb.netlify.app/static/media/stvitus.187c62ad.jpg",
+      "description": "This also absorbs students from the all schools within the institution with the main objective being to spread the gospel through talent. They perform various activities ranging from dancing, art, singing and many more. they also lead the liturgical team during mass."
+    },
+    {
+      "id": "3",
+      "title": "Saint Gabriel",
+      "image": "https://caweb.netlify.app/static/media/stgabriel.18e4623a.jpg",
+      "description": "This team entails the instrument team. They are in charge of controlling Adoration and maintaining the church Instrument systems including th sound systems, music instruments projectors. they Take charge of the instruments especially during the Holy Mass and during Koinonea They are also incharge of all the communication media of the Church."
+    },
+    {
+      "id": "4",
+      "title": "Saint Paul CA Gents",
+      "image": "https://caweb.netlify.app/static/media/gents.9ecaa38a.jpg",
+      "description": "All gentlemen by default belong to this group."
+    },
+    {
+      "id": "5",
+      "title": "Saint Catherine of Siena CA Ladies",
+      "image": "https://caweb.netlify.app/static/media/ladies.8270d1cd.jpg",
+      "description": "All ladies by default belong to this group."
+    }
   ]
 }
