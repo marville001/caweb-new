@@ -14,6 +14,7 @@ import Mass from "./pages/Mass";
 import Prayers from "./pages/Prayers";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
+import Scc from "./pages/Scc";
 import SccLeadership from "./pages/SccLeadership";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/daily-readings" element={<DailyReadings />} />
           <Route exact path="/mass" element={<Mass />} />
           <Route exact path="/prayers" element={<Prayers />} />
+          <Route exact path="/scc" element={<Scc />} />
           <Route exact path="/get-connected" element={<GetConnected />} />
         </Routes>
       </div>
