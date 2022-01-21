@@ -1,0 +1,22 @@
+{
+  "major": [
+    {
+      "id": "0",
+      "title": "Saint Angela SCC",
+      "image": "https://caweb.netlify.app/static/media/stangelus.64eed5a4.jpg",
+      "description": "For all students belonging to Computer science, Information Technology(I.T) ,Industrial Chemistry, Leather Technology and School Of Health Science."
+    },
+    {
+      "id": "1",
+      "title": "Saint Joseph SCC",
+      "image": "https://caweb.netlify.app/static/media/stjoseph.6a86fedd.jpg",
+      "description": "For all students belonging to the school of Engineering, Geospatial and geomatics."
+    },
+    {
+      "id": "2",
+      "title": "Saint Peter SCC",
+      "image": "https://caweb.netlify.app/static/media/stpeters.49ffd5f6.jpg",
+      "description": "For all students pertaking business related courses."
+    }
+  ]
+}
