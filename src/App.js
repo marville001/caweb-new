@@ -216,10 +216,11 @@ function App() {
             </MainLayout>
           }
         />
-        <Route
-          path="/admin"
-          element={<AdminDashboard />}
-        />
+        <Route path="/admin" element={<AdminDashboard />}>
+          <Route index element={<div>home</div>} />
+          <Route path="home" element={<div>home</div>} />
+          <Route path="settings" element={<div>Settings</div>} />
+        </Route>
         <Route
           path="*"
           element={

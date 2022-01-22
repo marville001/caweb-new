@@ -6,7 +6,7 @@ import {
   HiChartSquareBar,
   HiCog,
 } from "react-icons/hi";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const SideBar = () => {
   return (
@@ -29,7 +29,7 @@ const SideBar = () => {
         <SideLink to="/" text="Report" icon={HiChartSquareBar} />
         <SideLink to="/" text="Schedule" icon={HiCalendar} />
         <Link
-          to="/admin/setting"
+          to="/admin/settings"
           className="absolute flex justify-center items-center flex-col
                 py-7 text-slate-100 bottom-16 inset-x-0"
         >
@@ -41,16 +41,19 @@ const SideBar = () => {
   );
 };
 
-const SideLink = ({ text, to, icon: Icon }) => (
-  <NavLink
-    to={to}
-    className={(isActive) =>
-      `flex py-3 items-center text-gray-500 px-4 ${isActive && "bg-slate-600"}`
-    }
-  >
-    <Icon className="w-6 h-6 mr-4" />
-    <span className="text-[15px]">{text}</span>
-  </NavLink>
-);
+const SideLink = ({ text, to, icon: Icon }) => {
+  const { pathname } = useLocation();
+  return (
+    <NavLink
+      to={to}
+      className={`flex py-3 items-center text-gray-300 px-4 ${
+        pathname === to && "bg-slate-600 border-r-4 border-r-slate-50"
+      }`}
+    >
+      <Icon className="w-6 h-6 mr-4" />
+      <span className="text-[15px]">{text}</span>
+    </NavLink>
+  );
+};
 
 export default SideBar;
