@@ -8,9 +8,9 @@ import {
 } from "react-icons/hi";
 import { Link, NavLink, useLocation } from "react-router-dom";
 
-const SideBar = () => {
+const SideBar = ({open}) => {
   return (
-    <div className="fixed inset-y-0 left-0 bg-white w-56">
+    <div className={`${!open && "-translate-x-full"} fixed inset-y-0 left-0 bg-white w-64`}>
       <h1
         className="flex items-center justify-center text-2xl
             h-16 bg-slate-800 text-dodge-blue font-bold"
@@ -25,9 +25,9 @@ const SideBar = () => {
           DASHBOARD
         </h2>
         <SideLink to="/admin" text="Manage" icon={HiUserGroup} />
-        <SideLink to="/admin/nnn" text="Boards" icon={HiServer} />
-        <SideLink to="/" text="Report" icon={HiChartSquareBar} />
-        <SideLink to="/" text="Schedule" icon={HiCalendar} />
+        <SideLink to="/admin/boards" text="Boards" icon={HiServer} />
+        <SideLink to="/admin/reports" text="Report" icon={HiChartSquareBar} />
+        <SideLink to="/admin/events" text="Schedule" icon={HiCalendar} />
         <Link
           to="/admin/settings"
           className="absolute flex justify-center items-center flex-col
