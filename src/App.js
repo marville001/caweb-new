@@ -220,6 +220,7 @@ function App() {
           <Route index element={<div>home</div>} />
           <Route path="home" element={<div>home</div>} />
           <Route path="settings" element={<div>Settings</div>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route
           path="*"
