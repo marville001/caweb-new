@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Register = () => {
   return (
     <div className="flex justify-center items-center min-h-[70vh] my-6">
-      <div className="shadow-md p-5 bg-white  sm:min-w-[400px] md:min-w-[600px]">
+      <div className="shadow-md p-5 bg-white  w-full md:w-auto mx-2 sm:mx-10  sm:min-w-[400px] md:min-w-[600px]">
         <h1 className="text-center font-bold text-3xl text-dodge-blue">
           Create An Account
         </h1>

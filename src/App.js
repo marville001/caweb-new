@@ -40,6 +40,9 @@ function App() {
           <Route exact path="/prayers" element={<Prayers />} />
           <Route exact path="/scc" element={<Scc />} />
           <Route exact path="/bible" element={<CommingSoon />} />
+          <Route exact path="/library" element={<CommingSoon />} />
+          <Route exact path="/gallery" element={<CommingSoon />} />
+          <Route exact path="/resources" element={<CommingSoon />} />
           <Route exact path="/get-connected" element={<GetConnected />} />
         </Routes>
       </div>
