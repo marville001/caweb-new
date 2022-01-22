@@ -228,7 +228,7 @@ const Header = () => {
           </NavDropDownLinkItem>
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
-            to="/f"
+            to="/bible"
             title="Bible"
           />
           <NavLinkItem

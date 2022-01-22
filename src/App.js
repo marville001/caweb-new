@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import CommingSoon from "./components/CommingSoon";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import About from "./pages/About";
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/mass" element={<Mass />} />
           <Route exact path="/prayers" element={<Prayers />} />
           <Route exact path="/scc" element={<Scc />} />
+          <Route exact path="/bible" element={<CommingSoon />} />
           <Route exact path="/get-connected" element={<GetConnected />} />
         </Routes>
       </div>
