@@ -29,7 +29,7 @@ const AdminLogin = () => {
             />
           </div>
 
-          <Link to="/admin" className="w-full p-2 mt-5 text-white text-center text-lg uppercase bg-dodge-blue rounded cursor-pointer">
+          <Link to="/admin" className="block w-full px-10 p-2 mt-5 text-white text-center text-lg uppercase bg-dodge-blue rounded cursor-pointer">
             Continue
           </Link>
 
