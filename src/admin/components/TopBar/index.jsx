@@ -19,7 +19,7 @@ const TopBar = ({ sideBarOpen, setSideBarOpen }) => {
           <HiSearch className="w-5 h-5 text-slate-500" />
           <input
             type="text"
-            placeholder="Search for tasks ..."
+            placeholder="Search here ..."
             className=" bg-transparent border-0 p-2 text-slate-500 placeholder-gray-300
                 outline-none focus:ring-0 text-lg"
           />
