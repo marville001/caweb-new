@@ -1,5 +1,7 @@
 import React from "react";
-import { HiSearch, HiAtSymbol, HiBell, HiMenuAlt1 } from "react-icons/hi";
+import { HiSearch,  HiBell, HiMenuAlt1 } from "react-icons/hi";
+import { Menu} from "@headlessui/react";
+import AccountMenu from "./AccountMenu";
 
 const TopBar = ({ sideBarOpen, setSideBarOpen }) => {
   return (
@@ -26,18 +28,24 @@ const TopBar = ({ sideBarOpen, setSideBarOpen }) => {
         </div>
       </div>
       <div className="flex items-center space-x-4">
-        <HiAtSymbol className="w-7 h-7 text-slate-500" />
         <HiBell className="w-7 h-7 text-slate-500" />
         <div className="flex items-center text-slate-500">
           <h3 className="font-bold mr-3 hidden lg:block">M. John Doe</h3>
-          <img
-            src="https://randomuser.me/api/portraits/men/75.jpg"
-            width="36"
-            height="36"
-            objectFit="cover"
-            className=" rounded-full "
-            alt=""
-          />
+          <Menu as="div" className="relative inline-block text-left">
+            <div>
+              <Menu.Button className="inline-flex justify-center w-full text-sm font-medium text-white">
+                <img
+                  src="https://randomuser.me/api/portraits/men/75.jpg"
+                  width="36"
+                  height="36"
+                  objectFit="cover"
+                  className=" rounded-full "
+                  alt=""
+                />
+              </Menu.Button>
+            </div>
+            <AccountMenu />
+          </Menu>
         </div>
       </div>
     </div>

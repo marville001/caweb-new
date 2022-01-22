@@ -20,6 +20,16 @@ import Scc from "./pages/Scc";
 import SccLeadership from "./pages/SccLeadership";
 import AdminDashboard from "./admin/AdminDashboard";
 
+import {
+  AdminAccount,
+  AdminHome,
+  AdminLogin,
+  EventsPage,
+  LeadershipPage,
+  PrayersPage,
+  UsersPage,
+} from "./admin/pages";
+
 const MainLayout = ({ children }) => {
   return (
     <div className="min-h-[75vh]">
@@ -217,9 +227,14 @@ function App() {
           }
         />
         <Route path="/admin" element={<AdminDashboard />}>
-          <Route index element={<div>home</div>} />
-          <Route path="home" element={<div>home</div>} />
-          <Route path="settings" element={<div>Settings</div>} />
+          <Route index element={<AdminHome />} />
+          <Route path="login" element={<AdminLogin />} />
+          <Route path="home" element={<AdminHome />} />
+          <Route path="my-account" element={<AdminAccount />} />
+          <Route path="users" element={<UsersPage />} />
+          <Route path="prayers" element={<PrayersPage />} />
+          <Route path="leaders" element={<LeadershipPage />} />
+          <Route path="events" element={<EventsPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route
