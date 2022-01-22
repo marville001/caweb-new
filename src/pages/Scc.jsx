@@ -42,7 +42,7 @@ const Scc = () => {
           </div>
           <div className="p-4 bg-dodge-blue text-center text-white text-md hover:opacity-80 cursor-pointer">
             {" "}
-            Scc Mashes
+            Scc Bashes
           </div>
           <div className="p-4 bg-dodge-blue text-center text-white text-md hover:opacity-80 cursor-pointer">
             {" "}
