@@ -34,7 +34,7 @@ const SideBar = ({ open }) => {
         <SideLink to="/admin/leaders" text="Leadership" icon={FaUserTie} />
         <SideLink to="/admin/events" text="Events" icon={HiCalendar} />
         <Link
-          to="/admin/settings"
+          to="/admin/login"
           className="absolute flex justify-center items-center flex-col
                 py-7 text-slate-300 bottom-16 inset-x-0"
         >
