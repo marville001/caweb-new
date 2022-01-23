@@ -1,6 +1,6 @@
 const UsersTable = () => {
   return (
-    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-md">
+    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-b-md">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
