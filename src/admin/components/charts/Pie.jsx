@@ -1,14 +1,6 @@
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 
-const data = [
-  { name: "ST AGELUS", value: 400 },
-  { name: "ST JOSEPH", value: 300 },
-  { name: "ST PETERS", value: 200 },
-];
-
-const COLORS = ["#0088FE", "#00C49F", "#FF8042"];
-
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx,
@@ -16,8 +8,7 @@ const renderCustomizedLabel = ({
   midAngle,
   innerRadius,
   outerRadius,
-  percent,
-  index,
+  percent
 }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
@@ -37,7 +28,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-const Piechart = ({radius}) => {
+const Piechart = ({data, COLORS}) => {
   return (
     <ResponsiveContainer  width="100%" height="100%">
       <PieChart>
