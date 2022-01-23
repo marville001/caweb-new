@@ -34,7 +34,23 @@ const AdminHome = () => {
           </div>
         </div>
         <div className="bg-white shadow-md rounded-md overflow-hidden">
-          <h3 className="text-2xl text-center p-3">Admin Users</h3>
+          <div className="pr-6 flex items-center justify-between">
+            <h3 className="text-2xl p-3">Admin Users</h3>
+            <button className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md">
+              Add
+            </button>
+          </div>
+          <div className="h-64 px-4 overflow-y-auto w-full">
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+            <h4>Heey</h4>
+          </div>
         </div>
       </div>
     </div>
