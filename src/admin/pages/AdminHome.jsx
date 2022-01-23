@@ -1,5 +1,5 @@
 import React from "react";
-// import { HiUserGroup, HiOutlineCalendar } from "react-icons/hi";
+import { HiPencilAlt, HiTrash } from "react-icons/hi";
 import CountCards from "../components/AdminHomeComponents/CountCards";
 import Piechart from "../components/charts/Pie";
 
@@ -40,16 +40,24 @@ const AdminHome = () => {
               Add
             </button>
           </div>
-          <div className="h-64 px-4 overflow-y-auto w-full">
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
-            <h4>Heey</h4>
+          <div className="h-64 px-4 py-4 overflow-y-auto w-full divide-y-[1px] divide-gray-100">
+            {[1, 2, 3, 4].map((i) => (
+              <div className="flex items-center py-4">
+                <img
+                  className="w-12 h-12 rounded-full"
+                  src="https://randomuser.me/api/portraits/women/40.jpg"
+                  alt=""
+                />
+                <div className="flex flex-col ml-4">
+                  <h2 className="font-bold">Admin Name Lastname</h2>
+                  <p className="text-sm">useremail@gmail.com</p>
+                </div>
+                <div className="ml-auto mr-6 flex space-x-2">
+                  <HiPencilAlt className="font-bold text-dodge-blue text-2xl cursor-pointer" />
+                  <HiTrash className="font-bold text-red-400 text-2xl cursor-pointer" />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
