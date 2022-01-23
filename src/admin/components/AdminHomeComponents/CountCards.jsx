@@ -38,7 +38,7 @@ const CountCards = () => {
 };
 
 const CountCard = ({ iconColor, countColor, icon: Icon, title, count }) => (
-  <div className="bg-white shadow-md p-8 flex items-center space-x-4">
+  <div className="rounded-md bg-white shadow-md p-8 flex items-center space-x-4">
     <Icon
       className={`text-4xl my-2 ${iconColor ? iconColor : "text-indigo-800"}`}
     />
