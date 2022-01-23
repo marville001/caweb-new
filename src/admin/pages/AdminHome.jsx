@@ -41,11 +41,11 @@ const AdminHome = () => {
             </button>
           </div>
           <div className="h-64 px-4 py-4 overflow-y-auto w-full divide-y-[1px] divide-gray-100">
-            {[1, 2, 3, 4].map((i) => (
+            {[10, 20, 30, 40].map((i) => (
               <div className="flex items-center py-4">
                 <img
                   className="w-12 h-12 rounded-full"
-                  src="https://randomuser.me/api/portraits/women/40.jpg"
+                  src={`https://randomuser.me/api/portraits/men/${i}.jpg`}
                   alt=""
                 />
                 <div className="flex flex-col ml-4">
