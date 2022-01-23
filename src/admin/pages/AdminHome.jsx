@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+// import { HiUserGroup, HiOutlineCalendar } from "react-icons/hi";
+import CountCards from "../components/AdminHomeComponents/CountCards";
 
 const AdminHome = () => {
-  return <div>
-      <h4>Admin Home</h4>
-  </div>;
+  return (
+    <div className="">
+      <CountCards />
+    </div>
+  );
 };
 
 export default AdminHome;
