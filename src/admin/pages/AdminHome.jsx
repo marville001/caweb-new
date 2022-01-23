@@ -23,7 +23,14 @@ const AdminHome = () => {
             </h2>
           </div>
           <div className="w-50 h-60">
-            <Piechart />
+            <Piechart
+              data={[
+                { name: "ST AGELUS", value: 400 },
+                { name: "ST JOSEPH", value: 300 },
+                { name: "ST PETERS", value: 200 },
+              ]}
+              COLORS={["#0088FE", "#00C49F", "#FF8042"]}
+            />
           </div>
         </div>
         <div className="bg-white shadow-md rounded-md overflow-hidden">
