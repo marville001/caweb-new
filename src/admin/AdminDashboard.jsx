@@ -11,7 +11,7 @@ const AdminDashboard = () => {
       <TopBar sideBarOpen={sideBarOpen} setSideBarOpen={setSideBarOpen} />
       <SideBar open={sideBarOpen} />
       <main className={`${sideBarOpen && "ml-64"} transition-all duration-200 ease-linear pt-16`}>
-        <div className="p-6">
+        <div className="p-6 h-[90vh] overflow-y-auto">
           <Outlet />
         </div>
       </main>
