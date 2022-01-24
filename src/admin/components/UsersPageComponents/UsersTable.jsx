@@ -78,7 +78,7 @@ const UsersTable = () => {
                 User
               </td>
               <td className="pr-8 py-4 whitespace-nowrap text-right text-sm font-medium">
-                <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                <a href="#s" className="text-indigo-600 hover:text-indigo-900">
                   Edit
                 </a>
               </td>
