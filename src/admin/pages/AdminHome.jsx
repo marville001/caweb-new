@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiPencilAlt, HiTrash } from "react-icons/hi";
 import CountCards from "../components/AdminHomeComponents/CountCards";
 import Piechart from "../components/charts/Pie";
+import Modal from "../components/common/Modal";
 
 const AdminHome = () => {
+  let [addAdminModalOpen, setAddAdminModalOpen] = useState(false);
+
+  const closeAddAdminModal = () => {
+    setAddAdminModalOpen(false);
+  };
+
+  const openAddAdminModal = () => {
+    setAddAdminModalOpen(true);
+  };
   return (
     <div className="">
       <CountCards />
@@ -36,7 +46,10 @@ const AdminHome = () => {
         <div className="bg-white shadow-md rounded-md overflow-hidden">
           <div className="pr-6 flex items-center justify-between">
             <h3 className="text-2xl p-3">Admin Users</h3>
-            <button className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md">
+            <button
+              onClick={openAddAdminModal}
+              className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
+            >
               Add
             </button>
           </div>
@@ -61,6 +74,37 @@ const AdminHome = () => {
           </div>
         </div>
       </div>
+
+      {/* Add admin modal */}
+      <Modal isOpen={addAdminModalOpen} closeModal={closeAddAdminModal}>
+        <div className="inline-block w-full max-w-xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
+          <h3 className="text-lg font-medium leading-6 text-gray-900">
+            Add Admin Users
+          </h3>
+          <p className="text-xs my-4">
+            Ensure you have added the user before trying to make him an admin
+          </p>
+          <div className="form-group my-4 flex-1">
+            <input
+              type="email"
+              className="p-2 py-1 block border-slate-200 border-2 w-full rounded mt-2 outline-none"
+              placeholder="Enter users email "
+            />
+          </div>
+
+          <div className="mt-4 flex justify-end">
+            <button
+              type="button"
+              className="block bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md"
+              onClick={closeAddAdminModal}
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </Modal>
+
+      {/* Add admin modal end */}
     </div>
   );
 };
