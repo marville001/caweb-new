@@ -8,7 +8,6 @@ const userSignUp = (user) => async (dispatch) => {
     localStorage.setItem("token", data.token);
     dispatch(loginUser(data.user));
   } catch (error) {
-    console.log({error});
     dispatch({
       type: USER_REGISTER.FAIL,
       error:

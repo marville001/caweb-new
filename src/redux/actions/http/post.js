@@ -9,6 +9,5 @@ export const post = async (endpoint, body) => {
     },
   });
 
-  console.log({data});
   return data;
 };

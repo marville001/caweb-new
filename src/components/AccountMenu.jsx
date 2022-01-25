@@ -21,7 +21,7 @@ export default function AccountMenu() {
     >
       <Menu.Items className="absolute right-0 w-52 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none py-3">
         <div className="px-1 py-1">
-          <h2 className="px-2 text-lg tracking-wider text-gray-900 lg:hidden font-bold">
+          <h2 className="px-2 text-lg tracking-wider text-gray-900 font-bold">
             {user.firstname +" "+ user.lastname}
           </h2>
         </div>
