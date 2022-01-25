@@ -48,7 +48,7 @@ const MainLayout = ({ children }) => {
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getProfileFetch());
+    dispatch(getProfileFetch());
   }, [dispatch]);
 
   return (
