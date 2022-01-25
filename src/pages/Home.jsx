@@ -184,7 +184,7 @@ const Home = () => {
 
       {/* Gallery carousel */}
 
-      <div className="my-10 mx-5 overflow-x-hidden">
+      <div className="my-10 mx-5 overflow-x-hidden  images-carousel-container">
         <div className="flex gap-2 images-carousel">
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
             <div className="min-w-[200px] md:min-w-[260px] lg:min-w-[300px] h-60 lg:h-64 rounded-md overflow-hidden ">

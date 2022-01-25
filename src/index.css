@@ -23,9 +23,32 @@
         transform: translateX(0);
     }
     100%{
-        transform: translateX( calc(-200px * 6 ) );
+        transform: translateX( calc(-200px * 10 ) );
     }
     
+}
+.images-carousel-container{
+    position: relative;
+}
+
+.images-carousel-container::before,
+.images-carousel-container::after{
+    background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0) 100%) ;
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 8%;
+    z-index: 2;
+}
+
+.images-carousel-container::before{
+    left: 0;
+    top: 0;
+}
+.images-carousel-container::after{
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
 }
 
 @layer components{
