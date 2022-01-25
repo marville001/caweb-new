@@ -13,11 +13,10 @@ const MyAccount = () => {
   const navigate = useNavigate();
 
   const sccs = {
-    "stangelus":"St Angelus",
-    "stpeters":"St Peters",
-    "stjoseph":"St Joseph",
-
-  }
+    stangelus: "St Angelus",
+    stpeters: "St Peters",
+    stjoseph: "St Joseph",
+  };
 
   const imageRef = useRef();
 
@@ -33,9 +32,9 @@ const MyAccount = () => {
     <div className="max-w-4xl mx-auto bg-white my-16 p-6 pb-28">
       <h2 className="text-3xl text-dodge-blue font-bold">Manage Account</h2>
       <hr className="my-4" />
-      <div className="flex divide-x-2">
-        <div className="px-5 min-w-[200px]">
-          <ul className="flex flex-col space-y-3">
+      <div className="flex flex-col lg:flex-row lg:divide-x-2">
+        <div className="px-5 py-4 pb-10 min-w-[200px]">
+          <ul className="flex flex-wrap flex-row lg:flex-col items-center md:space-x-2 lg:space-x-0 lg:space-y-3  gap-4 lg:gap-0">
             <li>
               <Link
                 to="/my-account"
@@ -44,11 +43,19 @@ const MyAccount = () => {
                 Account Details
               </Link>
             </li>
+            <li>
+              <Link
+                to="/my-account"
+                className="text-lg tracking-wider font-light"
+              >
+                My Subscription
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="px-5  flex-1">
           {/* Profile Image */}
-          <div className="flex relative gap-6">
+          <div className="flex flex-col sm:flex-row relative gap-6">
             <div className="w-32 h-32 cursor-pointer">
               <img
                 className="rounded-md w-full h-full object-contain"
@@ -81,7 +88,7 @@ const MyAccount = () => {
           <hr className="mt-8" />
 
           {/* Other Details */}
-          <div className="grid grid-cols-2 gap-4 my-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
             <div className=" w-full">
               <p className="text-md mb-2 font-light">Firstname</p>
               <input
