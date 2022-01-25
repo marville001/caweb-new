@@ -13,6 +13,7 @@ import Loading from "./components/Loading";
 
 import { getProfileFetch } from "./redux/actions";
 import { useDispatch } from "react-redux";
+import MyAccount from "./pages/MyAccount";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const Footer = React.lazy(() => import("./components/Footer"));
@@ -237,6 +238,23 @@ function App() {
               </MainLayout>
             }
           />
+          <Route
+            exact
+            path="/my-account"
+            element={
+              <MainLayout>
+                <MyAccount />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <MainLayout>
+                <NotFound />
+              </MainLayout>
+            }
+          />
           <Route path="/admin" element={<AdminDashboard />}>
             <Route index element={<AdminHome />} />
             <Route path="login" element={<AdminLogin />} />
@@ -248,14 +266,6 @@ function App() {
             <Route path="events" element={<EventsPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
-          <Route
-            path="*"
-            element={
-              <MainLayout>
-                <NotFound />
-              </MainLayout>
-            }
-          />
         </Routes>
       </React.Suspense>
       {/* </div> */}
