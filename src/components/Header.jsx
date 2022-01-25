@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaSearch, FaCalendarAlt, FaBars, FaChurch } from "react-icons/fa";
+import { FaSearch, FaCalendarAlt, FaBars, FaChurch, FaUser, FaUserAlt, FaUserCircle } from "react-icons/fa";
 import { HiChevronRight, HiChevronDown } from "react-icons/hi";
+import { useSelector } from "react-redux";
+import { Menu } from "@headlessui/react";
+import AccountMenu from "./AccountMenu";
 
 const NavLinkItem = ({ to, title, closeMenu, ...rest }) => {
   const { pathname } = useLocation();
@@ -58,6 +61,7 @@ const NavDropDownLinkItem = ({ to, title, children, ...rest }) => {
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user } = useSelector((state) => state.accountUsers);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -115,12 +119,24 @@ const Header = () => {
               >
                 Library
               </Link>
-              <Link
-                className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-4 sm:px-6"
-                to="/login"
-              >
-                Login
-              </Link>
+              {user._id ? (
+                <Menu as="div" className="z-[1000] relative inline-block text-left">
+                <div className="bg-sea-green h-full flex items-center p-3">
+                  <Menu.Button className="inline-flex justify-center items-center w-full text-sm font-medium text-white">
+                  <p className="text-sm">{user?.firstname || "Welcome"}</p>
+                  <FaUserCircle className="w-6 h-6 ml-2" />
+                  </Menu.Button>
+                </div>
+                <AccountMenu />
+              </Menu>
+              ) : (
+                <Link
+                  className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#407b54] h-14 flex items-center px-4 sm:px-6"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              )}
             </div>
             <FaSearch className="hidden md:block ml-2 h-8 w-5 text-slate-100" />
             <FaBars
@@ -174,7 +190,7 @@ const Header = () => {
             Daily Readings
           </Link>
           <NavDropDownLinkItem title="about dekutcc" to="/">
-          <Link
+            <Link
               onClick={() => setIsMenuOpen(false)}
               className={`my-2 text-sm uppercase text-slate-100`}
               to="/about"

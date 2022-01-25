@@ -11,7 +11,7 @@ const initialState = {
   loginError: "",
 };
 
-const userReducer = (state = initialState, action) => {
+const accountUserReducer = (state = initialState, action) => {
   switch (action.type) {
     case USER_LOGIN.REQUEST:
       return { ...state, loginLoading: true, user: {}, loginError: "" };
@@ -23,7 +23,7 @@ const userReducer = (state = initialState, action) => {
         loginError: "",
       };
     case USER_LOGIN.FAIL:
-      return { ...state, loginLoading: false, loginError: action.loginError };
+      return { ...state, loginLoading: false, loginError: action.error };
     case LOGOUT_USER:
       return { ...state, user: {} };
 
@@ -32,4 +32,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default accountUserReducer;

@@ -8,12 +8,12 @@ import {post, get} from "./http";
 const userSignUp = (user) => async (dispatch) => {
   dispatch({ type: USER_REGISTER.REQUEST, payload: user });
   try {
-    const { data } = await post("/api/users", user);
+    const { data } = await post("/api/auth/register", user);
     localStorage.setItem("token", data.token);
     dispatch(loginUser(data.user));
   } catch (error) {
     dispatch({
-      type: USER_REGISTER.FAILED,
+      type: USER_REGISTER.FAIL,
       error: error.response.data.message,
     });
   }
@@ -22,11 +22,11 @@ const userSignUp = (user) => async (dispatch) => {
 const userLogin = (user) => async (dispatch) => {
   dispatch({ type: USER_LOGIN.REQUEST, payload: user });
   try {
-    const { data } = await post("/api/auth", user);
+    const data = await post("/api/auth/login", user);
     localStorage.setItem("token", data.token);
     dispatch(loginUser(data.user));
   } catch (error) {
-    dispatch({ type: USER_LOGIN.FAILED, error: error.response.data.message });
+    dispatch({ type: USER_LOGIN.FAIL, error: error.response.data.message });
   }
 };
 
