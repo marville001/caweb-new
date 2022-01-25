@@ -1,7 +1,4 @@
-import {
-  USER_LOGIN,
-  LOGOUT_USER,
-} from "../types";
+import { USER_LOGIN, LOGOUT_USER, USER_REGISTER } from "../types";
 
 const initialState = {
   user: {},
@@ -23,9 +20,25 @@ const accountUserReducer = (state = initialState, action) => {
         loginError: "",
       };
     case USER_LOGIN.FAIL:
-      return { ...state, loginLoading: false, loginError: action.error };
+      return { ...state, registerLoading: false, registerError: action.error };
     case LOGOUT_USER:
       return { ...state, user: {} };
+
+    case USER_REGISTER.REQUEST:
+      return { ...state, registerLoading: true, user: {}, registerError: "" };
+    case USER_REGISTER.SUCCESS:
+      return {
+        ...state,
+        user: action.user,
+        registerLoading: false,
+        registerError: "",
+      };
+    case USER_REGISTER.FAIL:
+      return { ...state, registerLoading: false, registerError: action.error };
+
+    // eslint-disable-next-line no-duplicate-case
+    case LOGOUT_USER:
+      return { ...state, user: {}, loginLoading: false };
 
     default:
       return { ...state };
