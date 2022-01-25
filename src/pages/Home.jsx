@@ -173,12 +173,32 @@ const Home = () => {
           </a>
         </div>
       </div>
-      <div className="img">
+
+      {/* <div className="img">
         <img
           src="https://dekutca.dkut.ac.ke/htmlcodes/library/htmlphpcodes/include/dekutuploading/gallery/gallery.5d3d7c690a5a17.93414579"
           alt="banner imag"
           className="w-full h-96"
         />
+      </div> */}
+
+      {/* Gallery carousel */}
+
+      <div className="my-10 mx-5 overflow-x-hidden">
+        <div className="flex gap-2 images-carousel">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
+            <div className="min-w-[200px] md:min-w-[260px] lg:min-w-[300px] h-60 lg:h-64 rounded-md overflow-hidden ">
+              <img
+                className="w-full h-full"
+                src="https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2h1cmNofGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1000&q=60"
+                alt=""
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-center my-4">
+          <Link to="/gallery" className="bg-dodge-blue px-6 py-2 rounded-md text-white font-bold">View Our Gallery</Link>
+        </div>
       </div>
 
       <div className="container my-8 bg-white md:p-8 lg:p-10">
