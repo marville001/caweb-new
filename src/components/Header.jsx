@@ -159,7 +159,7 @@ const Header = () => {
         md:translate-x-0
         `}
         style={{
-          zIndex: "9999",
+          zIndex: 9999,
         }}
       >
         <div
@@ -180,6 +180,7 @@ const Header = () => {
                 md:justify-end 
                 flex-col
                 md:flex-row
+                z-[600]
         "
         >
           <Link

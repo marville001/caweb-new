@@ -7,41 +7,30 @@ const Home = () => {
     <div className="py-0">
       {/* Hero Section */}
       <div
-        className="flex items-end md:relative md:-top-14 bg-['url(/assets/images/image1.jpg)']"
+        className="flex flex-col justify-end items-end md:relative md:-top-14"
         style={{
-          backgroundImage:
-            "url(/assets/images/hero-image-1.jpg)",
-          zIndex: "-1",
+          backgroundImage: "url(/assets/images/hero-image-1.jpg)",
           backgroundSize: "cover",
-          backgroundPositionY:"center",
+          backgroundPositionY: "center",
           minHeight: "70vh",
         }}
       >
-        <div
-          className="md:absolute  w-full inset-x bottom-0 bg-dodge-blue  md:bg-transparent md:h-[50%]"
-          style={{
-            background:
-              "linear-gradient(to top,#122c41 0%,rgba(18,44,65,0)100%)",
-          }}
-        >
-          <div className="md:container p-4 bg-[#0b416c] md:bg-inherit h-full flex flex-col justify-end">
-            <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-              Christmas
-            </h1>
-            <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-              Christmas is one of the most important days of the Church year,
-              second only to Easter itself. It is the feast of the incarnation,
-              the feast of God becoming flesh (the Latin "in carne" means
-              "enfleshment").
-            </p>
-            <a
-              href="#gh"
-              className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-              style={{ zIndex: 2000 }}
-            >
-              LEARN MORE
-            </a>
-          </div>
+        <div className="md:container p-4 bg-[#0b416c] md:bg-inherit h-full ">
+          <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+            Christmas
+          </h1>
+          <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+            Christmas is one of the most important days of the Church year,
+            second only to Easter itself. It is the feast of the incarnation,
+            the feast of God becoming flesh (the Latin "in carne" means
+            "enfleshment").
+          </p>
+          <Link
+            to="/about"
+            className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+          >
+            LEARN MORE
+          </Link>
         </div>
       </div>
 
