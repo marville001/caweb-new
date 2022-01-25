@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { FaSearch, FaCalendarAlt, FaBars, FaChurch, FaUser, FaUserAlt, FaUserCircle } from "react-icons/fa";
+import { FaSearch, FaCalendarAlt, FaBars, FaChurch, FaUserCircle } from "react-icons/fa";
 import { HiChevronRight, HiChevronDown } from "react-icons/hi";
 import { useSelector } from "react-redux";
 import { Menu } from "@headlessui/react";
