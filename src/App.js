@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import {
   AdminAccount,
@@ -10,6 +10,9 @@ import {
   UsersPage,
 } from "./admin/pages";
 import Loading from "./components/Loading";
+
+import { getProfileFetch } from "./redux/actions";
+import { useDispatch } from "react-redux";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const Footer = React.lazy(() => import("./components/Footer"));
@@ -43,6 +46,11 @@ const MainLayout = ({ children }) => {
 };
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProfileFetch());
+  }, [dispatch]);
+
   return (
     <div className="overflow-x-hidden">
       {/* <Header /> */}
