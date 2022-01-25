@@ -1,9 +1,5 @@
-import {
-  USER_LOGIN,
-  USER_REGISTER,
-  LOGOUT_USER,
-} from "../types";
-import {post, get} from "./http";
+import { USER_LOGIN, USER_REGISTER, LOGOUT_USER } from "../types";
+import { post, get } from "./http";
 
 const userSignUp = (user) => async (dispatch) => {
   dispatch({ type: USER_REGISTER.REQUEST, payload: user });
@@ -14,7 +10,8 @@ const userSignUp = (user) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: USER_REGISTER.FAIL,
-      error: error.response.data.message,
+      error:
+        error?.response?.data?.message || "An error occurred. Please try again",
     });
   }
 };
@@ -26,17 +23,21 @@ const userLogin = (user) => async (dispatch) => {
     localStorage.setItem("token", data.token);
     dispatch(loginUser(data.user));
   } catch (error) {
-    dispatch({ type: USER_LOGIN.FAIL, error: error.response.data.message });
+    dispatch({
+      type: USER_LOGIN.FAIL,
+      error:
+        error?.response?.data?.message || "An error occurred. Please try again",
+    });
   }
 };
 
-const getProfileFetch = () => (dispatch) => {
+const getProfileFetch = () => async (dispatch) => {
   const token = localStorage.token;
   if (token) {
-    const { data } = get("/api/users/me");
-    if (data.success) {
+    try {
+      const data = await get("/api/auth/me");
       dispatch(loginUser(data.user));
-    } else {
+    } catch (error) {
       localStorage.removeItem("token");
     }
   }

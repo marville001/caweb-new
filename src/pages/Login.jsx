@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { userLogin } from "../redux/actions/userActions";
 import { FaSpinner } from "react-icons/fa";
 const Login = () => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { user, loginLoading, loginError } = useSelector(
     (state) => state.accountUsers
