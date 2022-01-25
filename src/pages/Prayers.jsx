@@ -13,7 +13,7 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
             <span className="text-lg">{title}</span>
             <HiChevronUp
               className={`${
-                open ? "transform rotate-180" : ""
+                !open ? "transform rotate-180" : ""
               } w-5 h-5 text-purple-500`}
             />
           </Disclosure.Button>
