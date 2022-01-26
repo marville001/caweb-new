@@ -8,6 +8,7 @@ import {
   LeadershipPage,
   PrayersPage,
   UsersPage,
+  GalleryPage
 } from "./admin/pages";
 import Loading from "./components/Loading";
 
@@ -264,6 +265,7 @@ function App() {
             <Route path="prayers" element={<PrayersPage />} />
             <Route path="leaders" element={<LeadershipPage />} />
             <Route path="events" element={<EventsPage />} />
+            <Route path="gallery" element={<GalleryPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
