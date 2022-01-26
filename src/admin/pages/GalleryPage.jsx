@@ -31,7 +31,7 @@ const GalleryPage = () => {
       {/* Header End */}
 
       {/* Gallery grid */}
-      <div className="flex flex-wrap gap-3 my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 my-10">
         {[10, 20, 30, 40, 50, 60, 70, 80, 90, 12, 15, 25, 35, 45, 55].map((image, i) => (
           <GalleryImage key={i} image={image} />
         ))}

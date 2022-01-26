@@ -3,9 +3,9 @@ import React, { Fragment } from "react";
 import { HiOutlineDotsHorizontal, HiPencil, HiTrash } from "react-icons/hi";
 const GalleryImage = ({ image }) => {
   return (
-    <div className="min-w-[220px] flex-1 bg-white rounded p-2">
+    <div className="w-full bg-white rounded p-2">
       <img
-        className="w-full h-44"
+        className="w-full h-52"
         src={`https://randomuser.me/api/portraits/men/${image}.jpg`}
         alt=""
       />
