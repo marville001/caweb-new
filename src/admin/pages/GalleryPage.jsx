@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Modal from "../components/common/Modal";
+import GalleryImage from "../components/GalleryPageComponents/GalleryImage";
 
 const GalleryPage = () => {
   let [uploadImageModalOpen, setUploadImageModalOpen] = useState(false);
@@ -16,9 +17,9 @@ const GalleryPage = () => {
       {/* Header */}
       <div>
         <div className="flex justify-between">
-        <h1 className="text-xl text-dodge-blue font-bold uppercase">
-          Our Gallery
-        </h1>
+          <h1 className="text-xl text-dodge-blue font-bold uppercase">
+            Our Gallery
+          </h1>
           <button
             onClick={openUploadImageModal}
             className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
@@ -27,8 +28,17 @@ const GalleryPage = () => {
           </button>
         </div>
       </div>
+      {/* Header End */}
 
-      {/* Add admin modal */}
+      {/* Gallery grid */}
+      <div className="flex flex-wrap gap-3 my-10">
+        {[10, 20, 30, 40, 50, 60, 70, 80, 90, 12, 15, 25, 35, 45, 55].map((image, i) => (
+          <GalleryImage key={i} image={image} />
+        ))}
+      </div>
+      {/* Gallery grid end */}
+
+      {/* Upload image modal */}
       <Modal isOpen={uploadImageModalOpen} closeModal={closeUploadImageModal}>
         <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
           <h3 className="text-lg font-medium leading-6 text-gray-900">
@@ -57,7 +67,7 @@ const GalleryPage = () => {
         </div>
       </Modal>
 
-      {/* Add admin modal end */}
+      {/* Upload image modal end */}
     </div>
   );
 };
