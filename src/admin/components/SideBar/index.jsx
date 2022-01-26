@@ -4,6 +4,7 @@ import {
   HiUserGroup,
   HiCalendar,
   HiBookOpen,
+  HiOutlineFolder,
 } from "react-icons/hi";
 import { FaPowerOff, FaUserTie } from "react-icons/fa";
 import { Link, NavLink, useLocation } from "react-router-dom";
@@ -33,6 +34,7 @@ const SideBar = ({ open }) => {
         <SideLink to="/admin/prayers" text="Prayers" icon={HiBookOpen} />
         <SideLink to="/admin/leaders" text="Leadership" icon={FaUserTie} />
         <SideLink to="/admin/events" text="Events" icon={HiCalendar} />
+        <SideLink to="/admin/gallery" text="Our Gallery" icon={HiOutlineFolder} />
         <Link
           to="/admin/login"
           className="absolute flex justify-center items-center flex-col
