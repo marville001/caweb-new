@@ -151,7 +151,7 @@ const MyAccount = () => {
             type="password"
             placeholder="Enter new password"
             text-slate-700
-            className="p-2 my-4 rounded-md outline-none border mx-4"
+            className="p-2 my-4 rounded-md outline-none border sm:mx-4"
           />
           <input
             type="password"
