@@ -67,6 +67,8 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const {pathname} = useLocation();
+
   return (
     <>
       <div
@@ -114,7 +116,7 @@ const Header = () => {
             </Link>
             <div className="flex">
               <Link
-                className="text-[12px] sm:text-sm md:text-md uppercase text-slate-100 bg-[#236092] h-14 flex items-center px-4 sm:px-6"
+                className="text-[12px] hidden sm:flex sm:text-sm md:text-md uppercase text-slate-100 bg-[#236092] h-14 items-center px-4 sm:px-6"
                 to="/library"
               >
                 Library
@@ -153,21 +155,25 @@ const Header = () => {
         md:w-full 
         ml-auto
         transform
+        absolute
+        bottom-0
+        right-0
+        top-14
+        z-20
+        md:static
+        md:top-0
+        ${pathname === "/" && "md:relative"}
+        md:static
         duration-300
         transition-all
         ${!isMenuOpen && "translate-x-full"}
         md:translate-x-0
         `}
-        style={{
-          zIndex: 9999,
-        }}
       >
         <div
           className="
-          container 
-          min-h-[92vh]
-          md:h-14 
-          absolute 
+          container
+          md:h-14
           md:static
                 mx-auto 
                 md:min-h-fit 
@@ -180,7 +186,7 @@ const Header = () => {
                 md:justify-end 
                 flex-col
                 md:flex-row
-                z-[600]
+                z-[7000]
         "
         >
           <Link

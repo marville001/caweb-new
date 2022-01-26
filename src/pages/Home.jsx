@@ -7,7 +7,7 @@ const Home = () => {
     <div className="py-0">
       {/* Hero Section */}
       <div
-        className="flex flex-col justify-end items-end md:relative md:-top-14"
+        className="flex flex-col justify-end items-end relative z-10 md:-top-14"
         style={{
           backgroundImage: "url(/assets/images/hero-image-1.jpg)",
           backgroundSize: "cover",
