@@ -77,7 +77,7 @@ const AdminHome = () => {
 
       {/* Add admin modal */}
       <Modal isOpen={addAdminModalOpen} closeModal={closeAddAdminModal}>
-        <div className="inline-block w-full max-w-xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
+        <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
           <h3 className="text-lg font-medium leading-6 text-gray-900">
             Add Admin Users
           </h3>
