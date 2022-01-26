@@ -4,7 +4,7 @@ import { post, get } from "./http";
 const userSignUp = (user) => async (dispatch) => {
   dispatch({ type: USER_REGISTER.REQUEST, payload: user });
   try {
-    const data = await post("/api/auth/register", user);
+    const data = await post("auth/register", user);
     localStorage.setItem("token", data.token);
     dispatch(loginUser(data.user));
   } catch (error) {
@@ -19,7 +19,7 @@ const userSignUp = (user) => async (dispatch) => {
 const userLogin = (user) => async (dispatch) => {
   dispatch({ type: USER_LOGIN.REQUEST, payload: user });
   try {
-    const data = await post("/api/auth/login", user);
+    const data = await post("auth/login", user);
     localStorage.setItem("token", data.token);
     dispatch(loginUser(data.user));
   } catch (error) {
@@ -35,7 +35,7 @@ const getProfileFetch = () => async (dispatch) => {
   const token = localStorage.token;
   if (token) {
     try {
-      const data = await get("/api/auth/me");
+      const data = await get("auth/me");
       dispatch(loginUser(data.user));
     } catch (error) {
       localStorage.removeItem("token");

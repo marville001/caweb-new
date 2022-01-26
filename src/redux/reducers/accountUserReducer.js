@@ -20,7 +20,7 @@ const accountUserReducer = (state = initialState, action) => {
         loginError: "",
       };
     case USER_LOGIN.FAIL:
-      return { ...state, registerLoading: false, registerError: action.error };
+      return { ...state, loginLoading: false, loginError: action.error };
     case LOGOUT_USER:
       return { ...state, user: {} };
 
