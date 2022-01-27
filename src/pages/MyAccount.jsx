@@ -66,6 +66,7 @@ const MyAccount = () => {
                 id="profile-image"
                 className="hidden"
                 type="file"
+                accept="image/*"
               />
               <div
                 onClick={() => imageRef.current.click()}
