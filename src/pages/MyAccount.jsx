@@ -24,9 +24,6 @@ const MyAccount = () => {
       navigate("/login");
     }
   }, [user, navigate]);
-
-  console.log(profileImage);
-
   return (
     <div className="max-w-4xl mx-auto bg-white my-16 p-6 pb-28">
       <h2 className="text-3xl text-dodge-blue font-bold">Manage Account</h2>
@@ -58,7 +55,7 @@ const MyAccount = () => {
             <div className="w-32 h-32 cursor-pointer">
               <img
                 className="rounded-md w-full h-full object-contain"
-                src={`${process.env.REACT_APP_UPLOADS_URL}28cb5e7529d38f96d0d034f65253da31bikeliferide_271263940_448699870082537_5701447503427792009_n.jpg`}
+                src={`${process.env.REACT_APP_UPLOADS_URL+ user?.avatar}`}
                 alt="Avatar"
               />
             </div>
@@ -67,7 +64,7 @@ const MyAccount = () => {
                 onChange={(e) => setProfileImage(e.target.files)}
                 ref={imageRef}
                 id="profile-image"
-                class="hidden"
+                className="hidden"
                 type="file"
               />
               <div
@@ -118,8 +115,8 @@ const MyAccount = () => {
                 type="text"
                 readOnly
                 value={user.email}
-                text-slate-700
-                className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full"
+              
+                className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full  text-slate-700"
               />
             </div>
             <div className=" w-full">
@@ -128,8 +125,8 @@ const MyAccount = () => {
                 type="text"
                 readOnly
                 value={sccs[user.scc]}
-                text-slate-700
-                className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full"
+               
+                className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full text-slate-700"
               />
             </div>
           </div>
@@ -143,20 +140,17 @@ const MyAccount = () => {
           <input
             type="password"
             placeholder="Enter old password"
-            text-slate-700
-            className="p-2 mt-4 rounded-md outline-none border"
+            className="p-2 mt-4 rounded-md outline-none border text-slate-700"
           />
           <input
             type="password"
             placeholder="Enter new password"
-            text-slate-700
-            className="p-2 my-4 rounded-md outline-none border sm:mx-4"
+            className="p-2 my-4 rounded-md outline-none border sm:mx-4 text-slate-700"
           />
           <input
             type="password"
             placeholder="Confirm new password"
-            text-slate-700
-            className="p-2 rounded-md outline-none border"
+            className="p-2 rounded-md outline-none border  text-slate-700"
           />
 
           <button className="bg-sea-green px-10 py-2 my-6 rounded-md text-white uppercase block">
