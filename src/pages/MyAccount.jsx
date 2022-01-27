@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useRef } from "react";
 import { useState } from "react";
 
@@ -9,7 +9,6 @@ const MyAccount = () => {
 
   const [profileImage, setProfileImage] = useState(null);
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const sccs = {
