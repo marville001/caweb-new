@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useRef } from "react";
 import { useState } from "react";
 
@@ -58,8 +58,8 @@ const MyAccount = () => {
             <div className="w-32 h-32 cursor-pointer">
               <img
                 className="rounded-md w-full h-full object-contain"
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
-                alt=""
+                src={`${process.env.REACT_APP_UPLOADS_URL}28cb5e7529d38f96d0d034f65253da31bikeliferide_271263940_448699870082537_5701447503427792009_n.jpg`}
+                alt="Avatar"
               />
             </div>
             <div className="flex flex-col items-start my-2">
