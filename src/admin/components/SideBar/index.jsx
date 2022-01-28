@@ -7,7 +7,7 @@ import {
   HiOutlineFolder,
 } from "react-icons/hi";
 import { FaPowerOff, FaUserTie } from "react-icons/fa";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import {  NavLink, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ADMIN } from "../../../redux/types.admin";
 

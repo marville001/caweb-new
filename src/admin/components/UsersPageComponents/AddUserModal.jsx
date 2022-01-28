@@ -20,6 +20,7 @@ const AddUserModal = ({ isOpen, closeModal }) => {
   };
 
   const handleRegister = () => {
+    console.log(dispatch);
     //   closeModal()
     // console.log({inputs});
     // const response = dispatch(userSignUp(inputs));

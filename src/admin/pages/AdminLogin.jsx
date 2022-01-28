@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import adminLogin from "../../redux/actions/admin/adminLogin";
 
 const AdminLogin = () => {
