@@ -7,7 +7,7 @@ import AddUserModal from "../components/UsersPageComponents/AddUserModal";
 import UsersTable from "../components/UsersPageComponents/UsersTable";
 import { FaSpinner } from "react-icons/fa";
 const UsersPage = () => {
-  const { users, loading, error } = useSelector((state) => state.usersState);
+  const { users, isLoadingUsers, error } = useSelector((state) => state.usersState);
 
   let [isOpen, setIsOpen] = useState(false);
   let [pageSize, setPageSize] = useState(5);
@@ -74,7 +74,7 @@ const UsersPage = () => {
             <p className="text-red-500">{error}</p>
           </div>
         )}
-        {loading ? (
+        {isLoadingUsers ? (
           <div className="bg-white h-40 flex items-center justify-center">
             <div className="animate-spin">
               <FaSpinner className="w-8 h-8" />
