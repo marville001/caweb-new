@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addUser } from "../../../redux/actions/admin/users";
 import Modal from "../common/Modal";
+import { toast } from "react-toastify";
 
 const AddUserModal = ({ isOpen, closeModal }) => {
   const [inputs, setInputs] = useState({
@@ -14,20 +16,52 @@ const AddUserModal = ({ isOpen, closeModal }) => {
 
   const dispatch = useDispatch();
 
+  const handleCloseModal = () => {
+    closeModal();
+    setInputs({
+      firstname: "",
+      lastname: "",
+      username: "",
+      email: "",
+      password: "",
+      scc: "",
+    });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRegister = () => {
-    console.log(dispatch);
-    //   closeModal()
-    // console.log({inputs});
-    // const response = dispatch(userSignUp(inputs));
+  const handleRegister = async () => {
+    const response = await dispatch(addUser(inputs));
+
+    if (response.success) {
+      toast.success("🦄 Wow so easy!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      handleCloseModal();
+    } else {
+      toast.error(response.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return (
-    <Modal isOpen={isOpen} closeModal={closeModal}>
+    <Modal isOpen={isOpen} closeModal={handleCloseModal}>
       <div className="inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
         <h3 className="text-lg font-medium leading-6 text-gray-900">
           Add User
