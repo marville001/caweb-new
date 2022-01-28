@@ -7,7 +7,7 @@ import { useState } from "react";
 const MyAccount = () => {
   const { user } = useSelector((state) => state.accountUsers);
 
-  const [profileImage, setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState("");
 
   const navigate = useNavigate();
 
@@ -65,8 +65,8 @@ const MyAccount = () => {
                 ref={imageRef}
                 id="profile-image"
                 className="hidden"
+                value={profileImage}
                 type="file"
-                accept="image/*"
               />
               <div
                 onClick={() => imageRef.current.click()}
@@ -91,6 +91,7 @@ const MyAccount = () => {
               <input
                 type="text"
                 value={user.firstname}
+                onChange={()=>{}}
                 className="p-2 text-slate-700 rounded-md outline-none border w-full"
               />
             </div>
@@ -98,6 +99,7 @@ const MyAccount = () => {
               <p className="text-md mb-2 font-light">Lastname</p>
               <input
                 type="text"
+                onChange={()=>{}}
                 value={user.lastname}
                 className="p-2 text-slate-700 rounded-md outline-none border w-full"
               />
@@ -107,6 +109,7 @@ const MyAccount = () => {
               <input
                 type="text"
                 value={user.username}
+                onChange={()=>{}}
                 className="p-2 text-slate-700 rounded-md outline-none border w-full"
               />
             </div>
@@ -116,7 +119,7 @@ const MyAccount = () => {
                 type="text"
                 readOnly
                 value={user.email}
-              
+                onChange={()=>{}}
                 className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full  text-slate-700"
               />
             </div>
