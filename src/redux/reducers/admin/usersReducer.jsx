@@ -14,7 +14,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.users,
-        isLoadingUsers: true,
+        isLoadingUsers: false,
         error: "",
       };
     case GET_USERS.FAIL:
