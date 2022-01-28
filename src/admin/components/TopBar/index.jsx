@@ -2,8 +2,10 @@ import React from "react";
 import { HiSearch,  HiBell, HiMenuAlt1 } from "react-icons/hi";
 import { Menu} from "@headlessui/react";
 import AccountMenu from "./AccountMenu";
+import { useSelector } from "react-redux";
 
 const TopBar = ({ sideBarOpen, setSideBarOpen }) => {
+  const { admin } = useSelector((state) => state.adminState);
   return (
     <div
       className={`${
@@ -30,7 +32,7 @@ const TopBar = ({ sideBarOpen, setSideBarOpen }) => {
       <div className="flex items-center space-x-4">
         <HiBell className="w-7 h-7 text-slate-500" />
         <div className="flex items-center text-slate-500">
-          <h3 className="font-bold mr-3 hidden lg:block">M. John Doe</h3>
+          <h3 className="font-bold mr-3 hidden lg:block">{admin._id? admin.firstname + " " + admin.lastname: "M. John Doe"}</h3>
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button className="inline-flex justify-center w-full text-sm font-medium text-white">

@@ -8,13 +8,14 @@ import {
   LeadershipPage,
   PrayersPage,
   UsersPage,
-  GalleryPage
+  GalleryPage,
 } from "./admin/pages";
 import Loading from "./components/Loading";
 
 import { getProfileFetch } from "./redux/actions";
 import { useDispatch } from "react-redux";
 import MyAccount from "./pages/MyAccount";
+import AdminPrivateRoute from "./AdminPrivateRoute";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const Footer = React.lazy(() => import("./components/Footer"));
@@ -257,15 +258,71 @@ function App() {
             }
           />
           <Route path="/admin" element={<AdminDashboard />}>
-            <Route index element={<AdminHome />} />
+            <Route
+              index
+              element={
+                <AdminPrivateRoute>
+                  <AdminHome />
+                </AdminPrivateRoute>
+              }
+            />
             <Route path="login" element={<AdminLogin />} />
-            <Route path="home" element={<AdminHome />} />
-            <Route path="my-account" element={<AdminAccount />} />
-            <Route path="users" element={<UsersPage />} />
-            <Route path="prayers" element={<PrayersPage />} />
-            <Route path="leaders" element={<LeadershipPage />} />
-            <Route path="events" element={<EventsPage />} />
-            <Route path="gallery" element={<GalleryPage />} />
+            <Route
+              path="home"
+              element={
+                <AdminPrivateRoute>
+                  <AdminHome />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="my-account"
+              element={
+                <AdminPrivateRoute>
+                  <AdminAccount />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="users"
+              element={
+                <AdminPrivateRoute>
+                  <UsersPage />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="prayers"
+              element={
+                <AdminPrivateRoute>
+                  <PrayersPage />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="leaders"
+              element={
+                <AdminPrivateRoute>
+                  <LeadershipPage />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="events"
+              element={
+                <AdminPrivateRoute>
+                  <EventsPage />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="gallery"
+              element={
+                <AdminPrivateRoute>
+                  <GalleryPage />
+                </AdminPrivateRoute>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
