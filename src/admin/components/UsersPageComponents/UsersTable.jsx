@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 const UsersTable = () => {
 
-  const {users, loading, error} = useSelector(state=>state.usersState)
+  const {users} = useSelector(state=>state.usersState)
 
   return (
     <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-b-md">

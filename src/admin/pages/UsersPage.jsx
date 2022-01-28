@@ -5,11 +5,13 @@ import { getUsers } from "../../redux/actions/admin/users";
 import AddUserModal from "../components/UsersPageComponents/AddUserModal";
 
 import UsersTable from "../components/UsersPageComponents/UsersTable";
-
+import { FaSpinner } from "react-icons/fa";
 const UsersPage = () => {
   const { users, loading, error } = useSelector((state) => state.usersState);
 
   let [isOpen, setIsOpen] = useState(false);
+  let [pageSize, setPageSize] = useState(5);
+  // let [page, setPage] = useState(5);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -52,6 +54,8 @@ const UsersPage = () => {
             <span>Rows</span>
             <select
               name="pageSize"
+              value={pageSize}
+              onChange={(e) => setPageSize(e.target.value)}
               className="text-sm p-1 bg-white rounded-md outline-none cursor-pointer border-2 border-slate-600"
               id=""
             >
@@ -61,10 +65,24 @@ const UsersPage = () => {
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
+            <span>of</span>
+            <span className="text-lg font-medium">{users.length}</span>
           </div>
         </div>
-
-        <UsersTable />
+        {error && (
+          <div className="bg-red-100 p-2 flex justify-center">
+            <p className="text-red-500">{error}</p>
+          </div>
+        )}
+        {loading ? (
+          <div className="bg-white h-40 flex items-center justify-center">
+            <div className="animate-spin">
+              <FaSpinner className="w-8 h-8" />
+            </div>
+          </div>
+        ) : (
+          <UsersTable />
+        )}
       </div>
       <AddUserModal isOpen={isOpen} closeModal={closeModal} />
     </div>
