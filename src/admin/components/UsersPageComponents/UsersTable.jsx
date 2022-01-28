@@ -5,7 +5,7 @@ const UsersTable = () => {
   const {users} = useSelector(state=>state.usersState)
 
   return (
-    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-b-md">
+    <div className="shadow overflow-hidden border-b border-gray-200">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>

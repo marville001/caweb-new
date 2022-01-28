@@ -6,8 +6,9 @@ import AddUserModal from "../components/UsersPageComponents/AddUserModal";
 
 import UsersTable from "../components/UsersPageComponents/UsersTable";
 import { FaSpinner } from "react-icons/fa";
+import Pagination from "../components/UsersPageComponents/Pagination";
 const UsersPage = () => {
-  const { users, isLoadingUsers, error } = useSelector(
+  const { total,users, isLoadingUsers, error } = useSelector(
     (state) => state.usersState
   );
 
@@ -69,7 +70,6 @@ const UsersPage = () => {
               <option value="100">100</option>
             </select>
             <span>of</span>
-            <span className="text-lg font-medium">{users.length}</span>
           </div>
         </div>
         {error && (
@@ -86,6 +86,7 @@ const UsersPage = () => {
         ) : (
           <UsersTable />
         )}
+        <Pagination total={total} count={users.length} page={page} setPage={setPage} pageSize={pageSize} />
       </div>
       <AddUserModal isOpen={isOpen} closeModal={closeModal} />
     </div>

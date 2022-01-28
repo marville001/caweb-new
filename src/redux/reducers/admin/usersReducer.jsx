@@ -4,6 +4,7 @@ const initialState = {
   users: [],
   isLoadingUsers: false,
   error: "",
+  total: 0,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.users,
+        total: action.total,
         isLoadingUsers: false,
         error: "",
       };

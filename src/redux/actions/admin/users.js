@@ -27,7 +27,7 @@ export const getUsers = (params) => async (dispatch) => {
       `users?pagesize=${params.pageSize || 5}&page=${params.page || 1}`,
       "admin"
     );
-    dispatch({ type: GET_USERS.SUCCESS, users: data.users });
+    dispatch({ type: GET_USERS.SUCCESS, users: data.users, total: data.total });
   } catch (error) {
     dispatch({
       type: GET_USERS.FAIL,
