@@ -2,7 +2,7 @@ import { ADD_USER, GET_USERS } from "../../types.admin";
 import { get, post } from "../http";
 
 export const addUser = (user) => async (dispatch) => {
-  dispatch({ type: ADD_USER.REQUEST, payload: user });
+  dispatch({ type: ADD_USER.REQUEST });
   try {
     const data = await post("auth/register", user, "admin");
     dispatch({ type: ADD_USER.SUCCESS, user: data.user });
@@ -20,10 +20,13 @@ export const addUser = (user) => async (dispatch) => {
   }
 };
 
-export const getUsers = (user) => async (dispatch) => {
-  dispatch({ type: GET_USERS.REQUEST, payload: user });
+export const getUsers = (params) => async (dispatch) => {
+  dispatch({ type: GET_USERS.REQUEST });
   try {
-    const data = await get("users", "admin");
+    const data = await get(
+      `users?pagesize=${params.pageSize || 5}&page=${params.page || 1}`,
+      "admin"
+    );
     dispatch({ type: GET_USERS.SUCCESS, users: data.users });
   } catch (error) {
     dispatch({

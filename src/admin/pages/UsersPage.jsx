@@ -7,25 +7,28 @@ import AddUserModal from "../components/UsersPageComponents/AddUserModal";
 import UsersTable from "../components/UsersPageComponents/UsersTable";
 import { FaSpinner } from "react-icons/fa";
 const UsersPage = () => {
-  const { users, isLoadingUsers, error } = useSelector((state) => state.usersState);
+  const { users, isLoadingUsers, error } = useSelector(
+    (state) => state.usersState
+  );
 
   let [isOpen, setIsOpen] = useState(false);
   let [pageSize, setPageSize] = useState(5);
-  // let [page, setPage] = useState(5);
+  let [page, setPage] = useState(1);
 
   const closeModal = () => {
     setIsOpen(false);
   };
 
   const openModal = () => {
+    console.log(setPage);
     setIsOpen(true);
   };
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUsers());
-  }, [dispatch]);
+    dispatch(getUsers({ page, pageSize }));
+  }, [dispatch, page, pageSize]);
 
   return (
     <div className="relative">
