@@ -1,4 +1,9 @@
-import { ADD_USER, GET_USERS } from "../../types.admin";
+import {
+  ADD_USER,
+  CREATE_ADMIN,
+  GET_ADMINS,
+  GET_USERS,
+} from "../../types.admin";
 import { get, post } from "../http";
 
 export const addUser = (user) => async (dispatch) => {
@@ -31,6 +36,42 @@ export const getUsers = (params) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_USERS.FAIL,
+      error:
+        error?.response?.data?.message || "An error occurred. Please try again",
+    });
+  }
+};
+
+export const createAdmin = (email) => async (dispatch) => {
+  dispatch({ type: CREATE_ADMIN.REQUEST });
+  try {
+    const data = await post("users/admin", { email }, "admin");
+    dispatch({ type: CREATE_ADMIN.SUCCESS, admin: data.admin });
+    return { success: true, message: data.message };
+  } catch (error) {
+    dispatch({
+      type: CREATE_ADMIN.FAIL,
+      error:
+        error?.response?.data?.message || "An error occurred. Please try again",
+    });
+    return {
+      success: false,
+      message: error?.response?.data?.message || "Failed. Please try again",
+    };
+  }
+};
+
+export const getAdmins = () => async (dispatch) => {
+  dispatch({ type: GET_ADMINS.REQUEST });
+  try {
+    const data = await get(`users/admin`, "admin");
+    dispatch({
+      type: GET_ADMINS.SUCCESS,
+      admins: data.admins,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_ADMINS.FAIL,
       error:
         error?.response?.data?.message || "An error occurred. Please try again",
     });

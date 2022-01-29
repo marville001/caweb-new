@@ -1,7 +1,13 @@
-import { ADD_USER, GET_USERS } from "../../types.admin";
+import {
+  ADD_USER,
+  CREATE_ADMIN,
+  GET_ADMINS,
+  GET_USERS,
+} from "../../types.admin";
 
 const initialState = {
   users: [],
+  admins: [],
   isLoadingUsers: false,
   error: "",
   total: 0,
@@ -32,6 +38,33 @@ const usersReducer = (state = initialState, action) => {
       };
     case ADD_USER.FAIL:
       return { ...state, loading: false };
+
+    case GET_ADMINS.REQUEST:
+      return { ...state, isLoadingAdmins: true, loadAdminsError: "" };
+    case GET_ADMINS.SUCCESS:
+      return {
+        ...state,
+        admins: action.admins,
+        isLoadingAdmins: false,
+        loadAdminsError: "",
+      };
+    case GET_ADMINS.FAIL:
+      return {
+        ...state,
+        isLoadingAdmins: false,
+        loadAdminsError: action.error,
+      };
+
+    case CREATE_ADMIN.REQUEST:
+      return { ...state, isCreatingAdmin: true };
+    case CREATE_ADMIN.SUCCESS:
+      return {
+        ...state,
+        admins: [...state.admins, action.admin],
+        isCreatingAdmin: false,
+      };
+    case CREATE_ADMIN.FAIL:
+      return { ...state, isCreatingAdmin: false };
     default:
       return { ...state };
   }
