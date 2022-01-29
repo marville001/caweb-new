@@ -59,7 +59,10 @@ const UsersPage = () => {
             <select
               name="pageSize"
               value={pageSize}
-              onChange={(e) => setPageSize(e.target.value)}
+              onChange={(e) => {
+                setPage(1);
+                setPageSize(e.target.value);
+              }}
               className="text-sm p-1 bg-white rounded-md outline-none cursor-pointer border-2 border-slate-600"
               id=""
             >
