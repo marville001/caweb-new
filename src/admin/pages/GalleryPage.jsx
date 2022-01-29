@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Modal from "../components/common/Modal";
 import GalleryImage from "../components/GalleryPageComponents/GalleryImage";
+import UploadImageModal from "../components/GalleryPageComponents/UploadImageModal";
 
 const GalleryPage = () => {
   let [uploadImageModalOpen, setUploadImageModalOpen] = useState(false);
@@ -32,40 +32,19 @@ const GalleryPage = () => {
 
       {/* Gallery grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 my-10">
-        {[10, 20, 30, 40, 50, 60, 70, 80, 90, 12, 15, 25, 35, 45, 55].map((image, i) => (
-          <GalleryImage key={i} image={image} />
-        ))}
+        {[10, 20, 30, 40, 50, 60, 70, 80, 90, 12, 15, 25, 35, 45, 55].map(
+          (image, i) => (
+            <GalleryImage key={i} image={image} />
+          )
+        )}
       </div>
       {/* Gallery grid end */}
 
       {/* Upload image modal */}
-      <Modal isOpen={uploadImageModalOpen} closeModal={closeUploadImageModal}>
-        <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">
-            Upload Image
-          </h3>
-          <p className="text-xs my-4">
-            Ensure you have added the user before trying to make him an admin
-          </p>
-          <div className="form-group my-4 flex-1">
-            <input
-              type="email"
-              className="p-2 py-1 block border-slate-200 border-2 w-full rounded mt-2 outline-none"
-              placeholder="Enter users email "
-            />
-          </div>
-
-          <div className="mt-4 flex justify-end">
-            <button
-              type="button"
-              className="block bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md"
-              onClick={uploadImageModalOpen}
-            >
-              Upload
-            </button>
-          </div>
-        </div>
-      </Modal>
+      <UploadImageModal
+        isOpen={uploadImageModalOpen}
+        closeModal={closeUploadImageModal}
+      />
 
       {/* Upload image modal end */}
     </div>

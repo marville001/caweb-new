@@ -65,7 +65,7 @@ const MyAccount = () => {
                 ref={imageRef}
                 id="profile-image"
                 className="hidden"
-                value={profileImage}
+                // value={profileImage}
                 type="file"
               />
               <div

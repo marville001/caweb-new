@@ -7,10 +7,8 @@ import { createAdmin, getAdmins } from "../../../redux/actions/admin/users";
 import Modal from "../common/Modal";
 
 const AddAdminModal = ({ closeModal, isOpen }) => {
-    const {  isCreatingAdmin } = useSelector(
-        (state) => state.usersState
-      );
-    
+  const { isCreatingAdmin } = useSelector((state) => state.usersState);
+
   const [email, setEmail] = useState("");
 
   const dispatch = useDispatch();
@@ -67,7 +65,7 @@ const AddAdminModal = ({ closeModal, isOpen }) => {
           />
         </div>
         <div className="mt-4 flex justify-between">
-        <button
+          <button
             type="button"
             className="block bg-red-500 px-8 py-2 text-sm font-medium text-white rounded-md"
             onClick={handleCloseModal}
@@ -80,7 +78,7 @@ const AddAdminModal = ({ closeModal, isOpen }) => {
             className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
             onClick={handleAddAdmin}
           >
-              {isCreatingAdmin && <FaSpinner className="mr-2 animate-spin" />}
+            {isCreatingAdmin && <FaSpinner className="mr-2 animate-spin" />}
             Submit
           </button>
         </div>
