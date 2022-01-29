@@ -1,7 +1,13 @@
 import React from "react";
 
 /* This example requires Tailwind CSS v2.0+ */
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import {
+  HiChevronLeft,
+  HiChevronRight,
+  HiChevronDoubleLeft,
+  HiChevronDoubleRight,
+} from "react-icons/hi";
+
 
 const Pagination = ({ total, page, pageSize, count, setPage }) => {
   const calculateTotalPages = (total, perPage) => {
@@ -22,8 +28,6 @@ const Pagination = ({ total, page, pageSize, count, setPage }) => {
     }
   };
 
-  console.log(calculateTotalPages(total, pageSize));
-
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
       <div className="flex-1 flex justify-between sm:hidden">
@@ -43,7 +47,7 @@ const Pagination = ({ total, page, pageSize, count, setPage }) => {
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            {count}
+            {calculateTotalPages(total, pageSize)}
             Showing{" "}
             <span className="font-medium">
               {parseInt((page - 1) * pageSize) + 1}
@@ -61,27 +65,54 @@ const Pagination = ({ total, page, pageSize, count, setPage }) => {
             aria-label="Pagination"
           >
             <div
+              onClick={() => setPage(1)}
+              className={`${
+                page > 1
+                  ? "cursor-pointer bg-white hover:bg-gray-100"
+                  : "cursor-not-allowed bg-red-100"
+              } relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 text-sm font-medium text-gray-500`}
+            >
+              <span className="sr-only">Next</span>
+              <HiChevronDoubleLeft className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <div
               onClick={previousPage}
-              className={`${page > 1?"cursor-pointer bg-white hover:bg-gray-100":"cursor-not-allowed bg-red-100"} relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 text-sm font-medium text-gray-500`}
+              className={`${
+                page > 1
+                  ? "cursor-pointer bg-white hover:bg-gray-100"
+                  : "cursor-not-allowed bg-red-100"
+              } relative inline-flex items-center px-2 py-2  border border-gray-300 text-sm font-medium text-gray-500`}
             >
               <span className="sr-only">Next</span>
               <HiChevronLeft className="h-5 w-5" aria-hidden="true" />
             </div>
             <div
-              aria-current="page"
-              className="cursor-pointer z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
-            >
-              1
-            </div>
-            <span className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
-              ...
-            </span>
+            aria-current="page"
+            className="cursor-pointer z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium"
+          >
+            {page}
+          </div>
             <div
               onClick={nextPage}
-              className={`${page < calculateTotalPages(total, pageSize)?"cursor-pointer bg-white hover:bg-gray-100":"cursor-not-allowed bg-red-100"} relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300  text-sm font-medium text-gray-500`}
+              className={`${
+                page < calculateTotalPages(total, pageSize)
+                  ? "cursor-pointer bg-white hover:bg-gray-100"
+                  : "cursor-not-allowed bg-red-100"
+              } relative inline-flex items-center px-2 py-2 border border-gray-300  text-sm font-medium text-gray-500`}
             >
               <span className="sr-only">Next</span>
               <HiChevronRight className="h-5 w-5" aria-hidden="true" />
+            </div>
+            <div
+              onClick={() => setPage(calculateTotalPages(total, pageSize))}
+              className={`${
+                page < calculateTotalPages(total, pageSize)
+                  ? "cursor-pointer bg-white hover:bg-gray-100"
+                  : "cursor-not-allowed bg-red-100"
+              } relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300  text-sm font-medium text-gray-500`}
+            >
+              <span className="sr-only">Next</span>
+              <HiChevronDoubleRight className="h-5 w-5" aria-hidden="true" />
             </div>
           </nav>
         </div>

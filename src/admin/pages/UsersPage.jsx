@@ -13,7 +13,7 @@ const UsersPage = () => {
   );
 
   let [isOpen, setIsOpen] = useState(false);
-  let [pageSize, setPageSize] = useState(5);
+  let [pageSize, setPageSize] = useState(2);
   let [page, setPage] = useState(1);
 
   const closeModal = () => {
