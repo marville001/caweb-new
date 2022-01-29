@@ -6,6 +6,9 @@ import Modal from "../common/Modal";
 const UploadImageModal = ({ isOpen, closeModal }) => {
   const [isUploading] = useState(false);
   const [image, setImage] = useState("");
+  const [date, setDate] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const imageRef = useRef();
 
@@ -13,7 +16,20 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
     closeModal();
   };
 
-  const handleUploadImage = () => {};
+  const handleUploadImage = () => {
+    if (!image || !date || !title || !description) {
+      alert("All fields are required!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", formData);
+    formData.append("title", title);
+    formData.append("date", date);
+    formData.append("description", description);
+
+    // 
+  };
 
   return (
     <Modal isOpen={isOpen}>
@@ -24,6 +40,8 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
         <div className="form-group my-4 flex-1">
           <input
             type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             className="p-2 block border-slate-200 border-2 w-full rounded mt-2 outline-none"
             placeholder="Enter image title"
           />
@@ -31,14 +49,18 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
         <div className="form-group my-4 flex-1">
           <textarea
             type="text"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             className="p-2 block border-slate-200 border-2 w-full rounded mt-2 outline-none"
             placeholder="Enter image description"
           ></textarea>
         </div>
         <div className="form-group my-4 flex-1 flex items-center space-x-2">
-            <label className="text-xl">Date</label>
+          <label className="text-xl">Date</label>
           <input
             type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
             className="p-2 block border-slate-200 border-2 w-full rounded mt-2 outline-none"
             placeholder="Date"
           />
@@ -51,14 +73,15 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
             id="profile-image"
             className="hidden"
             // value={image}
+            accept="image/*"
             type="file"
           />
         </div>
         <div
           onClick={() => imageRef.current.click()}
-          className="p-4  border-2 flex justify-center border-dashed cursor-pointer"
+          className="p-4 mb-8 border-2 flex justify-center border-dashed cursor-pointer"
         >
-          <span>
+          <span className="mx-2 overflow-hidden">
             {image?.length >= 1 ? image[0].name : "Click here to select image"}
           </span>
         </div>

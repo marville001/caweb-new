@@ -66,6 +66,7 @@ const MyAccount = () => {
                 id="profile-image"
                 className="hidden"
                 // value={profileImage}
+                accept="image/*"
                 type="file"
               />
               <div
