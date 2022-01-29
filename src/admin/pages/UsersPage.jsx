@@ -13,7 +13,7 @@ const UsersPage = () => {
   );
 
   let [isOpen, setIsOpen] = useState(false);
-  let [pageSize, setPageSize] = useState(2);
+  let [pageSize, setPageSize] = useState(5);
   let [page, setPage] = useState(1);
 
   const closeModal = () => {
@@ -72,7 +72,6 @@ const UsersPage = () => {
               <option value="50">50</option>
               <option value="100">100</option>
             </select>
-            <span>of</span>
           </div>
         </div>
         {error && (

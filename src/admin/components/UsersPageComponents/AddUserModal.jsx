@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addUser, } from "../../../redux/actions/admin/users";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, getUsers, } from "../../../redux/actions/admin/users";
 import Modal from "../common/Modal";
 import { toast } from "react-toastify";
+import { FaSpinner } from "react-icons/fa";
 
 const AddUserModal = ({ isOpen, closeModal }) => {
+  const {  isAddingUser } = useSelector(
+    (state) => state.usersState
+  );
   const [inputs, setInputs] = useState({
     firstname: "",
     lastname: "",
@@ -47,6 +51,7 @@ const AddUserModal = ({ isOpen, closeModal }) => {
         progress: undefined,
       });
       handleCloseModal();
+      await dispatch(getUsers());
       
     } else {
       toast.error(response.message, {
@@ -171,9 +176,11 @@ const AddUserModal = ({ isOpen, closeModal }) => {
           </button>
           <button
             type="button"
-            className="block bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md"
+            disabled={isAddingUser}
+            className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
             onClick={handleRegister}
           >
+              {isAddingUser && <FaSpinner className="mr-2 animate-spin" />}
             Submit
           </button>
         </div>

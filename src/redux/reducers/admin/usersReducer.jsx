@@ -29,15 +29,14 @@ const usersReducer = (state = initialState, action) => {
       return { ...state, isLoadingUsers: false, error: action.error };
 
     case ADD_USER.REQUEST:
-      return { ...state, loading: true };
+      return { ...state, isAddingUser: true };
     case ADD_USER.SUCCESS:
       return {
         ...state,
-        users: [...state.users, action.user],
-        loading: false,
+        isAddingUser: false,
       };
     case ADD_USER.FAIL:
-      return { ...state, loading: false };
+      return { ...state, isAddingUser: false };
 
     case GET_ADMINS.REQUEST:
       return { ...state, isLoadingAdmins: true, loadAdminsError: "" };

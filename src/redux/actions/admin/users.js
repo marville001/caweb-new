@@ -29,7 +29,7 @@ export const getUsers = (params) => async (dispatch) => {
   dispatch({ type: GET_USERS.REQUEST });
   try {
     const data = await get(
-      `users?pagesize=${params.pageSize || 5}&page=${params.page || 1}`,
+      `users?pagesize=${params?.pageSize || 5}&page=${params?.page || 1}`,
       "admin"
     );
     dispatch({ type: GET_USERS.SUCCESS, users: data.users, total: data.total });
