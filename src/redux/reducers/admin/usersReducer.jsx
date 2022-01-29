@@ -60,7 +60,6 @@ const usersReducer = (state = initialState, action) => {
     case CREATE_ADMIN.SUCCESS:
       return {
         ...state,
-        admins: [...state.admins, action.admin],
         isCreatingAdmin: false,
       };
     case CREATE_ADMIN.FAIL:

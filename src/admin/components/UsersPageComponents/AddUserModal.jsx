@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../../../redux/actions/admin/users";
+import { addUser, } from "../../../redux/actions/admin/users";
 import Modal from "../common/Modal";
 import { toast } from "react-toastify";
 
@@ -37,7 +37,7 @@ const AddUserModal = ({ isOpen, closeModal }) => {
     const response = await dispatch(addUser(inputs));
 
     if (response.success) {
-      toast.success("🦄 Wow so easy!", {
+      toast.success("User added successfully", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -47,6 +47,7 @@ const AddUserModal = ({ isOpen, closeModal }) => {
         progress: undefined,
       });
       handleCloseModal();
+      
     } else {
       toast.error(response.message, {
         position: "top-right",
@@ -61,7 +62,7 @@ const AddUserModal = ({ isOpen, closeModal }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} closeModal={handleCloseModal}>
+    <Modal isOpen={isOpen}>
       <div className="inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
         <h3 className="text-lg font-medium leading-6 text-gray-900">
           Add User
@@ -160,10 +161,17 @@ const AddUserModal = ({ isOpen, closeModal }) => {
           </div>
         </div>
 
-        <div className="mt-4">
+        <div className="mt-4 flex justify-between">
           <button
             type="button"
-            className="block w-full bg-dodge-blue px-4 py-2 text-sm font-medium text-white rounded-md"
+            className="block bg-red-500 px-8 py-2 text-sm font-medium text-white rounded-md"
+            onClick={handleCloseModal}
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            className="block bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md"
             onClick={handleRegister}
           >
             Submit

@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { HiPencilAlt, HiTrash } from "react-icons/hi";
+import { useDispatch, useSelector } from "react-redux";
+import { getAdmins } from "../../redux/actions/admin/users";
+import AddAdminModal from "../components/AdminHomeComponents/AddAdminModal";
 import CountCards from "../components/AdminHomeComponents/CountCards";
 import Piechart from "../components/charts/Pie";
-import Modal from "../components/common/Modal";
 
 const AdminHome = () => {
+  const { isLoadingAdmins, admins } = useSelector((state) => state.usersState);
   let [addAdminModalOpen, setAddAdminModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const closeAddAdminModal = () => {
     setAddAdminModalOpen(false);
@@ -14,6 +21,11 @@ const AdminHome = () => {
   const openAddAdminModal = () => {
     setAddAdminModalOpen(true);
   };
+
+  useEffect(() => {
+    dispatch(getAdmins());
+  }, [dispatch]);
+
   return (
     <div className="">
       <CountCards />
@@ -54,16 +66,23 @@ const AdminHome = () => {
             </button>
           </div>
           <div className="h-64 px-4 py-4 overflow-y-auto w-full divide-y-[1px] divide-gray-100">
-            {[10, 20, 30, 40].map((i) => (
-              <div className="flex items-center py-4">
+            {isLoadingAdmins && (
+              <div className="flex py-3 justify-center">
+                <FaSpinner className="mr-2 w-8 h-8 animate-spin" />
+              </div>
+            )}
+            {admins?.map((admin) => (
+              <div key={admin._id} className="flex items-center py-4">
                 <img
                   className="w-12 h-12 rounded-full"
-                  src={`https://randomuser.me/api/portraits/men/${i}.jpg`}
+                  src={`https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png`}
                   alt=""
                 />
                 <div className="flex flex-col ml-4">
-                  <h2 className="font-bold">Admin Name Lastname</h2>
-                  <p className="text-sm">useremail@gmail.com</p>
+                  <h2 className="font-bold">
+                    {admin.firstname + " " + admin.lastname}
+                  </h2>
+                  <p className="text-sm">{admin.email}</p>
                 </div>
                 <div className="ml-auto mr-6 flex space-x-2">
                   <HiPencilAlt className="font-bold text-dodge-blue text-2xl cursor-pointer" />
@@ -76,33 +95,10 @@ const AdminHome = () => {
       </div>
 
       {/* Add admin modal */}
-      <Modal isOpen={addAdminModalOpen} closeModal={closeAddAdminModal}>
-        <div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
-          <h3 className="text-lg font-medium leading-6 text-gray-900">
-            Add Admin Users
-          </h3>
-          <p className="text-xs my-4">
-            Ensure you have added the user before trying to make him an admin
-          </p>
-          <div className="form-group my-4 flex-1">
-            <input
-              type="email"
-              className="p-2 py-1 block border-slate-200 border-2 w-full rounded mt-2 outline-none"
-              placeholder="Enter users email "
-            />
-          </div>
-
-          <div className="mt-4 flex justify-end">
-            <button
-              type="button"
-              className="block bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md"
-              onClick={closeAddAdminModal}
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </Modal>
+      <AddAdminModal
+        isOpen={addAdminModalOpen}
+        closeModal={closeAddAdminModal}
+      />
 
       {/* Add admin modal end */}
     </div>
