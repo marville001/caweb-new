@@ -8,7 +8,7 @@ import UsersTable from "../components/UsersPageComponents/UsersTable";
 import { FaSpinner } from "react-icons/fa";
 import Pagination from "../components/UsersPageComponents/Pagination";
 const UsersPage = () => {
-  const { total,users, isLoadingUsers, error } = useSelector(
+  const { total, users, isLoadingUsers, error } = useSelector(
     (state) => state.usersState
   );
 
@@ -86,7 +86,13 @@ const UsersPage = () => {
         ) : (
           <UsersTable />
         )}
-        <Pagination total={total} count={users.length} page={page} setPage={setPage} pageSize={pageSize} />
+        <Pagination
+          total={total}
+          count={users.length}
+          page={page}
+          setPage={setPage}
+          pageSize={pageSize}
+        />
       </div>
       <AddUserModal isOpen={isOpen} closeModal={closeModal} />
     </div>
