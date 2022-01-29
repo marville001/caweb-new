@@ -47,7 +47,6 @@ const Pagination = ({ total, page, pageSize, count, setPage }) => {
       <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
         <div>
           <p className="text-sm text-gray-700">
-            {calculateTotalPages(total, pageSize)}
             Showing{" "}
             <span className="font-medium">
               {parseInt((page - 1) * pageSize) + 1}
