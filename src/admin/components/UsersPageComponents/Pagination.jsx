@@ -11,7 +11,7 @@ import {
 
 const Pagination = ({ total, page, pageSize, count, setPage }) => {
   const calculateTotalPages = (total, perPage) => {
-    const pages = Math.round(total / perPage);
+    const pages = Math.ceil(total / perPage);
 
     return pages;
   };
@@ -27,6 +27,8 @@ const Pagination = ({ total, page, pageSize, count, setPage }) => {
       setPage(page + 1);
     }
   };
+
+  console.log(calculateTotalPages(total, pageSize));
 
   return (
     <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
