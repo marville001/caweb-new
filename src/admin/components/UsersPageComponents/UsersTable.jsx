@@ -1,8 +1,13 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
+
+const sccs = {
+  stangelus: "St Angelus",
+  stpeters: "St Peters",
+  stjoseph: "St Joseph",
+};
 
 const UsersTable = () => {
-
-  const {users} = useSelector(state=>state.usersState)
+  const { users } = useSelector((state) => state.usersState);
 
   return (
     <div className="shadow overflow-hidden border-b border-gray-200">
@@ -19,13 +24,13 @@ const UsersTable = () => {
               scope="col"
               className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Firstname 
+              Firstname
             </th>
             <th
               scope="col"
               className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
             >
-              Laststname 
+              Laststname
             </th>
             <th
               scope="col"
@@ -76,7 +81,7 @@ const UsersTable = () => {
                 <div className="text-sm text-gray-500">{person.role}</div>
               </td>
               <td className="px-5 py-4 whitespace-nowrap">
-                <div className="text-sm text-gray-500">{person.scc}</div>
+                <div className="text-sm text-gray-500">{sccs[person.scc]}</div>
               </td>
               <td className="px-5 py-4 whitespace-nowrap">
                 <div className="text-sm text-gray-500">Edit</div>
