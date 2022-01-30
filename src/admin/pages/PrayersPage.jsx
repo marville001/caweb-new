@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { getPrayers } from "../../redux/actions/admin/prayers";
 import AddPrayerModal from "../components/PrayersPageComponents/AddPrayerModal";
 import EditPrayerModal from "../components/PrayersPageComponents/EditPrayerModal";
