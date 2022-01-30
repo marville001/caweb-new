@@ -6,14 +6,16 @@ import LeadershipPage from "./LeadershipPage";
 import PrayersPage from "./PrayersPage";
 import UsersPage from "./UsersPage";
 import GalleryPage from "./GalleryPage";
+import AddPrayerPage from "./AddPrayerPage";
 
 export {
-    AdminAccount, 
-    AdminHome,
-    AdminLogin,
-    EventsPage,
-    LeadershipPage,
-    PrayersPage,
-    UsersPage,
-    GalleryPage,
-}
+  AdminAccount,
+  AdminHome,
+  AdminLogin,
+  EventsPage,
+  LeadershipPage,
+  PrayersPage,
+  UsersPage,
+  GalleryPage,
+  AddPrayerPage,
+};

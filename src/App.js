@@ -9,6 +9,7 @@ import {
   PrayersPage,
   UsersPage,
   GalleryPage,
+  AddPrayerPage
 } from "./admin/pages";
 import Loading from "./components/Loading";
 
@@ -296,6 +297,14 @@ function App() {
               element={
                 <AdminPrivateRoute>
                   <PrayersPage />
+                </AdminPrivateRoute>
+              }
+            />
+            <Route
+              path="prayers/new"
+              element={
+                <AdminPrivateRoute>
+                  <AddPrayerPage />
                 </AdminPrivateRoute>
               }
             />
