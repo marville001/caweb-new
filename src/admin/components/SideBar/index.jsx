@@ -7,12 +7,20 @@ import {
   HiOutlineFolder,
 } from "react-icons/hi";
 import { FaPowerOff, FaUserTie } from "react-icons/fa";
-import {  NavLink, useLocation } from "react-router-dom";
+import {  NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ADMIN } from "../../../redux/types.admin";
 
 const SideBar = ({ open }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logoutAdmin = ()=>{
+    localStorage.removeItem("adminToken")
+    dispatch({ type: LOGOUT_ADMIN });
+    navigate("/admin/login")
+  }
+
   return (
     <div
       className={`${
@@ -44,9 +52,7 @@ const SideBar = ({ open }) => {
         />
         <div className="absolute inset-x-0 bottom-16 flex justify-center">
           <button
-            onClick={() => {
-              dispatch({ type: LOGOUT_ADMIN });
-            }}
+            onClick={logoutAdmin}
             className="flex justify-center items-center flex-col
           py-7 text-slate-300"
           >
