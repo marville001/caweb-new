@@ -6,7 +6,6 @@ import LeadershipPage from "./LeadershipPage";
 import PrayersPage from "./PrayersPage";
 import UsersPage from "./UsersPage";
 import GalleryPage from "./GalleryPage";
-import AddPrayerPage from "./AddPrayerPage";
 
 export {
   AdminAccount,
@@ -17,5 +16,4 @@ export {
   PrayersPage,
   UsersPage,
   GalleryPage,
-  AddPrayerPage,
 };

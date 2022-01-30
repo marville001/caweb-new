@@ -9,7 +9,6 @@ import {
   PrayersPage,
   UsersPage,
   GalleryPage,
-  AddPrayerPage
 } from "./admin/pages";
 import Loading from "./components/Loading";
 
@@ -301,14 +300,6 @@ function App() {
               }
             />
             <Route
-              path="prayers/new"
-              element={
-                <AdminPrivateRoute>
-                  <AddPrayerPage />
-                </AdminPrivateRoute>
-              }
-            />
-            <Route
               path="leaders"
               element={
                 <AdminPrivateRoute>
@@ -332,7 +323,17 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={
+                <div className="m-16 p-4 flex flex-col items-center justify-center">
+                  <h1 className="text-7xl text-dodge-blue font-bold">404</h1>
+                  <p className="text-xl font-light mt-4">
+                    Page not found.. either deleted or not yet done.
+                  </p>
+                </div>
+              }
+            />
           </Route>
         </Routes>
       </React.Suspense>
