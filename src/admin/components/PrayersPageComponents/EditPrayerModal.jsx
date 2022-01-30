@@ -65,7 +65,7 @@ const EditPrayerModal = ({ closeModal, isOpen, editPrayer, setEditPrayer }) => {
     <Modal isOpen={isOpen}>
       <div className="inline-block w-full max-w-xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
         <h3 className="text-lg font-medium leading-6 text-gray-900">
-          Add Prayer
+          View or Edit Prayer
         </h3>
         <div className="form-group my-3">
           <label htmlFor="title" className="text-lg block">
