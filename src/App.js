@@ -323,7 +323,17 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
-            <Route path="*" element={<NotFound />} />
+            <Route
+              path="*"
+              element={
+                <div className="m-16 p-4 flex flex-col items-center justify-center">
+                  <h1 className="text-7xl text-dodge-blue font-bold">404</h1>
+                  <p className="text-xl font-light mt-4">
+                    Page not found.. either deleted or not yet done.
+                  </p>
+                </div>
+              }
+            />
           </Route>
         </Routes>
       </React.Suspense>

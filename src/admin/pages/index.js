@@ -8,12 +8,12 @@ import UsersPage from "./UsersPage";
 import GalleryPage from "./GalleryPage";
 
 export {
-    AdminAccount, 
-    AdminHome,
-    AdminLogin,
-    EventsPage,
-    LeadershipPage,
-    PrayersPage,
-    UsersPage,
-    GalleryPage,
-}
+  AdminAccount,
+  AdminHome,
+  AdminLogin,
+  EventsPage,
+  LeadershipPage,
+  PrayersPage,
+  UsersPage,
+  GalleryPage,
+};
