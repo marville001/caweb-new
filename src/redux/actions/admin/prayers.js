@@ -1,5 +1,5 @@
-import { CREATE_PRAYER, GET_PRAYERS } from "../../types.admin";
-import { get, post } from "../http";
+import { CREATE_PRAYER, EDIT_PRAYER, GET_PRAYERS } from "../../types.admin";
+import { get, post, put } from "../http";
 
 export const addPrayer = (prayer) => async (dispatch) => {
   dispatch({ type: CREATE_PRAYER.REQUEST });
@@ -32,5 +32,22 @@ export const getPrayers = (params) => async (dispatch) => {
       error:
         error?.response?.data?.message || "An error occurred. Please try again",
     });
+  }
+};
+
+export const editPrayerAction = (prayer) => async (dispatch) => {
+  dispatch({ type: EDIT_PRAYER.REQUEST });
+  try {
+    await put("prayers", prayer, "admin");
+    dispatch({ type: EDIT_PRAYER.SUCCESS });
+    return { success: true, message: "Prayer editted successfully" };
+  } catch (error) {
+    dispatch({
+      type: EDIT_PRAYER.FAIL,
+    });
+    return {
+      success: false,
+      message: error?.response?.data?.message || "Failed. Please try again",
+    };
   }
 };

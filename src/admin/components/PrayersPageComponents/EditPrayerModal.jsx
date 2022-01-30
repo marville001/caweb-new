@@ -3,11 +3,15 @@ import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../common/Modal";
-import { addPrayer, getPrayers } from "../../../redux/actions/admin/prayers";
+import {
+  editPrayerAction,
+  getPrayers,
+} from "../../../redux/actions/admin/prayers";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
-const AddPrayerModal = ({ closeModal, isOpen }) => {
-  const { isCreatingPrayer } = useSelector((state) => state.prayersState);
+const EditPrayerModal = ({ closeModal, isOpen, editPrayer, setEditPrayer }) => {
+  const { isEditingPrayer } = useSelector((state) => state.prayersState);
 
   const [title, setTitle] = useState("");
   const [prayer, setPrayer] = useState("");
@@ -18,13 +22,16 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
     closeModal();
     setTitle("");
     setPrayer("");
+    setEditPrayer({});
   };
 
   const handleSubmit = async () => {
-    const response = await dispatch(addPrayer({ title, prayer }));
+    const response = await dispatch(
+      editPrayerAction({ title, prayer, _id: editPrayer._id })
+    );
 
     if (response.success) {
-      toast.success("Prayer added successfully", {
+      toast.success("Prayer editted successfully", {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -48,6 +55,12 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
     }
   };
 
+  useEffect(() => {
+    if (editPrayer._id) {
+      setTitle(editPrayer.title);
+      setPrayer(editPrayer.prayer);
+    }
+  }, [editPrayer]);
   return (
     <Modal isOpen={isOpen}>
       <div className="inline-block w-full max-w-xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
@@ -89,11 +102,11 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
           </button>
           <button
             type="button"
-            disabled={isCreatingPrayer}
+            disabled={isEditingPrayer}
             className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
             onClick={handleSubmit}
           >
-            {isCreatingPrayer && <FaSpinner className="mr-2 animate-spin" />}
+            {isEditingPrayer && <FaSpinner className="mr-2 animate-spin" />}
             Submit
           </button>
         </div>
@@ -102,4 +115,4 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
   );
 };
 
-export default AddPrayerModal;
+export default EditPrayerModal;

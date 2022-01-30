@@ -1,9 +1,10 @@
-import {  CREATE_PRAYER, GET_PRAYERS  } from "../../types.admin";
+import { CREATE_PRAYER, EDIT_PRAYER, GET_PRAYERS } from "../../types.admin";
 
 const initialState = {
   prayers: [],
   isLoadingPrayers: false,
   isCreatingPrayer: false,
+  isEditingPrayer: false,
   error: "",
 };
 
@@ -30,6 +31,16 @@ const prayersReducer = (state = initialState, action) => {
       };
     case CREATE_PRAYER.FAIL:
       return { ...state, isCreatingPrayer: false };
+
+    case EDIT_PRAYER.REQUEST:
+      return { ...state, isEditingPrayer: true };
+    case EDIT_PRAYER.SUCCESS:
+      return {
+        ...state,
+        isEditingPrayer: false,
+      };
+    case EDIT_PRAYER.FAIL:
+      return { ...state, isEditingPrayer: false };
 
     default:
       return { ...state };
