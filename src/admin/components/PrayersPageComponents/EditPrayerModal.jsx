@@ -107,7 +107,7 @@ const EditPrayerModal = ({ closeModal, isOpen, editPrayer, setEditPrayer }) => {
             onClick={handleSubmit}
           >
             {isEditingPrayer && <FaSpinner className="mr-2 animate-spin" />}
-            Submit
+            Update
           </button>
         </div>
       </div>
