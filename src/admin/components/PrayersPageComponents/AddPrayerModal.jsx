@@ -1,11 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import Modal from "../common/Modal";
+import { addPrayer, getPrayers } from "../../../redux/actions/admin/prayers";
+import { toast } from "react-toastify";
 
 const AddPrayerModal = ({ closeModal, isOpen }) => {
+  const { isCreatingPrayer } = useSelector((state) => state.prayersState);
+
   const [title, setTitle] = useState("");
   const [prayer, setPrayer] = useState("");
+
+  const dispatch = useDispatch();
 
   const handleCloseModal = () => {
     closeModal();
@@ -13,9 +20,32 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
     setPrayer("");
   };
 
-  const handleSubmit = () => {
-    console.log({ title, prayer });
-    handleCloseModal();
+  const handleSubmit = async () => {
+    const response = await dispatch(addPrayer({ title, prayer }));
+
+    if (response.success) {
+      toast.success("Admin added successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      handleCloseModal();
+      await dispatch(getPrayers());
+    } else {
+      toast.error(response.message, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   return (
@@ -59,11 +89,11 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
           </button>
           <button
             type="button"
-            disabled={false}
+            disabled={isCreatingPrayer}
             className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
             onClick={handleSubmit}
           >
-            {false && <FaSpinner className="mr-2 animate-spin" />}
+            {isCreatingPrayer && <FaSpinner className="mr-2 animate-spin" />}
             Submit
           </button>
         </div>
