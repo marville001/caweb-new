@@ -65,9 +65,9 @@ const PrayersPage = () => {
                 }}
                 className="bg-dodge-blue px-2 rounded text-white text-xs py-1"
               >
-                Edit
+                Edit / View
               </button>
-              <button className="bg-red-300 px-2 rounded text-white text-xs py-1">
+              <button disabled className="cursor-not-allowed bg-red-300 px-2 rounded text-white text-xs py-1">
                 Delete
               </button>
             </div>
