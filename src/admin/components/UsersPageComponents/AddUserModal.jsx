@@ -68,7 +68,6 @@ const AddUserModal = ({ isOpen, closeModal }) => {
 
   return (
     <Modal isOpen={isOpen}>
-      <div className="inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
         <h3 className="text-lg font-medium leading-6 text-gray-900">
           Add User
         </h3>
@@ -184,7 +183,6 @@ const AddUserModal = ({ isOpen, closeModal }) => {
             Submit
           </button>
         </div>
-      </div>
     </Modal>
   );
 };

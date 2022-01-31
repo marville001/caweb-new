@@ -67,7 +67,6 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
 
   return (
     <Modal isOpen={isOpen}>
-      <div className="inline-block w-full max-w-lg p-6 my-8 overflow-hidden text-left align-top transition-all transform bg-white shadow-xl rounded-2xl">
         <h3 className="text-lg font-medium leading-6 text-gray-900">
           Upload Image
         </h3>
@@ -138,7 +137,6 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
             Upload Image
           </button>
         </div>
-      </div>
     </Modal>
   );
 };

@@ -34,7 +34,7 @@ const GalleryPage = () => {
         <div className="flex justify-between">
           <h1 className="text-xl text-dodge-blue font-bold uppercase">
             Our Gallery{" "}
-            <span className="text-sm text-black font-light">
+            <span className="text-sm text-black font-light lowercase">
               {" "}
               - {total} images
             </span>
