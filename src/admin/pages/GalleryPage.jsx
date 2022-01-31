@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { getImages } from "../../redux/actions/admin/images";
 import GalleryImage from "../components/GalleryPageComponents/GalleryImage";
 import UploadImageModal from "../components/GalleryPageComponents/UploadImageModal";
 
 const GalleryPage = () => {
+  const { images, isLoadingImages, error } = useSelector(
+    (state) => state.imagesState
+  );
   let [uploadImageModalOpen, setUploadImageModalOpen] = useState(false);
+  let [pageSize, setPageSize] = useState(10);
+  let [page, setPage] = useState(1);
 
   const closeUploadImageModal = () => {
     setUploadImageModalOpen(false);
@@ -12,6 +20,13 @@ const GalleryPage = () => {
   const openUploadImageModal = () => {
     setUploadImageModalOpen(true);
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getImages({ page, pageSize }));
+  }, [dispatch, page, pageSize]);
+
   return (
     <div className="">
       {/* Header */}
@@ -29,14 +44,24 @@ const GalleryPage = () => {
         </div>
       </div>
       {/* Header End */}
+      {error && (
+        <div className="bg-red-100 p-2 flex justify-center">
+          <p className="text-red-500">{error}</p>
+        </div>
+      )}
+      {isLoadingImages && (
+        <div className="py-4 flex items-center justify-center">
+          <div className="animate-spin">
+            <FaSpinner className="w-8 h-8" />
+          </div>
+        </div>
+      )}
 
       {/* Gallery grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 my-10">
-        {[10, 20, 30, 40, 50, 60, 70, 80, 90, 12, 15, 25, 35, 45, 55].map(
-          (image, i) => (
-            <GalleryImage key={i} image={image} />
-          )
-        )}
+        {images?.map((image, i) => (
+          <GalleryImage key={i} image={image} />
+        ))}
       </div>
       {/* Gallery grid end */}
 
