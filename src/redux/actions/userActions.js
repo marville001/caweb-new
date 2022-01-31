@@ -1,5 +1,5 @@
-import { USER_LOGIN, USER_REGISTER, LOGOUT_USER } from "../types";
-import { post, get } from "./http";
+import { USER_LOGIN, USER_REGISTER, LOGOUT_USER, UPDATE_IMAGE } from "../types";
+import { post, get, put } from "./http";
 
 const userSignUp = (user) => async (dispatch) => {
   dispatch({ type: USER_REGISTER.REQUEST, payload: user });
@@ -54,5 +54,24 @@ const logoutUser = () => (dispatch) => {
     type: LOGOUT_USER,
   });
 };
+
+const updateImage = (details, id) => async (dispatch) => {
+  dispatch({ type: UPDATE_IMAGE.REQUEST });
+  try {
+    const data = await put(`users/upload-avatar/${id}`, details);
+    dispatch({
+      type: UPDATE_IMAGE,
+      user: data.user
+    })
+  } catch (error) {
+    dispatch({
+      type: UPDATE_IMAGE.FAIL,
+      error:
+        error?.response?.data?.message || "An error occurred. Please try again",
+    });
+  }
+};
+
+
 
 export { userLogin, userSignUp, getProfileFetch, logoutUser };

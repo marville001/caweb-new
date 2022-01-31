@@ -1,4 +1,4 @@
-import { USER_LOGIN, LOGOUT_USER, USER_REGISTER } from "../types";
+import { USER_LOGIN, LOGOUT_USER, USER_REGISTER, UPDATE_IMAGE } from "../types";
 
 const initialState = {
   user: {},
@@ -24,17 +24,28 @@ const accountUserReducer = (state = initialState, action) => {
     case LOGOUT_USER:
       return { ...state, user: {} };
 
-    case USER_REGISTER.REQUEST:
-      return { ...state, registerLoading: true, user: {}, registerError: "" };
-    case USER_REGISTER.SUCCESS:
-      return {
-        ...state,
-        user: action.user,
-        registerLoading: false,
-        registerError: "",
-      };
-    case USER_REGISTER.FAIL:
-      return { ...state, registerLoading: false, registerError: action.error };
+      case USER_REGISTER.REQUEST:
+        return { ...state, registerLoading: true, user: {}, registerError: "" };
+      case USER_REGISTER.SUCCESS:
+        return {
+          ...state,
+          user: action.user,
+          registerLoading: false,
+          registerError: "",
+        };
+      case USER_REGISTER.FAIL:
+        return { ...state, registerLoading: false, registerError: action.error };
+
+        case UPDATE_IMAGE.REQUEST:
+          return { ...state ,isUpdatingImage: true };
+        case UPDATE_IMAGE.SUCCESS:
+          return {
+            ...state,
+            user: action.user,
+            isUpdatingImage: false,
+          };
+        case UPDATE_IMAGE.FAIL:
+          return { ...state, isUpdatingImage: false};
 
     // eslint-disable-next-line no-duplicate-case
     case LOGOUT_USER:
