@@ -28,6 +28,7 @@ export const getImages = (params) => async (dispatch) => {
     dispatch({
       type: GET_IMAGES.SUCCESS,
       images: data.images,
+      total: data.total,
     });
   } catch (error) {
     dispatch({

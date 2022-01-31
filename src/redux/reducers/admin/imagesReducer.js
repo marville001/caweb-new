@@ -15,6 +15,7 @@ const imagesReducer = (state = initialState, action) => {
       return {
         ...state,
         images: action.images,
+        total: action.total,
         isLoadingImages: false,
         error: "",
       };

@@ -6,7 +6,7 @@ import GalleryImage from "../components/GalleryPageComponents/GalleryImage";
 import UploadImageModal from "../components/GalleryPageComponents/UploadImageModal";
 
 const GalleryPage = () => {
-  const { images, isLoadingImages, error } = useSelector(
+  const { images, total, isLoadingImages, error } = useSelector(
     (state) => state.imagesState
   );
   let [uploadImageModalOpen, setUploadImageModalOpen] = useState(false);
@@ -33,7 +33,11 @@ const GalleryPage = () => {
       <div>
         <div className="flex justify-between">
           <h1 className="text-xl text-dodge-blue font-bold uppercase">
-            Our Gallery
+            Our Gallery{" "}
+            <span className="text-sm text-black font-light">
+              {" "}
+              - {total} images
+            </span>
           </h1>
           <button
             onClick={openUploadImageModal}
@@ -50,7 +54,7 @@ const GalleryPage = () => {
         </div>
       )}
       {isLoadingImages && (
-        <div className="py-4 flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <div className="animate-spin">
             <FaSpinner className="w-8 h-8" />
           </div>
@@ -64,6 +68,24 @@ const GalleryPage = () => {
         ))}
       </div>
       {/* Gallery grid end */}
+
+      {/* Load more button */}
+      {images.length < total && (
+        <div className="flex justify-center">
+          <button
+            type="button"
+            disabled={isLoadingImages}
+            className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+            onClick={() => {
+              setPageSize(pageSize + 10);
+              setPage(1);
+            }}
+          >
+            {isLoadingImages && <FaSpinner className="mr-2 animate-spin" />}
+            Load More
+          </button>
+        </div>
+      )}
 
       {/* Upload image modal */}
       <UploadImageModal
