@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { HiChevronUp } from "react-icons/hi";
-
-import prayers from "../data/prayers.json";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPrayers } from "../redux/actions/prayersAction";
 
 const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
   return (
@@ -27,14 +28,32 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
 };
 
 const Prayers = () => {
-  const [filteredPrayers, setFilteredPrayers] = useState(prayers.prayers);
+  const {prayers, isLoadingPrayers} = useSelector(state=>state.userPrayersState)
+
+  const [filteredPrayers, setFilteredPrayers] = useState([]);
+
+  const dispatch = useDispatch();
 
   const handleSearch = (e) => {
-    const tempPrayers = prayers.prayers.filter((p) =>
+    const tempPrayers = prayers.filter((p) =>
       p.title.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredPrayers(tempPrayers);
   };
+
+
+  useEffect(() => {
+    dispatch(getPrayers())
+  }, [dispatch]);
+
+  useEffect(() => {
+    setFilteredPrayers(prayers)
+  }, [prayers]);
+
+
+  
+
+
 
   return (
     <div className="container  py-8">
