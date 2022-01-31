@@ -52,7 +52,7 @@ const MyAccount = () => {
         <div className="px-5  flex-1">
           {/* Profile Image */}
           <div className="flex flex-col sm:flex-row relative gap-6">
-            <div className="w-32 h-32 cursor-pointer">
+            <div className="w-32 h-32 cursor-pointer rounded-md overflow-hidden ring-0">
               <img
                 className="rounded-md w-full h-full object-contain"
                 src={`${process.env.REACT_APP_UPLOADS_URL+ user?.avatar}`}
