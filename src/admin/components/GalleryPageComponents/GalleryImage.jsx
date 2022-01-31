@@ -6,14 +6,14 @@ const GalleryImage = ({ image }) => {
     <div className="w-full bg-white rounded p-2">
       <img
         className="w-full h-52"
-        src={`https://randomuser.me/api/portraits/men/${image}.jpg`}
+        src={process.env.REACT_APP_UPLOADS_URL+image.image}
         alt=""
       />
       <h3 className="mt-3 font-medium text-dodge-blue">
-        St Peters Hike Mau Caves
+        {image.title}
       </h3>
       <div className="flex justify-between my-1 items-center">
-        <p>{new Date().toDateString()}</p>
+        <p>{new Date(image.date).toDateString()}</p>
         <Menu as="div" className="relative inline-block text-left">
           <Menu.Button>
             <HiOutlineDotsHorizontal className="text-4xl font-bold cursor-pointer text-slate-500" />
