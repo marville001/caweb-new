@@ -20,7 +20,7 @@ const MyAccount = () => {
   const imageRef = useRef();
 
   useEffect(() => {
-    if (!user._id) {
+    if (!localStorage.token) {
       navigate("/login");
     }
   }, [user, navigate]);

@@ -1,9 +1,9 @@
-import { Route, Navigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 
-const UserPrivateRoute = ({ component: Component, ...rest }) => {
-  if (!localStorage.token) return <Navigate to="/login" />;
+const UserPrivateRoute = ({ children }) => {
+  const token = localStorage.token;
 
-  return <Route {...rest} render={(props) => <Component {...props} />} />;
+  return <>{token ? children : <Navigate to="/admin/login" />}</>;
 };
 
 export default UserPrivateRoute;
