@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRef } from "react";
 import { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
+import { updateImage } from "../redux/actions/userActions";
 
 const MyAccount = () => {
-  const { user } = useSelector((state) => state.accountUsers);
+  const { user, isUpdatingImage } = useSelector((state) => state.accountUsers);
 
   const [profileImage, setProfileImage] = useState("");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const sccs = {
     stangelus: "St Angelus",
@@ -24,6 +27,20 @@ const MyAccount = () => {
       navigate("/login");
     }
   }, [user, navigate]);
+
+  const handleUpdateImage = async () =>{
+    const formData = new FormData();
+    console.log({user});
+
+    formData.append("avatar", profileImage[0]);
+
+    const result = await dispatch(updateImage(formData, user._id));
+    
+    if(!result.success){
+      alert(result.message)
+    }
+  }
+
   return (
     <div className="max-w-4xl mx-auto bg-white my-16 p-6 pb-28">
       <h2 className="text-3xl text-dodge-blue font-bold">Manage Account</h2>
@@ -52,9 +69,9 @@ const MyAccount = () => {
         <div className="px-5  flex-1">
           {/* Profile Image */}
           <div className="flex flex-col sm:flex-row relative gap-6">
-            <div className="w-32 h-32 cursor-pointer rounded-md overflow-hidden ring-0">
+            <div className="cursor-pointer rounded-md overflow-hidden ring-0">
               <img
-                className="rounded-md w-full h-full object-contain"
+                className="rounded-md w-64 sm:w-48 h-48 object-cover"
                 src={`${process.env.REACT_APP_UPLOADS_URL+ user?.avatar}`}
                 alt="Avatar"
               />
@@ -77,9 +94,15 @@ const MyAccount = () => {
                   ? profileImage[0].name
                   : "Select Image"}
               </div>
-              <button className="bg-sea-green px-4 py-1 my-2 rounded-lg text-white uppercase block">
-                Update
-              </button>
+              <button
+            type="button"
+            disabled={isUpdatingImage}
+            className="bg-sea-green px-8 my-2 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+            onClick={handleUpdateImage}
+          >
+            {isUpdatingImage && <FaSpinner className="mr-2 animate-spin" />}
+            Update
+          </button>
             </div>
           </div>
 

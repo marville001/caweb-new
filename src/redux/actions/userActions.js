@@ -60,18 +60,22 @@ const updateImage = (details, id) => async (dispatch) => {
   try {
     const data = await put(`users/upload-avatar/${id}`, details);
     dispatch({
-      type: UPDATE_IMAGE,
+      type: UPDATE_IMAGE.SUCCESS,
       user: data.user
     })
+
+    return {success: true}
   } catch (error) {
+    console.log({error});
     dispatch({
       type: UPDATE_IMAGE.FAIL,
       error:
-        error?.response?.data?.message || "An error occurred. Please try again",
+      error?.response?.data?.message || "An error occurred. Please try again",
     });
+    return {success: false, message: error?.response?.data?.message || "An error occurred. Please try again",}
   }
 };
 
 
 
-export { userLogin, userSignUp, getProfileFetch, logoutUser };
+export { userLogin, userSignUp, getProfileFetch, logoutUser, updateImage };
