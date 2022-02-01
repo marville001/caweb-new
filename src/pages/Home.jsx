@@ -29,7 +29,7 @@ const Home = () => {
             slidesPerView={1}
             navigation
             autoplay={{
-              delay: 2500,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             pagination={{ clickable: true }}
