@@ -2,13 +2,12 @@ import React from "react";
 import { FaChevronRight, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination,Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 
 const Home = () => {
   return (
@@ -24,16 +23,20 @@ const Home = () => {
         }}
       >
         {/* Swipper carousel */}
-        <div className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24">
           <Swiper
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            modules={[Autoplay, Navigation, Pagination]}
             spaceBetween={50}
             slidesPerView={1}
             navigation
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
             pagination={{ clickable: true }}
             scrollbar={{ draggable: true }}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
+            className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24"
           >
             <SwiperSlide>
               <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
@@ -112,7 +115,6 @@ const Home = () => {
               </div>
             </SwiperSlide>
           </Swiper>
-        </div>
       </div>
 
       {/*  */}
