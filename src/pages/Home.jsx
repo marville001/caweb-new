@@ -117,6 +117,18 @@ const Home = () => {
           </Swiper>
       </div>
 
+      <div className="container grid grid-cols-1 md:grid-cols-2 my-10 mb-16">
+        <div className="w-full rounded-md overflow-hidden flex px-10 md:px-0 mb-8 md:mb-0">
+          <img className="h-[250px] sm:h-[300px] md:h-[450px] rounded-md w-[400px] md:w-full" src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000" alt="" />
+        </div>
+        <div className="px-10">
+          <h2 className="  text-4xl font-bold text-dodge-blue mb-10">Welcome to the DEKUT CC</h2>
+          <p className=" font-light">Welcome to the website for Dedan Kimathi University of Technology. Sister Irene Stephani Catholic Chaplaincy</p>
+
+          <p className="mt-6 font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam vitae deserunt maxime excepturi ex neque, accusantium veniam est, illum ipsa labore distinctio perspiciatis, quisquam id quam velit dicta eos cupiditate quas tempora qui suscipit ullam. Amet ut repudiandae nesciunt deleniti delectus. Nesciunt, nostrum minus porro sed veniam odit quos consequatur voluptate praesentium obcaecati dolorum eligendi, quas fugit, repellat animi quasi tempore soluta? Minima delectus facere quia odit reprehenderit rem quidem illum ipsa odio tempora, beatae molestiae possimus eligendi dolorem magnam animi perspiciatis sit eveniet maiores corrupti quam dolorum, quos fugiat. Ipsam asperiores</p>
+        </div>
+      </div>
+
       {/*  */}
       <div className="container py-0 mt-4">
         <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-2">
