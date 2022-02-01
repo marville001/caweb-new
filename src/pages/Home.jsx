@@ -2,7 +2,7 @@ import React from "react";
 import { FaChevronRight, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-import { Navigation, Pagination,Autoplay } from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -23,109 +23,170 @@ const Home = () => {
         }}
       >
         {/* Swipper carousel */}
-          <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
-            spaceBetween={50}
-            slidesPerView={1}
-            navigation
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-            }}
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-            className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24"
-          >
-            <SwiperSlide>
-              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                  Christmas
-                </h1>
-                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                  Christmas is one of the most important days of the Church
-                  year, second only to Easter itself. It is the feast of the
-                  incarnation, the feast of God becoming flesh (the Latin "in
-                  carne" means "enfleshment").
-                </p>
-                <Link
-                  to="/about"
-                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-                >
-                  LEARN MORE
-                </Link>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                  Christmas
-                </h1>
-                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                  Christmas is one of the most important days of the Church
-                  year, second only to Easter itself. It is the feast of the
-                  incarnation, the feast of God becoming flesh (the Latin "in
-                  carne" means "enfleshment").
-                </p>
-                <Link
-                  to="/about"
-                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-                >
-                  LEARN MORE
-                </Link>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                  Christmas
-                </h1>
-                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                  Christmas is one of the most important days of the Church
-                  year, second only to Easter itself. It is the feast of the
-                  incarnation, the feast of God becoming flesh (the Latin "in
-                  carne" means "enfleshment").
-                </p>
-                <Link
-                  to="/about"
-                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-                >
-                  LEARN MORE
-                </Link>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                  Christmas
-                </h1>
-                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                  Christmas is one of the most important days of the Church
-                  year, second only to Easter itself. It is the feast of the
-                  incarnation, the feast of God becoming flesh (the Latin "in
-                  carne" means "enfleshment").
-                </p>
-                <Link
-                  to="/about"
-                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-                >
-                  LEARN MORE
-                </Link>
-              </div>
-            </SwiperSlide>
-          </Swiper>
+        <Swiper
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={50}
+          slidesPerView={1}
+          navigation
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24"
+        >
+          <SwiperSlide>
+            <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+              <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                Christmas
+              </h1>
+              <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                Christmas is one of the most important days of the Church year,
+                second only to Easter itself. It is the feast of the
+                incarnation, the feast of God becoming flesh (the Latin "in
+                carne" means "enfleshment").
+              </p>
+              <Link
+                to="/about"
+                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+              >
+                LEARN MORE
+              </Link>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+              <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                Christmas
+              </h1>
+              <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                Christmas is one of the most important days of the Church year,
+                second only to Easter itself. It is the feast of the
+                incarnation, the feast of God becoming flesh (the Latin "in
+                carne" means "enfleshment").
+              </p>
+              <Link
+                to="/about"
+                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+              >
+                LEARN MORE
+              </Link>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+              <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                Christmas
+              </h1>
+              <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                Christmas is one of the most important days of the Church year,
+                second only to Easter itself. It is the feast of the
+                incarnation, the feast of God becoming flesh (the Latin "in
+                carne" means "enfleshment").
+              </p>
+              <Link
+                to="/about"
+                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+              >
+                LEARN MORE
+              </Link>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+              <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                Christmas
+              </h1>
+              <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                Christmas is one of the most important days of the Church year,
+                second only to Easter itself. It is the feast of the
+                incarnation, the feast of God becoming flesh (the Latin "in
+                carne" means "enfleshment").
+              </p>
+              <Link
+                to="/about"
+                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+              >
+                LEARN MORE
+              </Link>
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
 
       <div className="container grid grid-cols-1 md:grid-cols-2 my-10 mb-16">
         <div className="w-full rounded-md overflow-hidden flex px-10 md:px-0 mb-8 md:mb-0">
-          <img className="h-[250px] sm:h-[300px] md:h-[450px] rounded-md w-[400px] md:w-full" src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000" alt="" />
+          <img
+            className="h-[250px] sm:h-[300px] md:h-[450px] rounded-md w-[400px] md:w-full"
+            src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
+            alt=""
+          />
         </div>
         <div className="px-10">
-          <h2 className="  text-4xl font-bold text-dodge-blue mb-10">Welcome to the DEKUT CC</h2>
-          <p className=" font-light">Welcome to the website for Dedan Kimathi University of Technology. Sister Irene Stephani Catholic Chaplaincy</p>
+          <h2 className="  text-4xl font-bold text-dodge-blue mb-10">
+            Welcome to the DEKUT CC
+          </h2>
+          <p className=" font-light">
+            Welcome to the website for Dedan Kimathi University of Technology.
+            Sister Irene Stephani Catholic Chaplaincy
+          </p>
 
-          <p className="mt-6 font-normal">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam vitae deserunt maxime excepturi ex neque, accusantium veniam est, illum ipsa labore distinctio perspiciatis, quisquam id quam velit dicta eos cupiditate quas tempora qui suscipit ullam. Amet ut repudiandae nesciunt deleniti delectus. Nesciunt, nostrum minus porro sed veniam odit quos consequatur voluptate praesentium obcaecati dolorum eligendi, quas fugit, repellat animi quasi tempore soluta? Minima delectus facere quia odit reprehenderit rem quidem illum ipsa odio tempora, beatae molestiae possimus eligendi dolorem magnam animi perspiciatis sit eveniet maiores corrupti quam dolorum, quos fugiat. Ipsam asperiores</p>
+          <p className="mt-6 font-normal">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            quibusdam vitae deserunt maxime excepturi ex neque, accusantium
+            veniam est, illum ipsa labore distinctio perspiciatis, quisquam id
+            quam velit dicta eos cupiditate quas tempora qui suscipit ullam.
+            Amet ut repudiandae nesciunt deleniti delectus. Nesciunt, nostrum
+            minus porro sed veniam odit quos consequatur voluptate praesentium
+            obcaecati dolorum eligendi, quas fugit, repellat animi quasi tempore
+            soluta? Minima delectus facere quia odit reprehenderit rem quidem
+            illum ipsa odio tempora, beatae molestiae possimus eligendi dolorem
+            magnam animi perspiciatis sit eveniet maiores corrupti quam dolorum,
+            quos fugiat. Ipsam asperiores
+          </p>
+        </div>
+      </div>
+
+      <div
+        className="min-h-[600px]"
+        style={{
+          backgroundImage: "url(/assets/images/banner.png)",
+          backgroundSize: "cover",
+          backgroundPositionY: "center",
+        }}
+      >
+        <h2 className="text-3xl text-white text-center py-10">
+          Ordinary Sunday Mass
+        </h2>
+        <div className="container flex justify-center flex-col md:flex-row my-10 gap-5">
+          <div className="flex-2 flex justify-center">
+            <iframe
+              className="aspect-video"
+              height="400"
+              src="https://www.youtube.com/embed/ioMv8_pMM_o"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div className="flex-2 flex flex-col justify-center md:justify-start">
+            <h3 className="text-2xl text-white max-w-lg text-center md:text-left">
+              To view all our live stream, please visit our youtube channel.
+            </h3>
+
+            <div className="flex justify-center md:justify-start my-8">
+              <Link
+                to="../"
+                className="bg-sea-green py-2 px-8 inline-block text-white uppercase tracking-wider"
+              >
+                View Our Channel
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
 
