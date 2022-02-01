@@ -2,9 +2,17 @@ import React from "react";
 import { FaChevronRight, FaCalendarAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 const Home = () => {
   return (
-    <div className="py-0">
+    <div className="home py-0">
       {/* Hero Section */}
       <div
         className="flex flex-col justify-end items-end relative z-10 md:-top-14"
@@ -15,22 +23,95 @@ const Home = () => {
           minHeight: "70vh",
         }}
       >
-        <div className="md:container p-4 bg-[#0b416c] md:bg-inherit h-full ">
-          <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-            Christmas
-          </h1>
-          <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-            Christmas is one of the most important days of the Church year,
-            second only to Easter itself. It is the feast of the incarnation,
-            the feast of God becoming flesh (the Latin "in carne" means
-            "enfleshment").
-          </p>
-          <Link
-            to="/about"
-            className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+        {/* Swipper carousel */}
+        <div className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24">
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            scrollbar={{ draggable: true }}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
           >
-            LEARN MORE
-          </Link>
+            <SwiperSlide>
+              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                  Christmas
+                </h1>
+                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                  Christmas is one of the most important days of the Church
+                  year, second only to Easter itself. It is the feast of the
+                  incarnation, the feast of God becoming flesh (the Latin "in
+                  carne" means "enfleshment").
+                </p>
+                <Link
+                  to="/about"
+                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+                >
+                  LEARN MORE
+                </Link>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                  Christmas
+                </h1>
+                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                  Christmas is one of the most important days of the Church
+                  year, second only to Easter itself. It is the feast of the
+                  incarnation, the feast of God becoming flesh (the Latin "in
+                  carne" means "enfleshment").
+                </p>
+                <Link
+                  to="/about"
+                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+                >
+                  LEARN MORE
+                </Link>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                  Christmas
+                </h1>
+                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                  Christmas is one of the most important days of the Church
+                  year, second only to Easter itself. It is the feast of the
+                  incarnation, the feast of God becoming flesh (the Latin "in
+                  carne" means "enfleshment").
+                </p>
+                <Link
+                  to="/about"
+                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+                >
+                  LEARN MORE
+                </Link>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
+                  Christmas
+                </h1>
+                <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
+                  Christmas is one of the most important days of the Church
+                  year, second only to Easter itself. It is the feast of the
+                  incarnation, the feast of God becoming flesh (the Latin "in
+                  carne" means "enfleshment").
+                </p>
+                <Link
+                  to="/about"
+                  className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+                >
+                  LEARN MORE
+                </Link>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
 
@@ -186,7 +267,10 @@ const Home = () => {
 
       <div className="my-10 mx-5 overflow-x-hidden  images-carousel-container">
         <div className="flex gap-2 images-carousel">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map((i) => (
+          {[
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 2, 3, 4, 5, 6, 7, 8,
+            9, 10, 11, 12, 13, 14,
+          ].map((i) => (
             <div className="min-w-[200px] md:min-w-[260px] lg:min-w-[300px] h-60 lg:h-64 rounded-md overflow-hidden ">
               <img
                 className="w-full h-full"
@@ -197,7 +281,12 @@ const Home = () => {
           ))}
         </div>
         <div className="flex justify-center my-4">
-          <Link to="/gallery" className="bg-dodge-blue px-6 py-2 rounded-md text-white font-bold">View Our Gallery</Link>
+          <Link
+            to="/gallery"
+            className="bg-dodge-blue px-6 py-2 rounded-md text-white font-bold"
+          >
+            View Our Gallery
+          </Link>
         </div>
       </div>
 

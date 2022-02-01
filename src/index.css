@@ -56,3 +56,28 @@
         @apply max-w-[95%] px-5 md:px-8 lg:px-10 sm:max-w-[748px] md:max-w-[1000px] lg:max-w-[1200px] mx-auto;
     } */
 }
+
+.home .swiper-pagination-bullet{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.home .swiper-pagination-bullet-active{
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.swiper-button-next, .swiper-button-prev {
+    /* background-color: #fff; */
+    color: #fff !important;
+}
+@media screen and (max-width: 1480px) {
+    .swiper-button-next, .swiper-button-prev {
+        display: none !important;
+    }
+    
+}
