@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import { HiChevronUp } from "react-icons/hi";
+import { FaSpinner } from "react-icons/fa";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPrayers } from "../redux/actions/prayersAction";
@@ -28,7 +29,9 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
 };
 
 const Prayers = () => {
-  const {prayers, isLoadingPrayers} = useSelector(state=>state.userPrayersState)
+  const { prayers, isLoadingPrayers } = useSelector(
+    (state) => state.userPrayersState
+  );
 
   const [filteredPrayers, setFilteredPrayers] = useState([]);
 
@@ -41,19 +44,13 @@ const Prayers = () => {
     setFilteredPrayers(tempPrayers);
   };
 
-
   useEffect(() => {
-    dispatch(getPrayers())
+    dispatch(getPrayers());
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredPrayers(prayers)
+    setFilteredPrayers(prayers);
   }, [prayers]);
-
-
-  
-
-
 
   return (
     <div className="container  py-8">
@@ -73,6 +70,11 @@ const Prayers = () => {
             Search
           </button> */}
         </div>
+        {isLoadingPrayers && (
+          <div className="animate-spin flex justify-center p-4">
+            <FaSpinner />
+          </div>
+        )}
         {filteredPrayers.map((prayer) => (
           <PrayerDisclosure key={prayer.id} prayer={prayer} />
         ))}
