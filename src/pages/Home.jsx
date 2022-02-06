@@ -201,7 +201,7 @@ const Home = () => {
 
             <div className="divide-y">
               {[1, 2, 3].map((_, i) => (
-                <div className="pb-6 pt-6">
+                <div key={i} className="pb-6 pt-6">
                   <p className="text-lg mb-2">
                     U.S. Bishops’ Migration Chairman Addresses Future of
                     Immigration Reform
