@@ -32,6 +32,7 @@ const Login = React.lazy(() => import("./pages/Login"));
 const Mass = React.lazy(() => import("./pages/Mass"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Prayers = React.lazy(() => import("./pages/Prayers"));
+const Gallery = React.lazy(() => import("./pages/Gallery"));
 const Register = React.lazy(() => import("./pages/Register"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 const Scc = React.lazy(() => import("./pages/Scc"));
@@ -218,7 +219,7 @@ function App() {
             path="/gallery"
             element={
               <MainLayout>
-                <CommingSoon />
+                <Gallery />
               </MainLayout>
             }
           />

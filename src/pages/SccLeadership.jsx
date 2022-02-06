@@ -42,6 +42,7 @@ const LeadersListPanel = ({ name }) => {
           "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcnNvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60",
         ].map((i) => (
           <LeaderCard
+            key={i}
             img={i}
             name="Name and Name"
             title="Person Title"
