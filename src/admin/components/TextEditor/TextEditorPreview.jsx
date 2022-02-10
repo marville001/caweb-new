@@ -1,10 +1,9 @@
 import React from "react";
 
-const TextEditorPreview = ({ editorValue }) => {
+const TextEditorPreview = ({ editorRef }) => {
     return (
         <div>
-            <h4>Preview</h4>
-            {editorValue}
+            {editorRef.current.value()}
         </div>
     );
 };

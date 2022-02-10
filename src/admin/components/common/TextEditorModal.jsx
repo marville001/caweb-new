@@ -1,4 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
+import { useRef } from "react";
 import { Fragment, useState } from "react";
 import { HiOutlineEye, HiSupport, HiOutlinePencil } from "react-icons/hi";
 import TextEditor from "../TextEditor/TextEditor";
@@ -7,6 +8,7 @@ import TextEditorPreview from "../TextEditor/TextEditorPreview";
 const TextEditorModal = () => {
     const [active, setActive] = useState("editor");
     const [editorValue, setEditorValue] = useState("");
+    const editorRef = useRef();
     return (
         <Transition appear show={true} as={Fragment}>
             <Dialog
@@ -46,8 +48,7 @@ const TextEditorModal = () => {
                             <div className="bg-slate-300 p-4 rounded-md flex items-center space-x-8">
                                 <div
                                     className={`flex items-center space-x-2 cursor-pointer font-bold ${
-                                        active === "editor" &&
-                                        "text-dodge-blue"
+                                        active === "editor" && "text-dodge-blue"
                                     }`}
                                     onClick={() => setActive("editor")}
                                 >
@@ -66,8 +67,7 @@ const TextEditorModal = () => {
                                 </div>
                                 <div
                                     className={`flex items-center space-x-2 cursor-pointer font-bold ${
-                                        active === "guide" &&
-                                        "text-dodge-blue"
+                                        active === "guide" && "text-dodge-blue"
                                     }`}
                                     onClick={() => setActive("guide")}
                                 >
@@ -76,19 +76,30 @@ const TextEditorModal = () => {
                                 </div>
                             </div>
 
-                            <div className="p-6 bg-white">
-                                {active === "preview" ? (
-                                    <TextEditorPreview
-                                        editorValue={editorValue}
-                                    />
-                                ) : active === "guide" ? (
-                                    <h4>Guide here</h4>
-                                ) : (
-                                    <TextEditor
-                                        editorValue={editorValue}
-                                        setEditorValue={setEditorValue}
-                                    />
-                                )}
+                            <div
+                                className={`p-6 bg-white ${
+                                    active === "editor" ? "block" : "hidden"
+                                }`}
+                            >
+                                <TextEditor
+                                    editorRef={editorRef}
+                                    editorValue={editorValue}
+                                    setEditorValue={setEditorValue}
+                                />
+                            </div>
+                            <div
+                                className={`p-6 bg-white ${
+                                    active === "preview" ? "block" : "hidden"
+                                }`}
+                            >
+                                <TextEditorPreview editorRef={editorRef} />
+                            </div>
+                            <div
+                                className={`p-6 bg-white ${
+                                    active === "guide" ? "block" : "hidden"
+                                }`}
+                            >
+                                <h4>Guide here</h4>
                             </div>
                         </div>
                     </Transition.Child>

@@ -1,14 +1,15 @@
 import React from "react";
 import Editor from "rich-markdown-editor";
 
-const TextEditor = ({ editorValue, setEditorValue }) => {
+const TextEditor = ({ editorRef}) => {
     return (
         <Editor
             placeholder="Start typing here"
-            value={editorValue}
             dir="ltr"
+            value={(editorRef.current && editorRef.current.value()) || ""}
+            ref={editorRef}
             onChange={(e) => {
-                setEditorValue(e());
+                console.log(editorRef.current.value());
             }}
         />
     );
