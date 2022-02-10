@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddEventModal from "../components/EventsComponents/AddEventModal";
+import EventCard from "../components/EventsComponents/EventCard";
 
 const EventsPage = () => {
     let [addEventModalOpen, setAddEventModalOpen] = useState(false);
@@ -15,6 +16,14 @@ const EventsPage = () => {
                     Create Event
                 </button>
             </div>
+
+            {/* Events Listing */}
+            <div className="my-8 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {[1, 2, 3, 4, 5, 6, 7, 8].map((event, idx) => (
+                    <EventCard key={idx} event={event} />
+                ))}
+            </div>
+
             <AddEventModal
                 isOpen={addEventModalOpen}
                 closeModal={() => setAddEventModalOpen(false)}
