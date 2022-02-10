@@ -5,12 +5,12 @@ import { HiOutlineEye, HiSupport, HiOutlinePencil } from "react-icons/hi";
 import TextEditor from "../TextEditor/TextEditor";
 import TextEditorPreview from "../TextEditor/TextEditorPreview";
 
-const TextEditorModal = () => {
+const TextEditorModal = ({ isOpen, closeEditor }) => {
     const [active, setActive] = useState("editor");
     const [editorValue, setEditorValue] = useState("");
     const editorRef = useRef();
     return (
-        <Transition appear show={true} as={Fragment}>
+        <Transition appear show={isOpen} as={Fragment}>
             <Dialog
                 as="div"
                 className="absolute bg-white  inset-0 z-10 overflow-y-auto"
@@ -37,69 +37,94 @@ const TextEditorModal = () => {
                         leaveFrom="opacity-100 scale-100"
                         leaveTo="opacity-0 scale-95"
                     >
-                        <div
-                            className={`
+                        <div>
+                            <div className="relative p-5 flex justify-between bg-slate-200">
+                                <button
+                                    onClick={closeEditor}
+                                    className="
+                                bg-red-400 text-white p-2 px-6 rounded-md cursor-pointer 
+                                uppercase text-sm tracking-wider
+                                "
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className="
+                                bg-dodge-blue text-white p-2 px-6 rounded-md cursor-pointer 
+                                uppercase text-sm tracking-wider
+                                "
+                                >
+                                    Save
+                                </button>
+                            </div>
+                            <div
+                                className={`
                              inline-block w-full 
                               overflow-hidden text-left align-top 
                               transition-all transform my-5
                               max-w-3xl bg-gray-50
                             `}
-                        >
-                            <div className="bg-slate-300 p-4 rounded-md flex items-center space-x-8">
-                                <div
-                                    className={`flex items-center space-x-2 cursor-pointer font-bold ${
-                                        active === "editor" && "text-dodge-blue"
-                                    }`}
-                                    onClick={() => setActive("editor")}
-                                >
-                                    <HiOutlinePencil />
-                                    <p>Write</p>
+                            >
+                                <div className="bg-slate-300 p-4 rounded-md flex items-center space-x-8">
+                                    <div
+                                        className={`flex items-center space-x-2 cursor-pointer font-bold ${
+                                            active === "editor" &&
+                                            "text-dodge-blue"
+                                        }`}
+                                        onClick={() => setActive("editor")}
+                                    >
+                                        <HiOutlinePencil />
+                                        <p>Write</p>
+                                    </div>
+                                    <div
+                                        className={`flex items-center space-x-2 cursor-pointer font-bold ${
+                                            active === "preview" &&
+                                            "text-dodge-blue"
+                                        }`}
+                                        onClick={() => setActive("preview")}
+                                    >
+                                        <HiOutlineEye />
+                                        <p>Preview</p>
+                                    </div>
+                                    <div
+                                        className={`flex items-center space-x-2 cursor-pointer font-bold ${
+                                            active === "guide" &&
+                                            "text-dodge-blue"
+                                        }`}
+                                        onClick={() => setActive("guide")}
+                                    >
+                                        <HiSupport />
+                                        <p>Guide</p>
+                                    </div>
                                 </div>
-                                <div
-                                    className={`flex items-center space-x-2 cursor-pointer font-bold ${
-                                        active === "preview" &&
-                                        "text-dodge-blue"
-                                    }`}
-                                    onClick={() => setActive("preview")}
-                                >
-                                    <HiOutlineEye />
-                                    <p>Preview</p>
-                                </div>
-                                <div
-                                    className={`flex items-center space-x-2 cursor-pointer font-bold ${
-                                        active === "guide" && "text-dodge-blue"
-                                    }`}
-                                    onClick={() => setActive("guide")}
-                                >
-                                    <HiSupport />
-                                    <p>Guide</p>
-                                </div>
-                            </div>
 
-                            <div
-                                className={`p-6 bg-white ${
-                                    active === "editor" ? "block" : "hidden"
-                                }`}
-                            >
-                                <TextEditor
-                                    editorRef={editorRef}
-                                    editorValue={editorValue}
-                                    setEditorValue={setEditorValue}
-                                />
-                            </div>
-                            <div
-                                className={`p-6 bg-white ${
-                                    active === "preview" ? "block" : "hidden"
-                                }`}
-                            >
-                                <TextEditorPreview editorRef={editorRef} />
-                            </div>
-                            <div
-                                className={`p-6 bg-white ${
-                                    active === "guide" ? "block" : "hidden"
-                                }`}
-                            >
-                                <h4>Guide here</h4>
+                                <div
+                                    className={`p-6 bg-white ${
+                                        active === "editor" ? "block" : "hidden"
+                                    }`}
+                                >
+                                    <TextEditor
+                                        editorRef={editorRef}
+                                        editorValue={editorValue}
+                                        setEditorValue={setEditorValue}
+                                    />
+                                </div>
+                                <div
+                                    className={`p-6 bg-white ${
+                                        active === "preview"
+                                            ? "block"
+                                            : "hidden"
+                                    }`}
+                                >
+                                    <TextEditorPreview editorRef={editorRef} />
+                                </div>
+                                <div
+                                    className={`p-6 bg-white ${
+                                        active === "guide" ? "block" : "hidden"
+                                    }`}
+                                >
+                                    <h4>Guide here</h4>
+                                </div>
                             </div>
                         </div>
                     </Transition.Child>
