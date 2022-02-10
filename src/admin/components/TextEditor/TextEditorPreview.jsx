@@ -15,9 +15,10 @@ const TextEditorPreview = ({ editorRef }) => {
                 prose prose-slate dark:prose-invert 
                 prose-headings:text-dodge-blue
                 prose-a:text-sea-green
-                prose-img:w-full prose-img:rounded-2xl
+                prose-img:w-full prose-img:rounded-md prose-img:object-cover prose-img:max-h-64
                 prose-img:shadow-md prose-pre:bg-slate-600
                 prose-ol:ml-5
+                flex-1 w-full
                 "
             >
                 <ReactMarkdown rehypePlugins={[rehypeHighlight, remarkGfm]}>
