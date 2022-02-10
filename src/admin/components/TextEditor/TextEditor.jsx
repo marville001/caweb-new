@@ -8,7 +8,7 @@ const TextEditor = ({ editorRef}) => {
             dir="ltr"
             value={(editorRef.current && editorRef.current.value()) || ""}
             ref={editorRef}
-            onChange={(e) => {
+            onSave={() => {
                 console.log(editorRef.current.value());
             }}
         />
