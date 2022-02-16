@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
+  let [email, setEmail] = useState(" ");
   return (
     <div className="bg-dodge-blue min-h-[30vh] py-4">
       <div className="container">
         <div className="flex flex-col items-center pb-6">
+          <div className="flex flex-col content-center justify-center ">
+            <p className="text-xl text-white my-3">
+              Would you like to subscribe to our newlestter?
+            </p>
+            <div className="flex flex-row content-center justify-center ">
+              <input
+                className="text-lg mx-3 py-3  px-10  bg-white"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+              <button className="bg-sea-green text-white mx-3 py-3  px-8 text-lg font-medium  hover:opacity-90 uppercase ">
+                Submit
+              </button>
+            </div>
+          </div>
           <h2 className="text-3xl text-white my-4">Dive into God's Word</h2>
           <div className="flex flex-col sm:flex-row gap-2 mt-4">
             <button className="rounded-full text-sm text-white hover:bg-white hover:text-dodge-blue px-4 py-2 border border-white">
