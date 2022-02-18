@@ -4,6 +4,11 @@ import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   let [email, setEmail] = useState(" ");
+
+  // const handleClick = (e) => {
+  //   e.preventDefault();
+  // };
+
   return (
     <div className="bg-dodge-blue min-h-[30vh] py-4">
       <div className="container">
@@ -14,22 +19,27 @@ const Footer = () => {
                 Would you like to subscribe to our newlestter?
               </p>
               <div className="flex flex-row content-center justify-center ">
-                <input
-                  className="text-medium mx-3 px-6 py-3  bg-white"
-                  type="email"
-                  value={email}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <button className="bg-sea-green text-white mx-3 py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase ">
-                  Submit
-                </button>
+                <form>
+                  <input
+                    className="text-medium mx-3 px-6 py-3  bg-white"
+                    type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                    required
+                  />
+                  <button className="bg-sea-green text-white mx-3 py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase ">
+                    Submit
+                  </button>
+                </form>
               </div>
             </div>
+
             <h2 className="text-3xl text-white mx-auto mt-6 mb-2">
               Dive into God's Word
             </h2>
+
             <div className="flex flex-col content-center justify-center sm:flex-row gap-2 mt-4">
               <button className="rounded-full text-sm text-white hover:bg-white hover:text-dodge-blue px-4 py-2 border border-white">
                 Daily Readings
@@ -43,7 +53,6 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <hr className="border-slate-500" />
 
         <div className="flex py-8 flex-col md:flex-row">
