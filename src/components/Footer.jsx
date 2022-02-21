@@ -1,13 +1,34 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-
+import axios from "axios";
 const Footer = () => {
-  let [email, setEmail] = useState(" ");
+  const [email, setEmail] = useState(" ");
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  // };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const baseUrl = process.env.REACT_APP_API_URL;
+
+    try {
+      const { data } = await axios.post(`${baseUrl}users/email/subscribe`, {
+        email,
+      });
+
+      setSuccess(data.message);
+      setTimeout(() => {
+        setSuccess("");
+      }, 3000);
+      setEmail("");
+    } catch (error) {
+      setError(error.response.data.message);
+      setTimeout(() => {
+        setError("");
+      }, 3000);
+    }
+  };
 
   return (
     <div className="bg-dodge-blue min-h-[30vh] py-4">
@@ -16,12 +37,26 @@ const Footer = () => {
           <div className="flex flex-col content-center justify-center">
             <div className="flex flex-col  content-center justify-center">
               <p className="text-xl text-white my-3 mx-auto">
-                Would you like to subscribe to our newlestter?
+                Would you like to subscribe to our newsletter?
               </p>
+              {error && (
+                <p className="bg-red-100 p-2 rounded text-center text-red-600 my-4">
+                  {error}
+                </p>
+              )}
+
+              {success && (
+                <p className="bg-green-100 p-2 rounded text-center text-green-600 my-4">
+                  {success}
+                </p>
+              )}
               <div className="flex flex-row content-center justify-center ">
-                <form>
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex flex-row content-center justify-center"
+                >
                   <input
-                    className="text-medium mx-3 px-6 py-3  bg-white"
+                    className="text-base mx-3 px-6 py-3  bg-white sm:text-sm"
                     type="email"
                     value={email}
                     onChange={(e) => {
@@ -29,9 +64,11 @@ const Footer = () => {
                     }}
                     required
                   />
-                  <button className="bg-sea-green text-white mx-3 py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase ">
-                    Submit
-                  </button>
+                  <div>
+                    <button className="bg-sea-green text-white mx-3 py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
+                      Submit
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
