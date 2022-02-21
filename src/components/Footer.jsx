@@ -60,7 +60,7 @@ const Footer = () => {
                                     className="flex flex-col md:flex-row content-center justify-center w-full p-2 md:p-0 md:w-[500px]"
                                 >
                                     <input
-                                        className="text-3xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
+                                        className="text-sm md:text-3xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
                                         type="email"
                                         value={email}
                                         placeholder="Enter your Email"
