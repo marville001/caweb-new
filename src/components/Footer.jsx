@@ -40,7 +40,7 @@ const Footer = () => {
                     <div className="flex flex-col content-center justify-center">
                         <div className="flex flex-col my-6 content-center justify-center">
                           <h2 className="text-3xl uppercase text-center text-white font-bold">Enter your email</h2>
-                            <p className="text-xl text-white my-3 mx-auto capitalize">
+                            <p className="text-xl text-white my-3 mx-auto capitalize text-center">
                                 Subscribe to our newsletter to receive updates
                             </p>
                             {error && (
@@ -60,7 +60,7 @@ const Footer = () => {
                                     className="flex flex-col md:flex-row content-center justify-center w-full p-2 md:p-0 md:w-[500px]"
                                 >
                                     <input
-                                        className="text-sm md:text-3xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
+                                        className="text-sm md:text-xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
                                         type="email"
                                         value={email}
                                         placeholder="Enter your Email"
