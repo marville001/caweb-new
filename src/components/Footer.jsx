@@ -38,7 +38,7 @@ const Footer = () => {
             <div className="container">
                 <div className="flex flex-col items-center pb-6">
                     <div className="flex flex-col content-center justify-center">
-                        <div className="flex flex-col  content-center justify-center">
+                        <div className="flex flex-col my-6 content-center justify-center">
                           <h2 className="text-3xl uppercase text-center text-white font-bold">Enter your email</h2>
                             <p className="text-xl text-white my-3 mx-auto capitalize">
                                 Subscribe to our newsletter to receive updates
