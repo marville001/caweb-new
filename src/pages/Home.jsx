@@ -13,9 +13,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGalleryImages } from "../redux/actions/galleryAction";
 
 const Home = () => {
-  const { images, isLoadingImages } = useSelector(
-    (state) => state.galleryState
-);
+    const { images } = useSelector(
+        (state) => state.galleryState
+    );
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -196,12 +196,14 @@ const Home = () => {
                         </h3>
 
                         <div className="flex justify-center md:justify-start my-8">
-                            <Link
-                                to="../"
+                            <a
+                                target="_blank"
+                                rel="noreferrer"
+                                href="https://www.youtube.com/channel/UCN8LML2jye7oj6w-bhcGLAg"
                                 className="bg-sea-green py-2 px-8 inline-block text-white uppercase tracking-wider"
                             >
                                 View Our Channel
-                            </Link>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -365,14 +367,14 @@ const Home = () => {
 
             <div className="my-10 mx-5 overflow-x-hidden  images-carousel-container">
                 <div className="flex gap-2 images-carousel">
-                    {images?.map(({image, _id, title}) => (
-                        <div 
-                        key={_id}
-                        className="min-w-[200px] md:min-w-[260px] lg:min-w-[300px] h-60 lg:h-64 rounded-md overflow-hidden "
+                    {images?.map(({ image, _id, title }) => (
+                        <div
+                            key={_id}
+                            className="min-w-[200px] md:min-w-[260px] lg:min-w-[300px] h-60 lg:h-64 rounded-md overflow-hidden "
                         >
                             <Img
                                 className="w-full h-full"
-                                src={process.env.REACT_APP_UPLOADS_URL +image}
+                                src={process.env.REACT_APP_UPLOADS_URL + image}
                                 alt={title}
                             />
                         </div>
