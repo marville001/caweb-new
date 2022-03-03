@@ -45,17 +45,17 @@ const MyAccount = () => {
         }
     };
 
-    const resetForm = ()=>{
-      setOldPassword("")
-      setNewPassword("")
-      setConfirmNewPassword("")
-    }
+    const resetForm = () => {
+        setOldPassword("");
+        setNewPassword("");
+        setConfirmNewPassword("");
+    };
 
-    const resetError=()=>{
-      setTimeout(() => {
-        setError("")
-      }, 5000);
-    }
+    const resetError = () => {
+        setTimeout(() => {
+            setError("");
+        }, 5000);
+    };
 
     const handleUpdatePassword = async () => {
         setError("");
@@ -65,36 +65,35 @@ const MyAccount = () => {
             confirm_new_password === ""
         ) {
             setError("All fields are required!");
-            resetError()
+            resetError();
             return;
         }
 
         if (confirm_new_password !== new_password) {
             setError("Password do not match");
-            resetError()
+            resetError();
             return;
         }
 
-        setIsUpdatingPassword(true)
+        setIsUpdatingPassword(true);
 
         try {
-          const res= await put("auth/password-update", {
-            id: user?._id,
-            old_password,
-            new_password,
-          })
+            const res = await put("auth/password-update", {
+                id: user?._id,
+                old_password,
+                new_password,
+            });
 
-          setSuccess(res.message)
-          setIsUpdatingPassword(false)
-          resetForm();
-          setTimeout(() => {
-            setSuccess("")
-          }, 5000);
-          
+            setSuccess(res.message);
+            setIsUpdatingPassword(false);
+            resetForm();
+            setTimeout(() => {
+                setSuccess("");
+            }, 5000);
         } catch (error) {
-          setError(error.response.data.message);
-          setIsUpdatingPassword(false)
-          resetError()
+            setError(error.response.data.message);
+            setIsUpdatingPassword(false);
+            resetError();
         }
     };
 
@@ -185,8 +184,8 @@ const MyAccount = () => {
                             <p className="text-md mb-2 font-light">Firstname</p>
                             <input
                                 type="text"
+                                readOnly
                                 value={user.firstname}
-                                // onChange={() => {}}
                                 className="p-2 text-slate-700 rounded-md outline-none border w-full"
                             />
                         </div>
@@ -194,7 +193,7 @@ const MyAccount = () => {
                             <p className="text-md mb-2 font-light">Lastname</p>
                             <input
                                 type="text"
-                                // onChange={() => {}}
+                                readOnly
                                 value={user.lastname}
                                 className="p-2 text-slate-700 rounded-md outline-none border w-full"
                             />
@@ -203,8 +202,8 @@ const MyAccount = () => {
                             <p className="text-md mb-2 font-light">Username</p>
                             <input
                                 type="text"
+                                readOnly
                                 value={user.username}
-                                // onChange={() => {}}
                                 className="p-2 text-slate-700 rounded-md outline-none border w-full"
                             />
                         </div>
@@ -212,19 +211,18 @@ const MyAccount = () => {
                             <p className="text-md mb-2 font-light">Email</p>
                             <input
                                 type="text"
-                                // readOnly
+                                readOnly
                                 value={user.email}
-                                // onChange={() => {}}
-                                className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full  text-slate-700"
+                                className="p-2 rounded-md outline-none border w-full  text-slate-700"
                             />
                         </div>
                         <div className=" w-full">
                             <p className="text-md mb-2 font-light">SCC Group</p>
                             <input
                                 type="text"
-                                // readOnly
+                                readOnly
                                 value={sccs[user.scc]}
-                                className="read-only:bg-gray-200 p-2 rounded-md outline-none border w-full text-slate-700"
+                                className="p-2 rounded-md outline-none border w-full text-slate-700"
                             />
                         </div>
                     </div>
