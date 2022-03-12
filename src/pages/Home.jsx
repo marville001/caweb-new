@@ -131,41 +131,24 @@ const Home = () => {
                 </Swiper>
             </div>
 
-            <div className="container grid grid-cols-1 md:grid-cols-2 my-10 mb-16">
-                <div className="w-full rounded-md overflow-hidden flex px-10 md:px-0 mb-8 md:mb-0">
-                    <img
-                        className="h-[250px] sm:h-[300px] md:h-[450px] rounded-md w-[400px] md:w-full"
-                        src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
-                        alt=""
+            <div className="bg-white min-h-[40vh] py-8 md:py-12">
+                <div className="mx-auto flex flex-col md:flex-row p-10 max-w-7xl">
+                    <img 
+                    src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
+                    alt="" 
+                    className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
                     />
-                </div>
-                <div className="px-10">
-                    <h2 className="  text-4xl font-bold text-dodge-blue mb-10">
-                        Welcome to the DEKUT CC
-                    </h2>
-                    <p className=" font-light">
-                        Welcome to the website for Dedan Kimathi University of
-                        Technology. Sister Irene Stephani Catholic Chaplaincy
-                    </p>
+                    <div className=" mt-8 md:mt-0 md:px-12">
+                        <h3 className="text-orange-600 font-bold tracking-widest">NEW TO OUR CHAPLAIN?</h3>
 
-                    <p className="mt-6 font-normal">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sunt quibusdam vitae deserunt maxime excepturi ex neque,
-                        accusantium veniam est, illum ipsa labore distinctio
-                        perspiciatis, quisquam id quam velit dicta eos
-                        cupiditate quas tempora qui suscipit ullam. Amet ut
-                        repudiandae nesciunt deleniti delectus. Nesciunt,
-                        nostrum minus porro sed veniam odit quos consequatur
-                        voluptate praesentium obcaecati dolorum eligendi, quas
-                        fugit, repellat animi quasi tempore soluta? Minima
-                        delectus facere quia odit reprehenderit rem quidem illum
-                        ipsa odio tempora, beatae molestiae possimus eligendi
-                        dolorem magnam animi perspiciatis sit eveniet maiores
-                        corrupti quam dolorum, quos fugiat. Ipsam asperiores
-                    </p>
+                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">About DEKUTCC</h1>
+                        <div className="bg-orange-600 h-1 w-16 mt-3"></div>
+                        <p className="my-16 text-lg opacity-90">Welcome to the website for Dedan Kimathi University of
+                        Technology. Sister Irene Stephani Catholic Chaplaincy. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga exercitationem sunt in eum, perferendis maiores aperiam quas alias explicabo harum. Est cumque earum dignissimos ipsa quaerat doloribus ullam officia....</p>
+                        <Link to="/about" className="bg-dodge-blue text-white uppercase py-2 px-12 rounded-full ">LEarn more</Link>
+                    </div>
                 </div>
             </div>
-
             <div
                 className="min-h-[600px]"
                 style={{
@@ -209,12 +192,12 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="bg-white min-h-[40vh] py-8 md:py-24">
+            <div className="bg-white min-h-[40vh] py-8 md:py-12">
                 <div className="mx-auto flex flex-col md:flex-row p-10 max-w-6xl">
                     <img 
                     src="https://d35r3vzpjv6bi5.cloudfront.net/26337/pictures/2020/8/archdiocese-samples-003%20red.jpg?t=1597432008000"
                     alt="" 
-                    className="rounded-xl h-56 lg:h-auto object-cover"
+                    className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
                     />
                     <div className=" mt-8 md:mt-0 md:px-12">
                         <h3 className="text-orange-600 font-bold tracking-widest">NEED ASSISTANCE?</h3>
@@ -225,7 +208,6 @@ const Home = () => {
                         <Link to="/contact-us" className="bg-dodge-blue text-white uppercase py-2 px-8 rounded-full ">Contact</Link>
                     </div>
                 </div>
-
             </div>
 
             {/*  */}
