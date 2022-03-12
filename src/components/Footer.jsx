@@ -21,9 +21,6 @@ const Footer = () => {
             );
 
             setSuccess(data.message);
-            setTimeout(() => {
-                setSuccess("");
-            }, 3000);
             setEmail("");
         } catch (error) {
             setError(error.response.data.message);
@@ -39,7 +36,9 @@ const Footer = () => {
                 <div className="flex flex-col items-center pb-6">
                     <div className="flex flex-col content-center justify-center">
                         <div className="flex flex-col my-6 content-center justify-center">
-                          <h2 className="text-3xl uppercase text-center text-white font-bold">Enter your email</h2>
+                            <h2 className="text-3xl uppercase text-center text-white font-bold">
+                                Enter your email
+                            </h2>
                             <p className="text-xl text-white my-3 mx-auto capitalize text-center">
                                 Subscribe to our newsletter to receive updates
                             </p>
@@ -49,31 +48,32 @@ const Footer = () => {
                                 </p>
                             )}
 
-                            {success && (
-                                <p className="bg-green-100 p-2 rounded text-center text-green-600 my-4">
+                            {success ? (
+                                <p className="bg-green-100 p-2 rounded text-center text-green-600 text-lg my-4">
                                     {success}
                                 </p>
+                            ) : (
+                                <div className="flex flex-row content-center justify-center ">
+                                    <form
+                                        onSubmit={handleSubmit}
+                                        className="flex flex-col md:flex-row content-center justify-center w-full p-2 md:p-0 md:w-[500px]"
+                                    >
+                                        <input
+                                            className="text-sm md:text-xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
+                                            type="email"
+                                            value={email}
+                                            placeholder="Enter your Email"
+                                            onChange={(e) => {
+                                                setEmail(e.target.value);
+                                            }}
+                                            required
+                                        />
+                                        <button className="bg-sea-green text-white  px-8 py-2 md:my-0 my-2 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
+                                            subscribe
+                                        </button>
+                                    </form>
+                                </div>
                             )}
-                            <div className="flex flex-row content-center justify-center ">
-                                <form
-                                    onSubmit={handleSubmit}
-                                    className="flex flex-col md:flex-row content-center justify-center w-full p-2 md:p-0 md:w-[500px]"
-                                >
-                                    <input
-                                        className="text-sm md:text-xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
-                                        type="email"
-                                        value={email}
-                                        placeholder="Enter your Email"
-                                        onChange={(e) => {
-                                            setEmail(e.target.value);
-                                        }}
-                                        required
-                                    />
-                                    <button className="bg-sea-green text-white  px-8 py-2 md:my-0 my-2 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
-                                        subscribe
-                                    </button>
-                                </form>
-                            </div>
                         </div>
 
                         <h2 className="text-3xl text-white mx-auto mt-6 mb-2">
