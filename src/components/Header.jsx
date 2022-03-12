@@ -98,9 +98,9 @@ const Header = () => {
           <div className="flex items-center space-x-4">
             <Link
               className="hidden md:block text-md uppercase text-slate-100"
-              to="/daily-readings"
+              to="/prayers"
             >
-              Daily Readings
+              Catholic Prayers
             </Link>
             <Link
               className="hidden sm:inline-block text-md uppercase text-slate-100"
@@ -191,10 +191,10 @@ const Header = () => {
         >
           <Link
             onClick={() => setIsMenuOpen(false)}
-            className={`md:hidden my-2 text-sm uppercase text-slate-100`}
-            to="/daily-readings"
+            className={`md:hidden my-4 text-sm uppercase text-slate-100`}
+            to="/prayes"
           >
-            Daily Readings
+            Catholic Prayers
           </Link>
           <NavDropDownLinkItem title="about dekutcc" to="/">
             <Link
@@ -227,13 +227,13 @@ const Header = () => {
             </Link>
           </NavDropDownLinkItem>
           <NavDropDownLinkItem title="Prayers & Worship">
-            <Link
+            {/* <Link
               onClick={() => setIsMenuOpen(false)}
               className={`my-2 text-sm uppercase text-slate-100`}
               to="/daily-readings"
             >
               Daily readings calendar
-            </Link>
+            </Link> */}
             <Link
               onClick={() => setIsMenuOpen(false)}
               className=" my-2 text-sm uppercase text-slate-100"
@@ -258,11 +258,6 @@ const Header = () => {
             closeMenu={() => setIsMenuOpen(false)}
             to="/scc"
             title="SCC"
-          />
-          <NavLinkItem
-            closeMenu={() => setIsMenuOpen(false)}
-            to="/news"
-            title="news"
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
