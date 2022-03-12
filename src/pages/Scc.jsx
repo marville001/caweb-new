@@ -1,4 +1,5 @@
 import React from "react";
+import Img from "react-cool-img";
 
 import sccs from "../data/scc.json";
 
@@ -6,7 +7,7 @@ const SccCard = ({ scc }) => {
   const { title, image, description } = scc;
   return (
     <div className="shadow-md rounded-md overflow-hidden border-dodge-blue">
-      <img className="w-full h-48 object-cover" src={image} alt="" />
+      <Img className="w-full h-48 object-cover" src={image} alt="SCC Image" />
       <h2 className="text-lg font-medium text-slate-900 mx-2 my-4">{title}</h2>
       <p className="text-sm mx-2 mb-4">{description}</p>
     </div>
