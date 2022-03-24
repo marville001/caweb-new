@@ -44,7 +44,7 @@ const AdminDashboard = React.lazy(() => import("./admin/AdminDashboard"));
 
 const MainLayout = ({ children }) => {
     return (
-        <div className="min-h-[75vh]">
+        <div className="min-h-[75vh]relative">
             <Header />
             {children}
             <Footer />

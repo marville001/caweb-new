@@ -157,8 +157,8 @@ const Header = () => {
         transform
         absolute
         bottom-0
-        right-0
-        top-14
+        left-0
+        top-12
         z-20
         md:static
         md:top-0
@@ -166,28 +166,16 @@ const Header = () => {
         md:static
         duration-300
         transition-all
-        ${!isMenuOpen && "translate-x-full"}
+        ${!isMenuOpen && "-translate-x-full"}
         md:translate-x-0
         `}
       >
         <div
           className="
-          container
-          md:h-14
-          md:static
-                mx-auto 
-                md:min-h-fit 
-                bg-dodge-blue 
-                md:bg-transparent 
-                py-0 
-                flex 
-                items-start
-                md:items-center 
-                md:justify-end 
-                flex-col
-                md:flex-row
-                z-[7000]
-        "
+                container md:h-14 md:static mx-auto  md:min-h-fit  bg-dodge-blue 
+                md:bg-transparent py-0 flex items-startmd:items-center md:justify-end 
+                flex-col md:flex-row z-[7000]
+            "
         >
           <Link
             onClick={() => setIsMenuOpen(false)}
