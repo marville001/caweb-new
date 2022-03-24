@@ -1,25 +1,4 @@
-const LeaderCard = ({ img, name, title, group, width }) => {
-    return (
-        <div
-            className={`${
-                width && "min-w-[" + width + "]"
-            } bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
-        >
-            <div className=" w-full h-60 bg-gray-500">
-                <img className="h-full w-full" src={img} alt="" />
-            </div>
-            <div className="p-4 text-center">
-                <h4 className="text-dodge-blue font-medium">{name}</h4>
-                <h4 className="text-dodge-blue font-medium my-2">{title}</h4>
-                {group && (
-                    <h4 className="text-dodge-blue  font-medium my-2">
-                        {group}
-                    </h4>
-                )}
-            </div>
-        </div>
-    );
-};
+import LeaderCard from "../../admin/components/LeaderCard/LeaderCard";
 
 export default function SccLeadership() {
     return (
@@ -28,7 +7,7 @@ export default function SccLeadership() {
                 <h3 className="my-6 text-center text-dodge-blue text-3xl font-bold uppercase">
                     St Angelus
                 </h3>
-                <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+                <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     {[
                         "https://media.istockphoto.com/photos/cheerful-fashionable-adult-man-in-city-setting-picture-id1310533180?b=1&k=20&m=1310533180&s=170667a&w=0&h=EdRuvIkrMifhyZJkHXf5Pk68ri44_g7OFnU8lIdbc-c=",
                         "https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
