@@ -163,8 +163,7 @@ const Home = () => {
                 <div className="container flex justify-center flex-col md:flex-row my-10 gap-5">
                     <div className="flex-2 flex justify-center">
                         <iframe
-                            className="aspect-video"
-                            height="400"
+                            className="w-full h-[250px] sm:h-[350px] md:w-[400px] lg:w-[600px] lg:h-[400px]"
                             src="https://www.youtube.com/embed/ioMv8_pMM_o"
                             title="YouTube video player"
                             frameborder="0"
