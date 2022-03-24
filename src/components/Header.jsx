@@ -72,7 +72,7 @@ const Header = () => {
   return (
     <>
       <div
-        className="bg-slate-800 h-15 flex items-center z-10"
+        className="bg-slate-800 h-15 flex items-center z-[10000]"
         style={{
           zIndex: "99999",
         }}
@@ -158,7 +158,7 @@ const Header = () => {
         absolute
         bottom-0
         left-0
-        top-12
+        top-12 sm:top-14
         z-20
         md:static
         md:top-0
@@ -174,7 +174,7 @@ const Header = () => {
           className="
                 container md:h-14 md:static mx-auto  md:min-h-fit  bg-dodge-blue 
                 md:bg-transparent py-0 flex items-startmd:items-center md:justify-end 
-                flex-col md:flex-row z-[7000]
+                flex-col md:flex-row z-[700]
             "
         >
           <Link
