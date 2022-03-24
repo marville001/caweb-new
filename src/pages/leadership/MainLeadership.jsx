@@ -18,7 +18,7 @@ const LeaderCard = ({ img, name, title, group, width }) => {
   );
 };
 
-const Leadership = () => {
+const MainLeadership = () => {
   return (
     <div className="container  py-14">
       <h1 className="text-3xl text-center text-dodge-blue font-bold">
@@ -72,4 +72,4 @@ const Leadership = () => {
   );
 };
 
-export default Leadership;
+export default MainLeadership;
