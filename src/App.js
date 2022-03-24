@@ -27,8 +27,6 @@ const Events = React.lazy(() => import("./pages/Events"));
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
 const GetConnected = React.lazy(() => import("./pages/GetConnected"));
 const Home = React.lazy(() => import("./pages/Home"));
-const MainLeadership = React.lazy(() => import("./pages/leadership/MainLeadership"));
-const Leadership = React.lazy(() => import("./pages/leadership"));
 const Login = React.lazy(() => import("./pages/Login"));
 const Mass = React.lazy(() => import("./pages/Mass"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
@@ -37,7 +35,10 @@ const Gallery = React.lazy(() => import("./pages/Gallery"));
 const Register = React.lazy(() => import("./pages/Register"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 const Scc = React.lazy(() => import("./pages/Scc"));
+const MainLeadership = React.lazy(() => import("./pages/leadership/MainLeadership"));
+const Leadership = React.lazy(() => import("./pages/leadership"));
 const SccLeadership = React.lazy(() => import("./pages/leadership/SccLeadership"));
+const SccLeadershipWelcome = React.lazy(() => import("./pages/leadership/SccLeadershipWelcome"));
 const AdminDashboard = React.lazy(() => import("./admin/AdminDashboard"));
 
 const MainLayout = ({ children }) => {
@@ -145,7 +146,8 @@ function App() {
                     />
                     <Route path="leadership" element={<Leadership /> } >
                         <Route exact path="" element={<MainLayout><MainLeadership /> </MainLayout>} />
-                        <Route exact path="scc" element={<MainLayout><SccLeadership /></MainLayout>} />
+                        <Route exact path="scc" element={<MainLayout><SccLeadershipWelcome /></MainLayout>} />
+                        <Route exact path="scc/:scc" element={<MainLayout><SccLeadership /></MainLayout>} />
                         <Route path="*" element={<NotFound />} />
                     </Route>
 
