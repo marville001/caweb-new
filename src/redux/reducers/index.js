@@ -6,6 +6,7 @@ import imagesReducer from "./admin/imagesReducer";
 import prayersReducer from "./admin/prayersReducer";
 import usersReducer from "./admin/usersReducer";
 import galleryReducer from "./galleryReducer";
+import sccsReducer from "./sccsReducer";
 import userPrayersReducer from "./userPrayersReducer";
 
 const rootReducer = combineReducers({
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   imagesState: imagesReducer,
   userPrayersState: userPrayersReducer,
   galleryState: galleryReducer,
+  sccsState: sccsReducer
 });
 
 export default rootReducer;

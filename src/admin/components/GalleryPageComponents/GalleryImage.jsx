@@ -5,7 +5,7 @@ const GalleryImage = ({ image }) => {
   return (
     <div className="w-full bg-white rounded p-2">
       <img
-        className="w-full h-52"
+        className="w-full h-52 object-cover"
         src={process.env.REACT_APP_UPLOADS_URL+image.image}
         alt=""
       />

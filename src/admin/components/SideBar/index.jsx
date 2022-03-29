@@ -6,7 +6,7 @@ import {
   HiBookOpen,
   HiOutlineFolder,
 } from "react-icons/hi";
-import { FaPowerOff, FaUserTie } from "react-icons/fa";
+import { FaPowerOff, FaUserFriends, FaUserTie } from "react-icons/fa";
 import {  NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ADMIN } from "../../../redux/types.admin";
@@ -43,6 +43,7 @@ const SideBar = ({ open }) => {
         <SideLink to="/admin" text="Home" icon={HiTemplate} />
         <SideLink to="/admin/users" text="Users" icon={HiUserGroup} />
         <SideLink to="/admin/prayers" text="Prayers" icon={HiBookOpen} />
+        <SideLink to="/admin/sccs" text="Scc Groups" icon={FaUserFriends} />
         <SideLink to="/admin/leaders" text="Leadership" icon={FaUserTie} />
         <SideLink to="/admin/events" text="Events" icon={HiCalendar} />
         <SideLink

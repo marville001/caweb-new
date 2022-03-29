@@ -19,6 +19,8 @@ import MyAccount from "./pages/MyAccount";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import SccsPage from "./admin/pages/SccsPage";
+import SccPage from "./admin/pages/SccPage";
 import LeadershipWelcomePage from "./admin/pages/LeadershipWelcomePage";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
@@ -290,8 +292,10 @@ const App = () => {
                             </AdminPrivateRoute>
                         }
                     />
+                    <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
+                    <Route path="sccs/:scc"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
                     <Route path="leaders"  element={ <AdminPrivateRoute> <LeadershipWelcomePage /> </AdminPrivateRoute> }/>
-                    <Route path="leaders/:scc"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
+                    <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
                     <Route
                         path="events"
                         element={
