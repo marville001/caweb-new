@@ -42,3 +42,9 @@ export const GET_SCCS = {
     SUCCESS:"GET_SCCS_SUCCESS",
     FAIL:"GET_SCCS_FAIL",
 }
+
+export const GET_SCC = {
+    REQUEST:"GET_SCC_REQUEST",
+    SUCCESS:"GET_SCC_SUCCESS",
+    FAIL:"GET_SCC_FAIL",
+}
