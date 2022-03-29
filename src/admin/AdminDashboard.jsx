@@ -18,9 +18,9 @@ const AdminDashboard = () => {
         dispatch(getLoggedInAdmin());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    if (!admin?._id) {
-        return <div></div>;
-    }
+    // if (!admin?._id) {
+    //     return <div></div>;
+    // }
 
     return (
         <div className="min-w-full min-h-screen  h-screen overflow-hidden bg-blue-100">
