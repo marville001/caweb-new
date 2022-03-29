@@ -1,5 +1,6 @@
+import { GET_SCCS } from "../../types";
 import { ADD_SCC } from "../../types.admin";
-import { post } from "../http";
+import { get, post } from "../http";
 
 export const addScc = (scc) => async (dispatch) => {
     dispatch({ type: ADD_SCC.REQUEST });
@@ -17,4 +18,21 @@ export const addScc = (scc) => async (dispatch) => {
                 error?.response?.data?.message || "Failed. Please try again",
         };
     }
+};
+
+export const getSccsAction = () => async (dispatch) => {
+  dispatch({ type: GET_SCCS.REQUEST });
+  try {
+    const data = await get("sccs");
+    dispatch({
+      type: GET_SCCS.SUCCESS,
+      sccs: data.sccs,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_SCCS.FAIL,
+      error:
+        error?.response?.data?.message || "An error occurred. Please try again",
+    });
+  }
 };

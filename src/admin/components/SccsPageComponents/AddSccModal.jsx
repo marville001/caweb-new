@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../common/Modal";
-import { addScc } from "../../../redux/actions/admin/sccs";
+import { addScc, getSccsAction } from "../../../redux/actions/admin/sccs";
 import { toast } from "react-toastify";
 
 const AddSccModal = ({ closeModal, isOpen }) => {
@@ -36,7 +36,7 @@ const AddSccModal = ({ closeModal, isOpen }) => {
         const response = await dispatch(addScc(formData));
 
         if (response.success) {
-            toast.success("Prayer added successfully", {
+            toast.success("Scc added successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -45,7 +45,8 @@ const AddSccModal = ({ closeModal, isOpen }) => {
                 draggable: true,
                 progress: undefined,
             });
-            handleCloseModal();
+          handleCloseModal();
+          await dispatch(getSccsAction());
         } else {
             toast.error(response.message, {
                 position: "top-right",
