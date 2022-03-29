@@ -36,8 +36,6 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
     formData.append("date", date);
     formData.append("description", description);
 
-    console.log(formData);
-
     const response = await dispatch(uploadImage(formData));
 
     if (response.success) {

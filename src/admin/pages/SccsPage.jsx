@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import AddSccModal from "../components/SccsPageComponents/AddSccModal";
 
 const sccs = [
     { title: "St Angelus", key: "stangelus", subtitle: "the dancers" },
@@ -15,6 +16,16 @@ const sccs = [
 ];
 
 const SccsPage = () => {
+    let [addSccModalOpen, setAddSccModalOpen] = useState(false);
+
+    const closeAddSccModal = () => {
+        setAddSccModalOpen(false);
+    };
+
+    const openAddSccModal = () => {
+        setAddSccModalOpen(true);
+    };
+
     return (
         <div className="px-2 sm:px-0">
             <h2 className="text-2xl text-dodge-blue font-bold">Scc Groups</h2>
@@ -33,6 +44,7 @@ const SccsPage = () => {
                 ))}
 
                 <div
+                    onClick={openAddSccModal}
                     className="p-2 py-4 border-2 border-dodge-blue text-center text-dodge-blue rounded-md
                         cursor-pointer hover:-translate-y-1
                         "
@@ -40,6 +52,11 @@ const SccsPage = () => {
                     Add Scc Group
                 </div>
             </div>
+
+            <AddSccModal
+                isOpen={addSccModalOpen}
+                closeModal={closeAddSccModal}
+            />
         </div>
     );
 };

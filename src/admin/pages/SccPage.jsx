@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const sccs = [
-    { title: "St Angelus", key: "stangelus", subtitle: "the dancers" }
+    { title: "St Angelus", key: "stangelus", subtitle: "the dancers" },
 ];
 
 const SccPage = () => {
+    
     return (
         <div className="px-2 sm:px-0">
             <h2 className="text-2xl text-dodge-blue font-bold">Scc Groups</h2>
@@ -23,6 +24,8 @@ const SccPage = () => {
                     </Link>
                 ))}
             </div>
+
+            
         </div>
     );
 };
