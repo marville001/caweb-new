@@ -3,14 +3,13 @@ import { Outlet } from "react-router-dom";
 
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getLoggedInAdmin } from "../redux/actions/admin/adminLogin";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AdminDashboard = () => {
-    const { admin } = useSelector((state) => state.adminState);
 
     const [sideBarOpen, setSideBarOpen] = useState(true);
     const dispatch = useDispatch();
@@ -18,9 +17,6 @@ const AdminDashboard = () => {
         dispatch(getLoggedInAdmin());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    // if (!admin?._id) {
-    //     return <div></div>;
-    // }
 
     return (
         <div className="min-w-full min-h-screen  h-screen overflow-hidden bg-blue-100">

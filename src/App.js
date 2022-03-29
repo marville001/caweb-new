@@ -293,7 +293,7 @@ const App = () => {
                         }
                     />
                     <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
-                    <Route path="sccs/:scc"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
+                    <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
                     <Route path="leaders"  element={ <AdminPrivateRoute> <LeadershipWelcomePage /> </AdminPrivateRoute> }/>
                     <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
                     <Route

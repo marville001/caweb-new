@@ -30,9 +30,9 @@ const sccsReducer = (state = initialState, action) => {
             };
         case ADD_SCC.FAIL:
             return { ...state, isCreatingScc: false };
-        
+
         case GET_SCC.REQUEST:
-            return { ...state, isLoadingScc: true, error: "" };
+            return { ...state, isLoadingScc: true, scc: {}, error: "" };
         case GET_SCC.SUCCESS:
             return {
                 ...state,
@@ -41,7 +41,12 @@ const sccsReducer = (state = initialState, action) => {
                 error: "",
             };
         case GET_SCC.FAIL:
-            return { ...state, isLoadingScc: false, error: action.error };
+            return {
+                ...state,
+                isLoadingScc: false,
+                scc: {},
+                error: action.error,
+            };
 
         default:
             return { ...state };
