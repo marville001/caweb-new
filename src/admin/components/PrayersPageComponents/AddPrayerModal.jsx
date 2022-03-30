@@ -75,7 +75,7 @@ const AddPrayerModal = ({ closeModal, isOpen }) => {
           type="text"
           placeholder="Type prayer here..."
           rows="6"
-          className="ring-1 focus:ring-slate-600 w-full p-2 rounded-sm mt-3 outline-none ring-offset-2"
+          className="focus:ring-slate-600 w-full p-2 rounded-md mt-3 outline-none ring-offset-2"
         ></textarea>
       </div>
       <div className="flex mt-4 justify-between">
