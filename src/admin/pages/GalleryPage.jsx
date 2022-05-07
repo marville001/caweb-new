@@ -64,7 +64,7 @@ const GalleryPage = () => {
       {/* Gallery grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 my-10">
         {images?.map((image, i) => (
-          <GalleryImage key={i} image={image} />
+          <GalleryImage page={page} pageSize={pageSize} key={i} image={image} />
         ))}
       </div>
       {/* Gallery grid end */}
