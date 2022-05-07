@@ -136,7 +136,9 @@ const MyAccount = () => {
                             <img
                                 className="rounded-md w-64 sm:w-48 h-48 object-cover"
                                 src={`${
-                                    user?.avatar
+                                    user?.avatar.startsWith("https")
+                                        ? "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
+                                        : user?.avatar
                                         ? process.env.REACT_APP_UPLOADS_URL +
                                           user?.avatar
                                         : "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
