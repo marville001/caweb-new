@@ -136,11 +136,14 @@ const MyAccount = () => {
                             <img
                                 className="rounded-md w-64 sm:w-48 h-48 object-cover"
                                 src={`${
-                                    process.env.REACT_APP_UPLOADS_URL +
                                     user?.avatar
+                                        ? process.env.REACT_APP_UPLOADS_URL +
+                                          user?.avatar
+                                        : "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
                                 }`}
                                 alt="Avatar"
                             />
+                            {console.log(user)}
                         </div>
                         <div className="flex flex-col items-start my-2">
                             <input

@@ -47,7 +47,7 @@ const AdminDashboard = React.lazy(() => import("./admin/AdminDashboard"));
 
 const MainLayout = ({ children }) => {
     return (
-        <div className="min-h-[75vh]relative">
+        <div className="min-h-[75vh] relative">
             <Header />
             {children}
             <Footer />
@@ -102,7 +102,7 @@ const App = () => {
                 />
                 <Route
                     exact
-                    path="/reset-password"
+                    path="/reset-password/:token"
                     element={
                         <MainLayout>
                             <ResetPassword />
