@@ -86,7 +86,7 @@ const UsersPage = () => {
             </div>
           </div>
         ) : (
-          <UsersTable />
+          <UsersTable page={page} pageSize={pageSize} />
         )}
         <Pagination
           total={total}

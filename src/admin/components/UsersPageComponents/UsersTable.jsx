@@ -1,4 +1,12 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { FaTrash } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { getUsers } from "../../../redux/actions/admin/users";
+import { _delete } from "../../../redux/actions/http";
+import parseError from "../../../utils/parseError";
+
+import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 
 const sccs = {
     stangelus: "St Angelus",
@@ -6,8 +14,50 @@ const sccs = {
     stjoseph: "St Joseph",
 };
 
-const UsersTable = () => {
+const UsersTable = ({ page, pageSize }) => {
     const { users } = useSelector((state) => state.usersState);
+
+    const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState({});
+    const [loading, setLoading] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const openDeleteUserModal = (user) => {
+        setSelectedUser(user);
+        setConfirmDeleteModalOpen(true);
+    };
+
+    const handleDeletePatient = async () => {
+        setLoading(true);
+        try {
+            const data = await _delete(`users/${selectedUser._id}`, "admin");
+
+            toast.success(data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setLoading(false);
+            setSelectedUser({});
+            dispatch(getUsers({ page, pageSize }));
+        } catch (error) {
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="shadow overflow-hidden border-b border-gray-200">
@@ -102,14 +152,28 @@ const UsersTable = () => {
                                 </div>
                             </td>
                             <td className="px-5 py-4 whitespace-nowrap">
-                                <div className="text-sm text-gray-500">
-                                    Edit
+                                <div
+                                    onClick={() => openDeleteUserModal(person)}
+                                    className="flex items-center space-x-1 text-red-700 text-xs p-2 rounded-full cursor-pointer hover:opacity-60"
+                                >
+                                    <FaTrash />
                                 </div>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
+            <ConfirmDeleteModal
+                isOpen={confirmDeleteModalOpen}
+                closeModal={() => {
+                    setConfirmDeleteModalOpen(false);
+                    setSelectedUser({});
+                }}
+                loading={loading}
+                message="Are you sure you want to delete the User?"
+                actionMethod={handleDeletePatient}
+            />
         </div>
     );
 };
