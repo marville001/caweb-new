@@ -1,15 +1,62 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaEdit, FaSpinner } from "react-icons/fa";
 import { HiPlusCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { getSccAction } from "../../redux/actions/admin/sccs";
+import { put } from "../../redux/actions/http";
+
+import parseError from "../../utils/parseError";
 
 const SccPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
 
+    const [gallery, setGallery] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     const { key } = useParams();
     const dispatch = useDispatch();
+
+    const handleUploadSccgallery = async (e) => {
+        const { files } = e.target;
+
+        if (files.length === 0) return;
+
+        try {
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("image", files[0]);
+
+            const res = await put(`sccs/gallery/${scc._id}`, formData, "admin");
+
+            setGallery([res.image, ...gallery]);
+
+            setLoading(false);
+            toast.success("Image added successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        } catch (error) {
+            setLoading(false);
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }
+    };
+
+    useEffect(() => {
+        setGallery(scc?.gallery);
+    }, [scc?.gallery]);
 
     useEffect(() => {
         dispatch(getSccAction(key));
@@ -23,14 +70,6 @@ const SccPage = () => {
                 </div>
             </div>
         );
-    }
-
-    const handleUploadSccgallery = (e) => {
-        const { files } = e.target;
-
-        if (files.length === 0) return
-
-        console.log(files.length);
     }
 
     return (
@@ -84,7 +123,7 @@ const SccPage = () => {
                                 </h2>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 my-4 gap-4">
-                                    {scc?.gallery?.map((image) => (
+                                    {gallery?.map((image) => (
                                         <div key={image}>
                                             <img
                                                 className="w-full h-40"
@@ -99,9 +138,16 @@ const SccPage = () => {
                                     ))}
                                     <label
                                         htmlFor="image_select"
-                                        className="border flex h-40 items-center justify-center cursor-pointer border-dashed  border-dodge-blue py-1 px-5 text-sm rounded-md text-dodge-blue"
+                                        className={`border flex h-40 items-center justify-center cursor-pointer border-dashed  border-dodge-blue py-1 px-5 text-sm rounded-md text-dodge-blue ${
+                                            loading &&
+                                            "cursor-not-allowed bg-gray-100"
+                                        }`}
                                     >
-                                        Add Image To Gallery
+                                        {loading ? (
+                                            <FaSpinner className="text-xl animate-spin" />
+                                        ) : (
+                                            "Add Image To Gallery"
+                                        )}
                                     </label>
                                 </div>
 
@@ -109,6 +155,7 @@ const SccPage = () => {
                                     type="file"
                                     name=""
                                     id="image_select"
+                                    disabled={loading}
                                     className="hidden"
                                     onChange={handleUploadSccgallery}
                                 />
