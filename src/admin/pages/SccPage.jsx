@@ -25,6 +25,14 @@ const SccPage = () => {
         );
     }
 
+    const handleUploadSccgallery = (e) => {
+        const { files } = e.target;
+
+        if (files.length === 0) return
+        
+        console.log(files.length);
+    }
+
     return (
         <div className="px-2 sm:px-0">
             <Link
@@ -91,7 +99,7 @@ const SccPage = () => {
                                     ))}
                                     <label
                                         htmlFor="image_select"
-                                        className="border flex items-center justify-center cursor-pointer border-dashed  border-dodge-blue py-1 px-5 text-sm rounded-md text-dodge-blue"
+                                        className="border flex h-40 items-center justify-center cursor-pointer border-dashed  border-dodge-blue py-1 px-5 text-sm rounded-md text-dodge-blue"
                                     >
                                         Add Image To Gallery
                                     </label>
@@ -102,6 +110,7 @@ const SccPage = () => {
                                     name=""
                                     id="image_select"
                                     className="hidden"
+                                    onChange={handleUploadSccgallery}
                                 />
                             </div>
 
