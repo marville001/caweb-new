@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaChevronLeft,  FaSpinner } from "react-icons/fa";
+import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -17,13 +17,9 @@ const SccEditPage = () => {
 
     const { key } = useParams();
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const {
-        register,
-        handleSubmit,
-        setValue,
-    } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
 
     const handleImageChange = (e) => {
         const { files } = e.target;
@@ -45,6 +41,7 @@ const SccEditPage = () => {
             }
             formData.append("name", data.name);
             formData.append("description", data.description);
+            formData.append("category", data.category);
 
             const res = await put(`sccs/${scc._id}`, formData, "admin");
 
@@ -57,8 +54,7 @@ const SccEditPage = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
-            navigate("/admin/sccs/" + res?.scc?.key)
-            
+            navigate("/admin/sccs/" + res?.scc?.key);
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
@@ -75,6 +71,7 @@ const SccEditPage = () => {
     useEffect(() => {
         if (scc._id) {
             setValue("name", scc?.name);
+            setValue("category", scc?.category);
             setValue("description", scc?.description);
             setImage(process.env.REACT_APP_UPLOADS_URL + scc?.image);
         }
@@ -161,6 +158,22 @@ const SccEditPage = () => {
                                         },
                                     })}
                                 />
+
+                                    <h3 className="opacity-70">Category</h3>
+                                    <select
+                                        type="text"
+                                        className="focus:ring-slate-600 w-full sp-2 rounded-md mt-2 mb-3 outline-none"
+                                        {...register("category", {
+                                            required: {
+                                                value: true,
+                                                message: "Category is required",
+                                            },
+                                        })}
+                                    >
+                                        <option value=""></option>
+                                        <option value="major">Major Scc</option>
+                                        <option value="minor">Minor Scc</option>
+                                    </select>
 
                                 <h3 className="opacity-70">description</h3>
                                 <textarea

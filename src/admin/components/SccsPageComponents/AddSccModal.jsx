@@ -12,6 +12,8 @@ const AddSccModal = ({ closeModal, isOpen }) => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
+    const [category, setCategory] = useState("");
+
     const dispatch = useDispatch();
 
     const handleCloseModal = () => {
@@ -19,6 +21,7 @@ const AddSccModal = ({ closeModal, isOpen }) => {
         setName("");
         setDescription("");
         setImage("");
+        setCategory("");
     };
 
     const imageRef = useRef();
@@ -32,6 +35,7 @@ const AddSccModal = ({ closeModal, isOpen }) => {
         formData.append("image", image[0]);
         formData.append("name", name);
         formData.append("description", description);
+        formData.append("category", category);
 
         const response = await dispatch(addScc(formData));
 
@@ -45,8 +49,8 @@ const AddSccModal = ({ closeModal, isOpen }) => {
                 draggable: true,
                 progress: undefined,
             });
-          handleCloseModal();
-          await dispatch(getSccsAction());
+            handleCloseModal();
+            await dispatch(getSccsAction());
         } else {
             toast.error(response.message, {
                 position: "top-right",
@@ -76,6 +80,22 @@ const AddSccModal = ({ closeModal, isOpen }) => {
                     placeholder="Enter scc name"
                     className="ring-1 focus:ring-slate-600 w-full p-2 rounded-sm mt-3 outline-none ring-offset-2"
                 />
+            </div>
+
+            <div className="form-group my-3">
+                <label htmlFor="title" className="text-lg block">
+                    Category
+                </label>
+                <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                    type="text"
+                    className="focus:ring-slate-600 w-full p-2 mt-3 outline-none rounded-md"
+                >
+                    <option value=""></option>
+                    <option value="major">Major Scc</option>
+                    <option value="minor">Minor Scc</option>
+                </select>
             </div>
 
             <div className="form-group mt-4">
