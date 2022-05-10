@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
-import { HiPencilAlt, HiTrash } from "react-icons/hi";
+import {  HiTrash } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { getAdmins } from "../../redux/actions/admin/users";

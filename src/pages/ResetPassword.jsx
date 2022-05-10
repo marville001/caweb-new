@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { put } from "../redux/actions/http";
 import { useForm } from "react-hook-form";
 import parseError from "../utils/parseError";
@@ -13,7 +13,6 @@ const ResetPassword = () => {
     });
 
     const { token } = useParams();
-    const navigate = useNavigate();
 
     const {
         register,
