@@ -97,7 +97,7 @@ const SccEditPage = () => {
     return (
         <div className="px-2 sm:px-0">
             <Link
-                to="/admin/sccs"
+                to={`/admin/sccs/${key}`}
                 className="my-5 flex items-center text-sm space-x-3 cursor-pointer"
             >
                 <FaChevronLeft /> <span>Go Back</span>
