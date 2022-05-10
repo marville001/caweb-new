@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FaChevronLeft, FaEdit, FaSpinner } from "react-icons/fa";
-import { HiPlusCircle } from "react-icons/hi";
+import { FaChevronLeft,  FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Register from "../../pages/Register";
 import { getSccAction } from "../../redux/actions/admin/sccs";
 import { put } from "../../redux/actions/http";
 
