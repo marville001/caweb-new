@@ -22,7 +22,6 @@ const UsersPage = () => {
     };
 
     const openModal = () => {
-        console.log(setPage);
         setIsOpen(true);
     };
 

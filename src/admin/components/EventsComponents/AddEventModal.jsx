@@ -17,7 +17,6 @@ const AddEventModal = ({ closeModal, isOpen }) => {
     };
 
     const handleSubmit = async () => {
-        console.log({ title, date, image, description });
     };
 
     return (

@@ -21,8 +21,6 @@ const adminLogin = (user) => async (dispatch) => {
 
 export const getLoggedInAdmin = () => async (dispatch) => {
   const token = localStorage.adminToken;
-
-  console.log({ token });
   if (token) {
     try {
       const data = await get("auth/admin/me", "admin");

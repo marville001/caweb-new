@@ -34,7 +34,6 @@ const MyAccount = () => {
 
     const handleUpdateImage = async () => {
         const formData = new FormData();
-        console.log({ user });
 
         formData.append("avatar", profileImage[0]);
 
@@ -145,7 +144,6 @@ const MyAccount = () => {
                                 }`}
                                 alt="Avatar"
                             />
-                            {console.log(user)}
                         </div>
                         <div className="flex flex-col items-start my-2">
                             <input

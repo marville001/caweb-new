@@ -66,7 +66,6 @@ const updateImage = (details, id) => async (dispatch) => {
 
     return {success: true}
   } catch (error) {
-    console.log({error});
     dispatch({
       type: UPDATE_IMAGE.FAIL,
       error:

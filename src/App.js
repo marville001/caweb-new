@@ -22,6 +22,7 @@ import Footer from "./components/Footer";
 import SccsPage from "./admin/pages/SccsPage";
 import SccPage from "./admin/pages/SccPage";
 import LeadershipWelcomePage from "./admin/pages/LeadershipWelcomePage";
+import SccEditPage from "./admin/pages/SccEditPage";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -64,51 +65,11 @@ const App = () => {
     return (
         <React.Suspense fallback={<Loading />}>
             <Routes>
-                <Route
-                    exact
-                    path="/"
-                    element={
-                        <MainLayout>
-                            <Home />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/login"
-                    element={
-                        <MainLayout>
-                            <Login />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/register"
-                    element={
-                        <MainLayout>
-                            <Register />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/forgot-password"
-                    element={
-                        <MainLayout>
-                            <ForgotPassword />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/reset-password/:token"
-                    element={
-                        <MainLayout>
-                            <ResetPassword />
-                        </MainLayout>
-                    }
-                />
+                <Route exact path="/" element={<MainLayout><Home /></MainLayout>} />
+                <Route exact path="/login" element={<MainLayout><Login /></MainLayout>} />
+                <Route exact path="/register" element={ <MainLayout> <Register /> </MainLayout> } />
+                <Route exact path="/forgot-password" element={ <MainLayout> <ForgotPassword /> </MainLayout> } />
+                <Route exact path="/reset-password/:token" element={ <MainLayout> <ResetPassword /> </MainLayout> } />
                 <Route
                     exact
                     path="/events"
@@ -294,6 +255,7 @@ const App = () => {
                     />
                     <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
                     <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
+                    <Route path="sccs/:key/edit"  element={ <AdminPrivateRoute> <SccEditPage /> </AdminPrivateRoute> }/>
                     <Route path="leaders"  element={ <AdminPrivateRoute> <LeadershipWelcomePage /> </AdminPrivateRoute> }/>
                     <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
                     <Route

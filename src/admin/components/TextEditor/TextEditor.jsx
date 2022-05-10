@@ -9,7 +9,6 @@ const TextEditor = ({ editorRef }) => {
             value={(editorRef.current && editorRef.current.value()) || ""}
             ref={editorRef}
             onSave={() => {
-                console.log(editorRef.current.value());
             }}
             onImageUploadStart={() => {}}
             uploadImage={async (file) => {

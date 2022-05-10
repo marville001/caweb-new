@@ -27,7 +27,6 @@ const Register = () => {
   };
 
   const handleRegister = () => {
-    // console.log({inputs});
     dispatch(userSignUp(inputs));
   };
 
