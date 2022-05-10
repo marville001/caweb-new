@@ -16,6 +16,7 @@ export const USER_FETCH = {
     FAIL:"USER_FETCH_FAIL",
 }
 
+
 export const UPDATE_IMAGE = {
     REQUEST:"UPDATE_IMAGE_REQUEST",
     SUCCESS:"UPDATE_IMAGE_SUCCESS",

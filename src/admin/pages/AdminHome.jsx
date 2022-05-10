@@ -3,106 +3,179 @@ import { useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { HiPencilAlt, HiTrash } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { getAdmins } from "../../redux/actions/admin/users";
+import { _delete } from "../../redux/actions/http";
+import parseError from "../../utils/parseError";
 import AddAdminModal from "../components/AdminHomeComponents/AddAdminModal";
 import CountCards from "../components/AdminHomeComponents/CountCards";
 import Piechart from "../components/charts/Pie";
+import ConfirmDeleteModal from "../components/common/ConfirmDeleteModal";
 
 const AdminHome = () => {
-  const { isLoadingAdmins, admins } = useSelector((state) => state.usersState);
-  let [addAdminModalOpen, setAddAdminModalOpen] = useState(false);
+    const { isLoadingAdmins, admins } = useSelector(
+        (state) => state.usersState
+    );
 
-  const dispatch = useDispatch();
+    let [addAdminModalOpen, setAddAdminModalOpen] = useState(false);
+    const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState({});
+    const [loading, setLoading] = useState(false);
 
-  const closeAddAdminModal = () => {
-    setAddAdminModalOpen(false);
-  };
+    const dispatch = useDispatch();
 
-  const openAddAdminModal = () => {
-    setAddAdminModalOpen(true);
-  };
+    const closeAddAdminModal = () => {
+        setAddAdminModalOpen(false);
+    };
 
-  useEffect(() => {
-    dispatch(getAdmins());
-  }, [dispatch]);
+    const openAddAdminModal = () => {
+        setAddAdminModalOpen(true);
+    };
 
-  return (
-    <div className="">
-      <CountCards />
-      <div className="grid grid-cols-1 lg:grid-cols-2 my-12 gap-5">
-        <div className="w-full h-[320px] rounded-md bg-white shadow-md">
-          <h3 className="text-2xl text-center p-3">Scc Members Chart</h3>
+    const openDeleteUserModal = (user) => {
+        setSelectedUser(user);
+        setConfirmDeleteModalOpen(true);
+    };
 
-          <div className="flex items-center justify-center space-x-4">
-            <h2 className="flex items-center font-light text-sm">
-              <div className="w-4 h-4 bg-[#0088FE] mr-1"></div>ST ANGELUS
-            </h2>
-            <h2 className="flex items-center font-light text-sm">
-              <div className="w-4 h-4 bg-[#00C49F] mr-1"></div>ST JOSEPH
-            </h2>
-            <h2 className="flex items-center font-light text-sm">
-              <div className="w-4 h-4 bg-[#FF8042] mr-1"></div>ST PETERS
-            </h2>
-          </div>
-          <div className="w-50 h-60">
-            <Piechart
-              data={[
-                { name: "ST AGELUS", value: 400 },
-                { name: "ST JOSEPH", value: 300 },
-                { name: "ST PETERS", value: 200 },
-              ]}
-              COLORS={["#0088FE", "#00C49F", "#FF8042"]}
+    const handleClose = () => {
+        setLoading(false);
+        setSelectedUser({});
+        setConfirmDeleteModalOpen(false);
+    };
+
+    const handleDeleteUser = async () => {
+        setLoading(true);
+        try {
+            const data = await _delete(
+                `users/admin/${selectedUser._id}`,
+                "admin"
+            );
+
+            toast.success(data.message, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+          handleClose();
+          dispatch(getAdmins());
+        } catch (error) {
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            handleClose();
+        }
+    };
+
+    useEffect(() => {
+        dispatch(getAdmins());
+    }, [dispatch]);
+
+    return (
+        <div className="">
+            <CountCards />
+            <div className="grid grid-cols-1 lg:grid-cols-2 my-12 gap-5">
+                <div className="w-full h-[320px] rounded-md bg-white shadow-md">
+                    <h3 className="text-2xl text-center p-3">
+                        Scc Members Chart
+                    </h3>
+
+                    <div className="flex items-center justify-center space-x-4">
+                        <h2 className="flex items-center font-light text-sm">
+                            <div className="w-4 h-4 bg-[#0088FE] mr-1"></div>ST
+                            ANGELUS
+                        </h2>
+                        <h2 className="flex items-center font-light text-sm">
+                            <div className="w-4 h-4 bg-[#00C49F] mr-1"></div>ST
+                            JOSEPH
+                        </h2>
+                        <h2 className="flex items-center font-light text-sm">
+                            <div className="w-4 h-4 bg-[#FF8042] mr-1"></div>ST
+                            PETERS
+                        </h2>
+                    </div>
+                    <div className="w-50 h-60">
+                        <Piechart
+                            data={[
+                                { name: "ST AGELUS", value: 400 },
+                                { name: "ST JOSEPH", value: 300 },
+                                { name: "ST PETERS", value: 200 },
+                            ]}
+                            COLORS={["#0088FE", "#00C49F", "#FF8042"]}
+                        />
+                    </div>
+                </div>
+                <div className="bg-white shadow-md rounded-md overflow-hidden">
+                    <div className="pr-6 flex items-center justify-between">
+                        <h3 className="text-2xl p-3">Admin Users</h3>
+                        <button
+                            onClick={openAddAdminModal}
+                            className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
+                        >
+                            Add
+                        </button>
+                    </div>
+                    <div className="h-64 px-4 py-4 overflow-y-auto w-full divide-y-[1px] divide-gray-100">
+                        {isLoadingAdmins && (
+                            <div className="flex py-3 justify-center">
+                                <FaSpinner className="mr-2 w-8 h-8 animate-spin" />
+                            </div>
+                        )}
+                        {admins?.map((admin) => (
+                            <div
+                                key={admin._id}
+                                className="flex items-center py-4"
+                            >
+                                <img
+                                    className="w-12 h-12 rounded-full"
+                                    src={`https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png`}
+                                    alt=""
+                                />
+                                <div className="flex flex-col ml-4">
+                                    <h2 className="font-bold">
+                                        {admin.firstname + " " + admin.lastname}
+                                    </h2>
+                                    <p className="text-sm">{admin.email}</p>
+                                </div>
+                                <div
+                                    
+                                    className="ml-auto mr-6 flex space-x-2"
+                                >
+                                    {/* <HiPencilAlt className="font-bold text-dodge-blue text-2xl cursor-pointer" /> */}
+                                    <HiTrash onClick={() => openDeleteUserModal(admin)} className="font-bold text-red-400 text-2xl cursor-pointer" />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* Add admin modal */}
+            <AddAdminModal
+                isOpen={addAdminModalOpen}
+                closeModal={closeAddAdminModal}
             />
-          </div>
-        </div>
-        <div className="bg-white shadow-md rounded-md overflow-hidden">
-          <div className="pr-6 flex items-center justify-between">
-            <h3 className="text-2xl p-3">Admin Users</h3>
-            <button
-              onClick={openAddAdminModal}
-              className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
-            >
-              Add
-            </button>
-          </div>
-          <div className="h-64 px-4 py-4 overflow-y-auto w-full divide-y-[1px] divide-gray-100">
-            {isLoadingAdmins && (
-              <div className="flex py-3 justify-center">
-                <FaSpinner className="mr-2 w-8 h-8 animate-spin" />
-              </div>
-            )}
-            {admins?.map((admin) => (
-              <div key={admin._id} className="flex items-center py-4">
-                <img
-                  className="w-12 h-12 rounded-full"
-                  src={`https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png`}
-                  alt=""
-                />
-                <div className="flex flex-col ml-4">
-                  <h2 className="font-bold">
-                    {admin.firstname + " " + admin.lastname}
-                  </h2>
-                  <p className="text-sm">{admin.email}</p>
-                </div>
-                <div className="ml-auto mr-6 flex space-x-2">
-                  <HiPencilAlt className="font-bold text-dodge-blue text-2xl cursor-pointer" />
-                  <HiTrash className="font-bold text-red-400 text-2xl cursor-pointer" />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
-      {/* Add admin modal */}
-      <AddAdminModal
-        isOpen={addAdminModalOpen}
-        closeModal={closeAddAdminModal}
-      />
-
-      {/* Add admin modal end */}
-    </div>
-  );
+            {/* Remove Admin*/}
+            <ConfirmDeleteModal
+                isOpen={confirmDeleteModalOpen}
+                closeModal={() => {
+                    setConfirmDeleteModalOpen(false);
+                    setSelectedUser({});
+                }}
+                loading={loading}
+                message="Are you sure you want to remove the admin?"
+                actionMethod={handleDeleteUser}
+            />
+        </div>
+    );
 };
 
 export default AdminHome;

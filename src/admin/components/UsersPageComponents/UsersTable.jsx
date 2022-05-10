@@ -28,7 +28,7 @@ const UsersTable = ({ page, pageSize }) => {
         setConfirmDeleteModalOpen(true);
     };
 
-    const handleDeletePatient = async () => {
+    const handleDeleteUser = async () => {
         setLoading(true);
         try {
             const data = await _delete(`users/${selectedUser._id}`, "admin");
@@ -40,7 +40,6 @@ const UsersTable = ({ page, pageSize }) => {
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
-                progress: undefined,
             });
             setLoading(false);
             setSelectedUser({});
@@ -53,9 +52,10 @@ const UsersTable = ({ page, pageSize }) => {
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
-                progress: undefined,
             });
             setLoading(false);
+            setSelectedUser({});
+            setConfirmDeleteModalOpen(false)
         }
     };
 
@@ -172,7 +172,7 @@ const UsersTable = ({ page, pageSize }) => {
                 }}
                 loading={loading}
                 message="Are you sure you want to delete the User?"
-                actionMethod={handleDeletePatient}
+                actionMethod={handleDeleteUser}
             />
         </div>
     );

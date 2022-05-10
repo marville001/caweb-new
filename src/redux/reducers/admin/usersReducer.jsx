@@ -3,6 +3,7 @@ import {
   CREATE_ADMIN,
   GET_ADMINS,
   GET_USERS,
+  USERS_SEARCH,
 } from "../../types.admin";
 
 const initialState = {
@@ -23,9 +24,20 @@ const usersReducer = (state = initialState, action) => {
         users: action.users,
         total: action.total,
         isLoadingUsers: false,
-        error: "",
       };
     case GET_USERS.FAIL:
+      return { ...state, isLoadingUsers: false, error: action.error };
+    
+    case USERS_SEARCH.REQUEST:
+      return { ...state, users:[], isLoadingUsers: true, error: "" };
+    case USERS_SEARCH.SUCCESS:
+      return {
+        ...state,
+        users: action.users,
+        total: action.total,
+        isLoadingUsers: false,
+      };
+    case USERS_SEARCH.FAIL:
       return { ...state, isLoadingUsers: false, error: action.error };
 
     case ADD_USER.REQUEST:
