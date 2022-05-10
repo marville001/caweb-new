@@ -29,7 +29,7 @@ const SccPage = () => {
         const { files } = e.target;
 
         if (files.length === 0) return
-        
+
         console.log(files.length);
     }
 
@@ -145,7 +145,6 @@ const SccPage = () => {
                         </Link>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
-                    <input type="text" />
                 </div>
             </div>
         </div>
