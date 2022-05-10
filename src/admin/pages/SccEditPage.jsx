@@ -13,7 +13,7 @@ const SccEditPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
 
     const [loading, setLoading] = useState(false);
-    const [image, setImage] = useState();
+    const [image, setImage] = useState("");
 
     const { key } = useParams();
     const dispatch = useDispatch();

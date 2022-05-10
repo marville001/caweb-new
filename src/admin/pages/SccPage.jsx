@@ -185,7 +185,24 @@ const SccPage = () => {
 
                         <Link
                             className="text-dodge-blue flex items-center space-x-2"
-                            to={`/admin/sccs/${key}/events/add`}
+                            to={`/admin/sccs/${key}`}
+                        >
+                            <HiPlusCircle />
+                            <span>Add Event</span>
+                        </Link>
+                    </div>
+                    <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
+                </div>
+
+                <div className="bg-white p-6 mt-3">
+                    <div className="flex items-center justify-between">
+                        <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
+                            Scc Leadership
+                        </h2>
+
+                        <Link
+                            className="text-dodge-blue flex items-center space-x-2"
+                            to={`/admin/sccs/${key}`}
                         >
                             <HiPlusCircle />
                             <span>Add Event</span>
