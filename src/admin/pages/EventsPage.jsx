@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getSccsAction } from "../../redux/actions/admin/sccs";
+import { fetchEventsAction } from "../../redux/actions/events";
 import AddEventModal from "../components/EventsComponents/AddEventModal";
 import EventCard from "../components/EventsComponents/EventCard";
 
 const EventsPage = () => {
+    const { events } = useSelector((state) => state.eventsState);
+
     let [addEventModalOpen, setAddEventModalOpen] = useState(false);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSccsAction());
+        dispatch(fetchEventsAction("admin"));
+    }, [dispatch]);
 
     return (
         <div className="p-4">
@@ -19,7 +31,7 @@ const EventsPage = () => {
 
             {/* Events Listing */}
             <div className="my-8 grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((event, idx) => (
+                {events?.map((event, idx) => (
                     <EventCard key={idx} event={event} />
                 ))}
             </div>

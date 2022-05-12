@@ -2,8 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaSpinner } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { fetchEventsAction } from "../../../redux/actions/events";
 import { post } from "../../../redux/actions/http";
 import parseError from "../../../utils/parseError";
 import Modal from "../common/Modal";
@@ -22,6 +23,7 @@ const AddEventModal = ({ closeModal, isOpen }) => {
         reset,
         formState: { errors },
     } = useForm();
+    const dispatch = useDispatch();
 
     const handleCloseModal = () => {
         closeModal();
@@ -59,8 +61,10 @@ const AddEventModal = ({ closeModal, isOpen }) => {
             formData.append("description", data.description);
 
             await post(`events/`, formData, "admin");
+            dispatch(fetchEventsAction("admin"));
 
             setLoading(false);
+            handleCloseModal()
             toast.success("Event added successfully", {
                 position: "top-right",
                 autoClose: 5000,
@@ -194,7 +198,7 @@ const AddEventModal = ({ closeModal, isOpen }) => {
                     >
                         <option value=""></option>
                         {sccs.map((scc) => (
-                            <option value={scc.name}>{scc.name}</option>
+                            <option value={scc.name} key={scc._id}>{scc.name}</option>
                         ))}
                     </select>
                     {errors.group && (

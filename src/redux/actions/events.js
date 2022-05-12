@@ -6,9 +6,8 @@ export const fetchEventsAction = (type="user") => async (dispatch) => {
   dispatch({ type: FETCH_EVENTS.REQUEST });
   try {
     const data = await get("events", type);
-    
      dispatch({
-      type: FETCH_EVENTS.FAIL,
+      type: FETCH_EVENTS.SUCCESS,
       events: data.events,
     });
   } catch (error) {
