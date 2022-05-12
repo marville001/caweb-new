@@ -9,7 +9,7 @@ import {
 import { FaPowerOff, FaUserFriends, FaUserTie } from "react-icons/fa";
 import {  NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { LOGOUT_ADMIN } from "../../../redux/types.admin";
+import { LOGOUT_ADMIN } from "../../../redux/types";
 
 const SideBar = ({ open }) => {
   const dispatch = useDispatch();

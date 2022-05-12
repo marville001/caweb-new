@@ -1,5 +1,4 @@
-import { GET_SCC, GET_SCCS } from "../types";
-import { ADD_SCC } from "../types.admin";
+import { GET_SCC, GET_SCCS, ADD_SCC } from "../types";
 
 const initialState = {
     sccs: [],

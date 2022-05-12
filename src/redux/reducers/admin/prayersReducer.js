@@ -1,4 +1,4 @@
-import { CREATE_PRAYER, EDIT_PRAYER, GET_PRAYERS } from "../../types.admin";
+import { CREATE_PRAYER, EDIT_PRAYER, GET_PRAYERS } from "../../types";
 
 const initialState = {
   prayers: [],

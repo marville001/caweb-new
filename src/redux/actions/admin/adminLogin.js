@@ -1,4 +1,4 @@
-import { ADMIN_LOGIN } from "../../types.admin";
+import { ADMIN_LOGIN } from "../../types";
 import { get, post } from "../http";
 
 const adminLogin = (user) => async (dispatch) => {

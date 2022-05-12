@@ -1,4 +1,4 @@
-import { CREATE_PRAYER, EDIT_PRAYER, GET_PRAYERS } from "../../types.admin";
+import { CREATE_PRAYER, EDIT_PRAYER, GET_PRAYERS } from "../../types";
 import { get, post, put } from "../http";
 
 export const addPrayer = (prayer) => async (dispatch) => {

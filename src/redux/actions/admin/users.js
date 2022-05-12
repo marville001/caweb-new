@@ -5,7 +5,7 @@ import {
     GET_ADMINS,
     GET_USERS,
     USERS_SEARCH,
-} from "../../types.admin";
+} from "../../types";
 import { get, post } from "../http";
 
 export const addUser = (user) => async (dispatch) => {

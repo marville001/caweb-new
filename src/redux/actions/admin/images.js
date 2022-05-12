@@ -1,4 +1,4 @@
-import { GET_IMAGES, UPLOAD_IMAGE } from "../../types.admin";
+import { GET_IMAGES, UPLOAD_IMAGE } from "../../types";
 import { get, post } from "../http";
 
 export const uploadImage = (details) => async (dispatch) => {

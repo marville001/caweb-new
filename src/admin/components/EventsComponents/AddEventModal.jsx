@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { FaSpinner } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { put } from "../../../redux/actions/http";
+import { post } from "../../../redux/actions/http";
 import parseError from "../../../utils/parseError";
 import Modal from "../common/Modal";
 const AddEventModal = ({ closeModal, isOpen }) => {
@@ -58,10 +58,10 @@ const AddEventModal = ({ closeModal, isOpen }) => {
             formData.append("group", data.group);
             formData.append("description", data.description);
 
-            await put(`events/`, formData, "admin");
+            await post(`events/`, formData, "admin");
 
             setLoading(false);
-            toast.success("Image added successfully", {
+            toast.success("Event added successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -81,8 +81,6 @@ const AddEventModal = ({ closeModal, isOpen }) => {
             });
         }
     };
-
-    console.log(image);
 
     return (
         <Modal isOpen={isOpen}>

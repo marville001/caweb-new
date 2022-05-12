@@ -1,4 +1,4 @@
-import { ADMIN_LOGIN, LOGOUT_ADMIN,  } from "../../types.admin";
+import { ADMIN_LOGIN, LOGOUT_ADMIN,  } from "../../types";
 
 const initialState = {
   admin: {},

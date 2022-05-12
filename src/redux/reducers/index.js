@@ -5,6 +5,7 @@ import adminReducer from "./admin/adminReducer";
 import imagesReducer from "./admin/imagesReducer";
 import prayersReducer from "./admin/prayersReducer";
 import usersReducer from "./admin/usersReducer";
+import eventsReducer from "./eventsReducer";
 import galleryReducer from "./galleryReducer";
 import sccsReducer from "./sccsReducer";
 import userPrayersReducer from "./userPrayersReducer";
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
   imagesState: imagesReducer,
   userPrayersState: userPrayersReducer,
   galleryState: galleryReducer,
-  sccsState: sccsReducer
+  sccsState: sccsReducer,
+  eventsState: eventsReducer
 });
 
 export default rootReducer;

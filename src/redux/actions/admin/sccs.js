@@ -1,5 +1,5 @@
 import { GET_SCC, GET_SCCS } from "../../types";
-import { ADD_SCC } from "../../types.admin";
+import { ADD_SCC } from "../../types";
 import { get, post } from "../http";
 
 export const addScc = (scc) => async (dispatch) => {

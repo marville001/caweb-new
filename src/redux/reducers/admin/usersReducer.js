@@ -4,7 +4,7 @@ import {
   GET_ADMINS,
   GET_USERS,
   USERS_SEARCH,
-} from "../../types.admin";
+} from "../../types";
 
 const initialState = {
   users: [],
