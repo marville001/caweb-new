@@ -2,8 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaSpinner } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { put } from "../../../redux/actions/http";
+import parseError from "../../../utils/parseError";
 import Modal from "../common/Modal";
 const AddEventModal = ({ closeModal, isOpen }) => {
+    const { sccs } = useSelector((state) => state.sccsState);
+
     const [image, setImage] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [imageError, setImageError] = useState(false);
@@ -23,7 +29,7 @@ const AddEventModal = ({ closeModal, isOpen }) => {
         clearErrors();
         reset();
         setImageUrl();
-        setImageError(false)
+        setImageError(false);
     };
 
     const handleImageChange = (e) => {
@@ -36,13 +42,44 @@ const AddEventModal = ({ closeModal, isOpen }) => {
     };
 
     const handleAddEvent = async (data) => {
-        setImageError(false)
+        setImageError(false);
 
         if (!imageUrl) {
-            setImageError(true)
-            return
+            setImageError(true);
+            return;
         }
 
+        try {
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("image", image);
+            formData.append("title", data.title);
+            formData.append("date", data.date);
+            formData.append("group", data.group);
+            formData.append("description", data.description);
+
+            await put(`events/`, formData, "admin");
+
+            setLoading(false);
+            toast.success("Image added successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        } catch (error) {
+            setLoading(false);
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }
     };
 
     console.log(image);
@@ -105,7 +142,10 @@ const AddEventModal = ({ closeModal, isOpen }) => {
                             alt=""
                             className="h-48 rounded-md w-full object-cover"
                         />
-                        <label htmlFor="image-select" className="border-2 mt-2 inline-block px-4 py-1 cursor-pointer">
+                        <label
+                            htmlFor="image-select"
+                            className="border-2 mt-2 inline-block px-4 py-1 cursor-pointer"
+                        >
                             Change
                         </label>
                     </>
@@ -143,7 +183,7 @@ const AddEventModal = ({ closeModal, isOpen }) => {
                     <label htmlFor="title" className="text-sm block">
                         Group
                     </label>
-                    <input
+                    <select
                         type="text"
                         placeholder="Enter prayer title"
                         className="ring-1 focus:ring-slate-600 w-full p-2 py-1 rounded-sm mt-3 outline-none ring-offset-2"
@@ -153,7 +193,12 @@ const AddEventModal = ({ closeModal, isOpen }) => {
                                 message: "Group is required",
                             },
                         })}
-                    />
+                    >
+                        <option value=""></option>
+                        {sccs.map((scc) => (
+                            <option value={scc.name}>{scc.name}</option>
+                        ))}
+                    </select>
                     {errors.group && (
                         <p className="text-red-600 text-xs mt-1">
                             {errors.group.message}
