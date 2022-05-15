@@ -57,7 +57,8 @@ const AddEventModal = ({ closeModal, isOpen }) => {
             formData.append("image", image);
             formData.append("title", data.title);
             formData.append("date", data.date);
-            formData.append("group", data.group);
+            formData.append("group", data.group.split("$")[0]);
+            formData.append("groupId", data.group.split("$")[1]);
             formData.append("description", data.description);
 
             await post(`events/`, formData, "admin");
@@ -85,6 +86,8 @@ const AddEventModal = ({ closeModal, isOpen }) => {
             });
         }
     };
+
+    console.log(sccs);
 
     return (
         <Modal isOpen={isOpen}>
@@ -198,7 +201,7 @@ const AddEventModal = ({ closeModal, isOpen }) => {
                     >
                         <option value=""></option>
                         {sccs.map((scc) => (
-                            <option value={scc.name} key={scc._id}>{scc.name}</option>
+                            <option value={scc.name + "$" + scc._id} key={scc._id}>{scc.name}</option>
                         ))}
                     </select>
                     {errors.group && (

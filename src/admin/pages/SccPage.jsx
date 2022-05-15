@@ -4,7 +4,8 @@ import { HiPlusCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getSccAction } from "../../redux/actions/admin/sccs";
+import { getSccAction, getSccsAction } from "../../redux/actions/admin/sccs";
+import { fetchEventsAction } from "../../redux/actions/events";
 import { put } from "../../redux/actions/http";
 
 import parseError from "../../utils/parseError";
@@ -62,6 +63,8 @@ const SccPage = () => {
 
     useEffect(() => {
         dispatch(getSccAction(key));
+        dispatch(getSccsAction());
+        dispatch(fetchEventsAction("admin"));
     }, [dispatch, key]);
 
     if (isLoadingScc) {
