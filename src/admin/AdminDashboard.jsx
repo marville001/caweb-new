@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     }, []);
 
     return (
-        <div className="min-w-full min-h-screen  h-screen overflow-hidden bg-blue-100">
+        <div className="min-w-full min-h-screen  h-screen overflow-hidden bg-white">
             <Header sidebarOpen={sideBarOpen} setSidebarOpen={setSideBarOpen} />
             <SideBar open={sideBarOpen} />
             <main

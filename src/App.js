@@ -21,8 +21,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SccsPage from "./admin/pages/SccsPage";
 import SccPage from "./admin/pages/SccPage";
-import LeadershipWelcomePage from "./admin/pages/LeadershipWelcomePage";
 import SccEditPage from "./admin/pages/SccEditPage";
+import ChurchLeadership from "./admin/pages/ChurchLeadership";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -256,7 +256,7 @@ const App = () => {
                     <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
                     <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
                     <Route path="sccs/:key/edit"  element={ <AdminPrivateRoute> <SccEditPage /> </AdminPrivateRoute> }/>
-                    <Route path="leaders"  element={ <AdminPrivateRoute> <LeadershipWelcomePage /> </AdminPrivateRoute> }/>
+                    <Route path="leaders"  element={ <AdminPrivateRoute> <ChurchLeadership /> </AdminPrivateRoute> }/>
                     <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
                     <Route
                         path="events"

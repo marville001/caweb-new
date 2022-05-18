@@ -15,7 +15,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
         <div
             className={`flex justify-between items-center ${
                 sidebarOpen && "ml-[250px]"
-            } transition-all duration-300 ease-linear bg-white _shadow p-4 py-2`}
+            } transition-all duration-300 ease-linear bg-white _shadow p-4 py-4`}
         >
             <div className="flex items-center space-x-4">
                 <HiMenuAlt1
