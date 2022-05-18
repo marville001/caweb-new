@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { fetchEventsAction } from "../../redux/actions/events";
 import { post } from "../../redux/actions/http";
+import { fetchLeadersAction } from "../../redux/actions/leaders";
 import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
 
@@ -22,6 +22,7 @@ const NewChurchLeader = () => {
         formState: { errors },
     } = useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleAddLeader = async (data) => {
         setImageError(false);
@@ -34,8 +35,12 @@ const NewChurchLeader = () => {
         try {
             setLoading(true);
 
-            await post(`events/`, { ...data, image: imageUrl }, "admin");
-            dispatch(fetchEventsAction("admin"));
+            await post(
+                `leaders/`,
+                { ...data, image: imageUrl, churchCommittee: true },
+                "admin"
+            );
+            dispatch(fetchLeadersAction("admin"));
 
             setLoading(false);
             toast.success("Leader added successfully", {
@@ -48,6 +53,7 @@ const NewChurchLeader = () => {
             });
             clearErrors();
             reset();
+            navigate("/admins/leaders")
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
@@ -83,9 +89,7 @@ const NewChurchLeader = () => {
                         className="my-10 flex flex-col gap-6"
                     >
                         <div className="flex flex-col gap-2">
-                            <label htmlFor="title" className="">
-                                Name
-                            </label>
+                            <label className="">Name</label>
                             <input
                                 type="text"
                                 placeholder="Enter event title here"
@@ -105,15 +109,13 @@ const NewChurchLeader = () => {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <label htmlFor="title" className="">
-                                Title
-                            </label>
+                            <label className="">Title</label>
                             <select
                                 className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
-                                {...register("location", {
+                                {...register("title", {
                                     required: {
                                         value: true,
-                                        message: "Location is required",
+                                        message: "Title is required",
                                     },
                                 })}
                             >
@@ -124,9 +126,9 @@ const NewChurchLeader = () => {
                                     Chair Person
                                 </option>
                             </select>
-                            {errors.location && (
+                            {errors.title && (
                                 <p className="text-red-600 text-xs mt-1">
-                                    {errors.location.message}
+                                    {errors.title.message}
                                 </p>
                             )}
                         </div>

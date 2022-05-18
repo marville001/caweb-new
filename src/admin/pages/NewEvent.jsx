@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchEventsAction } from "../../redux/actions/events";
 import { post } from "../../redux/actions/http";
@@ -22,6 +22,7 @@ const NewEvent = () => {
         formState: { errors },
     } = useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleAddEvent = async (data) => {
         setImageError(false);
@@ -48,6 +49,7 @@ const NewEvent = () => {
             });
             clearErrors();
             reset();
+            navigate("/admins/events")
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {

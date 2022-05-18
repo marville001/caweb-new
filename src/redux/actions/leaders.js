@@ -8,7 +8,7 @@ export const fetchLeadersAction = (type="user") => async (dispatch) => {
     const data = await get("leaders", type);
      dispatch({
       type: FETCH_LEADERS.SUCCESS,
-      events: data.leaders,
+      leaders: data.leaders,
     });
   } catch (error) {
     dispatch({

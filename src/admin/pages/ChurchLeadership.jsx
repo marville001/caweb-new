@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchLeadersAction } from "../../redux/actions/leaders";
 
 const ChurchLeadership = () => {
+    const { leaders } = useSelector((state) => state.leadersState);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchLeadersAction("admin"));
+    }, [dispatch]);
     return (
         <div className="px-2 sm:px-0">
             <div className="">
@@ -52,26 +61,25 @@ const ChurchLeadership = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 my-6">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((leader) => (
+                {leaders?.map((leader) => (
                     <div
-                        key={leader}
+                        key={leader._id}
                         className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
                     >
                         <img
-                            src="http://res.cloudinary.com/dyzn9g0lr/image/upload/v1652903604/g6ky28natkabacfwbivu.jpg"
+                            src={leader?.image}
                             alt=""
                             className="rounded-full h-[150px] w-[150px] "
                         />
                         <h4 className="mt-2 text-lg font-bold">
-                            Nicholas Emerikwa
+                            {leader?.name}
                         </h4>
 
                         <h4 className="mb-2 text-lg font-bold opacity-60">
-                            Chairperson
+                            {leader?.title}
                         </h4>
                         <blockquote className="text-sm tracking-wide font-medium text-center italic">
-                            Intelligent and has Lorem, ipsum dolor hhdterwe
-                            ewtee.
+                            {leader?.description}
                         </blockquote>
 
                         <button
