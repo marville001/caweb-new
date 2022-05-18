@@ -87,8 +87,6 @@ const AddEventModal = ({ closeModal, isOpen }) => {
         }
     };
 
-    console.log(sccs);
-
     return (
         <Modal isOpen={isOpen}>
             <h3 className="text-lg font-medium leading-6 text-gray-900">

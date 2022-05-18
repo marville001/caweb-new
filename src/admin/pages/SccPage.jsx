@@ -10,9 +10,11 @@ import { put } from "../../redux/actions/http";
 
 import parseError from "../../utils/parseError";
 import AddEventModal from "../components/EventsComponents/AddEventModal";
+import EventCard from "../components/EventsComponents/EventCard";
 
 const SccPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
+    const { events } = useSelector((state) => state.eventsState);
 
     const [gallery, setGallery] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -214,6 +216,20 @@ const SccPage = () => {
                         </div>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
+
+                    {/* Events Listing */}
+                    <div className="my-8 grid gap-4 grid-cols-1 md:grid-cols-2">
+                        {events
+                            ?.filter((event) => event?.groupId === scc?._id)
+                            ?.map((event, idx) => (
+                                <EventCard key={idx} event={event} />
+                            ))}
+                    </div>
+
+                    {events?.filter((event) => event?.groupId === scc?._id)
+                        ?.length === 0 && (
+                        <div className="flex justify-center text-xl font-bold opacity-40 uppercase">No Event</div>
+                    )}
                 </div>
             </div>
 
