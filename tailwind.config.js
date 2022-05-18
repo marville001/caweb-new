@@ -15,6 +15,7 @@ module.exports = {
             colors: {
                 "dodge-blue": "#236092",
                 "sea-green": "#407b54",
+                steelblue: "#4458b8",
             },
         },
     },

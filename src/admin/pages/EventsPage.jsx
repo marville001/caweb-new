@@ -22,7 +22,7 @@ const EventsPage = () => {
                 <h4 className="text-2xl text-dodge-blue font-bold">Events</h4>
                 <Link
                     to="/admin/events/new"
-                    className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
+                    className="p-2 bg-steelblue py-1 px-4 text-white uppercase font-normal rounded-md"
                 >
                     Create Event
                 </Link>
