@@ -6,7 +6,7 @@ const Modal = ({ isOpen, closeModal = () => {}, children, size="lg" }) => {
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog
                 as="div"
-                className="absolute bg-gray-400 bg-opacity-70 inset-0 z-10 overflow-y-auto"
+                className="absolute bg-gray-400 bg-opacity-70 inset-0 z-[1000] overflow-y-auto"
                 onClose={closeModal}
             >
                 <div className="min-h-screen px-4 text-center">

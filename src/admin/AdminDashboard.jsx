@@ -46,7 +46,7 @@ const AdminDashboard = () => {
                     sideBarOpen && "xl:ml-64"
                 } transition-all duration-200 ease-linear`}
             >
-                <div className="p-6 h-[90vh] overflow-y-auto">
+                <div className="p-6 px-2 sm:px-6 h-[90vh] overflow-y-auto">
                     <Outlet />
                 </div>
             </main>

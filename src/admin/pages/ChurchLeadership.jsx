@@ -61,7 +61,7 @@ const ChurchLeadership = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 my-6">
-                {leaders?.map((leader) => (
+                {[...leaders, ...leaders]?.map((leader) => (
                     <div
                         key={leader._id}
                         className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
