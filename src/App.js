@@ -23,6 +23,7 @@ import SccsPage from "./admin/pages/SccsPage";
 import SccPage from "./admin/pages/SccPage";
 import SccEditPage from "./admin/pages/SccEditPage";
 import ChurchLeadership from "./admin/pages/ChurchLeadership";
+import NewEvent from "./admin/pages/NewEvent";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -70,42 +71,10 @@ const App = () => {
                 <Route exact path="/register" element={ <MainLayout> <Register /> </MainLayout> } />
                 <Route exact path="/forgot-password" element={ <MainLayout> <ForgotPassword /> </MainLayout> } />
                 <Route exact path="/reset-password/:token" element={ <MainLayout> <ResetPassword /> </MainLayout> } />
-                <Route
-                    exact
-                    path="/events"
-                    element={
-                        <MainLayout>
-                            <Events />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/readings"
-                    element={
-                        <MainLayout>
-                            <Home />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/about"
-                    element={
-                        <MainLayout>
-                            <About />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/contact-us"
-                    element={
-                        <MainLayout>
-                            <Contact />
-                        </MainLayout>
-                    }
-                />
+                <Route exact path="/events" element={<MainLayout><Events /></MainLayout>} />
+                <Route exact path="/readings" element={<MainLayout><Home /></MainLayout>} />
+                <Route exact path="/about" element={<MainLayout><About /></MainLayout>} />
+                <Route exact path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
                 <Route path="leadership" element={<Leadership /> } >
                     <Route exact path="" element={<MainLayout><MainLeadership /> </MainLayout>} />
                     <Route exact path="scc" element={<MainLayout><SccLeadershipWelcome /></MainLayout>} />
@@ -212,68 +181,20 @@ const App = () => {
                     }
                 />
                 <Route path="/admin" element={<AdminDashboard />}>
-                    <Route
-                        index
-                        element={
-                            <AdminPrivateRoute>
-                                <AdminHome />
-                            </AdminPrivateRoute>
-                        }
-                    />
+                    <Route index element={<AdminPrivateRoute><AdminHome /></AdminPrivateRoute>} />
                     <Route path="login" element={<AdminLogin />} />
-                    <Route
-                        path="home"
-                        element={
-                            <AdminPrivateRoute>
-                                <AdminHome />
-                            </AdminPrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="my-account"
-                        element={
-                            <AdminPrivateRoute>
-                                <AdminAccount />
-                            </AdminPrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="users"
-                        element={
-                            <AdminPrivateRoute>
-                                <UsersPage />
-                            </AdminPrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="prayers"
-                        element={
-                            <AdminPrivateRoute>
-                                <PrayersPage />
-                            </AdminPrivateRoute>
-                        }
-                    />
+                    <Route path="home" element={<AdminPrivateRoute> <AdminHome /></AdminPrivateRoute>} />
+                    <Route path="my-account" element={<AdminPrivateRoute><AdminAccount /></AdminPrivateRoute>} />
+                    <Route path="users" element={<AdminPrivateRoute><UsersPage /></AdminPrivateRoute>} />
+                    <Route path="prayers" element={<AdminPrivateRoute><PrayersPage /></AdminPrivateRoute>} />
                     <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
                     <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
                     <Route path="sccs/:key/edit"  element={ <AdminPrivateRoute> <SccEditPage /> </AdminPrivateRoute> }/>
                     <Route path="leaders"  element={ <AdminPrivateRoute> <ChurchLeadership /> </AdminPrivateRoute> }/>
                     <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
-                    <Route
-                        path="events"
-                        element={
-                            <AdminPrivateRoute>
-                                <EventsPage />
-                            </AdminPrivateRoute>
-                        }
-                    />
-                    <Route
-                        path="gallery"
-                        element={
-                            <AdminPrivateRoute>
-                                <GalleryPage />
-                            </AdminPrivateRoute>
-                        }
-                    />
+                    <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
+                    <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
+                    <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />
                     <Route
                         path="*"
                         element={
