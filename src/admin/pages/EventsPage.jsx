@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
 import { fetchEventsAction } from "../../redux/actions/events";
-import AddEventModal from "../components/EventsComponents/AddEventModal";
 import EventCard from "../components/EventsComponents/EventCard";
 
 const EventsPage = () => {
     const { events } = useSelector((state) => state.eventsState);
 
-    let [addEventModalOpen, setAddEventModalOpen] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -21,12 +20,12 @@ const EventsPage = () => {
         <div className="p-4">
             <div className="flex justify-between">
                 <h4 className="text-2xl text-dodge-blue font-bold">Events</h4>
-                <button
-                    onClick={() => setAddEventModalOpen(true)}
+                <Link
+                    to="/admin/events/new"
                     className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
                 >
                     Create Event
-                </button>
+                </Link>
             </div>
 
             {/* Events Listing */}
@@ -35,11 +34,6 @@ const EventsPage = () => {
                     <EventCard key={idx} event={event} />
                 ))}
             </div>
-
-            <AddEventModal
-                isOpen={addEventModalOpen}
-                closeModal={() => setAddEventModalOpen(false)}
-            />
         </div>
     );
 };

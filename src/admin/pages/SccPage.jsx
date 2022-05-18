@@ -9,16 +9,12 @@ import { fetchEventsAction } from "../../redux/actions/events";
 import { put } from "../../redux/actions/http";
 
 import parseError from "../../utils/parseError";
-import AddEventModal from "../components/EventsComponents/AddEventModal";
-import EventCard from "../components/EventsComponents/EventCard";
 
 const SccPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
-    const { events } = useSelector((state) => state.eventsState);
 
     const [gallery, setGallery] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [addEventModalOpen, setAddEventModalOpen] = useState(false);
 
     const { key } = useParams();
     const dispatch = useDispatch();
@@ -200,43 +196,7 @@ const SccPage = () => {
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
                 </div>
-
-                <div className="bg-white p-6 mt-3">
-                    <div className="flex items-center justify-between">
-                        <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
-                            Scc Events
-                        </h2>
-
-                        <div
-                            className="text-dodge-blue flex items-center space-x-2 cursor-pointer"
-                            onClick={() => setAddEventModalOpen(true)}
-                        >
-                            <HiPlusCircle />
-                            <span>Add Event</span>
-                        </div>
-                    </div>
-                    <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
-
-                    {/* Events Listing */}
-                    <div className="my-8 grid gap-4 grid-cols-1 md:grid-cols-2">
-                        {events
-                            ?.filter((event) => event?.groupId === scc?._id)
-                            ?.map((event, idx) => (
-                                <EventCard key={idx} event={event} />
-                            ))}
-                    </div>
-
-                    {events?.filter((event) => event?.groupId === scc?._id)
-                        ?.length === 0 && (
-                        <div className="flex justify-center text-xl font-bold opacity-40 uppercase">No Event</div>
-                    )}
-                </div>
             </div>
-
-            <AddEventModal
-                isOpen={addEventModalOpen}
-                closeModal={() => setAddEventModalOpen(false)}
-            />
         </div>
     );
 };

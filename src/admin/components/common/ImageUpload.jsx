@@ -1,37 +1,53 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { FaSpinner } from "react-icons/fa";
+import { toast } from "react-toastify";
 
-const ImageUpload = ({ setUrl }) => {
-    const [imageUrl, setImageUrl] = useState("");
+const ImageUpload = ({ setUrl, imageUrl }) => {
+    const [loading, setLoading] = useState(false);
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const { files } = e.target;
         if (files.length === 0) return;
 
-        setImageUrl(URL.createObjectURL(files[0]));
-        setUrl(URL.createObjectURL(files[0]));
+        try {
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("file", files[0]);
+            formData.append("upload_preset", "dekutca-chaplaincy");
+            formData.append("cloud_name", "dyzn9g0lr");
+
+            const { data } = await axios.post(
+                "https://api.cloudinary.com/v1_1/dyzn9g0lr/image/upload",
+                formData
+            );
+
+            setUrl(data.url);
+            setLoading(false);
+
+            toast.success("Uploaded successfully ", {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+            });
+        } catch (error) {
+            toast.error("Failed to upload file. ", {
+                position: "bottom-right",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+            });
+        }
     };
 
     return (
-        <div>
-            {imageUrl ? (
-                <>
-                    <img
-                        src={imageUrl}
-                        alt=""
-                        className="h-48 rounded-md w-full object-cover"
-                    />
+        <div className="relative min-h-[150px]">
+            {!loading && (
+                <div className={`"mb-5" ${loading && "hidden"}`}>
                     <label
                         htmlFor="image-select"
-                        className="border-2 mt-2 inline-block px-4 py-1 cursor-pointer"
-                    >
-                        Change
-                    </label>
-                </>
-            ) : (
-                <div className="mb-5">
-                    <label
-                        htmlFor="image-select"
-                        className="p-4 mt-3 h-[150px] border-2 flex justify-center items-center border-dashed cursor-pointer"
+                        className="p-4 mt-3 h-[150px] border-2 text-lg font-bold opacity-50 flex justify-center items-center border-dashed cursor-pointer"
                     >
                         <span className="mx-2 overflow-hidden">
                             Click here to select image
@@ -46,6 +62,13 @@ const ImageUpload = ({ setUrl }) => {
                 accept="image/*"
                 type="file"
             />
+
+            {loading && (
+                <div className="absolute inset-0 p-5 bg-slate-900 bg-opacity-10 flex items-center justify-center">
+                    <FaSpinner className="animate-spin text-4xl opacity-50" />{" "}
+                    Uploading....
+                </div>
+            )}
         </div>
     );
 };

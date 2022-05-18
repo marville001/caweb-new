@@ -4,7 +4,7 @@ const EventCard = ({ event }) => {
     return (
         <div className="bg-white shadow overflow-hidden rounded-md">
             <img
-                src={process.env.REACT_APP_UPLOADS_URL + event?.image}
+                src={event?.image}
                 alt=""
                 className="w-full h-48 object-cover"
             />
