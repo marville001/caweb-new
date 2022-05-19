@@ -78,7 +78,7 @@ const ChurchLeadership = () => {
                         <h4 className="mb-2 text-lg font-bold opacity-60">
                             {leader?.title}
                         </h4>
-                        <blockquote className="text-sm tracking-wide font-medium text-center italic">
+                        <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
                             {leader?.description}
                         </blockquote>
 
