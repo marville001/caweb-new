@@ -8,6 +8,7 @@ import usersReducer from "./admin/usersReducer";
 import eventsReducer from "./eventsReducer";
 import galleryReducer from "./galleryReducer";
 import leadersReducer from "./leadersReducer";
+import positionsReducer from "./positionsReducer";
 import sccsReducer from "./sccsReducer";
 import userPrayersReducer from "./userPrayersReducer";
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   sccsState: sccsReducer,
   eventsState: eventsReducer,
   leadersState: leadersReducer,
+  positionsState: positionsReducer,
 });
 
 export default rootReducer;
