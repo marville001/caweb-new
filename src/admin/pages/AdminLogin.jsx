@@ -24,7 +24,7 @@ const AdminLogin = () => {
   }, [admin, navigate]);
 
   return (
-    <div className="flex bg-slate-100 absolute inset-0 items-center justify-center ">
+    <div className="flex bg-slate-100 z-[10001] absolute inset-0 items-center justify-center ">
       <div className="bg-white p-10 w-full md:w-auto shadow-xl  md:min-w-[400px]">
         <h1 className="text-center text-lg uppercase font-bold">Admin Login</h1>
         <div className="py-6">
