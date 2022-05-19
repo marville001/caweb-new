@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { post } from "../../redux/actions/http";
-import { fetchLeadersAction } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 import parseError from "../../utils/parseError";
-import ImageUpload from "../components/common/ImageUpload";
 
-const NewChurchLeader = () => {
-    const { positions } = useSelector((state) => state.positionsState);
-
-    const [imageUrl, setImageUrl] = useState("");
-    const [imageError, setImageError] = useState("");
+const NewLeaderPosition = () => {
     const [loading, setLoading] = useState(false);
 
     const {
@@ -28,25 +22,13 @@ const NewChurchLeader = () => {
     const navigate = useNavigate();
 
     const handleAddLeader = async (data) => {
-        setImageError(false);
-
-        if (!imageUrl) {
-            setImageError(true);
-            return;
-        }
-
         try {
             setLoading(true);
 
-            await post(
-                `leaders/`,
-                { ...data, image: imageUrl, churchCommittee: true },
-                "admin"
-            );
-            dispatch(fetchLeadersAction("admin"));
+            await post(`positions/`, data, "admin");
 
             setLoading(false);
-            toast.success("Leader added successfully", {
+            toast.success("Position added successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -86,7 +68,7 @@ const NewChurchLeader = () => {
                 <div className="bg-white p-6">
                     <div className="flex items-center justify-between">
                         <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
-                            New Church Leader
+                            New Leader Position
                         </h2>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
@@ -96,28 +78,10 @@ const NewChurchLeader = () => {
                         className="my-10 flex flex-col gap-6"
                     >
                         <div className="flex flex-col gap-2">
-                            <label className="">Name</label>
+                            <label className="">Title</label>
                             <input
                                 type="text"
                                 placeholder="Enter event title here"
-                                className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
-                                {...register("name", {
-                                    required: {
-                                        value: true,
-                                        message: "Name is required",
-                                    },
-                                })}
-                            />
-                            {errors.name && (
-                                <p className="text-red-600 text-xs mt-1">
-                                    {errors.name.message}
-                                </p>
-                            )}
-                        </div>
-
-                        <div className="flex flex-col gap-2">
-                            <label className="">Title</label>
-                            <select
                                 className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
                                 {...register("title", {
                                     required: {
@@ -125,19 +89,7 @@ const NewChurchLeader = () => {
                                         message: "Title is required",
                                     },
                                 })}
-                            >
-                                <option value="">
-                                    Select leadership Title
-                                </option>
-                                {positions?.map((position) => (
-                                    <option
-                                        value={position._id}
-                                        key={position._id}
-                                    >
-                                        {position.title}
-                                    </option>
-                                ))}
-                            </select>
+                            />
                             {errors.title && (
                                 <p className="text-red-600 text-xs mt-1">
                                     {errors.title.message}
@@ -167,43 +119,6 @@ const NewChurchLeader = () => {
                                 </p>
                             )}
                         </div>
-
-                        <div className="flex flex-col gap-2">
-                            {imageUrl ? (
-                                <div>
-                                    <img
-                                        src={imageUrl}
-                                        alt=""
-                                        className="h-48 rounded-md w-full object-cover"
-                                    />
-                                    <div className="flex justify-between">
-                                        <label
-                                            htmlFor="image-select"
-                                            className="border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
-                                        >
-                                            Change
-                                        </label>
-                                        <div
-                                            onClick={() => setImageUrl("")}
-                                            className="border-2 rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
-                                        >
-                                            Reset
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                <ImageUpload
-                                    imageUrl={imageUrl}
-                                    setUrl={setImageUrl}
-                                />
-                            )}
-                            {imageError && (
-                                <p className="text-red-600 text-xs mt-1">
-                                    Profile picture is required
-                                </p>
-                            )}
-                        </div>
-
                         <button
                             type="submit"
                             disabled={loading}
@@ -221,4 +136,4 @@ const NewChurchLeader = () => {
     );
 };
 
-export default NewChurchLeader;
+export default NewLeaderPosition;

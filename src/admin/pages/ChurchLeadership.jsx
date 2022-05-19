@@ -2,14 +2,17 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
+import { fetchPositionsAction } from "../../redux/actions/positions";
 
 const ChurchLeadership = () => {
     const { leaders } = useSelector((state) => state.leadersState);
+    const { positions } = useSelector((state) => state.positionsState);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(fetchLeadersAction("admin"));
+        dispatch(fetchPositionsAction("admin"));
     }, [dispatch]);
     return (
         <div className="px-2 sm:px-0">
@@ -28,22 +31,23 @@ const ChurchLeadership = () => {
                         </div> */}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 my-5">
-                        {[1, 2, 3, 4, 5].map((department) => (
+                        {positions.map((position) => (
                             <div
-                                key={department}
+                                key={position._id}
                                 className="_shadow px-6 py-3 flex items-center justify-center text-seagreen rounded-md hover:scale-[1.02] 
                                 transition-all duration-150 ease-linear cursor-pointer
                                 hover:opacity-80 hover:bg-slate-50"
                             >
-                                <span>Chair Person</span>
+                                <span>{position?.title}</span>
                             </div>
                         ))}
-                        <div
+                        <Link
+                            to="/admin/leaders/position/new"
                             className="_shadow bg-steelblue bg-opacity-20 text-steelblue rounded-md px-6 py-3 flex items-center justify-center 
                                 hover:scale-[1.02] transition-all duration-150 ease-linear cursor-pointer hover:bg-opacity-40"
                         >
                             <span>Add Position</span>
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -61,7 +65,7 @@ const ChurchLeadership = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 my-6">
-                {[...leaders, ...leaders]?.map((leader) => (
+                {leaders?.map((leader) => (
                     <div
                         key={leader._id}
                         className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
@@ -76,7 +80,7 @@ const ChurchLeadership = () => {
                         </h4>
 
                         <h4 className="mb-2 text-lg font-bold opacity-60">
-                            {leader?.title}
+                            {leader?.title?.title ?? "-"}
                         </h4>
                         <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
                             {leader?.description}
