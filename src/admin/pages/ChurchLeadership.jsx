@@ -86,12 +86,12 @@ const ChurchLeadership = () => {
                             {leader?.description}
                         </blockquote>
 
-                        <button
-                            type="submit"
+                        <Link 
+                            to={`/admin/leaders/${leader._id}/edit`}
                             className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center"
                         >
                             Update
-                        </button>
+                        </Link>
                     </div>
                 ))}
             </div>
