@@ -1,6 +1,6 @@
 import parseError from "../../utils/parseError";
-import { FETCH_LEADER, FETCH_LEADERS } from "../types";
-import { get } from "./http";
+import { FETCH_LEADER, FETCH_LEADERS, UPDATE_LEADER } from "../types";
+import { get, put } from "./http";
 
 export const fetchLeadersAction = (type="user") => async (dispatch) => {
   dispatch({ type: FETCH_LEADERS.REQUEST });
@@ -30,6 +30,22 @@ export const fetchLeaderAction = (id, type="user") => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: FETCH_LEADER.FAIL,
+      error: parseError(error),
+    });
+  }
+};
+
+export const updateLeaderAction = (details,id,  type="user") => async (dispatch) => {
+  dispatch({ type: UPDATE_LEADER.REQUEST });
+  try {
+    const data = await put("leaders/"+id,details, type);
+     dispatch({
+      type: UPDATE_LEADER.SUCCESS,
+      leader: data.leader,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_LEADER.FAIL,
       error: parseError(error),
     });
   }

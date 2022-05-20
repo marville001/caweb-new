@@ -1,4 +1,4 @@
-import { FETCH_LEADER, FETCH_LEADERS } from "../types";
+import { FETCH_LEADER, FETCH_LEADERS, UPDATE_LEADER } from "../types";
 
 const initialState = {
     leaders: [],
@@ -18,9 +18,9 @@ const leadersReducer = (state = initialState, action) => {
             };
         case FETCH_LEADERS.FAIL:
             return { ...state, loading: false, error: action.error };
-        
+
         case FETCH_LEADER.REQUEST:
-            return { ...state, loading: true, error: "" };
+            return { ...state, loading: true, leader: {}, error: "" };
         case FETCH_LEADER.SUCCESS:
             return {
                 ...state,
@@ -29,6 +29,16 @@ const leadersReducer = (state = initialState, action) => {
             };
         case FETCH_LEADER.FAIL:
             return { ...state, loading: false, error: action.error };
+
+        case UPDATE_LEADER.REQUEST:
+            return { ...state, error: "" };
+        case UPDATE_LEADER.SUCCESS:
+            return {
+                ...state,
+                leader: action.leader,
+            };
+        case UPDATE_LEADER.FAIL:
+            return { ...state, error: action.error };
 
         default:
             return { ...state };
