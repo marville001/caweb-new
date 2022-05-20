@@ -39,10 +39,10 @@ const GalleryImage = ({ image, page, pageSize }) => {
     };
 
     return (
-        <div className="w-full bg-white rounded p-2">
+        <div className="w-full bg-white rounded p-2 _shadow border-2">
             <img
                 className="w-full h-52 object-cover"
-                src={process.env.REACT_APP_UPLOADS_URL + image.image}
+                src={image.image}
                 alt=""
             />
             <h3 className="mt-3 font-medium text-dodge-blue">{image.title}</h3>
