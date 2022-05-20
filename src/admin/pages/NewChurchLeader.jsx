@@ -4,14 +4,19 @@ import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { getSccsAction } from "../../redux/actions/admin/sccs";
 import { post } from "../../redux/actions/http";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
 
+const year = new Date().getFullYear() - 2;
+const years = Array.from(new Array(5), (val, index) => index + year);
+
 const NewChurchLeader = () => {
     const { positions } = useSelector((state) => state.positionsState);
+    const { sccs } = useSelector((state) => state.sccsState);
 
     const [imageUrl, setImageUrl] = useState("");
     const [imageError, setImageError] = useState("");
@@ -72,6 +77,7 @@ const NewChurchLeader = () => {
 
     useEffect(() => {
         dispatch(fetchPositionsAction("admin"));
+        dispatch(getSccsAction());
     }, [dispatch]);
 
     return (
@@ -116,6 +122,27 @@ const NewChurchLeader = () => {
                         </div>
 
                         <div className="flex flex-col gap-2">
+                            <label className="flex items-center gap-5">
+                                <input
+                                    type="checkbox"
+                                    className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
+                                    {...register("isActive", {
+                                        required: {
+                                            value: true,
+                                            message: "Required",
+                                        },
+                                    })}
+                                />{" "}
+                                Active Leader
+                            </label>
+                            {errors.isActive && (
+                                <p className="text-red-600 text-xs mt-1">
+                                    {errors.isActive.message}
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="flex flex-col gap-2">
                             <label className="">Title</label>
                             <select
                                 className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
@@ -141,6 +168,61 @@ const NewChurchLeader = () => {
                             {errors.title && (
                                 <p className="text-red-600 text-xs mt-1">
                                     {errors.title.message}
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label className="">Member Scc</label>
+                            <select
+                                className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
+                                {...register("scc", {
+                                    required: {
+                                        value: true,
+                                        message: "Scc is required",
+                                    },
+                                })}
+                            >
+                                <option value="">Select Main Scc</option>
+                                {sccs
+                                    ?.filter((scc) => scc.category === "major")
+                                    .map((scc) => (
+                                        <option value={scc._id} key={scc._id}>
+                                            {scc.name}
+                                        </option>
+                                    ))}
+                            </select>
+                            {errors.scc && (
+                                <p className="text-red-600 text-xs mt-1">
+                                    {errors.scc.message}
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <label className="">Active Period</label>
+                            <select
+                                className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
+                                {...register("period", {
+                                    required: {
+                                        value: true,
+                                        message: "Period is required",
+                                    },
+                                })}
+                            >
+                                <option value="">Select Period</option>
+                                {years.map((year) => (
+                                    <option
+                                        value={year + "-" + year + 1}
+                                        key={year}
+                                    >
+                                        {year+ "-" + (year + 1)}
+                                    </option>
+                                ))}
+                            </select>
+                            {errors.period && (
+                                <p className="text-red-600 text-xs mt-1">
+                                    {errors.period.message}
                                 </p>
                             )}
                         </div>

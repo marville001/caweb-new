@@ -5,6 +5,9 @@ import { getSccsAction } from "../../redux/actions/admin/sccs";
 import { fetchEventsAction } from "../../redux/actions/events";
 import EventCard from "../components/EventsComponents/EventCard";
 
+
+import TextEditorModal from "../components/common/TextEditorModal";
+
 const EventsPage = () => {
     const { events } = useSelector((state) => state.eventsState);
 
@@ -34,6 +37,8 @@ const EventsPage = () => {
                     <EventCard key={idx} event={event} />
                 ))}
             </div>
+
+            <TextEditorModal  isOpen={false} closeEditor={()=>{}} />
         </div>
     );
 };
