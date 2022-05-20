@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
@@ -13,6 +14,7 @@ const SccEditPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
 
     const [loading, setLoading] = useState(false);
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
     const [image, setImage] = useState("");
 
     const { key } = useParams();
@@ -21,29 +23,32 @@ const SccEditPage = () => {
 
     const { register, handleSubmit, setValue } = useForm();
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const { files } = e.target;
 
         if (files.length === 0) return;
 
-        setImage(URL.createObjectURL(files[0]));
-        setValue("image", files[0]);
+        setIsUploadingImage(true);
+        const formData = new FormData();
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "dekutca-chaplaincy");
+        formData.append("cloud_name", "dyzn9g0lr");
+
+        const { data } = await axios.post(
+            "https://api.cloudinary.com/v1_1/dyzn9g0lr/image/upload",
+            formData
+        );
+
+        setIsUploadingImage(false);
+        setImage(data.url);
+        setValue("image", data.url);
     };
 
     const handleUpdateScc = async (data) => {
         try {
             setLoading(true);
 
-            const formData = new FormData();
-
-            if (data?.image?.name) {
-                formData.append("image", data.image);
-            }
-            formData.append("name", data.name);
-            formData.append("description", data.description);
-            formData.append("category", data.category);
-
-            const res = await put(`sccs/${scc._id}`, formData, "admin");
+            const res = await put(`sccs/${scc._id}`, data, "admin");
 
             setLoading(false);
             toast.success("Scc Updated successfully", {
@@ -73,7 +78,7 @@ const SccEditPage = () => {
             setValue("name", scc?.name);
             setValue("category", scc?.category);
             setValue("description", scc?.description);
-            setImage(process.env.REACT_APP_UPLOADS_URL + scc?.image);
+            setImage(scc?.image);
         }
     }, [scc, setValue]);
 
@@ -123,7 +128,7 @@ const SccEditPage = () => {
                                         "cursor-not-allowed bg-gray-100"
                                     }`}
                                 >
-                                    {loading ? (
+                                    {isUploadingImage ? (
                                         <FaSpinner className="text-xl animate-spin" />
                                     ) : (
                                         "Change Image"
@@ -159,21 +164,21 @@ const SccEditPage = () => {
                                     })}
                                 />
 
-                                    <h3 className="opacity-70">Category</h3>
-                                    <select
-                                        type="text"
-                                        className="focus:ring-slate-600 w-full sp-2 rounded-md mt-2 mb-3 outline-none"
-                                        {...register("category", {
-                                            required: {
-                                                value: true,
-                                                message: "Category is required",
-                                            },
-                                        })}
-                                    >
-                                        <option value=""></option>
-                                        <option value="major">Major Scc</option>
-                                        <option value="minor">Minor Scc</option>
-                                    </select>
+                                <h3 className="opacity-70">Category</h3>
+                                <select
+                                    type="text"
+                                    className="focus:ring-slate-600 w-full sp-2 rounded-md mt-2 mb-3 outline-none"
+                                    {...register("category", {
+                                        required: {
+                                            value: true,
+                                            message: "Category is required",
+                                        },
+                                    })}
+                                >
+                                    <option value=""></option>
+                                    <option value="major">Major Scc</option>
+                                    <option value="minor">Minor Scc</option>
+                                </select>
 
                                 <h3 className="opacity-70">description</h3>
                                 <textarea

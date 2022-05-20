@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaEdit, FaSpinner } from "react-icons/fa";
 import { HiPlusCircle } from "react-icons/hi";
@@ -27,9 +28,20 @@ const SccPage = () => {
         try {
             setLoading(true);
             const formData = new FormData();
-            formData.append("image", files[0]);
+            formData.append("file", files[0]);
+            formData.append("upload_preset", "dekutca-chaplaincy");
+            formData.append("cloud_name", "dyzn9g0lr");
 
-            const res = await put(`sccs/gallery/${scc._id}`, formData, "admin");
+            const { data } = await axios.post(
+                "https://api.cloudinary.com/v1_1/dyzn9g0lr/image/upload",
+                formData
+            );
+
+            const res = await put(
+                `sccs/gallery/${scc._id}`,
+                { image: data.url },
+                "admin"
+            );
 
             setGallery([res.image, ...gallery]);
 
@@ -111,10 +123,7 @@ const SccPage = () => {
                             <div className="my-4 w-full overflow-hidden rounded-lg flex gap-3">
                                 <img
                                     className="w-full rounded-lg h-52 object-cover object-center cursor-pointer"
-                                    src={
-                                        process.env.REACT_APP_UPLOADS_URL +
-                                        scc.image
-                                    }
+                                    src={scc.image}
                                     alt=""
                                 />
                             </div>
@@ -130,11 +139,7 @@ const SccPage = () => {
                                         <div key={image}>
                                             <img
                                                 className="w-full h-40"
-                                                src={
-                                                    process.env
-                                                        .REACT_APP_UPLOADS_URL +
-                                                    image
-                                                }
+                                                src={image}
                                                 alt=""
                                             />
                                         </div>
