@@ -291,17 +291,18 @@ const EditChurchLeader = () => {
                                         />
                                         <div className="flex justify-between">
                                             <label
+                                                onClick={() => setImageUrl("")}
                                                 htmlFor="image-select"
                                                 className="border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
                                             >
                                                 Change
                                             </label>
-                                            <div
+                                            {/* <div
                                                 onClick={() => setImageUrl("")}
                                                 className="border-2 rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
                                             >
                                                 Reset
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 ) : (
