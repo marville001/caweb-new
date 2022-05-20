@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
 import { post } from "../../redux/actions/http";
-import { fetchLeadersAction } from "../../redux/actions/leaders";
+import {
+    fetchLeaderAction,
+    fetchLeadersAction,
+} from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
@@ -17,6 +20,9 @@ const years = Array.from(new Array(5), (val, index) => index + year);
 const EditChurchLeader = () => {
     const { positions } = useSelector((state) => state.positionsState);
     const { sccs } = useSelector((state) => state.sccsState);
+    const { leader, loading: loading_leader } = useSelector(
+        (state) => state.leadersState
+    );
 
     const [imageUrl, setImageUrl] = useState("");
     const [imageError, setImageError] = useState("");
@@ -27,6 +33,7 @@ const EditChurchLeader = () => {
         handleSubmit,
         clearErrors,
         reset,
+        setValue,
         formState: { errors },
     } = useForm();
     const dispatch = useDispatch();
@@ -75,10 +82,26 @@ const EditChurchLeader = () => {
         }
     };
 
+    const { id } = useParams();
+
     useEffect(() => {
+        dispatch(fetchLeaderAction(id, "admin"));
         dispatch(fetchPositionsAction("admin"));
         dispatch(getSccsAction());
-    }, [dispatch]);
+    }, [dispatch, id]);
+
+    useEffect(() => {
+        if (leader?._id) {
+            console.log(leader);
+            setImageUrl(leader?.image ?? "");
+            setValue("name", leader?.name ?? "");
+            setValue("title", leader?.title?._id ?? "");
+            setValue("scc", leader?.scc?._id ?? "");
+            setValue("description", leader?.description ?? "");
+            setValue("isActive", leader?.isActive);
+            setValue("period", leader?.period);
+        }
+    }, [leader, setValue]);
 
     return (
         <div className="px-2 sm:px-0">
@@ -216,7 +239,7 @@ const EditChurchLeader = () => {
                                         value={year + "-" + year + 1}
                                         key={year}
                                     >
-                                        {year+ "-" + (year + 1)}
+                                        {year + "-" + (year + 1)}
                                     </option>
                                 ))}
                             </select>
