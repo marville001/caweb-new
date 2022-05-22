@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,23 +9,20 @@ import Modal from "../common/Modal";
 
 const UploadImageModal = ({ isOpen, closeModal }) => {
     const { isUploadingImage } = useSelector((state) => state.imagesState);
-    const [image, setImage] = useState("");
     const [date, setDate] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
     const [imageUrl, setImageUrl] = useState("");
-    const [imageError, setImageError] = useState("");
 
     const dispatch = useDispatch();
-    const imageRef = useRef();
 
     const handleCloseModal = () => {
         closeModal();
-        setImage("");
         setTitle("");
         setDate("");
         setDescription("");
+        setImageUrl("")
     };
 
     const handleUploadImage = async () => {
@@ -101,18 +98,6 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
                     placeholder="Date"
                 />
             </div>
-
-            <div>
-                <input
-                    onChange={(e) => setImage(e.target.files)}
-                    ref={imageRef}
-                    id="profile-image"
-                    className="hidden"
-                    // value={image}
-                    accept="image/*"
-                    type="file"
-                />
-            </div>
             <div className="flex flex-col gap-2">
                 {imageUrl ? (
                     <div>
@@ -138,11 +123,6 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
                     </div>
                 ) : (
                     <ImageUpload imageUrl={imageUrl} setUrl={setImageUrl} />
-                )}
-                {imageError && (
-                    <p className="text-red-600 text-xs mt-1">
-                        Image is required
-                    </p>
                 )}
             </div>
 

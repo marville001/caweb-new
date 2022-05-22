@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,  useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
-import { post } from "../../redux/actions/http";
 import {
     fetchLeaderAction,
-    fetchLeadersAction,
     updateLeaderAction,
 } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
