@@ -10,7 +10,7 @@ const ImageContainer = ({ image }) => {
             <Img
                 style={{ backgroundColor: "grey", width: "480", height: "320" }}
                 className="w-full h-64 object-cover hover:cursor-zoom-in"
-                src={process.env.REACT_APP_UPLOADS_URL + image.image}
+                src={image.image}
                 alt={image.title}
             />
             <div className="absolute inset-x-0 bottom-0 bg-gray-900/80 px-5 py-2">
