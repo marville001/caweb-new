@@ -79,7 +79,7 @@ const SccPage = () => {
 
     if (isLoadingScc) {
         return (
-            <div className="my-5 flex items-center justify-cdenter">
+            <div className="my-5 flex items-center justify-center">
                 <div className="animate-spin">
                     <FaSpinner className="w-8 h-8" />
                 </div>

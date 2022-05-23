@@ -27,6 +27,7 @@ import NewEvent from "./admin/pages/NewEvent";
 import NewChurchLeader from "./admin/pages/NewChurchLeader";
 import NewLeaderPosition from "./admin/pages/NewLeaderPosition";
 import EditChurchLeader from "./admin/pages/EditChurchLeader";
+import ViewScc from "./pages/ViewScc";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -112,15 +113,8 @@ const App = () => {
                         </MainLayout>
                     }
                 />
-                <Route
-                    exact
-                    path="/scc"
-                    element={
-                        <MainLayout>
-                            <Scc />
-                        </MainLayout>
-                    }
-                />
+                <Route exact path="/scc" element={<MainLayout><Scc /></MainLayout>}/>
+                <Route exact path="/scc/:key" element={<MainLayout><ViewScc /></MainLayout>}/>
                 <Route
                     exact
                     path="/bible"
