@@ -11,7 +11,7 @@ const ConfirmDeleteModal = ({
 }) => {
     return (
         <Modal size="xl" isOpen={isOpen} closeModal={() => {}}>
-            <div className="bg-white _shadow rounded-md">
+            <div className="bg-white rounded-md">
                 <h4 className="text-center text-2xl text-slate-900 mb-6">
                     Please Confirm Delete
                 </h4>
