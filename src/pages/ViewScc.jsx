@@ -38,17 +38,14 @@ const ViewScc = () => {
             <div className="max-w-4xl mx-auto">
                 {scc.key ? (
                     <>
-                        <div className="bg-white p-6">
-                            <div className="flex justify-between items-center">
-                                <h2 className="text-2xl text-dodge-blue">
-                                    {scc.name}
-                                </h2>
-                                <h3 className="opacity-70">Name</h3>
-                            </div>
+                        <div className="bg-white p-2 sm:p-6">
+                            <h2 className="text-2xl text-center text-dodge-blue">
+                                {scc.name}
+                            </h2>
 
                             <div className="my-4 w-full overflow-hidden rounded-lg flex gap-3">
                                 <img
-                                    className="w-full rounded-lg max-h-[400px] object-cover object-center cursor-pointer"
+                                    className="w-full rounded-lg h-44 sm:h-56 md:h-auto md:max-h-[400px] object-cover object-center cursor-pointer"
                                     src={scc.image}
                                     alt=""
                                 />
@@ -57,23 +54,23 @@ const ViewScc = () => {
                             <div className="w-full h-[1px] bg-gray-500 opacity-25 my-3" />
 
                             <h3 className="opacity-70">description</h3>
-                            <div className="my-4 w-full">
+                            <div className="my-4 w-full text-sm">
                                 <p>{scc.description}</p>
                             </div>
                         </div>
 
-                        <div className="bg-white p-6 mt-3">
+                        <div className="bg-white p-2 sm:p-6 mt-3">
                             <div className="flex items-center justify-between">
                                 <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
                                     Our Gallery
                                 </h2>
                             </div>
                             <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
-                            <div className="grid grid-cols-1 sm:grid-cols-3 my-4 gap-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 my-4 gap-4">
                                 {gallery?.map((image) => (
                                     <div key={image}>
                                         <img
-                                            className="w-full h-48 rounded-md"
+                                            className="w-full h-40 sm:h-48 rounded-md"
                                             src={image}
                                             alt=""
                                         />
@@ -82,7 +79,9 @@ const ViewScc = () => {
 
                                 {gallery?.length === 0 && (
                                     <div>
-                                        <h4 className="opacity-50">No Image </h4>
+                                        <h4 className="opacity-50">
+                                            No Image{" "}
+                                        </h4>
                                     </div>
                                 )}
                             </div>
