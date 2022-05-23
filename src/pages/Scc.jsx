@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Img from "react-cool-img";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-import sccs from "../data/scc.json";
+import { getSccsAction } from "../redux/actions/admin/sccs";
+
+import { FaSpinner } from "react-icons/fa";
 
 const SccCard = ({ scc }) => {
-    const { title, image, description } = scc;
+    const { name, image, description, key } = scc;
     return (
         <div className="shadow-md rounded-md overflow-hidden border-dodge-blue">
             <Img
@@ -14,14 +18,31 @@ const SccCard = ({ scc }) => {
                 alt="SCC Image"
             />
             <h2 className="text-lg font-medium text-slate-900 mx-2 my-4">
-                {title}
+                {name}
             </h2>
             <p className="text-sm mx-2 mb-4">{description}</p>
+
+            <div className="flex justify-center mb-4 ">
+                <Link
+                    className="px-6 rounded-lg text-white bg-steelblue py-1 bg-opacity-60 hover:bg-opacity-100"
+                    to={`/scc/${key}`}
+                >
+                    View More
+                </Link>
+            </div>
         </div>
     );
 };
 
 const Scc = () => {
+    const { sccs, isLoadingSccs } = useSelector((state) => state.sccsState);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSccsAction());
+    }, [dispatch]);
+
     return (
         <div className="container  py-8">
             <h1 className="text-3xl mb-8 text-center text-dodge-blue font-bold">
@@ -60,27 +81,39 @@ const Scc = () => {
                 </div>
             </div>
 
-            <div className="py-10">
-                <h2 className="mb-8 text-center text-lg text-slate-800 font-medium">
-                    MAJOR SCC GROUPS
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {sccs.major.map((scc) => (
-                        <SccCard key={scc.id} scc={scc} />
-                    ))}
+            {isLoadingSccs ? (
+                <div className="flex py-10 justify-center">
+                    <FaSpinner className="animate-spin text-lg" />
                 </div>
-            </div>
+            ) : (
+                <>
+                    <div className="py-10">
+                        <h2 className="mb-8 text-center text-lg text-slate-800 font-medium">
+                            MAJOR SCC GROUPS
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            {sccs
+                                ?.filter((scc) => scc.category === "major")
+                                ?.map((scc) => (
+                                    <SccCard key={scc._id} scc={scc} />
+                                ))}
+                        </div>
+                    </div>
 
-            <div className="py-10">
-                <h2 className="uppercase mb-8 text-center text-lg text-slate-800 font-medium">
-                    Other SCC GROUPS
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {sccs.others?.map((scc) => (
-                        <SccCard key={scc.id} scc={scc} />
-                    ))}
-                </div>
-            </div>
+                    <div className="py-10">
+                        <h2 className="uppercase mb-8 text-center text-lg text-slate-800 font-medium">
+                            Other SCC GROUPS
+                        </h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            {sccs
+                                ?.filter((scc) => scc.category === "minor")
+                                ?.map((scc) => (
+                                    <SccCard key={scc._id} scc={scc} />
+                                ))}
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
