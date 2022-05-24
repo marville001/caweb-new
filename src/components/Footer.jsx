@@ -59,7 +59,7 @@ const Footer = () => {
                                         className="flex flex-col md:flex-row content-center justify-center w-full p-2 md:p-0 md:w-[500px]"
                                     >
                                         <input
-                                            className="text-sm md:text-md px-6 py-1 bg-white sm:text-sm w-full flex-1 outline-none !rounded-r-none"
+                                            className="text-sm md:text-md px-6 py-2 bg-white sm:text-sm w-full flex-1 outline-none md:!rounded-r-none"
                                             type="email"
                                             value={email}
                                             placeholder="Enter your Email"
@@ -68,7 +68,7 @@ const Footer = () => {
                                             }}
                                             required
                                         />
-                                        <button className="bg-sea-green text-white  px-8 py-2 md:my-0 my-2 text-md font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
+                                        <button className="bg-sea-green rounded-md md:rounded-none md:rounded-r-md text-white  px-8 py-2 md:my-0 my-2 text-md font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
                                             subscribe
                                         </button>
                                     </form>
@@ -109,7 +109,7 @@ const Footer = () => {
                     <div className="flex-[2] mt-4 md:p-4">
                         <Link
                             to="/about"
-                            className="bg-sea-green text-white py-3  px-8 text-md font-medium -tracking-tighter hover:opacity-90 uppercase"
+                            className="bg-sea-green rounded-md text-white py-3  px-8 text-md font-medium -tracking-tighter hover:opacity-90 uppercase"
                         >
                             Learn More
                         </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
                 </div>
 
                 {/* Links */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     <div>
                         <div className="text-2xl text-blue-300">
                             Prayer & Worship

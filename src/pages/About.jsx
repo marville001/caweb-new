@@ -27,7 +27,7 @@ const About = () => {
         }}
       ></div>
 
-      <div className="container">
+      <div className="sm:container">
         <h2 className="text-4xl text-center text-dodge-blue font-bold">
           Our Mission
         </h2>
@@ -86,7 +86,7 @@ const About = () => {
               Excepturi id nulla quia soluta consequuntur placeat. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus deleniti eos placeat quaerat, expedita corrupti qui iure vero doloremque laborum.
             </p>
 
-            <button className="bg-sea-green px-16 mt-8 py-3 text-lg uppercase text-white hover:opacity-80">Download PDF</button>
+            <button className="bg-sea-green w-full sm:w-auto sm:px-16 mt-8 py-3 sm:text-lg uppercase text-white hover:opacity-80">Download PDF</button>
           </div>
         </div>
       </div>

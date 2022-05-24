@@ -34,7 +34,7 @@ export default function SccLeadershipWelcome() {
                                 to={`/scc/leaders/${_id}`}
                                 key={key}
                                 className="
-                          bg-white py-4 shadow-md text-center  hover:-translate-y-1
+                          bg-white py-4 px-2 shadow-md text-center  hover:-translate-y-1
                             hover:bg-dodge-blue hover:text-white rounded-md sm:py-6 
                             transition-all duration-150 ease-in group
                         "

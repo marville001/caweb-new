@@ -132,7 +132,7 @@ const Home = () => {
             </div>
 
             <div className="bg-white min-h-[40vh] py-8 md:py-12">
-                <div className="mx-auto flex flex-col md:flex-row p-10 max-w-7xl">
+                <div className="mx-auto flex flex-col md:flex-row p-4 sm:p-10 max-w-7xl">
                     <img 
                     src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
                     alt="" 
@@ -192,7 +192,7 @@ const Home = () => {
             </div>
 
             <div className="bg-white min-h-[40vh] py-8 md:py-12">
-                <div className="mx-auto flex flex-col md:flex-row p-10 max-w-6xl">
+                <div className="mx-auto flex flex-col md:flex-row p-4 sm:p-10 max-w-6xl">
                     <img 
                     src="https://d35r3vzpjv6bi5.cloudfront.net/26337/pictures/2020/8/archdiocese-samples-003%20red.jpg?t=1597432008000"
                     alt="" 
