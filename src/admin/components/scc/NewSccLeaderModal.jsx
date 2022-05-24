@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { post } from "../../../redux/actions/http";
 import { fetchLeadersAction } from "../../../redux/actions/leaders";

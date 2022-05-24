@@ -22,7 +22,7 @@ export default function SccLeadership() {
 
     return (
         <div className="container">
-            {loading_leaders ? (
+            {loading_leaders || isLoadingSccs ? (
                 <div className="flex my-10 justify-center text-2xl animate-spin">
                     <FaSpinner />
                 </div>
@@ -48,7 +48,11 @@ export default function SccLeadership() {
                             leader.churchCommittee === false &&
                             leader.groupId === id &&
                             leader.scc?._id === id
-                    ).length === 0 && <h2 className="text-center my-6 font-bold text-2xl uppercase opacity-30">No Leader Found</h2>}
+                    ).length === 0 && (
+                        <h2 className="text-center my-6 font-bold text-2xl uppercase opacity-30">
+                            No Leader Found
+                        </h2>
+                    )}
                 </div>
             )}
         </div>
