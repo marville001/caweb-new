@@ -32,7 +32,7 @@ export default function SccLeadershipWelcome() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 my-6 gap-5">
                         {sccs.map(({ key, name }) => (
                             <Link
-                                to={`/leadership/scc/${key}`}
+                                to={`/scc/${key}/leadership`}
                                 key={key}
                                 className="
                           bg-white py-4 shadow-md text-center  hover:-translate-y-1

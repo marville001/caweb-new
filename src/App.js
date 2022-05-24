@@ -82,101 +82,21 @@ const App = () => {
                 <Route path="leadership" element={<Leadership /> } >
                     <Route exact path="" element={<MainLayout><MainLeadership /> </MainLayout>} />
                     <Route exact path="scc" element={<MainLayout><SccLeadershipWelcome /></MainLayout>} />
-                    <Route exact path="scc/:scc" element={<MainLayout><SccLeadership /></MainLayout>} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
-
-                <Route
-                    exact
-                    path="/daily-readings"
-                    element={
-                        <MainLayout>
-                            <DailyReadings />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/mass"
-                    element={
-                        <MainLayout>
-                            <Mass />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/prayers"
-                    element={
-                        <MainLayout>
-                            <Prayers />
-                        </MainLayout>
-                    }
-                />
+                <Route exact path="/daily-readings" element={<MainLayout><DailyReadings /></MainLayout> } />
+                <Route exact path="/mass" element={<MainLayout><Mass /></MainLayout> }  />
+                <Route exact path="/prayers" element={ <MainLayout> <Prayers />  </MainLayout> } />
                 <Route exact path="/scc" element={<MainLayout><Scc /></MainLayout>}/>
                 <Route exact path="/scc/:key" element={<MainLayout><ViewScc /></MainLayout>}/>
-                <Route
-                    exact
-                    path="/bible"
-                    element={
-                        <MainLayout>
-                            <CommingSoon />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/library"
-                    element={
-                        <MainLayout>
-                            <CommingSoon />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/gallery"
-                    element={
-                        <MainLayout>
-                            <Gallery />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/resources"
-                    element={
-                        <MainLayout>
-                            <CommingSoon />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/get-connected"
-                    element={
-                        <MainLayout>
-                            <GetConnected />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    exact
-                    path="/my-account"
-                    element={
-                        <MainLayout>
-                            <MyAccount />
-                        </MainLayout>
-                    }
-                />
-                <Route
-                    path="*"
-                    element={
-                        <MainLayout>
-                            <NotFound />
-                        </MainLayout>
-                    }
-                />
+                <Route exact path="/scc/:key/leadership" element={<MainLayout><SccLeadership /></MainLayout>}/>
+                <Route exact path="/bible" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
+                <Route exact path="/library" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
+                <Route exact path="/gallery" element={ <MainLayout> <Gallery /> </MainLayout> } />
+                <Route exact path="/resources" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
+                <Route exact path="/get-connected" element={ <MainLayout> <GetConnected /> </MainLayout> } />
+                <Route exact path="/my-account" element={ <MainLayout> <MyAccount /> </MainLayout> } />
+                <Route path="*" element={ <MainLayout> <NotFound /> </MainLayout> } />
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<AdminPrivateRoute><AdminHome /></AdminPrivateRoute>} />
                     <Route path="login" element={<AdminLogin />} />
@@ -195,9 +115,7 @@ const App = () => {
                     <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
                     <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
                     <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />
-                    <Route
-                        path="*"
-                        element={
+                    <Route path="*" element={
                             <div className="m-16 p-4 flex flex-col items-center justify-center">
                                 <h1 className="text-7xl text-dodge-blue font-bold">
                                     404

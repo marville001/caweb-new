@@ -187,7 +187,7 @@ const NewChurchLeader = () => {
                                 {sccs
                                     ?.filter((scc) => scc.category === "major")
                                     .map((scc) => (
-                                        <option value={scc._id} key={scc._id}>
+                                        <option value={scc.key} key={scc._id}>
                                             {scc.name}
                                         </option>
                                     ))}
