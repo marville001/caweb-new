@@ -89,7 +89,7 @@ const App = () => {
                 <Route exact path="/prayers" element={ <MainLayout> <Prayers />  </MainLayout> } />
                 <Route exact path="/scc" element={<MainLayout><Scc /></MainLayout>}/>
                 <Route exact path="/scc/:key" element={<MainLayout><ViewScc /></MainLayout>}/>
-                <Route exact path="/scc/:key/leadership" element={<MainLayout><SccLeadership /></MainLayout>}/>
+                <Route exact path="/scc/leaders/:id" element={<MainLayout><SccLeadership /></MainLayout>}/>
                 <Route exact path="/bible" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/library" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/gallery" element={ <MainLayout> <Gallery /> </MainLayout> } />

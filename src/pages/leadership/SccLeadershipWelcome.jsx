@@ -28,11 +28,10 @@ export default function SccLeadershipWelcome() {
                         <FaSpinner className="animate-spin text-lg" />
                     </div>
                 ) : (
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 my-6 gap-5">
-                        {sccs.map(({ key, name }) => (
+                        {sccs.map(({ key, name, _id }) => (
                             <Link
-                                to={`/scc/${key}/leadership`}
+                                to={`/scc/leaders/${_id}`}
                                 key={key}
                                 className="
                           bg-white py-4 shadow-md text-center  hover:-translate-y-1
@@ -40,7 +39,9 @@ export default function SccLeadershipWelcome() {
                             transition-all duration-150 ease-in group
                         "
                             >
-                                <h2 className="text-md font-bold text-dodge-blue group-hover:text-white">{name}</h2>
+                                <h2 className="text-md font-bold text-dodge-blue group-hover:text-white">
+                                    {name}
+                                </h2>
                                 {/* <p className="text-sm italic mt-2">{name}</p> */}
                             </Link>
                         ))}
