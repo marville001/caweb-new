@@ -187,7 +187,7 @@ const NewChurchLeader = () => {
                                 {sccs
                                     ?.filter((scc) => scc.category === "major")
                                     .map((scc) => (
-                                        <option value={scc.key} key={scc._id}>
+                                        <option value={scc._id} key={scc._id}>
                                             {scc.name}
                                         </option>
                                     ))}
@@ -260,17 +260,12 @@ const NewChurchLeader = () => {
                                     />
                                     <div className="flex justify-between">
                                         <label
+                                            onClick={() => setImageUrl("")}
                                             htmlFor="image-select"
                                             className="border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
                                         >
                                             Change
                                         </label>
-                                        <div
-                                            onClick={() => setImageUrl("")}
-                                            className="border-2 rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
-                                        >
-                                            Reset
-                                        </div>
                                     </div>
                                 </div>
                             ) : (

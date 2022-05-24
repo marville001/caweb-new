@@ -1,4 +1,4 @@
-import LeaderCard from "../../admin/components/LeaderCard/LeaderCard";
+import LeaderCard from "../../components/LeaderCard";
 
 export default function SccLeadership() {
     return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link,  useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
 import {
@@ -208,18 +208,11 @@ const EditChurchLeader = () => {
                                     })}
                                 >
                                     <option value="">Select Main Scc</option>
-                                    {sccs
-                                        ?.filter(
-                                            (scc) => scc.category === "major"
-                                        )
-                                        .map((scc) => (
-                                            <option
-                                                value={scc._id}
-                                                key={scc._id}
-                                            >
-                                                {scc.name}
-                                            </option>
-                                        ))}
+                                    {sccs?.map((scc) => (
+                                        <option value={scc._id} key={scc._id}>
+                                            {scc.name}
+                                        </option>
+                                    ))}
                                 </select>
                                 {errors.scc && (
                                     <p className="text-red-600 text-xs mt-1">

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LeaderCard from "../../admin/components/LeaderCard/LeaderCard";
+import LeaderCard from "../../components/LeaderCard";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
 
 const MainLeadership = () => {

@@ -8,14 +8,20 @@ import { toast } from "react-toastify";
 import { getSccAction, getSccsAction } from "../../redux/actions/admin/sccs";
 import { fetchEventsAction } from "../../redux/actions/events";
 import { put } from "../../redux/actions/http";
+import { fetchLeadersAction } from "../../redux/actions/leaders";
+import { fetchPositionsAction } from "../../redux/actions/positions";
 
 import parseError from "../../utils/parseError";
+import NewSccLeaderModal from "../components/scc/NewSccLeaderModal";
 
 const SccPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
+    const { leaders } = useSelector((state) => state.leadersState);
 
     const [gallery, setGallery] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [addSccLeaderModalOpen, setAddSccLeaderModalOpen] = useState(false);
+    const [currentScc, setCurrentScc] = useState("");
 
     const { key } = useParams();
     const dispatch = useDispatch();
@@ -69,12 +75,15 @@ const SccPage = () => {
 
     useEffect(() => {
         setGallery(scc?.gallery);
-    }, [scc?.gallery]);
+        setCurrentScc(scc?._id);
+    }, [scc]);
 
     useEffect(() => {
         dispatch(getSccAction(key));
         dispatch(getSccsAction());
         dispatch(fetchEventsAction("admin"));
+        dispatch(fetchPositionsAction("admin"));
+        dispatch(fetchLeadersAction("admin"));
     }, [dispatch, key]);
 
     if (isLoadingScc) {
@@ -113,11 +122,11 @@ const SccPage = () => {
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
                     {scc.key ? (
                         <>
-                            <div className="flex justify-between items-center">
+                            <div className="flex justify-lext items-center">
                                 <h2 className="text-2xl text-dodge-blue">
                                     {scc.name}
                                 </h2>
-                                <h3 className="opacity-70">Name</h3>
+                                {/* <h3 className="opacity-70">Name</h3> */}
                             </div>
 
                             <div className="my-4 w-full overflow-hidden rounded-lg flex gap-3">
@@ -191,17 +200,61 @@ const SccPage = () => {
                             Scc Leadership
                         </h2>
 
-                        <Link
-                            className="text-dodge-blue flex items-center space-x-2"
-                            to={`/admin/sccs/${key}`}
+                        <div
+                            className="text-dodge-blue cursor-pointer flex items-center space-x-2"
+                            onClick={() => setAddSccLeaderModalOpen(true)}
                         >
                             <HiPlusCircle />
                             <span>Add Leader</span>
-                        </Link>
+                        </div>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-6">
+                        {leaders
+                            ?.filter(
+                                (leader) =>
+                                    leader.churchCommittee === false &&
+                                    leader.groupId === scc._id &&
+                                    leader.scc?._id === scc._id
+                            )
+                            ?.map((leader) => (
+                                <div
+                                    key={leader._id}
+                                    className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
+                                >
+                                    <img
+                                        src={leader?.image}
+                                        alt=""
+                                        className="rounded-full h-[100px] w-[100px] "
+                                    />
+                                    <h4 className="mt-2 font-bold">
+                                        {leader?.name}
+                                    </h4>
+
+                                    <h4 className="mb-2 text-lg font-bold opacity-60">
+                                        {leader?.title?.title ?? "-"}
+                                    </h4>
+                                    <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
+                                        {leader?.description}
+                                    </blockquote>
+
+                                    <Link
+                                        to={`/admin/leaders/${leader._id}/edit`}
+                                        className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center"
+                                    >
+                                        Update
+                                    </Link>
+                                </div>
+                            ))}
+                    </div>
                 </div>
             </div>
+
+            <NewSccLeaderModal
+                currentScc={currentScc}
+                isOpen={addSccLeaderModalOpen}
+                closeModal={() => setAddSccLeaderModalOpen(false)}
+            />
         </div>
     );
 };
