@@ -39,7 +39,7 @@ const Footer = () => {
                             <h2 className="text-3xl uppercase text-center text-white font-bold">
                                 Enter your email
                             </h2>
-                            <p className="text-xl text-white my-3 mx-auto capitalize text-center">
+                            <p className="text-lg my-5 text-white mx-auto capitalize text-center">
                                 Subscribe to our newsletter to receive updates
                             </p>
                             {error && (
@@ -59,7 +59,7 @@ const Footer = () => {
                                         className="flex flex-col md:flex-row content-center justify-center w-full p-2 md:p-0 md:w-[500px]"
                                     >
                                         <input
-                                            className="text-sm md:text-xl px-6 py-3 bg-white sm:text-sm w-full flex-1 outline-none"
+                                            className="text-sm md:text-md px-6 py-1 bg-white sm:text-sm w-full flex-1 outline-none !rounded-r-none"
                                             type="email"
                                             value={email}
                                             placeholder="Enter your Email"
@@ -68,7 +68,7 @@ const Footer = () => {
                                             }}
                                             required
                                         />
-                                        <button className="bg-sea-green text-white  px-8 py-2 md:my-0 my-2 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
+                                        <button className="bg-sea-green text-white  px-8 py-2 md:my-0 my-2 text-md font-medium -tracking-tighter hover:opacity-90 uppercase small:font-sm ">
                                             subscribe
                                         </button>
                                     </form>
@@ -100,7 +100,7 @@ const Footer = () => {
                         <h3 className="text-blue-300 text-2xl mb-4">
                             About DEKUTCC
                         </h3>
-                        <p className="text-white text-lg font-light">
+                        <p className="text-white text-md font-light">
                             Lorem ipsum dolor sit, amet consectetur adipisicing
                             elit. Consequatur, dolores ex eaque, suscipit qui
                             cupiditate neque
@@ -109,7 +109,7 @@ const Footer = () => {
                     <div className="flex-[2] mt-4 md:p-4">
                         <Link
                             to="/about"
-                            className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90 uppercase"
+                            className="bg-sea-green text-white py-3  px-8 text-md font-medium -tracking-tighter hover:opacity-90 uppercase"
                         >
                             Learn More
                         </Link>
@@ -122,34 +122,34 @@ const Footer = () => {
                         <div className="text-2xl text-blue-300">
                             Prayer & Worship
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col my-3 gap-1">
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/readings/calendar"
                             >
                                 Daily Readings Calendar
                             </Link>
 
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/prayers"
                             >
                                 Prayers
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/mass"
                             >
                                 Our Mass
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/bible"
                             >
                                 The Bible
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/store"
                             >
                                 Our Books Store
@@ -161,28 +161,28 @@ const Footer = () => {
                         <div className="text-2xl text-blue-300">
                             Get Involved to Act Now
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col my-3 gap-1">
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/take-action"
                             >
                                 Take Action
                             </Link>
 
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/help"
                             >
                                 Help Now
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/events"
                             >
                                 Meetings & Events
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-slate-100 font-light text-sm"
                                 to="/pray"
                             >
                                 Pray
@@ -194,34 +194,34 @@ const Footer = () => {
                         <div className="text-2xl text-blue-300">
                             Quick Links
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col my-2 gap-1">
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-sm text-slate-100 font-light"
                                 to="/events"
                             >
                                 Calendars
                             </Link>
 
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-sm text-slate-100 font-light"
                                 to="/get-connected"
                             >
                                 Social Media
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-sm text-slate-100 font-light"
                                 to="/news"
                             >
                                 DEKUTCC News Service
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-sm text-slate-100 font-light"
                                 to="/about"
                             >
                                 About Us
                             </Link>
                             <Link
-                                className="text-base text-slate-100 font-light"
+                                className="text-sm text-slate-100 font-light"
                                 to="/contact"
                             >
                                 Contact Us
