@@ -108,6 +108,7 @@ const UploadImageModal = ({ isOpen, closeModal }) => {
                         />
                         <div className="flex justify-between">
                             <label
+                                onClick={() => setImageUrl("")}
                                 htmlFor="profile-image"
                                 className="border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
                             >

@@ -1,18 +1,20 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../common/Modal";
 import { addScc, getSccsAction } from "../../../redux/actions/admin/sccs";
 import { toast } from "react-toastify";
+import ImageUpload from "../common/ImageUpload";
 
 const AddSccModal = ({ closeModal, isOpen }) => {
     const { isCreatingScc } = useSelector((state) => state.sccsState);
 
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
     const [category, setCategory] = useState("");
+
+    const [imageUrl, setImageUrl] = useState("");
 
     const dispatch = useDispatch();
 
@@ -20,24 +22,25 @@ const AddSccModal = ({ closeModal, isOpen }) => {
         closeModal();
         setName("");
         setDescription("");
-        setImage("");
+        setImageUrl("");
         setCategory("");
     };
 
-    const imageRef = useRef();
-
     const handleSubmit = async () => {
-        if (!image || !name || !description) {
+        if (!imageUrl || !name || !description) {
             alert("All fields are required!");
             return;
         }
-        const formData = new FormData();
-        formData.append("image", image[0]);
-        formData.append("name", name);
-        formData.append("description", description);
-        formData.append("category", category);
 
-        const response = await dispatch(addScc(formData));
+        const data = {
+            image: imageUrl,
+            name,
+            key: name.replaceAll(" ","").toLowerCase(),
+            category,
+            description,
+        };
+
+        const response = await dispatch(addScc(data));
 
         if (response.success) {
             toast.success("Scc added successfully", {
@@ -112,26 +115,27 @@ const AddSccModal = ({ closeModal, isOpen }) => {
                 ></textarea>
             </div>
 
-            <div>
-                <input
-                    onChange={(e) => setImage(e.target.files)}
-                    ref={imageRef}
-                    id="profile-image"
-                    className="hidden"
-                    // value={image}
-                    accept="image/*"
-                    type="file"
-                />
-            </div>
-            <div
-                onClick={() => imageRef.current.click()}
-                className="p-4 mb-8 mt-4 border-2 flex justify-center border-dashed cursor-pointer"
-            >
-                <span className="mx-2 overflow-hidden">
-                    {image?.length >= 1
-                        ? image[0].name
-                        : "Click here to select image"}
-                </span>
+            <div className="flex flex-col gap-2">
+                {imageUrl ? (
+                    <div>
+                        <img
+                            src={imageUrl}
+                            alt=""
+                            className="h-48 rounded-md w-full object-cover"
+                        />
+                        <div className="flex justify-between">
+                            <label
+                                onClick={() => setImageUrl("")}
+                                htmlFor="profile-image"
+                                className="border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
+                            >
+                                Change
+                            </label>
+                        </div>
+                    </div>
+                ) : (
+                    <ImageUpload imageUrl={imageUrl} setUrl={setImageUrl} />
+                )}
             </div>
 
             <div className="flex mt-4 justify-between">
