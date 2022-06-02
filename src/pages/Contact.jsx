@@ -2,7 +2,7 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="container  py-14">
+    <div className="container px-1 sm:px-5 py-14">
       <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
         Contact Us
       </h1>
@@ -12,7 +12,7 @@ const Contact = () => {
         within some few hours if not minutes.
       </p>
 
-      <div className="bg-white p-4 md:p-8 max-w-3xl mx-auto">
+      <div className="bg-white p-2 sm:p-4 md:p-8 max-w-3xl mx-auto">
         <div className="md:flex md:gap-2">
           <div className="form-group my-4 flex-1">
             <input

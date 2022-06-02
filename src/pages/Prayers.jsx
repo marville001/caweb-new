@@ -12,7 +12,7 @@ const PrayerDisclosure = ({ prayer: { title, prayer } }) => {
       {({ open }) => (
         <>
           <Disclosure.Button className="flex justify-between w-full px-4 py-2 text-sm font-medium text-center text-purple-900 bg-purple-100 rounded-lg hover:bg-purple-200 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-            <span className="text-lg">{title}</span>
+            <span className="sm:text-lg">{title}</span>
             <HiChevronUp
               className={`${
                 !open ? "transform rotate-180" : ""
@@ -53,7 +53,7 @@ const Prayers = () => {
   }, [prayers]);
 
   return (
-    <div className="container  py-8">
+    <div className="container p-1  py-8">
       <h1 className="text-3xl text-center text-dodge-blue font-bold">
         Catholic Prayers
       </h1>
@@ -62,8 +62,8 @@ const Prayers = () => {
           <input
             onChange={handleSearch}
             type="text"
-            className="p-2 text-lg ring-1 
-          focus:outline-none focus:border-0 focus:ring-dodge-blue rounded flex-1"
+            className="p-2 sm:text-lg ring-1 
+          focus:outline-none w-full text-sm  focus:border-0 focus:ring-dodge-blue rounded flex-1"
             placeholder="Search prayer here..."
           />
           {/* <button className="p-2 bg-dodge-blue rounded ring-2 text-white uppercase hover:opacity-80">
