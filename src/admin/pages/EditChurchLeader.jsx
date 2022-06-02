@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
 import {
@@ -34,6 +34,7 @@ const EditChurchLeader = () => {
         formState: { errors },
     } = useForm();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { id } = useParams();
 
     const handleUpdateLeader = async (data) => {
@@ -63,6 +64,7 @@ const EditChurchLeader = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
+            navigate("/admin/leaders")
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
@@ -95,7 +97,7 @@ const EditChurchLeader = () => {
     }, [leader, setValue]);
 
     return (
-        <div className="px-2 sm:px-0">
+        <div className="px-0">
             <Link
                 to="/admin/leaders"
                 className="my-5 flex items-center text-sm space-x-3 cursor-pointer"
@@ -113,7 +115,7 @@ const EditChurchLeader = () => {
                         <h2>Not Found</h2>
                     </div>
                 ) : (
-                    <div className="bg-white p-6">
+                    <div className="bg-white p-3 sm:p-6">
                         <div className="flex items-center justify-between">
                             <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
                                 Edit Church Leader
@@ -150,13 +152,8 @@ const EditChurchLeader = () => {
                                     <input
                                         type="checkbox"
                                         className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
-                                        {...register("isActive", {
-                                            required: {
-                                                value: true,
-                                                message: "Required",
-                                            },
-                                        })}
-                                    />{" "}
+                                        {...register("isActive")}
+                                    />
                                     Active Leader
                                 </label>
                                 {errors.isActive && (

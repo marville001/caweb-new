@@ -52,13 +52,13 @@ const ChurchLeadership = () => {
                 </div>
             </div>
 
-            <div className="flex justify-bketween gap-10 items-center">
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-5 sm:gap-10 items-start sm:items-center">
                 <h2 className="text-2xl text-dodge-blue font-bold">
                     Church Committee
                 </h2>
                 <Link
                     to="/admin/leaders/new"
-                    className="p-2 bg-steelblue py-1 px-4 text-white uppercase font-normal rounded-md"
+                    className="p-2 bg-steelblue py-1 px-4 text-white font-normal rounded-md"
                 >
                     Add Leader
                 </Link>
