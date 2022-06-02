@@ -6,6 +6,8 @@ import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { updateImage } from "../redux/actions/userActions";
 import { put } from "../redux/actions/http";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const sccs = {
     stangelus: "St Angelus",
@@ -26,22 +28,49 @@ const MyAccount = () => {
     const [success, setSuccess] = useState("");
     const [error, setError] = useState("");
     const [isUpdatingPassword, setIsUpdatingPassword] = useState(false);
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
+    const [image, setImage] = useState("");
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const imageRef = useRef();
 
-    const handleUpdateImage = async () => {
+    const handleImageChange = async (e) => {
+        const { files } = e.target;
+
+        if (files.length === 0) return;
+
+        setIsUploadingImage(true);
         const formData = new FormData();
+        formData.append("file", files[0]);
+        formData.append("upload_preset", "dekutca-chaplaincy");
+        formData.append("cloud_name", "dyzn9g0lr");
 
-        formData.append("avatar", profileImage[0]);
+        const { data } = await axios.post(
+            "https://api.cloudinary.com/v1_1/dyzn9g0lr/image/upload",
+            formData
+        );
 
-        const result = await dispatch(updateImage(formData, user._id));
+        setIsUploadingImage(false);
+        setImage(data.url);
+    };
+
+    const handleUpdateImage = async () => {
+        const result = await dispatch(updateImage({ avatar: image }, user._id));
 
         if (!result.success) {
             alert(result.message);
         }
+
+        toast.success("Avatar updated successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
     };
 
     const resetForm = () => {
@@ -101,14 +130,21 @@ const MyAccount = () => {
             navigate("/login");
         }
     }, [user, navigate]);
+
+    useEffect(() => {
+        if (user._id) {
+            setImage(user?.avatar);
+        }
+    }, [user]);
+
     return (
-        <div className="max-w-4xl mx-auto bg-white my-16 p-6 pb-28">
+        <div className="max-w-4xl mx-auto bg-white my-16 p-2 sm:p-6 pb-28 min-h-[700px]">
             <h2 className="text-3xl text-dodge-blue font-bold">
                 Manage Account
             </h2>
             <hr className="my-4" />
             <div className="flex flex-col lg:flex-row lg:divide-x-2">
-                <div className="px-5 py-4 pb-10 min-w-[200px]">
+                <div className="px-2 sm:px-5 py-4 pb-10 min-w-[200px]">
                     <ul className="flex flex-wrap flex-row lg:flex-col items-center md:space-x-2 lg:space-x-0 lg:space-y-3  gap-4 lg:gap-0">
                         <li>
                             <Link
@@ -120,7 +156,7 @@ const MyAccount = () => {
                         </li>
                         <li>
                             <Link
-                                to="/my-account"
+                                to="/my-account/subscriptions"
                                 className="text-lg tracking-wider font-light"
                             >
                                 My Subscription
@@ -128,28 +164,25 @@ const MyAccount = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="px-5  flex-1">
+                <div className="px-2 sm:px-5  flex-1">
                     {/* Profile Image */}
                     <div className="flex flex-col sm:flex-row relative gap-6">
                         <div className="cursor-pointer rounded-md overflow-hidden ring-0">
-                            <img
-                                className="rounded-md w-64 sm:w-48 h-48 object-cover"
-                                src={`${
-                                    user?.avatar.startsWith("https")
-                                        ? "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                                        : user?.avatar
-                                        ? process.env.REACT_APP_UPLOADS_URL +
-                                          user?.avatar
-                                        : "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                                }`}
-                                alt="Avatar"
-                            />
+                            {isUploadingImage ? (
+                                <div className="flex justify-center items-center w-64 sm:w-48 h-48">
+                                    <FaSpinner className="text-xl animate-spin" />
+                                </div>
+                            ) : (
+                                <img
+                                    className="rounded-md w-64 sm:w-48 h-48 object-cover"
+                                    src={image}
+                                    alt="Avatar"
+                                />
+                            )}
                         </div>
                         <div className="flex flex-col items-start my-2">
                             <input
-                                onChange={(e) =>
-                                    setProfileImage(e.target.files)
-                                }
+                                onChange={handleImageChange}
                                 ref={imageRef}
                                 id="profile-image"
                                 className="hidden"
@@ -167,14 +200,14 @@ const MyAccount = () => {
                             </div>
                             <button
                                 type="button"
-                                disabled={isUpdatingImage}
+                                disabled={isUpdatingImage || isUploadingImage}
                                 className="bg-sea-green px-8 my-2 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
                                 onClick={handleUpdateImage}
                             >
                                 {isUpdatingImage && (
                                     <FaSpinner className="mr-2 animate-spin" />
                                 )}
-                                Update
+                                Save
                             </button>
                         </div>
                     </div>

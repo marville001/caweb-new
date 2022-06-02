@@ -28,6 +28,7 @@ import NewChurchLeader from "./admin/pages/NewChurchLeader";
 import NewLeaderPosition from "./admin/pages/NewLeaderPosition";
 import EditChurchLeader from "./admin/pages/EditChurchLeader";
 import ViewScc from "./pages/ViewScc";
+import MySubscriptions from "./pages/MySubscriptions";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -96,6 +97,7 @@ const App = () => {
                 <Route exact path="/resources" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/get-connected" element={ <MainLayout> <GetConnected /> </MainLayout> } />
                 <Route exact path="/my-account" element={ <MainLayout> <MyAccount /> </MainLayout> } />
+                <Route exact path="/my-account/subscriptions" element={ <MainLayout> <MySubscriptions /> </MainLayout> } />
                 <Route path="*" element={ <MainLayout> <NotFound /> </MainLayout> } />
                 <Route path="/admin" element={<AdminDashboard />}>
                     <Route index element={<AdminPrivateRoute><AdminHome /></AdminPrivateRoute>} />
