@@ -40,7 +40,7 @@ export default function SccLeadership() {
                                     leader.scc?._id === id
                             )
                             .map((leader) => (
-                                <LeaderCard key={leader?._id} leader={leader} />
+                                <LeaderCard scc={true} key={leader?._id} leader={leader} />
                             ))}
                     </div>
                     {leaders?.filter(

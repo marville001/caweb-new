@@ -50,7 +50,11 @@ const EditChurchLeader = () => {
 
             dispatch(
                 updateLeaderAction(
-                    { ...data, image: imageUrl, churchCommittee: true },
+                    {
+                        ...data,
+                        image: imageUrl,
+                        churchCommittee: leader.churchCommittee,
+                    },
                     id,
                     "admin"
                 )
@@ -64,7 +68,12 @@ const EditChurchLeader = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
-            navigate("/admin/leaders")
+
+            if (leader.churchCommittee) {
+                navigate("/admin/leaders");
+            } else {
+                navigate(`/admin/sccs/${leader?.scc?.key}`);
+            }
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
