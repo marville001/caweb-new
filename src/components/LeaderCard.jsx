@@ -1,9 +1,7 @@
 const LeaderCard = ({ scc = false, leader, width }) => {
     return (
         <div
-            className={`${
-                width && "min-w-[" + width + "]"
-            } bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
+            className={`w-full sm:w-auto sm:min-w-[250px]  bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
         >
             <div className=" w-full h-48 bg-gray-500">
                 <img
@@ -15,7 +13,7 @@ const LeaderCard = ({ scc = false, leader, width }) => {
             <div className="p-4 text-center">
                 <h4 className="text-dodge-blue font-medium">{leader?.name}</h4>
                 <h4 className="text-dodge-blue font-medium my-2">
-                    {leader?.title?.title}
+                    {leader?.title?.title || leader?.title}
                 </h4>
                 {leader?.scc && !scc && (
                     <h4 className="font-medium my-2 duration-[0ms]">

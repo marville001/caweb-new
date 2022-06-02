@@ -25,13 +25,13 @@ const MainLeadership = () => {
                 <LeaderCard
                     leader={{
                         image: "http://www.kccb.or.ke/home/wp-content/uploads/2013/12/Bishop_30-300x300.jpg",
-                        name: "Name and Name",
+                        name: "Fr Vincent Wambugu",
                         title: "Our Chaplain",
-                        width: "380px",
+                        width: "480px",
                     }}
                 />
             </div>
-            <div className="bg-gray-100 p-5 pb-12 mt-10">
+            <div className="bg-gray-100 pb-12 mt-10">
                 <h4 className="text-center text-sea-green text-2xl lg:text-3xl mb-6">
                     Main Church Commitee
                 </h4>
