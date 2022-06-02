@@ -45,10 +45,18 @@ const SccEditPage = () => {
     };
 
     const handleUpdateScc = async (data) => {
+        if (data.key.trim().includes(" ")) {
+            toast.error("Key should not have a space", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+            });
+            return;
+        }
         try {
             setLoading(true);
 
-            const res = await put(`sccs/${scc._id}`, data, "admin");
+            const res = await put(`sccs/${scc._id}`, {...data, image}, "admin");
 
             setLoading(false);
             toast.success("Scc Updated successfully", {
@@ -78,6 +86,7 @@ const SccEditPage = () => {
             setValue("name", scc?.name);
             setValue("category", scc?.category);
             setValue("description", scc?.description);
+            setValue("key", scc?.key);
             setImage(scc?.image);
         }
     }, [scc, setValue]);
@@ -148,7 +157,6 @@ const SccEditPage = () => {
                                     id="image_select"
                                     disabled={loading}
                                     className="hidden"
-                                    {...register("image")}
                                     onChange={handleImageChange}
                                 />
 
@@ -160,6 +168,18 @@ const SccEditPage = () => {
                                         required: {
                                             value: true,
                                             message: "Name is required",
+                                        },
+                                    })}
+                                />
+
+                                <h3 className="opacity-70">Key (No Space) </h3>
+                                <input
+                                    type="text"
+                                    className="w-full mt-2 mb-4"
+                                    {...register("key", {
+                                        required: {
+                                            value: true,
+                                            message: "Key is required",
                                         },
                                     })}
                                 />
