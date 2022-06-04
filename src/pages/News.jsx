@@ -35,7 +35,7 @@ const News = () => {
                                 adipisicing
                             </Link>
 
-                            <p className="mb-2 mt-2 font-normal">
+                            <p className="mb-2 mt-2 text-sm font-normal">
                                 Lorem ipsum, dolor sit amet consectetur
                                 adipisicing elit. Dolor veritatis provident
                                 facere? Est, veritatis dolore consequatur
