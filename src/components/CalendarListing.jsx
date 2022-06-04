@@ -7,8 +7,8 @@ const CalendarListing = ({ events = [] }) => {
             {events.map((event, i) => (
                 <Link key={i} to="#event" className="relative bg-white min-h-[300px]">
                     <img src={event.image} alt="" className="w-full h-full" />
-                    <div className="flex flex-col items-center absolute bottom-0 inset-x-0 bg-white">
-                        <h3 className="text-lg my-2 text-center font-semibold">
+                    <div className="absolute bottom-0 inset-x-0 bg-white">
+                        <h3 className="text-sm my-2 font-semibold">
                             {new Date(event.date).toDateString().toString()}
                         </h3>
 
