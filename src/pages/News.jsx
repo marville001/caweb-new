@@ -22,8 +22,8 @@ const News = () => {
                             alt=""
                             className="w-full h-20"
                         />
-                        <div className="flex flex-col p-2 items-center bg-white">
-                            <h3 className="text-lg my-2 text-center font-semibold">
+                        <div className="p-2 bg-white">
+                            <h3 className="text-sm my-2 font-semibold">
                                 {new Date().toDateString().toString()}
                             </h3>
 
