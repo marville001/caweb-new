@@ -12,12 +12,11 @@ const CalendarListing = ({ events = [] }) => {
                             {new Date(event.date).toDateString().toString()}
                         </h3>
 
-                        <Link
-                            to="#event"
+                        <span
                             className="text-sm sm:text-lg text-dodge-blue"
                         >
                             {event.title}
-                        </Link>
+                        </span>
 
                         <p className="mb-2 mt-2 font-normal">
                             {event.description?.substring(0, 30) + "..."}
