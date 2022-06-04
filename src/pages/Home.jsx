@@ -439,6 +439,7 @@ const Home = () => {
                     {[...events?.slice(0, 6)].map((event, i) => (
                         <Link
                             to="#event"
+                            key={i}
                             className="relative bg-white min-h-[300px]"
                         >
                             <img
