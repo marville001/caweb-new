@@ -16,7 +16,7 @@ const Events = () => {
   return (
     <div className="container  py-14">
       <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
-        DEKUTCC Calendar
+        Our Events
       </h1>
       <div className="md:px-16 py-12 bg-slate-50_ my-8">
         {/* Header */}
