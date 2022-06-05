@@ -14,7 +14,7 @@ const Events = () => {
       </h1>
       <div className="md:px-16 py-12 bg-slate-50 my-8">
         {/* Header */}
-        <div className="flex justify-between">
+        {/* <div className="flex justify-between">
           <div className="flex flex-col md:flex-row gap-2">
             <Link
               className="border-slate-800 border-2 p-2 px-4 uppercase text-slate-800 hover:bg-slate-800 hover:text-white font-medium text-md"
@@ -34,7 +34,7 @@ const Events = () => {
               Date <FaChevronDown className="mt-[2px] ml-2" />{" "}
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Events listing */}
         <CalendarListing />
