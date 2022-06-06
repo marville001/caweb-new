@@ -49,7 +49,7 @@ const NewEvent = () => {
             });
             clearErrors();
             reset();
-            navigate("/admins/events")
+            navigate("/admin/events")
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
