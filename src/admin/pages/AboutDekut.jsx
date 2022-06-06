@@ -7,6 +7,8 @@ const AboutDekut = () => {
         mission: "",
     });
 
+    // console.log(state.story);
+
     return (
         <div className="px-2 sm:px-0">
             <div className="max-w-2xl mx-auto _shadow rounded-md border-2">
@@ -44,6 +46,8 @@ const AboutDekut = () => {
                                     story: value,
                                 }))
                             }
+
+                            placeholder="Start typing dekutcc story here"
                         />
                     </div>
 
