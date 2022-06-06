@@ -16,24 +16,7 @@ const QuillEditor = ({
     const editorRef = useRef(null);
     const [uploading, setUploading] = useState(false);
 
-    const handleUploadImage = async (file) => {
-        // setUploading(true);
-        // const formData = new FormData();
-        // formData.append("file", file);
-        // formData.append("upload_preset", "dekutca-chaplaincy");
-        // formData.append("cloud_name", "dyzn9g0lr");
-        // try {
-        //     const { data } = await axios.post(
-        //         "https://api.cloudinary.com/v1_1/dyzn9g0lr/image/upload",
-        //         formData
-        //     );
-        //     setUploading(false);
-        //     return data.url;
-        // } catch (error) {
-        // 	setUploading(false);
-        // 	return ""
-        // }
-
+    const handleUploadImage = async () => {    
         const input = document.createElement("input");
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
