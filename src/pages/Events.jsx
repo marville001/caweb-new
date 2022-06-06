@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaChevronCircleLeft,
   FaChevronCircleRight,
 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
 import CalendarListing from "../components/CalendarListing";
+import { fetchEventsAction } from "../redux/actions/events";
 
 const Events = () => {
+  const { events } = useSelector((state) => state.eventsState);
+
+
+    const dispatch = useDispatch();
+
+  useEffect(() => {
+        dispatch(fetchEventsAction());
+  }, [dispatch]);
+  
   return (
     <div className="container  py-14">
       <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
@@ -36,7 +47,9 @@ const Events = () => {
         </div> */}
 
         {/* Events listing */}
-        <CalendarListing events={[1,2,3,4]} />
+        <hr />
+        <CalendarListing events={events} />
+        <hr />
 
         {/* Page switch */}
         <div className="flex justify-between items-center px-6 w-10/12 md:w-5/12 mx-auto">
@@ -47,7 +60,7 @@ const Events = () => {
           <h2 className="text-xl font-medium">Page 1</h2>
           <span className="flex items-center cursor-pointer">
             <span className="hidden sm:block">next</span>
-            <FaChevronCircleRight className="mt-1 ml-2 text-gray-800 text-xl" />
+            <FaChevronCircleRight className="mt-1 ml-2 text-gray-400 text-xl" />
           </span>
         </div>
       </div>
