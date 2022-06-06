@@ -1,10 +1,10 @@
-import ReactQuill, { Quill } from "react-quill";
-import "react-quill/dist/quill.snow.css";
-
-import ImageUploader from "quill-image-uploader";
-import axios from "axios";
 import { useState } from "react";
+import ReactQuill, { Quill } from "react-quill";
+import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
+import ImageUploader from "quill-image-uploader";
+
+import "react-quill/dist/quill.snow.css";
 
 Quill.register("modules/imageUploader", ImageUploader);
 
@@ -29,7 +29,8 @@ const QuillEditor = ({
             setUploading(false);
             return data.url;
         } catch (error) {
-            setUploading(false);
+			setUploading(false);
+			return ""
         }
     };
     return (
