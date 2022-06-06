@@ -10,8 +10,7 @@ const CalendarListing = ({ events=[] }) => {
                 >
                     <div className="md:pr-6 min-w-[150px]">
                         <h3 className="text-slate-800 text-center font-bold text-2xl md:text-3xl">
-                            {new Date(event.date).toDateString().toString().substring(8, 10)}
-                            
+                            {new Date(event.date).toDateString().toString().substring(8, 10)}                            
                         </h3>
                         <p className="text-xs md:text-sm  md:mt-2 font-medium text-center">
                           {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaChevronRight, FaCalendarAlt } from "react-icons/fa";
+import { FaChevronRight, FaCalendarAlt, FaBible } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 import { Navigation, Pagination, Autoplay } from "swiper";
@@ -11,14 +11,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { getGalleryImages } from "../redux/actions/galleryAction";
+import { fetchEventsAction } from "../redux/actions/events";
 
 const Home = () => {
-    const { images } = useSelector(
-        (state) => state.galleryState
-    );
+    const { images } = useSelector((state) => state.galleryState);
+    const { events } = useSelector((state) => state.eventsState);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(fetchEventsAction());
         dispatch(getGalleryImages({ page: 1, pageSize: 20 }));
     }, [dispatch]);
 
@@ -133,19 +135,35 @@ const Home = () => {
 
             <div className="bg-white min-h-[40vh] py-8 md:py-12">
                 <div className="mx-auto flex flex-col md:flex-row p-4 sm:p-10 max-w-7xl">
-                    <img 
-                    src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
-                    alt="" 
-                    className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
+                    <img
+                        src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
+                        alt=""
+                        className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
                     />
                     <div className=" mt-8 md:mt-0 md:px-12">
-                        <h3 className="text-orange-600 font-bold tracking-widest">NEW TO OUR CHAPLAIN?</h3>
+                        <h3 className="text-orange-600 font-bold tracking-widest">
+                            NEW TO OUR CHAPLAIN?
+                        </h3>
 
-                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">About DEKUTCC</h1>
+                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">
+                            About DEKUTCC
+                        </h1>
                         <div className="bg-orange-600 h-1 w-16 mt-3"></div>
-                        <p className="my-16 text-lg opacity-90">Welcome to the website for Dedan Kimathi University of
-                        Technology. Sister Irene Stephani Catholic Chaplaincy. Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus fuga exercitationem sunt in eum, perferendis maiores aperiam quas alias explicabo harum. Est cumque earum dignissimos ipsa quaerat doloribus ullam officia....</p>
-                        <Link to="/about" className="bg-dodge-blue text-white uppercase py-2 px-12 rounded-full ">LEarn more</Link>
+                        <p className="my-16 text-lg opacity-90">
+                            Welcome to the website for Dedan Kimathi University
+                            of Technology. Sister Irene Stephani Catholic
+                            Chaplaincy. Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Doloribus fuga exercitationem sunt
+                            in eum, perferendis maiores aperiam quas alias
+                            explicabo harum. Est cumque earum dignissimos ipsa
+                            quaerat doloribus ullam officia....
+                        </p>
+                        <Link
+                            to="/about"
+                            className="bg-dodge-blue text-white uppercase py-2 px-12 rounded-full "
+                        >
+                            LEarn more
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -193,18 +211,31 @@ const Home = () => {
 
             <div className="bg-white min-h-[40vh] py-8 md:py-12">
                 <div className="mx-auto flex flex-col md:flex-row p-4 sm:p-10 max-w-6xl">
-                    <img 
-                    src="https://d35r3vzpjv6bi5.cloudfront.net/26337/pictures/2020/8/archdiocese-samples-003%20red.jpg?t=1597432008000"
-                    alt="" 
-                    className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
+                    <img
+                        src="https://d35r3vzpjv6bi5.cloudfront.net/26337/pictures/2020/8/archdiocese-samples-003%20red.jpg?t=1597432008000"
+                        alt=""
+                        className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
                     />
                     <div className=" mt-8 md:mt-0 md:px-12">
-                        <h3 className="text-orange-600 font-bold tracking-widest">NEED ASSISTANCE?</h3>
+                        <h3 className="text-orange-600 font-bold tracking-widest">
+                            NEED ASSISTANCE?
+                        </h3>
 
-                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">Contact us</h1>
+                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">
+                            Contact us
+                        </h1>
                         <div className="bg-orange-600 h-1 w-16 mt-3"></div>
-                        <p className="my-16 text-lg opacity-90">Not sure where to begin? Click below to get in touch. A member of the DEKUTCC Commitee will reach out to personally assist you.</p>
-                        <Link to="/contact-us" className="bg-dodge-blue text-white uppercase py-2 px-8 rounded-full ">Contact</Link>
+                        <p className="my-16 text-lg opacity-90">
+                            Not sure where to begin? Click below to get in
+                            touch. A member of the DEKUTCC Commitee will reach
+                            out to personally assist you.
+                        </p>
+                        <Link
+                            to="/contact-us"
+                            className="bg-dodge-blue text-white uppercase py-2 px-8 rounded-full "
+                        >
+                            Contact
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -299,7 +330,9 @@ const Home = () => {
                         </h2>
                         <div className="flex flex-col gap-5 pt-5">
                             <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
-                                <div className="flex-shrink pr-8">Icon</div>
+                                <div className="flex-shrink pr-8  flex items-center justify-center">
+                                    <FaBible />
+                                </div>
                                 <div className="flex-1 text-center">
                                     The Epiphany of the Lord:{" "}
                                     <span className="text-sm ml-4 text-slate-600">
@@ -314,7 +347,9 @@ const Home = () => {
                                 </a>
                             </div>
                             <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
-                                <div className="flex-shrink pr-8">Icon</div>
+                                <div className="flex-shrink pr-8  flex items-center justify-center">
+                                    <FaBible />
+                                </div>
                                 <div className="flex-1 text-center ">
                                     2022 - 01 - 02 USCCB Daily Mass Readings:
                                 </div>
@@ -396,48 +431,37 @@ const Home = () => {
                 </h2>
                 <hr />
                 <div className="divide-y">
-                    <div className="py-6 flex items-center">
-                        <div className="flex flex-col items-center">
-                            <h3 className="text-lg mb-2 font-semibold">26</h3>
-                            <h3 className="text-xs sm:text-lg mb-2 font-normal">
-                                Dec 2021
-                            </h3>
+                    {[...events?.slice(0, 3)].map((event, i) => (
+                        <div className="py-6 flex items-center">
+                            <div className="flex flex-col items-center">
+                                <h3 className="text-lg mb-2 font-semibold">
+                                    {new Date(event.date)
+                                        .toDateString()
+                                        .toString()
+                                        .substring(8, 10)}
+                                </h3>
+                                <h3 className="text-xs sm:text-lg mb-2 font-normal">
+                                    {new Date(event.date)
+                                        .toDateString()
+                                        .toString()
+                                        .substring(0, 4) +
+                                        new Date(event.date)
+                                            .toDateString()
+                                            .toString()
+                                            .substring(4, 7) +
+                                        " " +
+                                        new Date(event.date).getFullYear()}
+                                </h3>
+                            </div>
+                            <a
+                                href="#event"
+                                className="text-sm sm:text-lg text-dodge-blue ml-10"
+                            >
+                                {event.title}
+                            </a>
                         </div>
-                        <a
-                            href="#event"
-                            className="text-sm sm:text-lg text-dodge-blue ml-10"
-                        >
-                            Christmas Season
-                        </a>
-                    </div>
-                    <div className="py-6 flex items-center">
-                        <div className="flex flex-col items-center">
-                            <h3 className="text-lg mb-2 font-semibold">26</h3>
-                            <h3 className="text-xs sm:text-lg mb-2 font-normal">
-                                Dec 2021
-                            </h3>
-                        </div>
-                        <a
-                            href="#event"
-                            className="text-sm sm:text-lg text-dodge-blue ml-10"
-                        >
-                            Solemnity of Mary, the Holy Mother of God
-                        </a>
-                    </div>
-                    <div className="py-6 flex items-center">
-                        <div className="flex flex-col items-center">
-                            <h3 className="text-lg mb-2 font-semibold">2</h3>
-                            <h3 className="text-xs sm:text-lg mb-2 font-normal">
-                                Feb 2021
-                            </h3>
-                        </div>
-                        <a
-                            href="#event"
-                            className="text-sm sm:text-lg text-dodge-blue ml-10"
-                        >
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                        </a>
-                    </div>
+                    ))}
+
                     <div className="py-6 flex justify-center">
                         <Link
                             to="/events"
