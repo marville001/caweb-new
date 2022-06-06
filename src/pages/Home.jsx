@@ -374,7 +374,7 @@ const Home = () => {
                         >
                             <Img
                                 className="w-full h-full"
-                                src={process.env.REACT_APP_UPLOADS_URL + image}
+                                src={image}
                                 alt={title}
                             />
                         </div>
