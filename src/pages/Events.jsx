@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
   FaChevronCircleLeft,
   FaChevronCircleRight,
-  FaChevronDown,
 } from "react-icons/fa";
 import CalendarListing from "../components/CalendarListing";
+
 const Events = () => {
   return (
     <div className="container  py-14">
@@ -37,7 +36,7 @@ const Events = () => {
         </div> */}
 
         {/* Events listing */}
-        <CalendarListing />
+        <CalendarListing events={[1,2,3,4]} />
 
         {/* Page switch */}
         <div className="flex justify-between items-center px-6 w-10/12 md:w-5/12 mx-auto">
