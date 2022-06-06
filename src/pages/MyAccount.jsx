@@ -20,7 +20,6 @@ const MyAccount = () => {
         (state) => state.accountUsers
     );
 
-    const [profileImage, setProfileImage] = useState("");
     const [old_password, setOldPassword] = useState("");
     const [new_password, setNewPassword] = useState("");
     const [confirm_new_password, setConfirmNewPassword] = useState("");
@@ -185,18 +184,16 @@ const MyAccount = () => {
                                 onChange={handleImageChange}
                                 ref={imageRef}
                                 id="profile-image"
-                                className="hidden"
-                                // value={profileImage}
+                                className="hidden "
                                 accept="image/*"
                                 type="file"
+                                disabled={isUploadingImage}
                             />
                             <div
                                 onClick={() => imageRef.current.click()}
                                 className="min-w-[250px] cursor-pointer border p-2 pr-10 rounded-lg"
                             >
-                                {profileImage?.length >= 1
-                                    ? profileImage[0].name
-                                    : "Select Image"}
+                                Select Image
                             </div>
                             <button
                                 type="button"
