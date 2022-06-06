@@ -29,6 +29,7 @@ import NewLeaderPosition from "./admin/pages/NewLeaderPosition";
 import EditChurchLeader from "./admin/pages/EditChurchLeader";
 import ViewScc from "./pages/ViewScc";
 import MySubscriptions from "./pages/MySubscriptions";
+import AboutDekut from "./admin/pages/AboutDekut";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -117,6 +118,7 @@ const App = () => {
                     <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
                     <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
                     <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />
+                    <Route path="about-dekut" element={<AdminPrivateRoute><AboutDekut /></AdminPrivateRoute>} />
                     <Route path="*" element={
                             <div className="m-16 p-4 flex flex-col items-center justify-center">
                                 <h1 className="text-7xl text-dodge-blue font-bold">

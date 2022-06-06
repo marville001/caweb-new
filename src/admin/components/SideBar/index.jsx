@@ -69,6 +69,13 @@ const SideBar = ({ open }) => {
                         text="Our Gallery"
                         icon={HiOutlineFolder}
                     />
+
+                    <SideLink
+                        to="/admin/about-dekut"
+                        text="About Dekut"
+                        icon={HiOutlineFolder}
+                    />
+
                 </div>
                 <div className="absolute inset-x-0 bottom-16 flex justify-center">
                     <button
