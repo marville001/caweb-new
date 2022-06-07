@@ -15,7 +15,7 @@ export default function SccLeadershipWelcome() {
 
     return (
         <div className="container">
-            <div className="w-full px-2 py-16 sm:px-0">
+            <div className="w-full px-1 py-16 sm:px-0">
                 <h3 className="mt-6 text-center text-dodge-blue text-3xl font-bold uppercase">
                     Our SCC Leaderships
                 </h3>
