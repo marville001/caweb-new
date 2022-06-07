@@ -27,7 +27,7 @@ const SideBar = ({ open }) => {
             } fixed inset-y-0 left-0 bg-white w-64 transition-all z-[100]
             duration-300 ease-linear`}
         >
-            <div className="flex bg-slate-900 flex-col text-lg h-full relative  min-h-[600px] overflow-y-scroll">
+            <div className="flex bg-slate-900 flex-col text-lg h-full relative  min-h-[600px] overflow-y-auto">
                 <h2
                     className="flex items-center justify-center text-2xl
             h-16 text-white font-bold my-4"
