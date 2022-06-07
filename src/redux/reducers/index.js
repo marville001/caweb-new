@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import aboutReducer from "./aboutReducer";
 
 import accountUserReducer from "./accountUserReducer";
 import adminReducer from "./admin/adminReducer";
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   eventsState: eventsReducer,
   leadersState: leadersReducer,
   positionsState: positionsReducer,
+  aboutState: aboutReducer,
 });
 
 export default rootReducer;

@@ -16,7 +16,7 @@ const QuillEditor = ({
     const editorRef = useRef(null);
     const [uploading, setUploading] = useState(false);
 
-    const handleUploadImage = async () => {    
+    const handleUploadImage = async () => {
         const input = document.createElement("input");
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
@@ -63,7 +63,9 @@ const QuillEditor = ({
                     [{ size: [] }],
                     ["bold", "italic", "underline", "strike", "blockquote"],
                     [{ list: "ordered" }, { list: "bullet" }],
-                    ["link", "image", "video"],
+                    ["link",
+                        // "image",
+                        "video"],
                     ["clean"],
                 ],
             },
@@ -79,20 +81,14 @@ const QuillEditor = ({
                 theme="snow"
                 onChange={handleChange}
                 value={value}
-                modules={
-                    modules
-                    // {
-                    //     // imageUploader: {
-                    //     //     upload: handleUploadImage,
-                    //     // },
-                    // }
-                }
+                modules={modules}
                 formats={QuillEditor.formats}
                 bounds={".app"}
                 placeholder={placeholder}
                 forwardedRef={editorRef}
-            />
-
+            >
+                <div>{value}</div>
+            </ReactQuill>
             {uploading && (
                 <div className="absolute inset-0 flex items-center justify-center cursor-not-allowed">
                     <FaSpinner className="animate-spin mr-4 opacity-80" />
@@ -103,14 +99,6 @@ const QuillEditor = ({
     );
 };
 
-/*
- * Quill modules to attach to editor
- * See https://quilljs.com/docs/modules/ for complete options
- */
-/*
- * Quill editor formats
- * See https://quilljs.com/docs/formats/
- */
 QuillEditor.formats = [
     "header",
     "font",
@@ -127,5 +115,4 @@ QuillEditor.formats = [
     "image",
     "video",
 ];
-
 export default QuillEditor;
