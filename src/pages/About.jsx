@@ -49,7 +49,7 @@ const About = () => {
                 </p>
 
                 {/*  */}
-                <div className="bg-white p-5 my-8">
+                <div className="bg-white sm:p-5 my-8">
                     <div className="w-10/12 mx-auto my-6">
                         <h3 className="text-3xl  text-dodge-blue font-bold text-center">
                             Our Story
@@ -61,7 +61,10 @@ const About = () => {
               voluptates? Rem deleniti impedit illum ut debitis dolor libero?
               Excepturi id nulla quia soluta consequuntur placeat.
             </p> */}
-                        <div className="my-4 text-center">
+                        <div className="
+                        my-4 mx-auto prose prose-sm sm:prose-md md:prose-lg max-w-none
+                        prose-h2:my-4 prose-h1:my-5 prose-p:my-2 prose-headings:my-4
+                        ">
                             {parse(ReactHtmlParser(about?.story).toString())}
                         </div>
 
