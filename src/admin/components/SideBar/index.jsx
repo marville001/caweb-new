@@ -27,7 +27,7 @@ const SideBar = ({ open }) => {
             } fixed inset-y-0 left-0 bg-white w-64 transition-all z-[100]
             duration-300 ease-linear`}
         >
-            <div className="flex bg-slate-900 flex-col text-lg h-full relative">
+            <div className="flex bg-slate-900 flex-col text-lg h-full relative  min-h-[600px] overflow-y-scroll">
                 <h2
                     className="flex items-center justify-center text-2xl
             h-16 text-white font-bold my-4"
@@ -77,13 +77,13 @@ const SideBar = ({ open }) => {
                     />
 
                 </div>
-                <div className="absolute inset-x-0 bottom-16 flex justify-center">
+                <div className="inset-x-0 bottom-6 flex px-8">
                     <button
                         onClick={logoutAdmin}
-                        className="flex justify-center items-center flex-col
-          py-7 text-slate-300"
+                        className="flex items-center flex-row
+          py-7 text-slate-300 gap-4"
                     >
-                        <FaPowerOff className="w-6 h-6 mb-2" />
+                        <FaPowerOff className="w-6 h-6 mr-2" />
 
                         <span className="text-[15px]">Log Out</span>
                     </button>
