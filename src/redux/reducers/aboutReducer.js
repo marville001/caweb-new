@@ -1,10 +1,4 @@
-import {
-    FETCH_ABOUT,
-    FETCH_LEADER,
-    FETCH_LEADERS,
-    SAVE_ABOUT,
-    UPDATE_LEADER,
-} from "../types";
+import { FETCH_ABOUT, SAVE_ABOUT } from "../types";
 
 const initialState = {
     about: {},

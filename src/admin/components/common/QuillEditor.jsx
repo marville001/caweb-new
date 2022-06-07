@@ -1,8 +1,8 @@
 import { useMemo, useRef, useState } from "react";
-import ReactQuill, { Quill } from "react-quill";
+import ReactQuill from "react-quill";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
-import ImageUploader from "quill-image-uploader";
+// import ImageUploader from "quill-image-uploader";
 
 import "react-quill/dist/quill.snow.css";
 
