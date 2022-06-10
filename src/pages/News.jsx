@@ -47,6 +47,12 @@ const News = () => {
                     </Link>
                 ))}
             </div>
+
+            <div className="py-6 flex justify-center">
+                <button className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90">
+                    Load More
+                </button>
+            </div>
         </div>
     );
 };
