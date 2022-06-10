@@ -8,7 +8,7 @@ const News = () => {
                 Our News
             </h1>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8 py-12">
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((news, i) => (
                     <Link
                         key={news}
