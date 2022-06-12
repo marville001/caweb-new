@@ -12,8 +12,6 @@ const Event = () => {
 
     const { key } = useParams();
 
-    const dispatch = useDispatch();
-
     useEffect(() => {
         const loadEvent = async () => {
             try {
@@ -31,25 +29,30 @@ const Event = () => {
     }, [key]);
 
     return (
-        <div className="container  py-14">
+        <div className="container max-w-4xl mx-auto py-14">
             {loading ? (
                 <div className="flex my-10 justify-center text-2xl animate-spin">
                     <FaSpinner />
                 </div>
             ) : (
-                <div className="max-w-4xl px-10 bg-white mx-auto py-10">
-                    <h1 className="text-3xl md:text-4xl text-cesnter text-dodge-blue font-bold">
+                <div className="px-10 w-full sm:w-[500px] bg-white mx-auto py-10">
+                    <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
                         {event?.title}
                     </h1>
+
+                    <h3 className="text-sm text-center my-2 font-semibold">
+                        {new Date(event.date).toDateString().toString()}
+                    </h3>
+
                     <div className="flex jufstify-center my-6">
                         <img
                             src={event?.image}
                             alt={event?.title}
-                            className="h-aut sm:h-60 object-cover"
+                            className="w-full sm:h-60 object-cover"
                         />
                     </div>
 
-                    <p className="text-centr">{event?.description}</p>
+                    <p className="text-center">{event?.description}</p>
                 </div>
             )}
         </div>
