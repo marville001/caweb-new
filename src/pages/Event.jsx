@@ -37,10 +37,19 @@ const Event = () => {
                     <FaSpinner />
                 </div>
             ) : (
-                <div className="max-w-4xl bg-white mx-auto py-10">
-                    <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
+                <div className="max-w-4xl px-10 bg-white mx-auto py-10">
+                    <h1 className="text-3xl md:text-4xl text-cesnter text-dodge-blue font-bold">
                         {event?.title}
                     </h1>
+                    <div className="flex jufstify-center my-6">
+                        <img
+                            src={event?.image}
+                            alt={event?.title}
+                            className="h-aut sm:h-60 object-cover"
+                        />
+                    </div>
+
+                    <p className="text-centr">{event?.description}</p>
                 </div>
             )}
         </div>
