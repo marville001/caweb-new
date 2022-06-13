@@ -14,6 +14,13 @@ import { fetchPositionsAction } from "../../redux/actions/positions";
 import parseError from "../../utils/parseError";
 import NewSccLeaderModal from "../components/scc/NewSccLeaderModal";
 
+
+const categories = {
+    "major":"Major Scc",
+    "minor":"Major Scc",
+    "bible-study":"Bible Study Group",
+}
+
 const SccPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
     const { leaders } = useSelector((state) => state.leadersState);
@@ -183,6 +190,11 @@ const SccPage = () => {
                             <h3 className="opacity-70">description</h3>
                             <div className="my-4 w-full">
                                 <p>{scc.description}</p>
+                            </div>
+
+                            <h3 className="opacity-70">Category</h3>
+                            <div className="my-4 w-full">
+                                <p>{categories[scc.category]}</p>
                             </div>
                         </>
                     ) : (

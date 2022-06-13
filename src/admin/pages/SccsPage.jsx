@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaSpinner } from "react-icons/fa";
+import { FaBible, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
@@ -42,10 +42,11 @@ const SccsPage = () => {
                         to={`/admin/sccs/${scc.key}`}
                         key={idx}
                         className="p-2 py-4 bg-dodge-blue text-center text-white rounded-md
-                        cursor-pointer hover:-translate-y-1 hover:opacity-80
+                        cursor-pointer hover:-translate-y-1 hover:opacity-80 flex justify-center items-center gap-4
                         "
                     >
-                        {scc.name}
+                        <span>{scc.name}</span>
+                        {scc?.category === "bible-study" && <FaBible />}
                     </Link>
                 ))}
 
