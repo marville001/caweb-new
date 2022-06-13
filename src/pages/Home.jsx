@@ -234,7 +234,7 @@ const Home = () => {
                             to="/contact-us"
                             className="bg-dodge-blue text-white uppercase py-2 px-8 rounded-full "
                         >
-                            Contact
+                            Contact Us
                         </Link>
                     </div>
                 </div>
