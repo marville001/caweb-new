@@ -90,6 +90,7 @@ const App = () => {
                 <Route exact path="/readings" element={<MainLayout><Home /></MainLayout>} />
                 <Route exact path="/about" element={<MainLayout><About /></MainLayout>} />
                 <Route exact path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
+                <Route exact path="/contact" element={<MainLayout><Contact /></MainLayout>} />
                 <Route path="leadership" element={<Leadership /> } >
                     <Route exact path="" element={<MainLayout><MainLeadership /> </MainLayout>} />
                     <Route exact path="scc" element={<MainLayout><SccLeadershipWelcome /></MainLayout>} />

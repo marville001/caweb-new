@@ -7,11 +7,11 @@ const GetConnected = () => {
         Get Connected
       </h1>
 
-      <div className="bg-white p-6 text-center">
+      <div className="bg-white p-6 text-center mb-8">
         <h2 className="text-lg">
           Follow the DEKUTCC on our social media sites.
         </h2>
-        <div className="divide-x my-2 flex justify-center items-center">
+        <div className="sm:divide-x my-2 flex justify-center items-center flex-wrap">
           <a
             href="#h"
             target="_blank"
