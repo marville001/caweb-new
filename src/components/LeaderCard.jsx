@@ -5,7 +5,7 @@ const LeaderCard = ({ scc = false, leader, width }) => {
         >
             <div className=" w-full h-48 bg-gray-500">
                 <img
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover object-top"
                     src={leader?.image}
                     alt=""
                 />
