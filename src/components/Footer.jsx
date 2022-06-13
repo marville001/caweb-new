@@ -125,7 +125,7 @@ const Footer = () => {
                         <div className="flex flex-col my-3 gap-1">
                             <Link
                                 className="text-slate-100 font-light text-sm"
-                                to="/readings/calendar"
+                                to="/daily-readings"
                             >
                                 Daily Readings Calendar
                             </Link>
@@ -183,7 +183,7 @@ const Footer = () => {
                             </Link>
                             <Link
                                 className="text-slate-100 font-light text-sm"
-                                to="/pray"
+                                to="/prayers"
                             >
                                 Pray
                             </Link>

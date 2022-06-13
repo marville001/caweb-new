@@ -95,17 +95,20 @@ const App = () => {
                     <Route exact path="scc" element={<MainLayout><SccLeadershipWelcome /></MainLayout>} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
-                <Route exact path="/daily-readings" element={<MainLayout><DailyReadings /></MainLayout> } />
                 <Route exact path="/mass" element={<MainLayout><Mass /></MainLayout> }  />
                 <Route exact path="/prayers" element={ <MainLayout> <Prayers />  </MainLayout> } />
                 <Route exact path="/scc" element={<MainLayout><Scc /></MainLayout>}/>
                 <Route exact path="/scc/:key" element={<MainLayout><ViewScc /></MainLayout>}/>
                 <Route exact path="/scc/leaders/:id" element={<MainLayout><SccLeadership /></MainLayout>}/>
+                {/* <Route exact path="/daily-readings" element={<MainLayout><DailyReadings /></MainLayout> } /> */}
+                <Route exact path="/daily-readings" element={<MainLayout><CommingSoon /></MainLayout> } />
                 <Route exact path="/bible" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/library" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/gallery" element={ <MainLayout> <Gallery /> </MainLayout> } />
                 <Route exact path="/resources" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
+                <Route exact path="/store" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/help" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
+                <Route exact path="/take-action" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/get-connected" element={ <MainLayout> <GetConnected /> </MainLayout> } />
                 <Route exact path="/my-account" element={ <MainLayout> <MyAccount /> </MainLayout> } />
                 <Route exact path="/my-account/subscriptions" element={ <MainLayout> <MySubscriptions /> </MainLayout> } />
