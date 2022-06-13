@@ -35,7 +35,7 @@ const AddSccModal = ({ closeModal, isOpen }) => {
         const data = {
             image: imageUrl,
             name,
-            key: name.replaceAll(" ","").toLowerCase(),
+            key: name.replaceAll(" ", "").toLowerCase(),
             category,
             description,
         };
@@ -98,6 +98,7 @@ const AddSccModal = ({ closeModal, isOpen }) => {
                     <option value=""></option>
                     <option value="major">Major Scc</option>
                     <option value="minor">Minor Scc</option>
+                    <option value="bible-study">Bible Study Group</option>
                 </select>
             </div>
 

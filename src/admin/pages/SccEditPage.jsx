@@ -198,6 +198,7 @@ const SccEditPage = () => {
                                     <option value=""></option>
                                     <option value="major">Major Scc</option>
                                     <option value="minor">Minor Scc</option>
+                                    <option value="bible-study">Bible Study Group</option>
                                 </select>
 
                                 <h3 className="opacity-70">description</h3>
