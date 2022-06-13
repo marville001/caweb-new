@@ -172,7 +172,7 @@ const Header = () => {
       >
         <div
           className="
-                container md:h-14 md:static mx-auto  md:min-h-fit  bg-dodge-blue 
+                container md:h-14 md:static mx-auto md:min-h-fit bg-dodge-blue 
                 md:bg-transparent py-0 flex items-startmd:items-center md:justify-end 
                 flex-col md:flex-row z-[700]
             "
@@ -180,7 +180,7 @@ const Header = () => {
           <Link
             onClick={() => setIsMenuOpen(false)}
             className={`md:hidden my-4 text-sm uppercase text-slate-100`}
-            to="/prayes"
+            to="/prayers"
           >
             Catholic Prayers
           </Link>
