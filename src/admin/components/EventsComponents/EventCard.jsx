@@ -1,12 +1,48 @@
 import React, { useState } from "react";
 
 import { FaMapMarkerAlt, FaTrash } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { fetchEventsAction } from "../../../redux/actions/events";
+import { _delete } from "../../../redux/actions/http";
+import parseError from "../../../utils/parseError";
 import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 
 const EventCard = ({ event }) => {
     const [deleteEventModalOpen, setDeleteEventModalOpen] = useState(false);
 
-    const handleDeleteEvent = async () => {};
+    const [deleting, setDeleting] = useState(false);
+    const dispatch = useDispatch();
+
+    const handleDeleteEvent = async () => {
+        try {
+            setDeleting(true);
+
+            await _delete(`events/${event._id}`, "admin");
+            dispatch(fetchEventsAction("admin"));
+
+            setDeleting(false);
+            toast.success("Event Deleted successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            setDeleteEventModalOpen(false)
+        } catch (error) {
+            setDeleting(false);
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }
+    };
 
     return (
         <div className="bg-white shadow overflow-hidden rounded-md self-start pb-2">
@@ -34,7 +70,10 @@ const EventCard = ({ event }) => {
                         {new Date(event?.date).toUTCString()}
                     </span>
 
-                    <FaTrash className="text-red-300 hover:text-red-500 cursor-pointer block mt-2 mr-2" onClick={()=>setDeleteEventModalOpen(true)} />
+                    <FaTrash
+                        className="text-red-300 hover:text-red-500 cursor-pointer block mt-2 mr-2"
+                        onClick={() => setDeleteEventModalOpen(true)}
+                    />
                 </div>
             </div>
 
@@ -43,7 +82,7 @@ const EventCard = ({ event }) => {
                 closeModal={() => {
                     setDeleteEventModalOpen(false);
                 }}
-                loading={true}
+                loading={deleting}
                 message={`Please Confirm Deleting the Event {${event?.title}}. This will erase all data about the event`}
                 actionMethod={handleDeleteEvent}
             />

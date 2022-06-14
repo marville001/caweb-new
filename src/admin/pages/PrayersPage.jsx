@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import { getPrayers } from "../../redux/actions/admin/prayers";
+import { _delete } from "../../redux/actions/http";
+import parseError from "../../utils/parseError";
 import ConfirmDeleteModal from "../components/common/ConfirmDeleteModal";
 import AddPrayerModal from "../components/PrayersPageComponents/AddPrayerModal";
 import EditPrayerModal from "../components/PrayersPageComponents/EditPrayerModal";
@@ -15,6 +18,8 @@ const PrayersPage = () => {
     const [editPrayer, setEditPrayer] = useState({});
     const [deletePrayer, setDeletePrayer] = useState({});
 
+    const [deletingPrayer, setDeletingPrayer] = useState(false);
+
     const dispatch = useDispatch();
 
     const closeAddPrayerModal = () => {
@@ -25,7 +30,36 @@ const PrayersPage = () => {
         setAddPrayerModalOpen(true);
     };
 
-    const handleDeletePrayer = async () => {};
+    const handleDeletePrayer = async () => {
+        try {
+            setDeletingPrayer(true);
+
+            await _delete(`prayers/${deletePrayer._id}`, "admin");
+            dispatch(getPrayers("admin"));
+
+            setDeletingPrayer(false);
+            toast.success("Prayer Deleted successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+            setDeletePrayer({});
+            setDeletePrayerModalOpen(false);
+        } catch (error) {
+            setDeletingPrayer(false);
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }
+    };
 
     useEffect(() => {
         dispatch(getPrayers());
@@ -107,7 +141,7 @@ const PrayersPage = () => {
                     setDeletePrayer({});
                     setDeletePrayerModalOpen(false);
                 }}
-                loading={true}
+                loading={deletingPrayer}
                 message={`Please Confirm Deleting the Prayer {${deletePrayer?.title}}. This will erase all data about the prayer`}
                 actionMethod={handleDeletePrayer}
             />

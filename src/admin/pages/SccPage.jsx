@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { FaChevronLeft, FaEdit, FaSpinner } from "react-icons/fa";
 import { HiPlusCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getSccAction, getSccsAction } from "../../redux/actions/admin/sccs";
 import { fetchEventsAction } from "../../redux/actions/events";
-import { put } from "../../redux/actions/http";
+import { put, _delete } from "../../redux/actions/http";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 
@@ -31,9 +31,11 @@ const SccPage = () => {
     const [currentScc, setCurrentScc] = useState("");
 
     const [deleteSccModalOpen, setDeleteSccModalOpen] = useState(false);
+    const [deletingScc, setDeletingScc] = useState(false);
 
     const { key } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleUploadSccgallery = async (e) => {
         const { files } = e.target;
@@ -82,7 +84,36 @@ const SccPage = () => {
         }
     };
 
-    const handleDeleteScc = async () => {};
+    const handleDeleteScc = async () => {
+        try {
+            setDeletingScc(true);
+
+            await _delete(`sccs/${scc._id}`, "admin");
+            setDeletingScc(false);
+            setDeleteSccModalOpen(false);
+            
+            navigate("/admin/sccs")
+
+            toast.success("Scc Deleted successfully", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        } catch (error) {
+            setDeletingScc(false);
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
+        }
+    };
 
     useEffect(() => {
         setGallery(scc?.gallery);
@@ -293,7 +324,7 @@ const SccPage = () => {
                 closeModal={() => {
                     setDeleteSccModalOpen(false);
                 }}
-                loading={false}
+                loading={deletingScc}
                 message={`Please Confirm Deleting SCC : {${scc.name}}. This will erase all data about the SCC`}
                 actionMethod={handleDeleteScc}
             />
