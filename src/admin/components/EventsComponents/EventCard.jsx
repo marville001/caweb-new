@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaTrash } from "react-icons/fa";
+import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 
 const EventCard = ({ event }) => {
+    const [deleteEventModalOpen, setDeleteEventModalOpen] = useState(false);
+
+    const handleDeleteEvent = async () => {};
+
     return (
         <div className="bg-white shadow overflow-hidden rounded-md self-start pb-2">
             <img
@@ -23,10 +28,25 @@ const EventCard = ({ event }) => {
                 </div>
                 <p className="my-3 text-sm">{event?.description}</p>
                 <hr />
-                <div className="font-medium rounded mt-2">
-                    {new Date(event?.date).toUTCString()}
+
+                <div className="flex items-center justify-between">
+                    <span className="font-medium rounded mt-2 block">
+                        {new Date(event?.date).toUTCString()}
+                    </span>
+
+                    <FaTrash className="text-red-300 hover:text-red-500 cursor-pointer block mt-2 mr-2" onClick={()=>setDeleteEventModalOpen(true)} />
                 </div>
             </div>
+
+            <ConfirmDeleteModal
+                isOpen={deleteEventModalOpen}
+                closeModal={() => {
+                    setDeleteEventModalOpen(false);
+                }}
+                loading={true}
+                message={`Please Confirm Deleting the Event {${event?.title}}. This will erase all data about the event`}
+                actionMethod={handleDeleteEvent}
+            />
         </div>
     );
 };

@@ -82,9 +82,7 @@ const SccPage = () => {
         }
     };
 
-    const handleDeleteScc = async () => {
-        
-    }
+    const handleDeleteScc = async () => {};
 
     useEffect(() => {
         setGallery(scc?.gallery);
@@ -275,10 +273,13 @@ const SccPage = () => {
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
 
-                    <button onClick={()=>setDeleteSccModalOpen(true)} className="border hover:bg-red-300 hover:text-white rounded-md border-red-300 text-red-900 py-2 px-8 text-sm">Delete Scc Group</button>
+                    <button
+                        onClick={() => setDeleteSccModalOpen(true)}
+                        className="border hover:bg-red-300 hover:text-white rounded-md border-red-300 text-red-900 py-2 px-8 text-sm"
+                    >
+                        Delete Scc Group
+                    </button>
                 </div>
-
-
             </div>
 
             <NewSccLeaderModal
@@ -290,9 +291,10 @@ const SccPage = () => {
             <ConfirmDeleteModal
                 isOpen={deleteSccModalOpen}
                 closeModal={() => {
-                    setDeleteSccModalOpen(false)
+                    setDeleteSccModalOpen(false);
                 }}
-                message={`Please Confirm Deleting SCC : {${scc.name}}`}
+                loading={false}
+                message={`Please Confirm Deleting SCC : {${scc.name}}. This will erase all data about the SCC`}
                 actionMethod={handleDeleteScc}
             />
         </div>

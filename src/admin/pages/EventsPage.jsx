@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
@@ -7,7 +7,6 @@ import EventCard from "../components/EventsComponents/EventCard";
 
 const EventsPage = () => {
     const { events } = useSelector((state) => state.eventsState);
-
 
     const dispatch = useDispatch();
 
