@@ -12,14 +12,14 @@ import { fetchLeadersAction } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 
 import parseError from "../../utils/parseError";
+import ConfirmDeleteModal from "../components/common/ConfirmDeleteModal";
 import NewSccLeaderModal from "../components/scc/NewSccLeaderModal";
 
-
 const categories = {
-    "major":"Major Scc",
-    "minor":"Major Scc",
-    "bible-study":"Bible Study Group",
-}
+    major: "Major Scc",
+    minor: "Major Scc",
+    "bible-study": "Bible Study Group",
+};
 
 const SccPage = () => {
     const { scc, isLoadingScc } = useSelector((state) => state.sccsState);
@@ -29,6 +29,8 @@ const SccPage = () => {
     const [loading, setLoading] = useState(false);
     const [addSccLeaderModalOpen, setAddSccLeaderModalOpen] = useState(false);
     const [currentScc, setCurrentScc] = useState("");
+
+    const [deleteSccModalOpen, setDeleteSccModalOpen] = useState(false);
 
     const { key } = useParams();
     const dispatch = useDispatch();
@@ -79,6 +81,10 @@ const SccPage = () => {
             });
         }
     };
+
+    const handleDeleteScc = async () => {
+        
+    }
 
     useEffect(() => {
         setGallery(scc?.gallery);
@@ -260,12 +266,34 @@ const SccPage = () => {
                             ))}
                     </div>
                 </div>
+
+                <div className="bg-white p-6 mt-3">
+                    <div className="flex items-center justify-between">
+                        <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
+                            Settings
+                        </h2>
+                    </div>
+                    <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
+
+                    <button onClick={()=>setDeleteSccModalOpen(true)} className="border hover:bg-red-300 hover:text-white rounded-md border-red-300 text-red-900 py-2 px-8 text-sm">Delete Scc Group</button>
+                </div>
+
+
             </div>
 
             <NewSccLeaderModal
                 currentScc={currentScc}
                 isOpen={addSccLeaderModalOpen}
                 closeModal={() => setAddSccLeaderModalOpen(false)}
+            />
+
+            <ConfirmDeleteModal
+                isOpen={deleteSccModalOpen}
+                closeModal={() => {
+                    setDeleteSccModalOpen(false)
+                }}
+                message={`Please Confirm Deleting SCC : {${scc.name}}`}
+                actionMethod={handleDeleteScc}
             />
         </div>
     );

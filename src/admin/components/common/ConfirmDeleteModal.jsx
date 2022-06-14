@@ -31,7 +31,7 @@ const ConfirmDeleteModal = ({
                     <button
                         onClick={actionMethod}
                         className="disabled:opacity-50 disabled:cursor-not-allowed uppercase px-16
-						 tracking-wider py-2 text-white text-lg rounded-md flex items-center
+						 tracking-wider py-2 text-white text-sm rounded-md flex items-center
 						 bg-dodge-blue
                      "
                     >
