@@ -1,9 +1,10 @@
 import axios from "axios";
+import { API_URL } from ".";
 
 export const put = async (endpoint, body, type = "user") => {
   const token = type === "admin" ? localStorage.adminToken : localStorage.token;
   const { data } = await axios.put(
-    `${process.env.REACT_APP_API_URL}${endpoint}`,
+    `${API_URL}${endpoint}`,
     body,
     {
       headers: {

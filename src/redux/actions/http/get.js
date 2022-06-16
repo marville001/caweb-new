@@ -1,9 +1,10 @@
 import axios from "axios";
+import { API_URL } from ".";
 
 export const get = async (endpoint, type = "user") => {
   const token = type === "admin" ? localStorage.adminToken : localStorage.token;
   const { data } = await axios.get(
-    `${process.env.REACT_APP_API_URL}${endpoint}`,
+    `${API_URL}${endpoint}`,
     {
       headers: {
         "Content-Type": "application/json",
