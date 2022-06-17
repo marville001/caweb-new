@@ -34,6 +34,7 @@ const Home = () => {
                     backgroundSize: "cover",
                     backgroundPositionY: "center",
                     minHeight: "70vh",
+                    backgroundColor: "rgba(0,0,0,1)",
                 }}
             >
                 {/* Swipper carousel */}
@@ -43,24 +44,28 @@ const Home = () => {
                     slidesPerView={1}
                     navigation
                     autoplay={{
-                        delay: 3000,
+                        delay: 6000,
                         disableOnInteraction: false,
                     }}
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
-                    className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24"
+                    className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24 bg-[rgba(0,0,0,.3)]"
                 >
                     <SwiperSlide>
                         <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
                             <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                Christmas
+                                A Message For You
                             </h1>
                             <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                                Christmas is one of the most important days of
-                                the Church year, second only to Easter itself.
-                                It is the feast of the incarnation, the feast of
-                                God becoming flesh (the Latin "in carne" means
-                                "enfleshment").
+                                We are grateful that you have visited our
+                                website and hope that you might choose to
+                                encounter God with us in our celebrations of
+                                sacred liturgies and in our ministries. Whether
+                                you are visiting us for the first time,
+                                returning to the practice of your Catholic faith
+                                or looking to learn more about Dekut Catholic
+                                Chaplaincy, please know that we are happy to
+                                have you here.
                             </p>
                             <Link
                                 to="/about"
@@ -431,7 +436,7 @@ const Home = () => {
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8">
-                    {[...events?.slice(0, 3)].map((event, i) => (
+                    {[...events?.slice(0, 6)].map((event, i) => (
                         <div className="relative bg-white min-h-[300px]">
                             <img
                                 src={event.image}
@@ -444,7 +449,7 @@ const Home = () => {
                                         .toDateString()
                                         .toString()}
                                 </h3>
-                                
+
                                 <Link
                                     to="#event"
                                     className="text-sm sm:text-lg text-dodge-blue ml-10"
@@ -453,7 +458,8 @@ const Home = () => {
                                 </Link>
 
                                 <p className="mb-2 mt-5 font-normal">
-                                    {event.description?.substring(0, 30) + "..."}
+                                    {event.description?.substring(0, 30) +
+                                        "..."}
                                 </p>
                             </div>
                         </div>
