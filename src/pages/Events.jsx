@@ -1,8 +1,4 @@
 import React, { useEffect } from "react";
-import {
-  FaChevronCircleLeft,
-  FaChevronCircleRight,
-} from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import CalendarListing from "../components/CalendarListing";
 import { fetchEventsAction } from "../redux/actions/events";

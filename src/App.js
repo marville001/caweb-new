@@ -34,7 +34,7 @@ import AboutDekut from "./admin/pages/AboutDekut";
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
-const DailyReadings = React.lazy(() => import("./pages/DailyReadings"));
+// const DailyReadings = React.lazy(() => import("./pages/DailyReadings"));
 const Events = React.lazy(() => import("./pages/Events"));
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
 const GetConnected = React.lazy(() => import("./pages/GetConnected"));
