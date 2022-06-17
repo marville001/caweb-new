@@ -22,7 +22,7 @@ const Events = () => {
       <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
         DEKUTCC Calendar
       </h1>
-      <div className="md:px-16 py-12 bg-slate-50 my-8">
+      <div className="md:px-16 py-12 bg-slate-50_ my-8">
         {/* Header */}
         {/* <div className="flex justify-between">
           <div className="flex flex-col md:flex-row gap-2">
@@ -47,12 +47,10 @@ const Events = () => {
         </div> */}
 
         {/* Events listing */}
-        <hr />
         <CalendarListing events={events} />
-        <hr />
 
         {/* Page switch */}
-        <div className="flex justify-between items-center px-6 w-10/12 md:w-5/12 mx-auto">
+        {/* <div className="flex justify-between items-center px-6 w-10/12 md:w-5/12 mx-auto">
           <span className="flex items-center cursor-pointer">
             <FaChevronCircleLeft className="mt-1 mr-2 text-gray-400 text-xl" />
             <span className="hidden sm:block">previous</span>
@@ -62,7 +60,7 @@ const Events = () => {
             <span className="hidden sm:block">next</span>
             <FaChevronCircleRight className="mt-1 ml-2 text-gray-400 text-xl" />
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
