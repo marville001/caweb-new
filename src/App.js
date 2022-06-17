@@ -41,6 +41,7 @@ const GetConnected = React.lazy(() => import("./pages/GetConnected"));
 const Home = React.lazy(() => import("./pages/Home"));
 const Login = React.lazy(() => import("./pages/Login"));
 const Mass = React.lazy(() => import("./pages/Mass"));
+const News = React.lazy(() => import("./pages/News"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Prayers = React.lazy(() => import("./pages/Prayers"));
 const Gallery = React.lazy(() => import("./pages/Gallery"));
@@ -105,6 +106,7 @@ const App = () => {
                 <Route exact path="/my-account" element={ <MainLayout> <MyAccount /> </MainLayout> } />
                 <Route exact path="/my-account/subscriptions" element={ <MainLayout> <MySubscriptions /> </MainLayout> } />
                 <Route exact path="/gallery" element={<MainLayout> <Gallery /> </MainLayout>} />
+                <Route exact path="/news" element={<MainLayout> <News /> </MainLayout>} />
                 
                 {/* <Route exact path="/daily-readings" element={<MainLayout><DailyReadings /></MainLayout> } /> */}
                 <Route exact path="/daily-readings" element={<MainLayout><CommingSoon /></MainLayout> } />
@@ -114,7 +116,6 @@ const App = () => {
                 <Route exact path="/store" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/help" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
                 <Route exact path="/take-action" element={<MainLayout> <CommingSoon /> </MainLayout>} />
-                <Route exact path="/news" element={<MainLayout> <CommingSoon /> </MainLayout>} />
                 
                 <Route path="*" element={ <MainLayout> <NotFound /> </MainLayout> } />
                 <Route path="/admin" element={<AdminDashboard />}>

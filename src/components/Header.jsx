@@ -254,8 +254,8 @@ const Header = () => {
           />
           <NavLinkItem
             closeMenu={() => setIsMenuOpen(false)}
-            to="/resources"
-            title="resources"
+            to="/news"
+            title="News"
           />
         </div>
       </div>
