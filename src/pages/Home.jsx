@@ -425,51 +425,47 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="container my-8 bg-white md:p-8 lg:p-10">
+            <div className="container my-8 md:p-8 lg:p-10">
                 <h2 className="text-3xl font-semibold text-dodge-blue mb-4">
-                    Event Calendar
+                    Upcoming Events
                 </h2>
-                <hr />
-                <div className="divide-y">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8">
                     {[...events?.slice(0, 3)].map((event, i) => (
-                        <div className="py-6 flex items-center">
-                            <div className="flex flex-col items-center">
+                        <div className="relative bg-white min-h-[300px]">
+                            <img
+                                src={event.image}
+                                alt=""
+                                className="w-full h-full"
+                            />
+                            <div className="flex flex-col items-center absolute bottom-0 inset-x-0 bg-white">
                                 <h3 className="text-lg mb-2 font-semibold">
                                     {new Date(event.date)
                                         .toDateString()
-                                        .toString()
-                                        .substring(8, 10)}
+                                        .toString()}
                                 </h3>
-                                <h3 className="text-xs sm:text-lg mb-2 font-normal">
-                                    {new Date(event.date)
-                                        .toDateString()
-                                        .toString()
-                                        .substring(0, 4) +
-                                        new Date(event.date)
-                                            .toDateString()
-                                            .toString()
-                                            .substring(4, 7) +
-                                        " " +
-                                        new Date(event.date).getFullYear()}
-                                </h3>
+                                
+                                <Link
+                                    to="#event"
+                                    className="text-sm sm:text-lg text-dodge-blue ml-10"
+                                >
+                                    {event.title}
+                                </Link>
+
+                                <p className="mb-2 mt-5 font-normal">
+                                    {event.description?.substring(0, 30) + "..."}
+                                </p>
                             </div>
-                            <a
-                                href="#event"
-                                className="text-sm sm:text-lg text-dodge-blue ml-10"
-                            >
-                                {event.title}
-                            </a>
                         </div>
                     ))}
-
-                    <div className="py-6 flex justify-center">
-                        <Link
-                            to="/events"
-                            className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90"
-                        >
-                            View calendar
-                        </Link>
-                    </div>
+                </div>
+                <div className="py-6 flex justify-center">
+                    <Link
+                        to="/events"
+                        className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90"
+                    >
+                        View More
+                    </Link>
                 </div>
             </div>
         </div>
