@@ -13,29 +13,34 @@ const GetConnected = () => {
         </h2>
         <div className="sm:divide-x my-2 flex justify-center items-center flex-wrap">
           <a
-            href="#h"
+            
+            href="https://web.facebook.com/dekut.catholic.chaplaincy/"
             target="_blank"
+            rel="noreferrer"
             className="p-3 inline-block uppercase text-lg font-semibold"
           >
             facebook
           </a>
           <a
-            href="#h"
+            href="https://twitter.com/dekut_catholic"
             target="_blank"
+            rel="noreferrer"
             className="p-3 inline-block uppercase text-lg font-semibold"
           >
             twitter
           </a>
           <a
-            href="#h"
+            href="https://instagram.com/dekut_catholic_chaplaincy?igshid=YmMyMTA2M2Y="
             target="_blank"
+            rel="noreferrer"
             className="p-3 inline-block uppercase text-lg font-semibold"
           >
             instagram
           </a>
           <a
-            href="#h"
+            href="https://www.youtube.com/channel/UCN8LML2jye7oj6w-bhcGLAg"
             target="_blank"
+            rel="noreferrer"
             className="p-3 inline-block uppercase text-lg font-semibold"
           >
             youtube
