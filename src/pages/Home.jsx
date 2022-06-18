@@ -99,20 +99,23 @@ const Home = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                        <div className="md:container min-h-[400px] p-4 px-10 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
                             <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                Christmas
+                                Gifts of the Holy Spirit
                             </h1>
-                            <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                                Christmas is one of the most important days of
-                                the Church year, second only to Easter itself.
-                                It is the feast of the incarnation, the feast of
-                                God becoming flesh (the Latin "in carne" means
-                                "enfleshment").
-                            </p>
+                            <div className="text-slate-100 md:w-4/6 text-lg font-light my-4 grid-cols-2 grid sm:grid-cols-3 gap-x-5 sm:min-w-[600px] pr-16">
+                                <span className="mr-5 block">Wisdom</span>
+                                <span className="mr-5 block">Understanding</span>
+                                <span className="mr-5 block">Counsel</span>
+                                <span className="mr-5 block">Knowledge</span>
+                                <span className="mr-5 block">Fortitude</span>
+                                <span className="mr-5 block">Piety</span>
+                                <span className="mr-5 block">Piety</span>
+                                <span className="mr-5 block">Fear of the Lord</span>
+                            </div>
                             <Link
                                 to="/about"
-                                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+                                className="bg-sea-green text-center block w-40 p-2 my-4 self-start text-slate-100"
                             >
                                 LEARN MORE
                             </Link>
