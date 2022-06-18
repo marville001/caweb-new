@@ -36,6 +36,7 @@ const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 // const DailyReadings = React.lazy(() => import("./pages/DailyReadings"));
 const Events = React.lazy(() => import("./pages/Events"));
+const Event = React.lazy(() => import("./pages/Event"));
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
 const GetConnected = React.lazy(() => import("./pages/GetConnected"));
 const Home = React.lazy(() => import("./pages/Home"));
@@ -88,6 +89,7 @@ const App = () => {
                 <Route exact path="/forgot-password" element={ <MainLayout> <ForgotPassword /> </MainLayout> } />
                 <Route exact path="/reset-password/:token" element={ <MainLayout> <ResetPassword /> </MainLayout> } />
                 <Route exact path="/events" element={<MainLayout><Events /></MainLayout>} />
+                <Route exact path="/events/:key" element={<MainLayout><Event /></MainLayout>} />
                 <Route exact path="/readings" element={<MainLayout><Home /></MainLayout>} />
                 <Route exact path="/about" element={<MainLayout><About /></MainLayout>} />
                 <Route exact path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
