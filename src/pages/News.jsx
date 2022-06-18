@@ -20,7 +20,7 @@ const News = () => {
                                 "https://www.usccb.org/sites/default/files/styles/panel_image/public/2020-02/bishop.jpg?itok=advFQGkx"
                             }
                             alt=""
-                            className="w-full h-20"
+                            className="w-full h-48"
                         />
                         <div className="p-2 bg-white">
                             <h3 className="text-sm my-2 font-semibold">
