@@ -76,7 +76,7 @@ const Home = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="md:container p-4 px-10 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                        <div className="md:container min-h-[400px] p-4 px-10 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
                             <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
                                 Gifts of the Holy Spirit
                             </h1>
@@ -92,7 +92,7 @@ const Home = () => {
                             </div>
                             <Link
                                 to="/about"
-                                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
+                                className="bg-sea-green text-center block w-40 p-2 my-4 self-start text-slate-100"
                             >
                                 LEARN MORE
                             </Link>
