@@ -76,11 +76,11 @@ const Home = () => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="md:container p-4 px-1 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
+                        <div className="md:container p-4 px-10 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
                             <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
                                 Gifts of the Holy Spirit
                             </h1>
-                            <div className="text-slate-100 md:w-4/6 text-lg font-light my-4 grid grid-cols-3 gap-x-5 min-w-[600px] pr-16">
+                            <div className="text-slate-100 md:w-4/6 text-lg font-light my-4 grid-cols-2 grid sm:grid-cols-3 gap-x-5 sm:min-w-[600px] pr-16">
                                 <span className="mr-5 block">Wisdom</span>
                                 <span className="mr-5 block">Understanding</span>
                                 <span className="mr-5 block">Counsel</span>
