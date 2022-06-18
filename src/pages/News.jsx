@@ -13,7 +13,7 @@ const News = () => {
                     <Link
                         key={news}
                         to="#event"
-                        className="bg-white min-h-[300px]"
+                        className="bg-white min-h-[300px] _shadow rounded-lg overflow-hidden"
                     >
                         <img
                             src={
