@@ -129,26 +129,6 @@ const Home = () => {
                             </Link>
                         </div>
                     </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                            <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                Christmas
-                            </h1>
-                            <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                                Christmas is one of the most important days of
-                                the Church year, second only to Easter itself.
-                                It is the feast of the incarnation, the feast of
-                                God becoming flesh (the Latin "in carne" means
-                                "enfleshment").
-                            </p>
-                            <Link
-                                to="/about"
-                                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-                            >
-                                LEARN MORE
-                            </Link>
-                        </div>
-                    </SwiperSlide>
                 </Swiper>
             </div>
 
