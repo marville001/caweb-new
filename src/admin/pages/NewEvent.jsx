@@ -35,7 +35,15 @@ const NewEvent = () => {
         try {
             setLoading(true);
 
-            await post(`events/`, { ...data, image: imageUrl }, "admin");
+            await post(
+                `events/`,
+                {
+                    ...data,
+                    image: imageUrl,
+                    key: data.title.replaceAll(" ", "-").toLowerCase(),
+                },
+                "admin"
+            );
             dispatch(fetchEventsAction("admin"));
 
             setLoading(false);
@@ -49,7 +57,7 @@ const NewEvent = () => {
             });
             clearErrors();
             reset();
-            navigate("/admin/events")
+            navigate("/admin/events");
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
