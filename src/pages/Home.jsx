@@ -78,14 +78,17 @@ const Home = () => {
                     <SwiperSlide>
                         <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
                             <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                Christmas
+                                Gifts of the Holy Spirit
                             </h1>
                             <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                                Christmas is one of the most important days of
-                                the Church year, second only to Easter itself.
-                                It is the feast of the incarnation, the feast of
-                                God becoming flesh (the Latin "in carne" means
-                                "enfleshment").
+                                <span>Wisdom</span>
+                                <span>Understanding</span>
+                                <span>Counsel</span>
+                                <span>Knowledge</span>
+                                <span>Fortitude</span>
+                                <span>Piety</span>
+                                <span>Piety</span>
+                                <span>Fear of the Lord</span>
                             </p>
                             <Link
                                 to="/about"
@@ -454,9 +457,7 @@ const Home = () => {
                                         .toString()}
                                 </h3>
 
-                                <span
-                                    className="text-sm sm:text-lg text-dodge-blue"
-                                >
+                                <span className="text-sm sm:text-lg text-dodge-blue">
                                     {event.title}
                                 </span>
 
