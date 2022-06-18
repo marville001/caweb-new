@@ -5,7 +5,7 @@ const CalendarListing = ({ events = [] }) => {
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8">
             {events.map((event, i) => (
-                <Link key={i} to="#event" className="relative bg-white min-h-[300px]">
+                <Link key={i} to={`/events/${event?.key}`} className="relative bg-white min-h-[300px]">
                     <img src={event.image} alt="" className="w-full h-full" />
                     <div className="absolute bottom-0 inset-x-0 bg-white">
                         <h3 className="text-sm my-2 font-semibold">
