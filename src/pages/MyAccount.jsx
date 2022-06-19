@@ -9,12 +9,6 @@ import { put } from "../redux/actions/http";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const sccs = {
-    stangelus: "St Angelus",
-    stpeters: "St Peters",
-    stjoseph: "St Joseph",
-};
-
 const MyAccount = () => {
     const { user, isUpdatingImage } = useSelector(
         (state) => state.accountUsers
@@ -254,7 +248,7 @@ const MyAccount = () => {
                             <input
                                 type="text"
                                 readOnly
-                                value={sccs[user.scc]}
+                                value={user?.scc?.name ?? "N/B"}
                                 className="p-2 rounded-md outline-none border w-full text-slate-700"
                             />
                         </div>
