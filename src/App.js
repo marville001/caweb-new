@@ -16,6 +16,7 @@ import Loading from "./components/Loading";
 import { getProfileFetch } from "./redux/actions";
 import { useDispatch } from "react-redux";
 import MyAccount from "./pages/MyAccount";
+import MyGroups from "./pages/MyGroups";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -106,6 +107,7 @@ const App = () => {
                 <Route exact path="/scc/leaders/:id" element={<MainLayout><SccLeadership /></MainLayout>}/>
                 <Route exact path="/get-connected" element={ <MainLayout> <GetConnected /> </MainLayout> } />
                 <Route exact path="/my-account" element={ <MainLayout> <MyAccount /> </MainLayout> } />
+                <Route exact path="/my-account/groups" element={ <MainLayout> <MyGroups /> </MainLayout> } />
                 <Route exact path="/my-account/subscriptions" element={ <MainLayout> <MySubscriptions /> </MainLayout> } />
                 <Route exact path="/gallery" element={<MainLayout> <Gallery /> </MainLayout>} />
                 <Route exact path="/news" element={<MainLayout> <News /> </MainLayout>} />
