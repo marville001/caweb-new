@@ -21,13 +21,21 @@ const MySubscriptions = () => {
             <hr className="my-4" />
             <div className="flex flex-col lg:flex-row lg:divide-x-2">
                 <div className="px-2 sm:px-5 py-4 pb-10 min-w-[200px] h-full">
-                    <ul className="flex flex-wrap flex-row lg:flex-col items-center md:space-x-2 lg:space-x-0 lg:space-y-3  gap-4 lg:gap-0">
+                    <ul className="flex flex-wrap flex-row lg:flex-col items-center lg:items-start md:space-x-2 lg:space-x-0 lg:space-y-3  gap-4 lg:gap-0">
                         <li>
                             <Link
                                 to="/my-account"
                                 className="text-lg tracking-wider font-light"
                             >
                                 Account Details
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                to="/my-account/groups"
+                                className="text-lg tracking-wider font-light"
+                            >
+                                My Groups
                             </Link>
                         </li>
                         <li>

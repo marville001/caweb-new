@@ -9,7 +9,7 @@ import { put } from "../redux/actions/http";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const MyAccount = () => {
+const MyGroups = () => {
     const { user, isUpdatingImage } = useSelector(
         (state) => state.accountUsers
     );
@@ -321,4 +321,4 @@ const MyAccount = () => {
     );
 };
 
-export default MyAccount;
+export default MyGroups;
