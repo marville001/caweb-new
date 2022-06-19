@@ -57,7 +57,7 @@ const MyAccountGroupCard = ({ scc }) => {
                 <h3 className="font-bold">{scc?.name}</h3>
 
                 {user?.groups?.includes(scc?._id) ? (
-                    <button className="bg-dodge-blue mt-4 py-2 px-6 rounded-md text-sm text-white opacity-80 cursor-not-allowed">
+                    <button className="bg-sea-green mt-4 py-2 px-6 rounded-md text-sm text-white opacity-80 cursor-not-allowed">
                         Joined
                     </button>
                 ) : (
