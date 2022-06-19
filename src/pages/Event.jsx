@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import CalendarListing from "../components/CalendarListing";
-import { fetchEventsAction } from "../redux/actions/events";
 import { get } from "../redux/actions/http";
 
 const Event = () => {
