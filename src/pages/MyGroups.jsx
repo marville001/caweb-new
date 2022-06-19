@@ -1,17 +1,21 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
+import { getSccsAction } from "../redux/actions/admin/sccs";
 
 const MyGroups = () => {
     const { user } = useSelector((state) => state.accountUsers);
-
-    const [old_password, setOldPassword] = useState("");
-    const [new_password, setNewPassword] = useState("");
-    const [confirm_new_password, setConfirmNewPassword] = useState("");
+    const { sccs, isLoadingSccs } = useSelector((state) => state.sccsState);
 
     const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getSccsAction());
+    }, [dispatch]);
 
     useEffect(() => {
         if (!localStorage.token) {
@@ -60,9 +64,8 @@ const MyGroups = () => {
                     <div
                         style={{
                             background: `url(${user?.scc?.image})`,
-                            backgroundSize: "cover",
                         }}
-                        className="inline-block mt-4 rounded-lg overflow-hidden"
+                        className="inline-block mt-4 rounded-lg bg-cover overflow-hidden"
                     >
                         <div className=" bg-dodge-blue text-3xl w-full  px-20 py-4 text-white text-center bg-opacity-60">
                             <h3>{user?.scc?.name}</h3>
@@ -73,18 +76,37 @@ const MyGroups = () => {
 
                     {/*Minor */}
                     <div className="gap-4 my-6">
-                        <h4 className="text-xl font-bold opacity-80">Join Minor Scc</h4>
-                        <div
-                            style={{
-                                background: `url(${user?.scc?.image})`,
-                                backgroundSize: "cover",
-                            }}
-                            className="inline-block mt-4 rounded-lg overflow-hidden"
-                        >
-                            <div className=" bg-dodge-blue text-3xl w-full  px-20 py-4 text-white text-center bg-opacity-60">
-                                <h3>{user?.scc?.name}</h3>
+                        <h4 className="text-xl font-bold opacity-80">
+                            Join Minor Scc
+                        </h4>
+
+                        {isLoadingSccs ? (
+                            <div className="my-5 px-4 text-xl">
+                                <FaSpinner className="animate-spin" />
                             </div>
-                        </div>
+                        ) : (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 my-6">
+                                {sccs
+                                    ?.filter((scc) => scc.category === "minor")
+                                    ?.map((scc) => (
+                                        <div
+                                            style={{
+                                                backgroundImage: `url(${scc?.image})`
+                                            }}
+                                            key={scc._id}
+                                            className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
+                                        >
+                                            <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">
+                                                <h3 className="font-bold">{scc?.name}</h3>
+
+                                                <button className="bg-dodge-blue mt-4 py-2 px-6 rounded-md text-sm text-white">
+                                                    Join
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                            </div>
+                        )}
                     </div>
 
                     {/* <button className="bg-sea-green px-10 py-1 my-2 rounded-md text-white uppercase block">
