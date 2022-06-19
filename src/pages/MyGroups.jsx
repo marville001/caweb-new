@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { getSccsAction } from "../redux/actions/admin/sccs";
+import MyAccountGroupCard from "../components/MyAccountGroupCard";
 
 const MyGroups = () => {
     const { user } = useSelector((state) => state.accountUsers);
     const { sccs, isLoadingSccs } = useSelector((state) => state.sccsState);
 
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -94,23 +93,7 @@ const MyGroups = () => {
                                 {sccs
                                     ?.filter((scc) => scc.category === "minor")
                                     ?.map((scc) => (
-                                        <div
-                                            style={{
-                                                backgroundImage: `url(${scc?.image})`,
-                                            }}
-                                            key={scc._id}
-                                            className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
-                                        >
-                                            <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">
-                                                <h3 className="font-bold">
-                                                    {scc?.name}
-                                                </h3>
-
-                                                <button className="bg-dodge-blue mt-4 py-2 px-6 rounded-md text-sm text-white">
-                                                    Join
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <MyAccountGroupCard scc={scc} />
                                     ))}
                             </div>
                         )}
@@ -135,23 +118,7 @@ const MyGroups = () => {
                                         (scc) => scc.category === "bible-study"
                                     )
                                     ?.map((scc) => (
-                                        <div
-                                            style={{
-                                                backgroundImage: `url(${scc?.image})`,
-                                            }}
-                                            key={scc._id}
-                                            className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
-                                        >
-                                            <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">
-                                                <h3 className="font-bold">
-                                                    {scc?.name}
-                                                </h3>
-
-                                                <button className="bg-dodge-blue mt-4 py-2 px-6 rounded-md text-sm text-white">
-                                                    Join
-                                                </button>
-                                            </div>
-                                        </div>
+                                        <MyAccountGroupCard scc={scc} />
                                     ))}
                             </div>
                         )}
