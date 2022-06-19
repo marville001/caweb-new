@@ -72,7 +72,12 @@ const MyGroups = () => {
                         </div>
                     </div>
 
-                    <hr className="mt-8" />
+                    <hr className="my-8" />
+
+                    <p className="font-sans text-lg">
+                        Join any group below to receive updates via email about
+                        their activities
+                    </p>
 
                     {/*Minor */}
                     <div className="gap-4 my-6">
@@ -91,13 +96,56 @@ const MyGroups = () => {
                                     ?.map((scc) => (
                                         <div
                                             style={{
-                                                backgroundImage: `url(${scc?.image})`
+                                                backgroundImage: `url(${scc?.image})`,
                                             }}
                                             key={scc._id}
                                             className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
                                         >
                                             <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">
-                                                <h3 className="font-bold">{scc?.name}</h3>
+                                                <h3 className="font-bold">
+                                                    {scc?.name}
+                                                </h3>
+
+                                                <button className="bg-dodge-blue mt-4 py-2 px-6 rounded-md text-sm text-white">
+                                                    Join
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))}
+                            </div>
+                        )}
+                    </div>
+
+                    <hr className="mt-8" />
+
+                    {/*Minor */}
+                    <div className="gap-4 my-6">
+                        <h4 className="text-xl font-bold opacity-80">
+                            Join Bible Study Group
+                        </h4>
+
+                        {isLoadingSccs ? (
+                            <div className="my-5 px-4 text-xl">
+                                <FaSpinner className="animate-spin" />
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4 my-6">
+                                {sccs
+                                    ?.filter(
+                                        (scc) => scc.category === "bible-study"
+                                    )
+                                    ?.map((scc) => (
+                                        <div
+                                            style={{
+                                                backgroundImage: `url(${scc?.image})`,
+                                            }}
+                                            key={scc._id}
+                                            className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
+                                        >
+                                            <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">
+                                                <h3 className="font-bold">
+                                                    {scc?.name}
+                                                </h3>
 
                                                 <button className="bg-dodge-blue mt-4 py-2 px-6 rounded-md text-sm text-white">
                                                     Join
