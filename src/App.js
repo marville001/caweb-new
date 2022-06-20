@@ -32,6 +32,7 @@ import ViewScc from "./pages/ViewScc";
 import MySubscriptions from "./pages/MySubscriptions";
 import AboutDekut from "./admin/pages/AboutDekut";
 import { ToastContainer } from "react-toastify";
+import EditLeaderPosition from "./admin/pages/EditLeaderPosition";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -138,6 +139,7 @@ const App = () => {
                         <Route path="leaders/:id/edit"  element={ <AdminPrivateRoute> <EditChurchLeader /> </AdminPrivateRoute> }/>
                         <Route path="leaders/new"  element={ <AdminPrivateRoute> <NewChurchLeader /> </AdminPrivateRoute> }/>
                         <Route path="leaders/position/new"  element={ <AdminPrivateRoute> <NewLeaderPosition /> </AdminPrivateRoute> }/>
+                        <Route path="leaders/position/:id"  element={ <AdminPrivateRoute> <EditLeaderPosition /> </AdminPrivateRoute> }/>
                         <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
                         <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
                         <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
