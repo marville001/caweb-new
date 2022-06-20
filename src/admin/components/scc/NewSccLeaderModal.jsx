@@ -264,7 +264,7 @@ const NewSccLeaderModal = ({ closeModal, isOpen, currentScc }) => {
                         <button
                             type="button"
                             onClick={closeModal}
-                            className="bg-red-400 px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+                            className="bg-red-500 px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
                         >
                             
                             Cancel
