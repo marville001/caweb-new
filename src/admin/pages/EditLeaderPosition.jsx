@@ -4,7 +4,7 @@ import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { get, post, put } from "../../redux/actions/http";
+import { get, put } from "../../redux/actions/http";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 import parseError from "../../utils/parseError";
 
@@ -97,63 +97,69 @@ const EditLeaderPosition = () => {
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
 
-                    <form
-                        onSubmit={handleSubmit(handleEditLeader)}
-                        className="my-10 flex flex-col gap-6"
-                    >
-                        <div className="flex flex-col gap-2">
-                            <label className="">Title</label>
-                            <input
-                                type="text"
-                                placeholder="Enter event title here"
-                                className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
-                                {...register("title", {
-                                    required: {
-                                        value: true,
-                                        message: "Title is required",
-                                    },
-                                })}
-                            />
-                            {errors.title && (
-                                <p className="text-red-600 text-xs mt-1">
-                                    {errors.title.message}
-                                </p>
-                            )}
+                    {isFetching ? (
+                        <div className="py-5 flex justify-center">
+                            <FaSpinner className="animate-spin text-xl" />
                         </div>
-
-                        <div className="flex flex-col gap-2">
-                            <label htmlFor="title" className="">
-                                Description
-                            </label>
-                            <textarea
-                                type="text"
-                                placeholder="Describe the event"
-                                rows={3}
-                                className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
-                                {...register("description", {
-                                    required: {
-                                        value: true,
-                                        message: "Description is required",
-                                    },
-                                })}
-                            ></textarea>
-                            {errors.description && (
-                                <p className="text-red-600 text-xs mt-1">
-                                    {errors.description.message}
-                                </p>
-                            )}
-                        </div>
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="bg-dodge-blue px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+                    ) : (
+                        <form
+                            onSubmit={handleSubmit(handleEditLeader)}
+                            className="my-10 flex flex-col gap-6"
                         >
-                            {loading && (
-                                <FaSpinner className="mr-2 animate-spin" />
-                            )}
-                            Update
-                        </button>
-                    </form>
+                            <div className="flex flex-col gap-2">
+                                <label className="">Title</label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter event title here"
+                                    className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
+                                    {...register("title", {
+                                        required: {
+                                            value: true,
+                                            message: "Title is required",
+                                        },
+                                    })}
+                                />
+                                {errors.title && (
+                                    <p className="text-red-600 text-xs mt-1">
+                                        {errors.title.message}
+                                    </p>
+                                )}
+                            </div>
+
+                            <div className="flex flex-col gap-2">
+                                <label htmlFor="title" className="">
+                                    Description
+                                </label>
+                                <textarea
+                                    type="text"
+                                    placeholder="Describe the event"
+                                    rows={3}
+                                    className="focus:!sring-0 focus:!outline-none focus:!bottom-0 !rounded"
+                                    {...register("description", {
+                                        required: {
+                                            value: true,
+                                            message: "Description is required",
+                                        },
+                                    })}
+                                ></textarea>
+                                {errors.description && (
+                                    <p className="text-red-600 text-xs mt-1">
+                                        {errors.description.message}
+                                    </p>
+                                )}
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="bg-dodge-blue px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+                            >
+                                {loading && (
+                                    <FaSpinner className="mr-2 animate-spin" />
+                                )}
+                                Update
+                            </button>
+                        </form>
+                    )}
                 </div>
             </div>
         </div>
