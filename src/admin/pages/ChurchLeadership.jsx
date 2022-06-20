@@ -65,7 +65,7 @@ const ChurchLeadership = () => {
                 </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 my-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5_ gap-4 my-6">
                 {leaders
                     ?.filter((leader) => leader.churchCommittee === true)
                     ?.map((leader) => (
