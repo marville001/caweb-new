@@ -76,7 +76,7 @@ const Prayers = () => {
           </div>
         )}
         {filteredPrayers.map((prayer) => (
-          <PrayerDisclosure key={prayer.id} prayer={prayer} />
+          <PrayerDisclosure key={prayer._id} prayer={prayer} />
         ))}
       </div>
     </div>

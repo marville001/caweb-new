@@ -102,7 +102,7 @@ const Scc = () => {
 
                     <div className="py-10">
                         <h2 className="uppercase mb-8 text-center text-lg text-slate-800 font-medium">
-                            Other SCC GROUPS
+                            Minor SCC GROUPS
                         </h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                             {sccs

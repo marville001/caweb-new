@@ -50,7 +50,7 @@ const MyAccountGroupCard = ({ scc }) => {
             style={{
                 backgroundImage: `url(${scc?.image})`,
             }}
-            key={scc._id}
+            
             className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
         >
             <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">

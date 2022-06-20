@@ -27,13 +27,13 @@ const News = () => {
                                 {new Date().toDateString().toString()}
                             </h3>
 
-                            <Link
+                            <p
                                 to="#event"
                                 className="text-sm sm:text-lg text-dodge-blue"
                             >
                                 Lorem ipsum dolor sit, amet consectetur
                                 adipisicing
-                            </Link>
+                            </p>
 
                             <p className="mb-2 mt-2 text-sm font-normal">
                                 Lorem ipsum, dolor sit amet consectetur

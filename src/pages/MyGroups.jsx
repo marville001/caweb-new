@@ -93,7 +93,7 @@ const MyGroups = () => {
                                 {sccs
                                     ?.filter((scc) => scc.category === "minor")
                                     ?.map((scc) => (
-                                        <MyAccountGroupCard scc={scc} />
+                                        <MyAccountGroupCard key={scc._id} scc={scc} />
                                     ))}
                             </div>
                         )}
@@ -118,7 +118,7 @@ const MyGroups = () => {
                                         (scc) => scc.category === "bible-study"
                                     )
                                     ?.map((scc) => (
-                                        <MyAccountGroupCard scc={scc} />
+                                        <MyAccountGroupCard key={scc._id} scc={scc} />
                                     ))}
                             </div>
                         )}
