@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchEventsAction } from "../../redux/actions/events";
-import { get, post, put } from "../../redux/actions/http";
+import { get,  put } from "../../redux/actions/http";
 import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
 
