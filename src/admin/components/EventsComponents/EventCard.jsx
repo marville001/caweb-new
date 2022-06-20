@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { FaMapMarkerAlt, FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchEventsAction } from "../../../redux/actions/events";
 import { _delete } from "../../../redux/actions/http";
@@ -30,7 +31,7 @@ const EventCard = ({ event }) => {
                 pauseOnHover: true,
                 draggable: true,
             });
-            setDeleteEventModalOpen(false)
+            setDeleteEventModalOpen(false);
         } catch (error) {
             setDeleting(false);
             toast.error(parseError(error), {
@@ -46,11 +47,13 @@ const EventCard = ({ event }) => {
 
     return (
         <div className="bg-white shadow overflow-hidden rounded-md self-start pb-2">
-            <img
-                src={event?.image}
-                alt=""
-                className="w-full h-48 object-cover"
-            />
+            <Link to={`/admin/events/${event?._id}`}>
+                <img
+                    src={event?.image}
+                    alt=""
+                    className="w-full h-48 object-cover"
+                />
+            </Link>
 
             <div className="p-2">
                 <div className="flex justify-between">

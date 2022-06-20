@@ -32,6 +32,7 @@ import MySubscriptions from "./pages/MySubscriptions";
 import AboutDekut from "./admin/pages/AboutDekut";
 import { ToastContainer } from "react-toastify";
 import EditLeaderPosition from "./admin/pages/EditLeaderPosition";
+import EditEvent from "./admin/pages/EditEvent";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -141,6 +142,7 @@ const App = () => {
                         <Route path="leaders/position/:id"  element={ <AdminPrivateRoute> <EditLeaderPosition /> </AdminPrivateRoute> }/>
                         <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
                         <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
+                        <Route path="events/:id" element={<AdminPrivateRoute><EditEvent /></AdminPrivateRoute>} />
                         <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />
                         <Route path="about-dekut" element={<AdminPrivateRoute><AboutDekut /></AdminPrivateRoute>} />
                         <Route path="*" element={
