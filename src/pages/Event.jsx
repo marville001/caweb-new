@@ -31,7 +31,7 @@ const Event = () => {
                 <div className="flex my-10 justify-center text-2xl animate-spin">
                     <FaSpinner />
                 </div>
-            ) : (
+            ) : event?._id ? (
                 <div className="px-10 w-full sm:w-[500px] bg-white mx-auto py-10">
                     <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
                         {event?.title}
@@ -50,6 +50,12 @@ const Event = () => {
                     </div>
 
                     <p className="text-center">{event?.description}</p>
+                </div>
+            ) : (
+                <div className="my-8 h-40">
+                    <h4 className="text-center text-xl uppercase font-bold opacity-75">
+                        Event not Found
+                    </h4>
                 </div>
             )}
         </div>
