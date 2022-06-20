@@ -10,7 +10,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ADMIN } from "../../../redux/types";
 
-const SideBar = ({ open }) => {
+const SideBar = ({ open, setSideBarOpen }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -19,6 +19,12 @@ const SideBar = ({ open }) => {
         dispatch({ type: LOGOUT_ADMIN });
         navigate("/admin/login");
     };
+
+    const closeSidebar = () => {
+        if (document.body.clientWidth < 1240) {
+            setSideBarOpen(false);
+        }
+    }
 
     return (
         <div
@@ -38,42 +44,49 @@ const SideBar = ({ open }) => {
                 <div className="w-full h-[2px] bg-white opacity-30" />
 
                 <div className="links my-6 flex flex-col space-y-4 px-4">
-                    <SideLink to="/admin/home" text="Home" icon={FaUncharted} />
+                    <SideLink to="/admin/home" text="Home" icon={FaUncharted} closeSidebar={closeSidebar} />
                     <SideLink
                         to="/admin/users"
                         text="Users"
                         icon={HiUserGroup}
+                        closeSidebar={closeSidebar}
                     />
                     <SideLink
                         to="/admin/prayers"
                         text="Prayers"
                         icon={HiBookOpen}
+                        closeSidebar={closeSidebar}
                     />
                     <SideLink
                         to="/admin/sccs"
                         text="Scc Groups"
+                        closeSidebar={closeSidebar}
                         icon={FaUserFriends}
                     />
                     <SideLink
                         to="/admin/leaders"
                         text="Leadership"
                         icon={FaUserTie}
+                        closeSidebar={closeSidebar}
                     />
                     <SideLink
                         to="/admin/events"
                         text="Events"
                         icon={HiCalendar}
+                        closeSidebar={closeSidebar}
                     />
                     <SideLink
                         to="/admin/gallery"
                         text="Our Gallery"
                         icon={HiOutlineFolder}
+                        closeSidebar={closeSidebar}
                     />
 
                     <SideLink
                         to="/admin/about-dekut"
                         text="About Dekut"
                         icon={HiOutlineFolder}
+                        closeSidebar={closeSidebar}
                     />
 
                 </div>
@@ -93,11 +106,12 @@ const SideBar = ({ open }) => {
     );
 };
 
-const SideLink = ({ text, to, icon: Icon }) => {
+const SideLink = ({ text, to, icon: Icon, closeSidebar=()=>{} }) => {
     const { pathname } = useLocation();
     return (
         <NavLink
             to={to}
+            onClick={closeSidebar}
             className={`py-2 px-3 rounded-md  w-full flex items-center space-x-4 ${
                 pathname === to || pathname.startsWith(to) 
                     ? "bg-white text-slate-900"

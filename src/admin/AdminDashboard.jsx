@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     return (
         <div className="min-w-full min-h-screen  h-screen overflow-hidden bg-white">
             <Header sidebarOpen={sideBarOpen} setSidebarOpen={setSideBarOpen} />
-            <SideBar open={sideBarOpen} />
+            <SideBar open={sideBarOpen} setSideBarOpen={setSideBarOpen} />
             <main
                 className={`${
                     sideBarOpen && "xl:ml-64"
