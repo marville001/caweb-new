@@ -260,14 +260,26 @@ const NewSccLeaderModal = ({ closeModal, isOpen, currentScc }) => {
                         )}
                     </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="bg-dodge-blue px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
-                    >
-                        {loading && <FaSpinner className="mr-2 animate-spin" />}
-                        Submit
-                    </button>
+                    <div className="flex justify-between gap-10">
+                        <button
+                            type="button"
+                            onClick={closeModal}
+                            className="bg-red-400 px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+                        >
+                            
+                            Cancel
+                        </button>
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="bg-dodge-blue px-8 py-3 text-xl mt-8 font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+                        >
+                            {loading && (
+                                <FaSpinner className="mr-2 animate-spin" />
+                            )}
+                            Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </Modal>
