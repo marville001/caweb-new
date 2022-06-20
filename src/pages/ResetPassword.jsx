@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { put } from "../redux/actions/http";
 import { useForm } from "react-hook-form";
 import parseError from "../utils/parseError";
@@ -13,6 +13,7 @@ const ResetPassword = () => {
     });
 
     const { token } = useParams();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -33,8 +34,10 @@ const ResetPassword = () => {
             const data = await put(`auth/resetPassword/${token}`, {
                 password: details.password,
             });
-          
+
             setState({ loading: false, success: data.message });
+
+            navigate("/login", { replace: true });
 
             reset();
         } catch (error) {
@@ -116,9 +119,12 @@ const ResetPassword = () => {
                         type="submit"
                         className="disabled:bg-slate-700 flex justify-center items-center disabled:cursor-not-allowed w-full p-2 mt-4 text-white text-center text-lg uppercase bg-dodge-blue rounded cursor-pointer"
                     >
-                        {!state.loading ? "Submit" : (
+                        {!state.loading ? (
+                            "Submit"
+                        ) : (
                             <>
-                            <FaSpinner className="mr-2 animate-spin" /> Loading...
+                                <FaSpinner className="mr-2 animate-spin" />{" "}
+                                Loading...
                             </>
                         )}
                     </button>
