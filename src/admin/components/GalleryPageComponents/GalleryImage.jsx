@@ -1,5 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { HiOutlineDotsHorizontal, HiPencil, HiTrash } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
@@ -7,13 +7,20 @@ import { getImages } from "../../../redux/actions/admin/images";
 import { _delete } from "../../../redux/actions/http";
 import parseError from "../../../utils/parseError";
 
-const GalleryImage = ({ image, page, pageSize }) => {
+import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
 
-  const dispatch = useDispatch()
+const GalleryImage = ({ image, page, pageSize }) => {
+    const [deleteImageModalOpen, setDeleteImageModalOpen] = useState(false);
+
+    const [deleting, setDeleting] = useState(false);
+
+    const dispatch = useDispatch();
 
     const handleDeleteImage = async () => {
         try {
+            setDeleting(true)
             const data = await _delete(`images/${image._id}`, "admin");
+            setDeleting(false)
 
             toast.success(data.message, {
                 position: "top-right",
@@ -24,8 +31,9 @@ const GalleryImage = ({ image, page, pageSize }) => {
                 draggable: true,
                 progress: undefined,
             });
-          dispatch(getImages({ page, pageSize }));
+            dispatch(getImages({ page, pageSize }));
         } catch (error) {
+            setDeleting(false)
             toast.error(parseError(error), {
                 position: "top-right",
                 autoClose: 5000,
@@ -83,7 +91,7 @@ const GalleryImage = ({ image, page, pageSize }) => {
                                         className={
                                             "flex items-center space-x-2"
                                         }
-                                        onClick={handleDeleteImage}
+                                        onClick={() => setDeleteImageModalOpen(true)}
                                     >
                                         <HiTrash
                                             className={"text-gray-500 my-1"}
@@ -97,6 +105,15 @@ const GalleryImage = ({ image, page, pageSize }) => {
                     </Transition>
                 </Menu>
             </div>
+            <ConfirmDeleteModal
+                isOpen={deleteImageModalOpen}
+                closeModal={() => {
+                    setDeleteImageModalOpen(false);
+                }}
+                loading={deleting}
+                message={`Please Confirm Deleting the Event {${image?.title}}. This will erase all data about the image`}
+                actionMethod={handleDeleteImage}
+            />
         </div>
     );
 };
