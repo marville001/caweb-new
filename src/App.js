@@ -6,7 +6,6 @@ import {
     AdminHome,
     AdminLogin,
     EventsPage,
-    LeadershipPage,
     PrayersPage,
     UsersPage,
     GalleryPage,
@@ -140,7 +139,6 @@ const App = () => {
                         <Route path="leaders/new"  element={ <AdminPrivateRoute> <NewChurchLeader /> </AdminPrivateRoute> }/>
                         <Route path="leaders/position/new"  element={ <AdminPrivateRoute> <NewLeaderPosition /> </AdminPrivateRoute> }/>
                         <Route path="leaders/position/:id"  element={ <AdminPrivateRoute> <EditLeaderPosition /> </AdminPrivateRoute> }/>
-                        <Route path="leaders/:group"  element={ <AdminPrivateRoute> <LeadershipPage /> </AdminPrivateRoute> }/>
                         <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
                         <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
                         <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />

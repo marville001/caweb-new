@@ -68,7 +68,7 @@ const EditLeaderPosition = () => {
                 <div className="bg-white p-6">
                     <div className="flex items-center justify-between">
                         <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
-                            New Leader Position
+                            Edit Leader Position
                         </h2>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
