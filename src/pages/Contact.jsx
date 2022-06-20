@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
-import parseError from "../utils/parseError"
+import parseError from "../utils/parseError";
+import { post } from "../redux/actions/http/";
 
-import {FaSpinner} from "react-icons/fa"
+import { FaSpinner } from "react-icons/fa";
 
 const Contact = () => {
     const {
@@ -11,26 +12,30 @@ const Contact = () => {
         handleSubmit,
         formState: { errors },
         reset,
-  } = useForm();
-  
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
+    } = useForm();
 
-    const handleContactSubmit = (data) => {
-      console.log(data);
-      setError("")
-      setSuccess("")
-      setLoading(true)
-      
-      try {
-        
-        setLoading(false)
-      } catch (error) {
-        setLoading(false)
-        setError(parseError(error))
-        
-      }
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [success, setSuccess] = useState("");
+
+    const handleContactSubmit = async (data) => {
+        console.log(data);
+        setError("");
+        setSuccess("");
+        setLoading(true);
+
+        try {
+            await post("contact", data);
+
+            setSuccess(
+                "Message sent successfully. You will receive a reply to given email shortly!"
+            );
+          setLoading(false);
+          reset()
+        } catch (error) {
+            setLoading(false);
+            setError(parseError(error));
+        }
     };
 
     return (
@@ -38,7 +43,10 @@ const Contact = () => {
             <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold">
                 Contact Us
             </h1>
-            <p className="py-10 max-w-lg text-center mx-auto">
+            <p className="text-center mt-6 text-lg">
+                info@dekutcatholicchaplaincy.org
+            </p>
+            <p className="py-6 max-w-lg text-center mx-auto">
                 To receive an email response, please use the form below. Fill in
                 any query you have about DEKUTCC or any feedback. You will get
                 feedback within some few hours if not minutes.
@@ -48,6 +56,16 @@ const Contact = () => {
                 onSubmit={handleSubmit(handleContactSubmit)}
                 className="bg-white p-2 sm:p-4 md:p-8 max-w-3xl mx-auto"
             >
+                {error && (
+                    <div className="my-2 py-2 bg-red-300 rounded-lg text-center text-red-700">
+                        {error}
+                    </div>
+                )}
+                {success && (
+                    <div className="my-2 py-2 bg-emerald-300 rounded-lg text-center text-emerald-700">
+                        {success}
+                    </div>
+                )}
                 <div className="md:flex md:gap-2">
                     <div className="form-group my-4 flex-1">
                         <label>Firstname</label>
@@ -164,8 +182,15 @@ const Contact = () => {
                     )}
                 </div>
 
-                <button disabled={loading} className="w-full p-2 mt-5 text-white text-center text-lg uppercase flex justify-center bg-dodge-blue cursor-pointer disabled:cursor-not-allowed disabled:opacity-70">
-                   {loading ? <FaSpinner className="animate-spin text-xl" /> : "SUBMIT"} 
+                <button
+                    disabled={loading}
+                    className="w-full p-2 mt-5 text-white text-center text-lg uppercase flex justify-center bg-dodge-blue cursor-pointer disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                    {loading ? (
+                        <FaSpinner className="animate-spin text-xl" />
+                    ) : (
+                        "SUBMIT"
+                    )}
                 </button>
             </form>
         </div>
