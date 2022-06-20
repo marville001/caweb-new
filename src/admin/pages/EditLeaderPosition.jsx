@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { post } from "../../redux/actions/http";
+import { get, post, put } from "../../redux/actions/http";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 import parseError from "../../utils/parseError";
 
 const EditLeaderPosition = () => {
     const [loading, setLoading] = useState(false);
+    const [isFetching, setIsFetching] = useState(false);
 
     const {
         register,
@@ -17,18 +18,21 @@ const EditLeaderPosition = () => {
         clearErrors,
         reset,
         formState: { errors },
+        setValue,
     } = useForm();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const handleAddLeader = async (data) => {
+    const { id } = useParams();
+
+    const handleEditLeader = async (data) => {
         try {
             setLoading(true);
 
-            await post(`positions/`, data, "admin");
+            await put(`positions/${id}`, data, "admin");
 
             setLoading(false);
-            toast.success("Position added successfully", {
+            toast.success("Position Updated successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -56,6 +60,26 @@ const EditLeaderPosition = () => {
         dispatch(fetchPositionsAction("admin"));
     }, [dispatch]);
 
+    useEffect(() => {
+        const loadPosition = async () => {
+            try {
+                setIsFetching(true);
+                const res = await get(`positions/${id}`, "admin");
+
+                if (res?.position) {
+                    const { title, description } = res?.position;
+                    setValue("title", title);
+                    setValue("description", description);
+                }
+                setIsFetching(false);
+            } catch (error) {
+                setIsFetching(false);
+            }
+        };
+
+        loadPosition();
+    }, [id, setValue]);
+
     return (
         <div className="px-2 sm:px-0">
             <Link
@@ -74,7 +98,7 @@ const EditLeaderPosition = () => {
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
 
                     <form
-                        onSubmit={handleSubmit(handleAddLeader)}
+                        onSubmit={handleSubmit(handleEditLeader)}
                         className="my-10 flex flex-col gap-6"
                     >
                         <div className="flex flex-col gap-2">
@@ -127,7 +151,7 @@ const EditLeaderPosition = () => {
                             {loading && (
                                 <FaSpinner className="mr-2 animate-spin" />
                             )}
-                            Submit
+                            Update
                         </button>
                     </form>
                 </div>
