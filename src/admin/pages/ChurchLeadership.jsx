@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
@@ -7,6 +8,8 @@ import { fetchPositionsAction } from "../../redux/actions/positions";
 const ChurchLeadership = () => {
     const { leaders } = useSelector((state) => state.leadersState);
     const { positions } = useSelector((state) => state.positionsState);
+
+    const [showAllPositions, setShowAllPositions] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -31,17 +34,19 @@ const ChurchLeadership = () => {
                         </div> */}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 my-5">
-                        {positions.map((position) => (
-                            <Link
-                                to={`/admin/leaders/position/${position._id}`}
-                                key={position._id}
-                                className="_shadow px-6 py-3 flex items-center justify-center text-seagreen rounded-md hover:scale-[1.02] 
+                        {[...positions]
+                            .slice(0, showAllPositions ? -1 : 10)
+                            .map((position) => (
+                                <Link
+                                    to={`/admin/leaders/position/${position._id}`}
+                                    key={position._id}
+                                    className="_shadow px-6 py-3 flex items-center justify-center text-seagreen rounded-md hover:scale-[1.02] 
                                 transition-all duration-150 ease-linear cursor-pointer
                                 hover:opacity-80 hover:bg-slate-50"
-                            >
-                                <span>{position?.title}</span>
-                            </Link>
-                        ))}
+                                >
+                                    <span>{position?.title}</span>
+                                </Link>
+                            ))}
                         <Link
                             to="/admin/leaders/position/new"
                             className="_shadow bg-steelblue bg-opacity-20 text-steelblue rounded-md px-6 py-3 flex items-center justify-center 
@@ -49,6 +54,12 @@ const ChurchLeadership = () => {
                         >
                             <span>Add Position</span>
                         </Link>
+                    </div>
+
+                    <div className="my-2">
+                        <button onClick={()=>setShowAllPositions(!showAllPositions)} className="rounded bg-dodge-blue text-white text-sm px-2 py-1">
+                            Show {showAllPositions?"Few":"All"}
+                        </button>
                     </div>
                 </div>
             </div>
