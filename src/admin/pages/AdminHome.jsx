@@ -4,8 +4,10 @@ import { FaSpinner } from "react-icons/fa";
 import { HiTrash } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { getPrayers } from "../../redux/actions/admin/prayers";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
-import { getAdmins } from "../../redux/actions/admin/users";
+import { getAdmins, getUsers } from "../../redux/actions/admin/users";
+import { fetchEventsAction } from "../../redux/actions/events";
 import { _delete } from "../../redux/actions/http";
 import parseError from "../../utils/parseError";
 import AddAdminModal from "../components/AdminHomeComponents/AddAdminModal";
@@ -84,6 +86,9 @@ const AdminHome = () => {
     useEffect(() => {
         dispatch(getAdmins());
         dispatch(getSccsAction());
+        dispatch(getUsers());
+        dispatch(fetchEventsAction("admin"));
+        dispatch(getPrayers());
     }, [dispatch]);
 
     useEffect(() => {

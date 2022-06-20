@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { FaMapMarkerAlt, FaTrash } from "react-icons/fa";
+import { FaMapMarkerAlt, FaTrash, FaEdit } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -73,10 +73,19 @@ const EventCard = ({ event }) => {
                         {new Date(event?.date).toDateString()}
                     </span>
 
-                    <FaTrash
-                        className="text-red-300 hover:text-red-500 cursor-pointer block mt-2 mr-2"
-                        onClick={() => setDeleteEventModalOpen(true)}
-                    />
+                    <div className="flex gap-2 items-center">
+                        <Link to={`/admin/events/${event?._id}`}>
+                            <FaEdit
+                                className="text-dodge-blue hover:text-emerald-900 cursor-pointer block mt-2 mr-2"
+                                onClick={() => setDeleteEventModalOpen(true)}
+                            />
+                        </Link>
+
+                        <FaTrash
+                            className="text-red-300 hover:text-red-500 cursor-pointer block mt-2 mr-2"
+                            onClick={() => setDeleteEventModalOpen(true)}
+                        />
+                    </div>
                 </div>
             </div>
 
