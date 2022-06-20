@@ -235,6 +235,7 @@ const Footer = () => {
                     <p className="text-slate-300 capitalize">
                         @{new Date().getFullYear()} DEKUT Catholic chaplaincy
                     </p>
+                    <p className="text-white">info@dekutcatholicchaplaincy.org</p>
                     <div className="flex items-center gap-2">
                         <a
                             href="#youtube"
