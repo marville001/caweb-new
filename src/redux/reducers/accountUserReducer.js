@@ -34,7 +34,6 @@ const accountUserReducer = (state = initialState, action) => {
         case USER_REGISTER.SUCCESS:
             return {
                 ...state,
-                user: action.user,
                 registerLoading: false,
                 registerError: "",
             };

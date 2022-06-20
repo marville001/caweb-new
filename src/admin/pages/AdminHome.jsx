@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { FaSpinner } from "react-icons/fa";
-import {  HiTrash } from "react-icons/hi";
+import { HiTrash } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { getSccsAction } from "../../redux/actions/admin/sccs";
 import { getAdmins } from "../../redux/actions/admin/users";
 import { _delete } from "../../redux/actions/http";
 import parseError from "../../utils/parseError";
@@ -16,11 +17,17 @@ const AdminHome = () => {
     const { isLoadingAdmins, admins } = useSelector(
         (state) => state.usersState
     );
+    const { sccs } = useSelector((state) => state.sccsState);
 
     let [addAdminModalOpen, setAddAdminModalOpen] = useState(false);
     const [confirmDeleteModalOpen, setConfirmDeleteModalOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState({});
     const [loading, setLoading] = useState(false);
+    const [sccsData, setSccsData] = useState([
+        { name: "ST AGELUS", value: 0 },
+        { name: "ST JOSEPH", value: 0 },
+        { name: "ST PETERS", value: 0 },
+    ]);
 
     const dispatch = useDispatch();
 
@@ -59,8 +66,8 @@ const AdminHome = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
-          handleClose();
-          dispatch(getAdmins());
+            handleClose();
+            dispatch(getAdmins());
         } catch (error) {
             toast.error(parseError(error), {
                 position: "top-right",
@@ -76,7 +83,17 @@ const AdminHome = () => {
 
     useEffect(() => {
         dispatch(getAdmins());
+        dispatch(getSccsAction());
     }, [dispatch]);
+
+    useEffect(() => {
+        const majorSccs = sccs
+            ?.filter((scc) => scc.category === "major")
+            .map((scc) => ({ name: scc.name, value: scc.members.length }));
+        setSccsData(majorSccs);
+    }, [sccs]);
+
+    const colors = ["#0088FE", "#00C49F", "#FF8042"];
 
     return (
         <div className="">
@@ -88,26 +105,21 @@ const AdminHome = () => {
                     </h3>
 
                     <div className="flex items-center justify-center space-x-4">
-                        <h2 className="flex items-center font-light text-sm">
-                            <div className="w-4 h-4 bg-[#0088FE] mr-1"></div>ST
-                            ANGELUS
-                        </h2>
-                        <h2 className="flex items-center font-light text-sm">
-                            <div className="w-4 h-4 bg-[#00C49F] mr-1"></div>ST
-                            JOSEPH
-                        </h2>
-                        <h2 className="flex items-center font-light text-sm">
-                            <div className="w-4 h-4 bg-[#FF8042] mr-1"></div>ST
-                            PETERS
-                        </h2>
+                        {sccsData?.map((data, i) => (
+                            <h2
+                                key={i}
+                                className="flex items-center font-light text-sm"
+                            >
+                                <div
+                                    className={`w-4 h-4 bg-[${colors[i]}] mr-1`}
+                                ></div>
+                                {data?.name}
+                            </h2>
+                        ))}
                     </div>
                     <div className="w-50 h-60">
                         <Piechart
-                            data={[
-                                { name: "ST AGELUS", value: 400 },
-                                { name: "ST JOSEPH", value: 300 },
-                                { name: "ST PETERS", value: 200 },
-                            ]}
+                            data={sccsData}
                             COLORS={["#0088FE", "#00C49F", "#FF8042"]}
                         />
                     </div>
@@ -144,12 +156,14 @@ const AdminHome = () => {
                                     </h2>
                                     <p className="text-sm">{admin.email}</p>
                                 </div>
-                                <div
-                                    
-                                    className="ml-auto mr-6 flex space-x-2"
-                                >
+                                <div className="ml-auto mr-6 flex space-x-2">
                                     {/* <HiPencilAlt className="font-bold text-dodge-blue text-2xl cursor-pointer" /> */}
-                                    <HiTrash onClick={() => openDeleteUserModal(admin)} className="font-bold text-red-400 text-2xl cursor-pointer" />
+                                    <HiTrash
+                                        onClick={() =>
+                                            openDeleteUserModal(admin)
+                                        }
+                                        className="font-bold text-red-400 text-2xl cursor-pointer"
+                                    />
                                 </div>
                             </div>
                         ))}
