@@ -70,7 +70,7 @@ const EventCard = ({ event }) => {
 
                 <div className="flex items-center justify-between">
                     <span className="font-medium rounded mt-2 block">
-                        {new Date(event?.date).toUTCString()}
+                        {new Date(event?.date).toDateString()}
                     </span>
 
                     <FaTrash
