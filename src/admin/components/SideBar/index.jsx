@@ -5,7 +5,7 @@ import {
     HiBookOpen,
     HiOutlineFolder,
 } from "react-icons/hi";
-import { FaPowerOff, FaUncharted, FaUserFriends, FaUserTie } from "react-icons/fa";
+import { FaPowerOff, FaUncharted, FaUserFriends, FaUserTie, FaInfoCircle } from "react-icons/fa";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ADMIN } from "../../../redux/types";
@@ -85,7 +85,7 @@ const SideBar = ({ open, setSideBarOpen }) => {
                     <SideLink
                         to="/admin/about-dekut"
                         text="About Dekut"
-                        icon={HiOutlineFolder}
+                        icon={FaInfoCircle}
                         closeSidebar={closeSidebar}
                     />
 
