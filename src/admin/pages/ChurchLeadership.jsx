@@ -11,7 +11,6 @@ const ChurchLeadership = () => {
     const { leaders } = useSelector((state) => state.leadersState);
     const { positions } = useSelector((state) => state.positionsState);
 
-    const [showAllPositions, setShowAllPositions] = useState(false);
     const [showPositions, setShowPositions] = useState(false);
     const [showLeadership, setShowLeadership] = useState(false);
 
