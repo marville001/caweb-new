@@ -13,6 +13,7 @@ const ChurchLeadership = () => {
 
     const [showPositions, setShowPositions] = useState(false);
     const [showLeadership, setShowLeadership] = useState(false);
+    const [showCommittee, setShowCommittee] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -82,58 +83,120 @@ const ChurchLeadership = () => {
                     onClick={() => setShowLeadership((prev) => !prev)}
                     className="flex gap-5 justify-between cursor-pointer items-center"
                 >
-                    <h2 className="font-bold text-lg">Leadership Positions</h2>
+                    <h2 className="font-bold text-lg">
+                        Main Church Leadership
+                    </h2>
 
                     <div className="flex items-center space-x-2 py-2 cursor-pointer px-6 rounded-md text-seagreen  text-sm hover:opacity-75">
                         {showLeadership ? <FaChevronUp /> : <FaChevronDown />}
                     </div>
                 </div>
-            </div>
 
-            <div className="flex flex-col sm:flex-row sm:justify-between gap-5 sm:gap-10 items-start sm:items-center">
-                <h2 className="text-2xl text-dodge-blue font-bold">
-                    Church Committee
-                </h2>
-                <Link
-                    to="/admin/leaders/new"
-                    className="p-2 bg-steelblue py-1 px-4 text-white font-normal rounded-md"
+                <div
+                    className={`grid grid-cols-1 transition-all duration-150 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-5 
+                        ${showLeadership ? "" : "h-0 hidden  overflow-hidden"}`}
                 >
-                    Add Leader
-                </Link>
+                    {[
+                        ...leaders?.filter(
+                            (leader) => leader.churchCommittee === true
+                        ),
+                    ]
+                        .slice(0, 4)
+                        ?.map((leader) => (
+                            <div
+                                key={leader._id}
+                                className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
+                            >
+                                <img
+                                    src={leader?.image}
+                                    alt=""
+                                    className="rounded-full h-[150px] w-[150px] "
+                                />
+                                <h4 className="mt-2 text-lg font-bold">
+                                    {leader?.name}
+                                </h4>
+
+                                <h4 className="mb-2 text-lg font-bold opacity-60">
+                                    {leader?.title?.title ?? "-"}
+                                </h4>
+                                <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
+                                    {leader?.description}
+                                </blockquote>
+
+                                <Link
+                                    to={`/admin/leaders/${leader._id}/edit`}
+                                    className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center"
+                                >
+                                    Update
+                                </Link>
+                            </div>
+                        ))}
+                </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5_ gap-4 my-6">
-                {leaders
-                    ?.filter((leader) => leader.churchCommittee === true)
-                    ?.map((leader) => (
-                        <div
-                            key={leader._id}
-                            className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
+            <div className="my-6 p-4 bg-white _shadow">
+                <div
+                    onClick={() => setShowCommittee((prev) => !prev)}
+                    className="flex gap-5 justify-between cursor-pointer items-center"
+                >
+                    <h2 className="font-bold text-lg">Church Committee</h2>
+
+                    <div className="flex items-center space-x-2 py-2 cursor-pointer px-6 rounded-md text-seagreen  text-sm hover:opacity-75">
+                        {showCommittee ? <FaChevronUp /> : <FaChevronDown />}
+                    </div>
+                </div>
+                <div
+                    className={`${
+                        showCommittee ? "" : "h-0 hidden  overflow-hidden"
+                    }`}
+                >
+                    <div className="flex mt-5 justify-end gap-5 sm:gap-10">
+                        <Link
+                            to="/admin/leaders/new"
+                            className="p-2 bg-steelblue py-1 px-4 text-white font-normal rounded-md"
                         >
-                            <img
-                                src={leader?.image}
-                                alt=""
-                                className="rounded-full h-[150px] w-[150px] "
-                            />
-                            <h4 className="mt-2 text-lg font-bold">
-                                {leader?.name}
-                            </h4>
+                            Add Leader
+                        </Link>
+                    </div>
 
-                            <h4 className="mb-2 text-lg font-bold opacity-60">
-                                {leader?.title?.title ?? "-"}
-                            </h4>
-                            <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
-                                {leader?.description}
-                            </blockquote>
+                    <div
+                        className={`grid grid-cols-1 transition-all duration-150 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-5`}
+                    >
+                        {leaders
+                            ?.filter(
+                                (leader) => leader.churchCommittee === true
+                            )
+                            ?.map((leader) => (
+                                <div
+                                    key={leader._id}
+                                    className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
+                                >
+                                    <img
+                                        src={leader?.image}
+                                        alt=""
+                                        className="rounded-full h-[150px] w-[150px] "
+                                    />
+                                    <h4 className="mt-2 text-lg font-bold">
+                                        {leader?.name}
+                                    </h4>
 
-                            <Link
-                                to={`/admin/leaders/${leader._id}/edit`}
-                                className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center"
-                            >
-                                Update
-                            </Link>
-                        </div>
-                    ))}
+                                    <h4 className="mb-2 text-lg font-bold opacity-60">
+                                        {leader?.title?.title ?? "-"}
+                                    </h4>
+                                    <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
+                                        {leader?.description}
+                                    </blockquote>
+
+                                    <Link
+                                        to={`/admin/leaders/${leader._id}/edit`}
+                                        className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center"
+                                    >
+                                        Update
+                                    </Link>
+                                </div>
+                            ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
