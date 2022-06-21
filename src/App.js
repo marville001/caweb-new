@@ -33,6 +33,8 @@ import AboutDekut from "./admin/pages/AboutDekut";
 import { ToastContainer } from "react-toastify";
 import EditLeaderPosition from "./admin/pages/EditLeaderPosition";
 import EditEvent from "./admin/pages/EditEvent";
+import Blogs from "./admin/pages/Blogs";
+import NewBlog from "./admin/pages/NewBlog";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -145,6 +147,8 @@ const App = () => {
                         <Route path="events/:id" element={<AdminPrivateRoute><EditEvent /></AdminPrivateRoute>} />
                         <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />
                         <Route path="about-dekut" element={<AdminPrivateRoute><AboutDekut /></AdminPrivateRoute>} />
+                        <Route path="blogs" element={<AdminPrivateRoute><Blogs /></AdminPrivateRoute>} />
+                        <Route path="blogs/new" element={<AdminPrivateRoute><NewBlog /></AdminPrivateRoute>} />
                         <Route path="*" element={
                                 <div className="m-16 p-4 flex flex-col items-center justify-center">
                                     <h1 className="text-7xl text-dodge-blue font-bold">
