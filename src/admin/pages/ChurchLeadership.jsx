@@ -5,11 +5,15 @@ import { Link } from "react-router-dom";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+
 const ChurchLeadership = () => {
     const { leaders } = useSelector((state) => state.leadersState);
     const { positions } = useSelector((state) => state.positionsState);
 
     const [showAllPositions, setShowAllPositions] = useState(false);
+    const [showPositions, setShowPositions] = useState(false);
+    const [showLeadership, setShowLeadership] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -21,32 +25,37 @@ const ChurchLeadership = () => {
         <div className="px-2 sm:px-0">
             <div className="">
                 <div className="my-6 p-4 bg-white _shadow">
-                    <div className="flex gap-5 items-center">
+                    <div
+                        onClick={() => setShowPositions((prev) => !prev)}
+                        className="flex gap-5 justify-between cursor-pointer items-center"
+                    >
                         <h2 className="font-bold text-lg">
                             Leadership Positions
                         </h2>
 
-                        {/* <div
-                            className="flex items-center space-x-2 py-2 cursor-pointer px-6 rounded-md text-seagreen  text-sm hover:opacity-75"
-                        >
-                            <HiPlusCircle />
-                            <span>New Department</span>
-                        </div> */}
+                        <div className="flex items-center space-x-2 py-2 cursor-pointer px-6 rounded-md text-seagreen  text-sm hover:opacity-75">
+                            {showPositions ? (
+                                <FaChevronUp />
+                            ) : (
+                                <FaChevronDown />
+                            )}
+                        </div>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 my-5">
-                        {[...positions]
-                            .slice(0, showAllPositions ? -1 : 10)
-                            .map((position) => (
-                                <Link
-                                    to={`/admin/leaders/position/${position._id}`}
-                                    key={position._id}
-                                    className="_shadow px-6 py-3 flex items-center justify-center text-seagreen rounded-md hover:scale-[1.02] 
+                    <div
+                        className={`grid grid-cols-1 transition-all duration-150 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 my-5 
+                        ${showPositions ? "" : "h-0 hidden  overflow-hidden"}`}
+                    >
+                        {positions.map((position) => (
+                            <Link
+                                to={`/admin/leaders/position/${position._id}`}
+                                key={position._id}
+                                className="_shadow px-6 py-3 flex items-center justify-center text-seagreen rounded-md hover:scale-[1.02] 
                                 transition-all duration-150 ease-linear cursor-pointer
                                 hover:opacity-80 hover:bg-slate-50"
-                                >
-                                    <span>{position?.title}</span>
-                                </Link>
-                            ))}
+                            >
+                                <span>{position?.title}</span>
+                            </Link>
+                        ))}
                         <Link
                             to="/admin/leaders/position/new"
                             className="_shadow bg-steelblue bg-opacity-20 text-steelblue rounded-md px-6 py-3 flex items-center justify-center 
@@ -56,10 +65,28 @@ const ChurchLeadership = () => {
                         </Link>
                     </div>
 
-                    <div className="my-2">
-                        <button onClick={()=>setShowAllPositions(!showAllPositions)} className="rounded bg-dodge-blue text-white text-sm px-2 py-1">
-                            Show {showAllPositions?"Few":"All"}
-                        </button>
+                    {showPositions && (
+                        <div className="my-2">
+                            <button
+                                onClick={() => setShowPositions(false)}
+                                className="rounded bg-dodge-blue text-white text-sm px-6 py-1"
+                            >
+                                Hide
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="my-6 p-4 bg-white _shadow">
+                <div
+                    onClick={() => setShowLeadership((prev) => !prev)}
+                    className="flex gap-5 justify-between cursor-pointer items-center"
+                >
+                    <h2 className="font-bold text-lg">Leadership Positions</h2>
+
+                    <div className="flex items-center space-x-2 py-2 cursor-pointer px-6 rounded-md text-seagreen  text-sm hover:opacity-75">
+                        {showLeadership ? <FaChevronUp /> : <FaChevronDown />}
                     </div>
                 </div>
             </div>
