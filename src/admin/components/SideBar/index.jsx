@@ -5,7 +5,14 @@ import {
     HiBookOpen,
     HiOutlineFolder,
 } from "react-icons/hi";
-import { FaPowerOff, FaUncharted, FaUserFriends, FaUserTie, FaInfoCircle } from "react-icons/fa";
+import {
+    FaPowerOff,
+    FaUncharted,
+    FaUserFriends,
+    FaUserTie,
+    FaInfoCircle,
+    FaSwatchbook,
+} from "react-icons/fa";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LOGOUT_ADMIN } from "../../../redux/types";
@@ -24,7 +31,7 @@ const SideBar = ({ open, setSideBarOpen }) => {
         if (document.body.clientWidth < 1240) {
             setSideBarOpen(false);
         }
-    }
+    };
 
     return (
         <div
@@ -44,7 +51,12 @@ const SideBar = ({ open, setSideBarOpen }) => {
                 <div className="w-full h-[2px] bg-white opacity-30" />
 
                 <div className="links my-6 flex flex-col space-y-4 px-4">
-                    <SideLink to="/admin/home" text="Home" icon={FaUncharted} closeSidebar={closeSidebar} />
+                    <SideLink
+                        to="/admin/home"
+                        text="Home"
+                        icon={FaUncharted}
+                        closeSidebar={closeSidebar}
+                    />
                     <SideLink
                         to="/admin/users"
                         text="Users"
@@ -89,31 +101,38 @@ const SideBar = ({ open, setSideBarOpen }) => {
                         closeSidebar={closeSidebar}
                     />
 
-                </div>
-                <div className="inset-x-0 bottom-6 flex px-8">
-                    <button
-                        onClick={logoutAdmin}
-                        className="flex items-center flex-row
-          py-7 text-slate-300 gap-4"
-                    >
-                        <FaPowerOff className="w-6 h-6 mr-2" />
+                     <SideLink
+                        to="/admin/blogs"
+                        text="Blogs"
+                        icon={FaSwatchbook}
+                        closeSidebar={closeSidebar}
+                    />
 
-                        <span className="text-[15px]">Log Out</span>
-                    </button>
+                    <div className="inset-x-0 bottom rounded-md py-2 mb-10 hover:bg-slate-700  flex px-8">
+                        <button
+                            onClick={logoutAdmin}
+                            className="flex items-center flex-row
+           text-slate-300 gap-4"
+                        >
+                            <FaPowerOff className="w-6 h-6 mr-2" />
+
+                            <span className="text-[18px]">Log Out</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-const SideLink = ({ text, to, icon: Icon, closeSidebar=()=>{} }) => {
+const SideLink = ({ text, to, icon: Icon, closeSidebar = () => {} }) => {
     const { pathname } = useLocation();
     return (
         <NavLink
             to={to}
             onClick={closeSidebar}
             className={`py-2 px-3 rounded-md  w-full flex items-center space-x-4 ${
-                pathname === to || pathname.startsWith(to) 
+                pathname === to || pathname.startsWith(to)
                     ? "bg-white text-slate-900"
                     : "text-white opacity-70 hover:bg-slate-700 "
             } `}
