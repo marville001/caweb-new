@@ -17,7 +17,7 @@ const EventsPage = () => {
 
     return (
         <div className="p-4">
-            <div className="flex justify-between">
+            <div className="flex justify-between items-center">
                 <h4 className="text-2xl text-dodge-blue font-bold">Events</h4>
                 <Link
                     to="/admin/events/new"

@@ -1,120 +1,68 @@
-import { useEffect,  useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import { createAboutAction, fetchAboutAction } from "../../redux/actions/about";
-import QuillEditor from "../components/common/QuillEditor";
-
-import ReactHtmlParser from "react-html-parser";
-import { FaSpinner } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaEdit, FaLongArrowAltRight } from "react-icons/fa";
 
 const Blogs = () => {
-    const { about } = useSelector((state) => state.aboutState);
-
-    const [state, setState] = useState({
-        story: "",
-        mission: "",
-    });
-    const [loading, setLoading] = useState(false);
-
-    const dispatch = useDispatch();
-
-    const handleSaveAbout = async (data) => {
-        setLoading(true);
-        const res = dispatch(createAboutAction(state, about?._id));
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
-
-        if (!res.success) {
-            toast.error(res.message, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-            return;
-        }
-        toast.success("Event added successfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-        });
-    };
-
-    useEffect(() => {
-        if (about?._id) {
-            setState({
-                mission: about?.mission,
-                story: ReactHtmlParser(about?.story).toString(),
-            });
-        }
-    }, [about]);
-
-    useEffect(() => {
-        dispatch(fetchAboutAction());
-    }, [dispatch]);
-
     return (
         <div className="px-2 sm:px-0">
-            <div className="max-w-3xl mx-auto _shadow rounded-md border-2">
-                <div className="bg-white p-6">
-                    <div className="flex items-center justify-between">
-                        <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
-                            About Dekut
-                        </h2>
-                    </div>
-                    <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
+            <div className="flex justify-between items-center">
+                <h4 className="text-2xl text-dodge-blue font-bold">Blogs</h4>
+                <Link
+                    to="/admin/blogs/new"
+                    className="p-2 bg-steelblue py-1 px-4 text-white uppercase font-normal rounded-md"
+                >
+                    New Post
+                </Link>
+            </div>
 
-                    <div className="my-5">
-                        <h2>Our Mission</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-10">
+                {[1, 2, 3, 4, 5, 6].map((blog, i) => (
+                    <div
+                        className="_shadow border-2 rounded-md overflow-hidden"
+                        key={i}
+                    >
+                        {/* eslint-disable-next-line no-template-curly-in-string */}
+                        <Link to="/admin/blogs/${blog?.slug}">
+                            <img
+                                src="https://static.dw.com/image/55042452_101.jpg"
+                                className="w-full h-52 object-fit"
+                                alt=""
+                                srcset=""
+                            />
+                        </Link>
 
-                        <textarea
-                            value={state.mission}
-                            onChange={(e) =>
-                                setState((prev) => ({
-                                    ...prev,
-                                    mission: e.target.value,
-                                }))
-                            }
-                            rows="4"
-                            className="mt-2 w-full"
-                        ></textarea>
-                    </div>
+                        <div className="p-3">
+                            <div className="flex justify-between opacity-75">
+                                <h3>By: Martin Mwangi</h3>
+                                <p>{new Date().toDateString()}</p>
+                            </div>
 
-                    <div className="my-5">
-                        <h2 className="mb-2">Our Story</h2>
-                        <QuillEditor
-                            value={state.story}
-                            handleChange={(value) =>
-                                setState((prev) => ({
-                                    ...prev,
-                                    story: value,
-                                }))
-                            }
-                            placeholder="Start typing dekutcc story here"
-                        />
-                    </div>
+                            <p className="font-semibold text-lg mt-3">
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit.
+                            </p>
 
-                    <div className="flex justify-end">
-                        <button
-                            onClick={handleSaveAbout}
-                            disabled={loading}
-                            className="disabled:opacity-70 disabled:cursor-not-allowed border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
-                        >
-                            {loading ? (
-                                <FaSpinner className="animate-spin" />
-                            ) : (
-                                "Save"
-                            )}
-                        </button>
+                            <p className="font-sans mt-3">
+                                Lorem ipsum dolor, sit amet consectetur
+                                adipisicing elit. A inventore reprehenderit
+                                ratione.
+                            </p>
+
+                            <div className="flex justify-between mt-5 items-center  text-dodge-blue">
+                                <Link
+                                    to="/admin/blogs/${blog?.slug}"
+                                    className="flex items-center gap-2 text-dodge-blue"
+                                >
+                                    <span>Read More </span>
+                                    <FaLongArrowAltRight />
+                                </Link>
+
+                                <Link to="/admin/blogs/edit/${blog.slug}">
+                                    <FaEdit className="cursor-pointer" />
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         </div>
     );
