@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { createAboutAction, fetchAboutAction } from "../../redux/actions/about";
+import { createAboutAction } from "../../redux/actions/about";
 import QuillEditor from "../components/common/QuillEditor";
 
-import ReactHtmlParser from "react-html-parser";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
