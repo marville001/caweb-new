@@ -12,6 +12,7 @@ const QuillEditor = ({
     handleChange = () => {},
 }) => {
     const editorRef = useRef(null);
+
     const modules = useMemo(
         () => ({
             toolbar: {
@@ -25,7 +26,7 @@ const QuillEditor = ({
                     [{ list: "ordered" }, { list: "bullet" }],
                     [
                         "link",
-                        // "image",
+                        "image",
                         "video",
                     ],
                     ["clean"],

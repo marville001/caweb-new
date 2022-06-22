@@ -1,18 +1,20 @@
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { createAboutAction, fetchAboutAction } from "../../redux/actions/about";
 import QuillEditor from "../components/common/QuillEditor";
 
 import ReactHtmlParser from "react-html-parser";
-import { FaSpinner } from "react-icons/fa";
+import { FaChevronLeft, FaSpinner } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewBlog = () => {
     const { about } = useSelector((state) => state.aboutState);
 
     const [state, setState] = useState({
-        story: "",
-        mission: "",
+        blog: "",
+        title: "",
+        subtitle: "",
     });
     const [loading, setLoading] = useState(false);
 
@@ -47,57 +49,46 @@ const NewBlog = () => {
         });
     };
 
-    useEffect(() => {
-        if (about?._id) {
-            setState({
-                mission: about?.mission,
-                story: ReactHtmlParser(about?.story).toString(),
-            });
-        }
-    }, [about]);
-
-    useEffect(() => {
-        dispatch(fetchAboutAction());
-    }, [dispatch]);
-
     return (
         <div className="px-2 sm:px-0">
+            <Link
+                to="/admin/blogs"
+                className="my-5 flex items-center text-sm space-x-3 cursor-pointer"
+            >
+                <FaChevronLeft /> <span>Go Back</span>
+            </Link>
             <div className="max-w-3xl mx-auto _shadow rounded-md border-2">
                 <div className="bg-white p-6">
                     <div className="flex items-center justify-between">
                         <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
-                            About Dekut
+                            New Post
                         </h2>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
 
-                    <div className="my-5">
-                        <h2>Our Mission</h2>
-
-                        <textarea
-                            value={state.mission}
-                            onChange={(e) =>
-                                setState((prev) => ({
-                                    ...prev,
-                                    mission: e.target.value,
-                                }))
-                            }
-                            rows="4"
-                            className="mt-2 w-full"
-                        ></textarea>
+                    <div className="my-5 flex flex-col">
+                        <input
+                            type="text"
+                            placeholder="Title..."
+                            className="placeholder:font-bold placeholder:text-2xl py-2 h-auto text-2xl font-bold border-0 focus:!border-0 focus:!ring-0 focus:!outline-none"
+                        />
+                        <input
+                            type="text"
+                            placeholder="Enter subtitle (Optional)"
+                            className="placeholder:font-semibold placeholder:text-2xl py-2 h-auto font-medium text-2xl border-0 focus:!border-0 focus:!ring-0 focus:!outline-none"
+                        />
                     </div>
 
                     <div className="my-5">
-                        <h2 className="mb-2">Our Story</h2>
                         <QuillEditor
-                            value={state.story}
+                            value={state.blog}
                             handleChange={(value) =>
                                 setState((prev) => ({
                                     ...prev,
-                                    story: value,
+                                    blog: value,
                                 }))
                             }
-                            placeholder="Start typing dekutcc story here"
+                            placeholder="Start typing here ..."
                         />
                     </div>
 
