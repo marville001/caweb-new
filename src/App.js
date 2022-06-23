@@ -37,6 +37,7 @@ import Blogs from "./admin/pages/Blogs";
 import NewBlog from "./admin/pages/NewBlog";
 import ViewBlog from "./admin/pages/ViewBlog";
 import EditBlog from "./admin/pages/EditBlog";
+import ReadNews from "./pages/ReadNews";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -118,6 +119,7 @@ const App = () => {
                     <Route exact path="/my-account/subscriptions" element={ <MainLayout> <MySubscriptions /> </MainLayout> } />
                     <Route exact path="/gallery" element={<MainLayout> <Gallery /> </MainLayout>} />
                     <Route exact path="/news" element={<MainLayout> <News /> </MainLayout>} />
+                    <Route exact path="/news/:slug" element={<MainLayout> <ReadNews /> </MainLayout>} />
                     
                     {/* <Route exact path="/daily-readings" element={<MainLayout><DailyReadings /></MainLayout> } /> */}
                     <Route exact path="/daily-readings" element={<MainLayout><CommingSoon /></MainLayout> } />
