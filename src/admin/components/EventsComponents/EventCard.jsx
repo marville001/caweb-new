@@ -75,10 +75,7 @@ const EventCard = ({ event }) => {
 
                     <div className="flex gap-2 items-center">
                         <Link to={`/admin/events/${event?._id}`}>
-                            <FaEdit
-                                className="text-dodge-blue hover:text-emerald-900 cursor-pointer block mt-2 mr-2"
-                                onClick={() => setDeleteEventModalOpen(true)}
-                            />
+                            <FaEdit className="text-dodge-blue hover:text-emerald-900 cursor-pointer block mt-2 mr-2" />
                         </Link>
 
                         <FaTrash
