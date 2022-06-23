@@ -1,11 +1,5 @@
 import { Link } from "react-router-dom";
-import {
-    FaEdit,
-    FaLongArrowAltRight,
-    FaSpinner,
-    FaTrash,
-    FaTrashAlt,
-} from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { get } from "../../redux/actions/http";
 import BlogsCard from "../components/blogs/BlogsCard";
