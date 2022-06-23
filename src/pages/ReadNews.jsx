@@ -35,6 +35,15 @@ const ReadNews = () => {
         <div className="px-2 sm:px-0 py-8">
             <div className="max-w-4xl mx-auto">
                 <div className="my-10 bg-white px-2 sm:px-8 py-10">
+                    <div className="inline-block">
+                        <Link
+                            to="/news"
+                            className="my-5 flex items-center justify-start text-sm space-x-3 cursor-pointer"
+                        >
+                            <FaChevronLeft /> <span>Go Back</span>
+                        </Link>
+                    </div>
+
                     {loading ? (
                         <div className="py-5 flex justify-center">
                             <FaSpinner className="animate-spin text-xl" />
@@ -82,10 +91,17 @@ const ReadNews = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className="py-5 flex justify-center">
+                        <div className="py-5 flex flex-col items-center justify-center">
                             <h2 className="text-xl font-bold uppercase opacity-75">
-                                Blog Not Found
+                                Item Not Found
                             </h2>
+
+                            <Link
+                                to="/news"
+                                className="bg-sea-green px-6 py-1 block mt-5 rounded-md text-white"
+                            >
+                                View News
+                            </Link>
                         </div>
                     )}
                 </div>
