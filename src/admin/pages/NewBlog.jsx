@@ -1,34 +1,42 @@
-import {  useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { createAboutAction } from "../../redux/actions/about";
 import QuillEditor from "../components/common/QuillEditor";
 
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { post } from "../../redux/actions/http";
+import parseError from "../../utils/parseError";
 
 const NewBlog = () => {
-    const { about } = useSelector((state) => state.aboutState);
+    const { admin } = useSelector((state) => state.adminState);
 
     const [state, setState] = useState({
         blog: "",
         title: "",
         subtitle: "",
+        error: "",
     });
     const [loading, setLoading] = useState(false);
 
-    const dispatch = useDispatch();
+    const navigate = useNavigate()
 
-    const handleSaveAbout = async (data) => {
-        setLoading(true);
-        const res = dispatch(createAboutAction(state, about?._id));
+    const handleSaveBlog = async (data) => {
+        try {
+            setLoading(true);
+            const { error, ...details } = state;
+            await post(
+                "blogs",
+                {
+                    ...details,
+                    slug: details.title.toLowerCase().split(" ").join("-"),
+                    author: admin?._id,
+                },
+                "admin"
+            );
 
-        setTimeout(() => {
             setLoading(false);
-        }, 500);
-
-        if (!res.success) {
-            toast.error(res.message, {
+            toast.success("Blog added successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -36,16 +44,24 @@ const NewBlog = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
-            return;
+            setState({
+                blog: "",
+                title: "",
+                subtitle: "",
+                error: "",
+            });
+            navigate("/admin/blogs")
+        } catch (error) {
+            setLoading(false);
+            toast.error(parseError(error), {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+            });
         }
-        toast.success("Event added successfully", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-        });
     };
 
     return (
@@ -69,11 +85,25 @@ const NewBlog = () => {
                         <input
                             type="text"
                             placeholder="Title..."
+                            value={state.title}
+                            onChange={(e) =>
+                                setState((prev) => ({
+                                    ...prev,
+                                    title: e.target.value,
+                                }))
+                            }
                             className="placeholder:font-bold placeholder:text-2xl py-2 h-auto text-2xl font-bold border-0 focus:!border-0 focus:!ring-0 focus:!outline-none"
                         />
                         <input
                             type="text"
                             placeholder="Enter subtitle (Optional)"
+                            value={state.subtitle}
+                            onChange={(e) =>
+                                setState((prev) => ({
+                                    ...prev,
+                                    subtitle: e.target.value,
+                                }))
+                            }
                             className="placeholder:font-semibold placeholder:text-2xl py-2 h-auto font-medium text-2xl border-0 focus:!border-0 focus:!ring-0 focus:!outline-none"
                         />
                     </div>
@@ -93,7 +123,7 @@ const NewBlog = () => {
 
                     <div className="flex justify-end">
                         <button
-                            onClick={handleSaveAbout}
+                            onClick={handleSaveBlog}
                             disabled={loading}
                             className="disabled:opacity-70 disabled:cursor-not-allowed border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
                         >
