@@ -1,72 +1,35 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { toast } from "react-toastify";
-import QuillEditor from "../components/common/QuillEditor";
-
+import { useEffect, useState } from "react";
+import ReactHtmlParser from "react-html-parser";
+import parse from "html-react-parser";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
-import { post } from "../../redux/actions/http";
-import parseError from "../../utils/parseError";
-import ImageUpload from "../components/common/ImageUpload";
+import { Link, useParams } from "react-router-dom";
+import { get } from "../../redux/actions/http";
 
 const ViewBlog = () => {
-    const { admin } = useSelector((state) => state.adminState);
-
-    const [state, setState] = useState({
-        blog: "",
-        title: "",
-        subtitle: "",
-        intro: "",
-        error: "",
-    });
+    const [blog, setBlog] = useState({});
     const [loading, setLoading] = useState(false);
-    const [imageUrl, setImageUrl] = useState("");
 
-    const navigate = useNavigate();
+    const { slug } = useParams();
 
-    const handleSaveBlog = async (data) => {
-        try {
-            setLoading(true);
-            const { error, ...details } = state;
-            await post(
-                "blogs",
-                {
-                    ...details,
-                    slug: details.title.toLowerCase().split(" ").join("-").replace(",", ""),
-                    author: admin?._id,
-                    image: imageUrl
-                },
-                "admin"
-            );
+    useEffect(() => {
+        const loadBlog = async () => {
+            try {
+                setLoading(true);
+                const res = await get(`blogs/${slug}`, "admin");
 
-            setLoading(false);
-            toast.success("Blog added successfully", {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-            setState({
-                blog: "",
-                title: "",
-                subtitle: "",
-                error: "",
-            });
-            navigate("/admin/blogs");
-        } catch (error) {
-            setLoading(false);
-            toast.error(parseError(error), {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
-        }
-    };
+                console.log(res);
+
+                if (res?.blog) {
+                    setBlog(res?.blog);
+                }
+                setLoading(false);
+            } catch (error) {
+                setLoading(false);
+            }
+        };
+
+        loadBlog();
+    }, [slug]);
 
     return (
         <div className="px-2 sm:px-0">
@@ -77,7 +40,57 @@ const ViewBlog = () => {
                 <FaChevronLeft /> <span>Go Back</span>
             </Link>
             <div className="max-w-3xl mx-auto _shadow rounded-md border-2">
-                <div className="bg-white p-6">                    
+                <div className="bg-white p-6">
+                    {loading ? (
+                        <div className="py-5 flex justify-center">
+                            <FaSpinner className="animate-spin text-xl" />
+                        </div>
+                    ) : blog?._id ? (
+                        <div>
+                            <h5 className="">
+                                {new Date(blog?.createdAt).toDateString()}
+                            </h5>
+                            <h2 className="text-xl font-bold my-5">
+                                {blog?.title}
+                            </h2>
+
+                            <div className="flex items-center gap-4">
+                                <img
+                                    src={blog?.author?.avatar}
+                                    className="w-10 h-10 rounded-full"
+                                    alt=""
+                                />
+                                <div>
+                                    <h3 className="font-bold">
+                                        {blog?.author?.firstname}{" "}
+                                        {blog?.author?.lastname}
+                                    </h3>
+                                    <p>@{blog?.author?.username}</p>
+                                </div>
+                            </div>
+
+                            <div className="my-5">
+                                <img
+                                    src={blog?.image}
+                                    className="w-full max-h-[400px] object-fit rounded-lg"
+                                    alt=""
+                                />
+                            </div>
+
+                            <div className="
+                        my-4 mx-auto prose prose-sm sm:prose-md md:prose-lg max-w-none
+                        prose-h2:my-4 prose-h1:my-5 prose-p:my-2 prose-headings:my-4
+                        ">
+                            {parse(ReactHtmlParser(blog?.blog).toString())}
+                        </div>
+                        </div>
+                    ) : (
+                        <div className="py-5 flex justify-center">
+                            <h2 className="text-xl font-bold uppercase opacity-75">
+                                Blog Not Found
+                            </h2>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

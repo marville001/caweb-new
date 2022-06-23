@@ -151,8 +151,8 @@ const App = () => {
                         <Route path="about-dekut" element={<AdminPrivateRoute><AboutDekut /></AdminPrivateRoute>} />
                         <Route path="blogs" element={<AdminPrivateRoute><Blogs /></AdminPrivateRoute>} />
                         <Route path="blogs/new" element={<AdminPrivateRoute><NewBlog /></AdminPrivateRoute>} />
-                        <Route path="blogs/:id" element={<AdminPrivateRoute><ViewBlog /></AdminPrivateRoute>} />
-                        <Route path="blogs/edit/:id" element={<AdminPrivateRoute><EditBlog /></AdminPrivateRoute>} />
+                        <Route path="blogs/:slug" element={<AdminPrivateRoute><ViewBlog /></AdminPrivateRoute>} />
+                        <Route path="blogs/edit/:slug" element={<AdminPrivateRoute><EditBlog /></AdminPrivateRoute>} />
                         <Route path="*" element={
                                 <div className="m-16 p-4 flex flex-col items-center justify-center">
                                     <h1 className="text-7xl text-dodge-blue font-bold">
