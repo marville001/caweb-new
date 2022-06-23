@@ -79,7 +79,7 @@ const ViewBlog = () => {
 
                             <div className="
                         my-4 mx-auto prose prose-sm sm:prose-md md:prose-lg max-w-none
-                        prose-h2:my-4 prose-h1:my-5 prose-p:my-2 prose-headings:my-4
+                        prose-h2:my-4 prose-h1:my-5 prose-p:my-2 prose-headings:my-4 prose-a:text-dodge-blue prose-strong:text-dodge-blue
                         ">
                             {parse(ReactHtmlParser(blog?.blog).toString())}
                         </div>

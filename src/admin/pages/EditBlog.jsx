@@ -5,7 +5,7 @@ import QuillEditor from "../components/common/QuillEditor";
 import ReactHtmlParser from "react-html-parser";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { get, post } from "../../redux/actions/http";
+import { get,  put } from "../../redux/actions/http";
 import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
 
@@ -18,6 +18,8 @@ const EditBlog = () => {
         subtitle: "",
         intro: "",
         error: "",
+        active: true,
+        allowComments: true
     });
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState("");
@@ -27,19 +29,15 @@ const EditBlog = () => {
 
     const navigate = useNavigate();
 
-    const handleSaveBlog = async (data) => {
+    const handleUpdateBlog = async (data) => {
         try {
             setLoading(true);
             const { error, ...details } = state;
-            await post(
-                "blogs",
+            await put(
+                `blogs/${blog?._id}`,
                 {
                     ...details,
-                    slug: details.title
-                        .toLowerCase()
-                        .split(" ")
-                        .join("-")
-                        .replace(",", ""),
+                    slug: details.title.toLowerCase().split(" ").join("-").replace(",", ""),
                     author: admin?._id,
                     image: imageUrl,
                 },
@@ -47,7 +45,7 @@ const EditBlog = () => {
             );
 
             setLoading(false);
-            toast.success("Blog added successfully", {
+            toast.success("Blog updated successfully", {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -55,13 +53,7 @@ const EditBlog = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
-            setState({
-                blog: "",
-                title: "",
-                subtitle: "",
-                error: "",
-            });
-            navigate("/admin/blogs");
+            navigate("/admin/blogs/");
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
@@ -86,8 +78,11 @@ const EditBlog = () => {
                         title: res?.blog?.title,
                         subtitle: res?.blog?.subtitle,
                         intro: res?.blog?.intro ,
+                        active: res?.blog?.active ,
+                        allowComments: res?.blog?.allowComments ,
                         error: "",
                     });
+
                     setBlog(res?.blog)
                     setImageUrl(res?.blog?.image);
                 }
@@ -207,7 +202,7 @@ const EditBlog = () => {
 
                             <div className="flex justify-end">
                                 <button
-                                    onClick={handleSaveBlog}
+                                    onClick={handleUpdateBlog}
                                     disabled={loading}
                                     className="disabled:opacity-70 disabled:cursor-not-allowed border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
                                 >
