@@ -24,8 +24,6 @@ const Blogs = () => {
         loadBlogs();
     }, []);
 
-    console.log(blogs);
-
     return (
         <div className="px-2 sm:px-0">
             <div className="flex justify-between items-center">
@@ -46,13 +44,13 @@ const Blogs = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 my-10">
                     {blogs?.map((blog, i) => (
                         <div
-                            className="_shadow border-2 rounded-md overflow-hidden"
+                            className="_shadow border-2 rounded-md overflow-hidden self-start"
                             key={blog?._id}
                         >
                             {/* eslint-disable-next-line no-template-curly-in-string */}
                             <Link to={`/admin/blogs/${blog?.slug}`}>
                                 <img
-                                    src="https://static.dw.com/image/55042452_101.jpg"
+                                    src={blog?.image ? blog?.image :"https://wtwp.com/wp-content/uploads/2015/06/placeholder-image-300x225.png"}
                                     className="w-full h-52 object-fit"
                                     alt=""
                                     srcset=""
@@ -62,11 +60,15 @@ const Blogs = () => {
                             <div className="p-3">
                                 <div className="flex justify-between opacity-75">
                                     <h3>By: {blog?.author?.firstname} {blog?.author?.lastname}</h3>
-                                    <p>{new Date(blog?.createdAt).toUTCString()}</p>
+                                    <p>{new Date(blog?.createdAt).toLocaleDateString()}</p>
                                 </div>
 
                                 <p className="font-semibold text-lg mt-3">
                                    {blog?.title}
+                                </p>
+
+                                <p className="mt-3">
+                                    {blog?.intro + "..."}
                                 </p>
 
                                 <div className="flex justify-between mt-5 items-center  text-dodge-blue">

@@ -7,6 +7,7 @@ import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { post } from "../../redux/actions/http";
 import parseError from "../../utils/parseError";
+import ImageUpload from "../components/common/ImageUpload";
 
 const NewBlog = () => {
     const { admin } = useSelector((state) => state.adminState);
@@ -15,11 +16,13 @@ const NewBlog = () => {
         blog: "",
         title: "",
         subtitle: "",
+        intro: "",
         error: "",
     });
     const [loading, setLoading] = useState(false);
+    const [imageUrl, setImageUrl] = useState("");
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleSaveBlog = async (data) => {
         try {
@@ -31,6 +34,7 @@ const NewBlog = () => {
                     ...details,
                     slug: details.title.toLowerCase().split(" ").join("-"),
                     author: admin?._id,
+                    image: imageUrl
                 },
                 "admin"
             );
@@ -50,7 +54,7 @@ const NewBlog = () => {
                 subtitle: "",
                 error: "",
             });
-            navigate("/admin/blogs")
+            navigate("/admin/blogs");
         } catch (error) {
             setLoading(false);
             toast.error(parseError(error), {
@@ -106,6 +110,46 @@ const NewBlog = () => {
                             }
                             className="placeholder:font-semibold placeholder:text-2xl py-2 h-auto font-medium text-2xl border-0 focus:!border-0 focus:!ring-0 focus:!outline-none"
                         />
+
+                        <textarea
+                            type="text"
+                            placeholder="Enter intro (<100 characters of blog)"
+                            value={state.intro}
+                            onChange={(e) =>
+                                setState((prev) => ({
+                                    ...prev,
+                                    intro: e.target.value,
+                                }))
+                            }
+                            className="placeholder:font-semibold py-2 h-auto font-medium mt-6"
+                        ></textarea>
+                    </div>
+                    <hr />
+                    <div className="flex mt-2 flex-col gap-2">
+                        <h4 className="-mb-4">Cover Image</h4>
+                        {imageUrl ? (
+                            <div>
+                                <img
+                                    src={imageUrl}
+                                    alt=""
+                                    className="h-48 rounded-md w-full object-cover"
+                                />
+                                <div className="flex justify-between">
+                                    <label
+                                        htmlFor="image-select"
+                                        onClick={() => setImageUrl("")}
+                                        className="border-2 bg-dodge-blue text-white rounded-md mt-2 inline-block px-4 py-1 cursor-pointer"
+                                    >
+                                        Change
+                                    </label>
+                                </div>
+                            </div>
+                        ) : (
+                            <ImageUpload
+                                imageUrl={imageUrl}
+                                setUrl={setImageUrl}
+                            />
+                        )}
                     </div>
 
                     <div className="my-5">
