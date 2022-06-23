@@ -78,7 +78,7 @@ const Blogs = () => {
                                         <FaLongArrowAltRight />
                                     </Link>
 
-                                    <Link to="/admin/blogs/edit/${blog.slug}">
+                                    <Link to={`/admin/blogs/edit/${blog?.slug}`}>
                                         <FaEdit className="cursor-pointer" />
                                     </Link>
                                 </div>
