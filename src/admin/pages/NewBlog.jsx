@@ -121,7 +121,7 @@ const NewBlog = () => {
                                     intro: e.target.value,
                                 }))
                             }
-                            className="placeholder:font-semibold py-2 h-auto font-medium mt-6"
+                            className="py-2 h-auto mt-6"
                         ></textarea>
                     </div>
                     <hr />

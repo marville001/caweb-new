@@ -81,8 +81,6 @@ const EditEvent = () => {
                 setIsFetching(true);
                 const res = await get(`events/${id}`, "admin");
 
-                console.log(res);
-
                 if (res?.event) {
                     const { title, description, location, date, group, image } = res?.event;
                     setValue("title", title);
