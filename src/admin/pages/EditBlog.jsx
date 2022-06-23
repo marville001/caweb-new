@@ -9,7 +9,7 @@ import { post } from "../../redux/actions/http";
 import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
 
-const NewBlog = () => {
+const EditBlog = () => {
     const { admin } = useSelector((state) => state.adminState);
 
     const [state, setState] = useState({
@@ -80,7 +80,7 @@ const NewBlog = () => {
                 <div className="bg-white p-6">
                     <div className="flex items-center justify-between">
                         <h2 className="font-3xl font-bold uppercase opacity-50 tracking-widest font-mono">
-                            New Post
+                            Edit Post
                         </h2>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
@@ -184,4 +184,4 @@ const NewBlog = () => {
     );
 };
 
-export default NewBlog;
+export default EditBlog;

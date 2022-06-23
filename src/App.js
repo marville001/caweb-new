@@ -35,6 +35,8 @@ import EditLeaderPosition from "./admin/pages/EditLeaderPosition";
 import EditEvent from "./admin/pages/EditEvent";
 import Blogs from "./admin/pages/Blogs";
 import NewBlog from "./admin/pages/NewBlog";
+import ViewBlog from "./admin/pages/ViewBlog";
+import EditBlog from "./admin/pages/EditBlog";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -149,6 +151,8 @@ const App = () => {
                         <Route path="about-dekut" element={<AdminPrivateRoute><AboutDekut /></AdminPrivateRoute>} />
                         <Route path="blogs" element={<AdminPrivateRoute><Blogs /></AdminPrivateRoute>} />
                         <Route path="blogs/new" element={<AdminPrivateRoute><NewBlog /></AdminPrivateRoute>} />
+                        <Route path="blogs/:id" element={<AdminPrivateRoute><ViewBlog /></AdminPrivateRoute>} />
+                        <Route path="blogs/edit/:id" element={<AdminPrivateRoute><EditBlog /></AdminPrivateRoute>} />
                         <Route path="*" element={
                                 <div className="m-16 p-4 flex flex-col items-center justify-center">
                                     <h1 className="text-7xl text-dodge-blue font-bold">
