@@ -39,7 +39,7 @@ const AddMainLeaderModal = ({
 
         try {
             setLoading(true);
-            await post("main-leaders", data, "admin");
+            await post("main-leaders", {...data, image:imageUrl}, "admin");
             setLoading(false);
 
             toast.success("Leader added successfully", {

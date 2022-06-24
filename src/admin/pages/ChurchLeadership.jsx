@@ -29,8 +29,8 @@ const ChurchLeadership = () => {
             setLoadingMainLeaders(true);
             const res = await get("main-leaders", "admin");
             setLoadingMainLeaders(false);
-            if (res?.mainLeaders) {
-                setMainLeaders(res.mainLeaders);
+            if (res?.mainleaders) {
+                setMainLeaders(res.mainleaders);
             }
         } catch (error) {
             setLoadingMainLeaders(false);
@@ -223,6 +223,7 @@ const ChurchLeadership = () => {
             <AddMainLeaderModal
                 isOpen={addMainLeaderModalOpen}
                 closeModal={() => setAddMainLeaderModalOpen(false)}
+                reloadLeaders={loadMainLeaders}
             />
         </div>
     );
