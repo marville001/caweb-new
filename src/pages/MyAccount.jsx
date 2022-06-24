@@ -38,10 +38,10 @@ const MyAccount = () => {
         const formData = new FormData();
         formData.append("file", files[0]);
         formData.append("upload_preset", "dekutca-chaplaincy");
-        formData.append("cloud_name", "dyzn9g0lr");
+        formData.append("cloud_name", "dekutcatholicchaplaincy");
 
         const { data } = await axios.post(
-            "https://api.cloudinary.com/v1_1/dyzn9g0lr/image/upload",
+            "https://api.cloudinary.com/v1_1/dekutcatholicchaplaincy/image/upload",
             formData
         );
 

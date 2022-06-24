@@ -1,9 +1,8 @@
-import { get } from "mongoose";
 import React, { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import LeaderCard from "../../components/LeaderCard";
+import { get } from "../../redux/actions/http";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
 
 const MainLeadership = () => {
@@ -34,8 +33,6 @@ const MainLeadership = () => {
         dispatch(fetchLeadersAction());
     }, [dispatch]);
 
-    console.log(leaders);
-
     return (
         <div className="container  py-14">
             <h1 className="text-3xl text-center text-dodge-blue font-bold">
@@ -48,11 +45,31 @@ const MainLeadership = () => {
                 </div>
             )}
 
-            <div className="flex justify-center mt-12">
+            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3  my-10">
                 {mainLeaders?.map((leader) => (
-                    <LeaderCard leader={leader} key={leader?._id} />
+                    <div
+                        key={leader?._id}
+                        className={`w-full sm:w-auto sm:min-w-[250px]  bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
+                    >
+                        <div className=" w-full h-48 bg-gray-500">
+                            <img
+                                className="h-full w-full object-cover object-top"
+                                src={leader?.image}
+                                alt=""
+                            />
+                        </div>
+                        <div className="p-4 text-center">
+                            <h4 className="text-dodge-blue font-medium">
+                                {leader?.name}
+                            </h4>
+                            <h4 className="text-dodge-blue font-medium my-2">
+                                {leader?.title?.title || leader?.title}
+                            </h4>
+                        </div>
+                    </div>
                 ))}
             </div>
+
             <div className="bg-gray-100 pb-12 mt-10">
                 <h4 className="text-center text-sea-green text-2xl lg:text-3xl mb-6">
                     Main Church Commitee
@@ -61,7 +78,26 @@ const MainLeadership = () => {
                     {leaders
                         ?.filter((leader) => leader?.churchCommittee === true)
                         .map((leader) => (
-                            <LeaderCard key={leader?._id} leader={leader} />
+                            <div
+                                key={leader?._id}
+                                className={`w-full sm:w-auto sm:min-w-[250px]  bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
+                            >
+                                <div className=" w-full h-48 bg-gray-500">
+                                    <img
+                                        className="h-full w-full object-cover object-top"
+                                        src={leader?.image}
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="p-4 text-center">
+                                    <h4 className="text-dodge-blue font-medium">
+                                        {leader?.name}
+                                    </h4>
+                                    <h4 className="text-dodge-blue font-medium my-2">
+                                        {leader?.title?.title || leader?.title}
+                                    </h4>
+                                </div>
+                            </div>
                         ))}
                 </div>
 

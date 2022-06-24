@@ -1,4 +1,4 @@
-const LeaderCard = ({ scc = false, leader, width }) => {
+const LeaderCard = ({ scc = false, leader }) => {
     return (
         <div
             className={`w-full sm:w-auto sm:min-w-[250px]  bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
