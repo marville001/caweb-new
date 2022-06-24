@@ -40,8 +40,10 @@ const SccEditPage = () => {
         );
 
         setIsUploadingImage(false);
-        setImage(data.url);
-        setValue("image", data.url);
+
+        const url = data.url.toString().replace("http:", "https:");
+        setImage(url);
+        setValue("image", url);
     };
 
     const handleUpdateScc = async (data) => {
@@ -56,7 +58,11 @@ const SccEditPage = () => {
         try {
             setLoading(true);
 
-            const res = await put(`sccs/${scc._id}`, {...data, image}, "admin");
+            const res = await put(
+                `sccs/${scc._id}`,
+                { ...data, image },
+                "admin"
+            );
 
             setLoading(false);
             toast.success("Scc Updated successfully", {
@@ -198,7 +204,9 @@ const SccEditPage = () => {
                                     <option value=""></option>
                                     <option value="major">Major Scc</option>
                                     <option value="minor">Minor Scc</option>
-                                    <option value="bible-study">Bible Study Group</option>
+                                    <option value="bible-study">
+                                        Bible Study Group
+                                    </option>
                                 </select>
 
                                 <h3 className="opacity-70">description</h3>

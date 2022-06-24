@@ -22,7 +22,8 @@ const ImageUpload = ({ setUrl, imageUrl }) => {
                 formData
             );
 
-            setUrl(data.url);
+            const url = data.url.toString().replace("http:", "https:")
+            setUrl(url);
             setLoading(false);
 
             toast.success("Uploaded successfully ", {

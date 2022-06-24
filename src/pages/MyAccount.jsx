@@ -46,7 +46,8 @@ const MyAccount = () => {
         );
 
         setIsUploadingImage(false);
-        setImage(data.url);
+        const url = data.url.toString().replace("http:", "https:");
+        setImage(url);
     };
 
     const handleUpdateImage = async () => {

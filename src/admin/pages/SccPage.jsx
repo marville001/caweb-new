@@ -54,9 +54,11 @@ const SccPage = () => {
                 formData
             );
 
+            const url = data.url.toString().replace("http:", "https:")
+
             const res = await put(
                 `sccs/gallery/${scc._id}`,
-                { image: data.url },
+                { image: url },
                 "admin"
             );
 
