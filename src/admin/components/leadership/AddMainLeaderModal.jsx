@@ -1,9 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
 import Modal from "../common/Modal";
-import { addPrayer, getPrayers } from "../../../redux/actions/admin/prayers";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import ImageUpload from "../common/ImageUpload";
