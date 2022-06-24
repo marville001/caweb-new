@@ -7,7 +7,7 @@ const CalendarListing = ({ events = [] }) => {
             {events.map((event, i) => (
                 <Link key={i} to={`/events/${event?.key}`} className="relative bg-white min-h-[300px]">
                     <img src={event.image} alt="" className="w-full h-full" />
-                    <div className="absolute bottom-0 inset-x-0 bg-white">
+                    <div className="absolute bottom-0 inset-x-0 px-2 bg-white">
                         <h3 className="text-sm my-2 font-semibold">
                             {new Date(event.date).toDateString().toString()}
                         </h3>
@@ -18,8 +18,8 @@ const CalendarListing = ({ events = [] }) => {
                             {event.title}
                         </span>
 
-                        <p className="mb-2 mt-2 font-normal">
-                            {event.description?.substring(0, 30) + "..."}
+                        <p className="mb-2 mt-2 text-sm font-normal">
+                            {event.description?.substring(0, 60) + "..."}
                         </p>
                     </div>
                 </Link>
