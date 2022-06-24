@@ -11,7 +11,7 @@ import { get } from "../../redux/actions/http";
 import MainLeaderCard from "../components/leadership/MainLeaderCard";
 
 const ChurchLeadership = () => {
-    const { leaders } = useSelector((state) => state.leadersState);
+    const { leaders, loading } = useSelector((state) => state.leadersState);
     const { positions } = useSelector((state) => state.positionsState);
 
     const [addMainLeaderModalOpen, setAddMainLeaderModalOpen] = useState(false);
@@ -173,6 +173,12 @@ const ChurchLeadership = () => {
                             Add Leader
                         </Link>
                     </div>
+
+                    {loading && (
+                        <div className="my-4 flex justify-center">
+                            <FaSpinner className="animate-spin text-2xl" />
+                        </div>
+                    )}
 
                     <div
                         className={`grid grid-cols-1 transition-all duration-150 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-5`}
