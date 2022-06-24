@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import { get } from "mongoose";
+import React, { useEffect, useState } from "react";
+import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LeaderCard from "../../components/LeaderCard";
@@ -7,7 +9,26 @@ import { fetchLeadersAction } from "../../redux/actions/leaders";
 const MainLeadership = () => {
     const { leaders } = useSelector((state) => state.leadersState);
 
+    const [loadingMainLeaders, setLoadingMainLeaders] = useState(false);
+    const [mainLeaders, setMainLeaders] = useState([]);
+
     const dispatch = useDispatch();
+
+    const loadMainLeaders = async () => {
+        try {
+            setLoadingMainLeaders(true);
+            const res = await get("main-leaders");
+            setLoadingMainLeaders(false);
+            if (res?.mainleaders) {
+                setMainLeaders(res.mainleaders);
+            }
+        } catch (error) {
+            setLoadingMainLeaders(false);
+        }
+    };
+    useEffect(() => {
+        loadMainLeaders();
+    }, []);
 
     useEffect(() => {
         dispatch(fetchLeadersAction());
@@ -21,15 +42,16 @@ const MainLeadership = () => {
                 DEKUTCC Leadership & Structure
             </h1>
 
+            {loadingMainLeaders && (
+                <div className="my-4 flex justify-center">
+                    <FaSpinner className="animate-spin text-2xl" />
+                </div>
+            )}
+
             <div className="flex justify-center mt-12">
-                <LeaderCard
-                    leader={{
-                        image: "http://www.kccb.or.ke/home/wp-content/uploads/2013/12/Bishop_30-300x300.jpg",
-                        name: "Fr Vincent Wambugu",
-                        title: "Our Chaplain",
-                        width: "480px",
-                    }}
-                />
+                {mainLeaders?.map((leader) => (
+                    <LeaderCard leader={leader} key={leader?._id} />
+                ))}
             </div>
             <div className="bg-gray-100 pb-12 mt-10">
                 <h4 className="text-center text-sea-green text-2xl lg:text-3xl mb-6">

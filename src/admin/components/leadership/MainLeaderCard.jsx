@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import EditMainLeaderModal from "./EditMainLeaderModal";
 
-const MainLeaderCard = ({ leader }) => {
+const MainLeaderCard = ({ leader, reloadLeaders=()=>{} }) => {
+	const [editMainLeaderModalOpen, setEditMainLeaderModalOpen] = useState(false);
+
     return (
         <div className="flex flex-col _shadow border-2 items-center py-4 rounded-lg">
             <img
@@ -14,9 +17,16 @@ const MainLeaderCard = ({ leader }) => {
                 {leader?.title}
 			</h4>
 			
-            <button className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center">
+            <button onClick={()=>setEditMainLeaderModalOpen(true)} className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center">
                 Update
-            </button>
+			</button>
+			
+			<EditMainLeaderModal
+                isOpen={editMainLeaderModalOpen}
+                closeModal={() => setEditMainLeaderModalOpen(false)}
+				reloadLeaders={reloadLeaders}
+				leader={leader}
+            />
         </div>
     );
 };

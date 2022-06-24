@@ -142,6 +142,7 @@ const ChurchLeadership = () => {
                                 <MainLeaderCard
                                     key={leader?._id}
                                     leader={leader}
+                                    reloadLeaders={loadMainLeaders}
                                 />
                             ))}
                         </div>
