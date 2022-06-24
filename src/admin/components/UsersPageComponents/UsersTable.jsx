@@ -112,15 +112,7 @@ const UsersTable = ({ page, pageSize }) => {
                                 <div className="flex-shrink-0 h-10 w-10">
                                     <img
                                         className="h-10 w-10 rounded-full"
-                                        src={`${
-                                            person?.avatar.startsWith("https")
-                                                ? "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                                                : person?.avatar
-                                                ? process.env
-                                                      .REACT_APP_UPLOADS_URL +
-                                                  person?.avatar
-                                                : "https://toppng.com/uploads/preview/roger-berry-avatar-placeholder-11562991561rbrfzlng6h.png"
-                                        }`}
+                                        src={person?.avatar}
                                         alt=""
                                     />
                                 </div>
