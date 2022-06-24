@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
 
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaSpinner } from "react-icons/fa";
 import AddMainLeaderModal from "../components/leadership/AddMainLeaderModal";
+import { get } from "../../redux/actions/http";
+import MainLeaderCard from "../components/leadership/MainLeaderCard";
 
 const ChurchLeadership = () => {
     const { leaders } = useSelector((state) => state.leadersState);
@@ -17,8 +19,26 @@ const ChurchLeadership = () => {
     const [showPositions, setShowPositions] = useState(false);
     const [showLeadership, setShowLeadership] = useState(false);
     const [showCommittee, setShowCommittee] = useState(false);
+    const [loadingMainLeaders, setLoadingMainLeaders] = useState(false);
+    const [mainLeaders, setMainLeaders] = useState([]);
 
     const dispatch = useDispatch();
+
+    const loadMainLeaders = async () => {
+        try {
+            setLoadingMainLeaders(true);
+            const res = await get("main-leaders", "admin");
+            setLoadingMainLeaders(false);
+            if (res?.mainLeaders) {
+                setMainLeaders(res.mainLeaders);
+            }
+        } catch (error) {
+            setLoadingMainLeaders(false);
+        }
+    };
+    useEffect(() => {
+        loadMainLeaders();
+    }, []);
 
     useEffect(() => {
         dispatch(fetchLeadersAction("admin"));
@@ -101,46 +121,31 @@ const ChurchLeadership = () => {
                         </button>
                     </div>
 
-                    <div
-                        className={`grid grid-cols-1 transition-all duration-150 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-5 
+                    {loadingMainLeaders && (
+                        <div className="my-4 flex justify-center">
+                            <FaSpinner className="animate-spin text-2xl" />
+                        </div>
+                    )}
+
+                    {mainLeaders?.length === 0 && !loadingMainLeaders ? (
+                        <div className="my-4 flex justify-center">
+                            <h2 className="text-xl font-bold uppercase opacity-75">
+                                No Leader Under This category
+                            </h2>
+                        </div>
+                    ) : (
+                        <div
+                            className={`grid grid-cols-1 transition-all duration-150 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-5 
                         `}
-                    >
-                        {[
-                            ...leaders?.filter(
-                                (leader) => leader.churchCommittee === true
-                            ),
-                        ]
-                            .slice(0, 4)
-                            ?.map((leader) => (
-                                <div
-                                    key={leader._id}
-                                    className="flex flex-col _shadow border-2 items-center py-4 rounded-lg"
-                                >
-                                    <img
-                                        src={leader?.image}
-                                        alt=""
-                                        className="rounded-full h-[150px] w-[150px] "
-                                    />
-                                    <h4 className="mt-2 text-lg font-bold">
-                                        {leader?.name}
-                                    </h4>
-
-                                    <h4 className="mb-2 text-lg font-bold opacity-60">
-                                        {leader?.title?.title ?? "-"}
-                                    </h4>
-                                    <blockquote className="text-sm px-5 tracking-wide font-medium text-center italic">
-                                        {leader?.description}
-                                    </blockquote>
-
-                                    <Link
-                                        to={`/admin/leaders/${leader._id}/edit`}
-                                        className="bg-transparent px-8 py-1 border-dodge-blue border-2 text-dodge-blue hover:text-white hover:bg-dodge-blue mt-4 rounded-full  items-center justify-center"
-                                    >
-                                        Update
-                                    </Link>
-                                </div>
+                        >
+                            {mainLeaders?.map((leader) => (
+                                <MainLeaderCard
+                                    key={leader?._id}
+                                    leader={leader}
+                                />
                             ))}
-                    </div>
+                        </div>
+                    )}
                 </div>
             </div>
 
