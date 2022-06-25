@@ -13,7 +13,6 @@ const GetConnected = () => {
         </h2>
         <div className="sm:divide-x my-2 flex justify-center items-center flex-wrap">
           <a
-            
             href="https://web.facebook.com/dekut.catholic.chaplaincy/"
             target="_blank"
             rel="noreferrer"

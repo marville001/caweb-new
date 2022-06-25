@@ -235,18 +235,20 @@ const Footer = () => {
                     <p className="text-slate-300 capitalize">
                         @{new Date().getFullYear()} DEKUT Catholic chaplaincy
                     </p>
-                    <p className="text-white">info@dekutcatholicchaplaincy.org</p>
+                    <p className="text-white">
+                        info@dekutcatholicchaplaincy.org
+                    </p>
                     <div className="flex items-center gap-2">
                         <a
-                            href="#youtube"
+                            href="https://web.facebook.com/dekut.catholic.chaplaincy/"
                             target="_blank"
-                            rel="noopener noreferrer"
+                            rel="noreferrer"
                             className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
                         >
                             <FaFacebookF className="text-lg group-hover:text-blue-400 text-white rounded-full" />
                         </a>
                         <a
-                            href="#youtube"
+                            href="https://www.youtube.com/channel/UCN8LML2jye7oj6w-bhcGLAg"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
@@ -254,7 +256,7 @@ const Footer = () => {
                             <FaYoutube className="text-lg group-hover:text-blue-400 text-white rounded-full" />
                         </a>
                         <a
-                            href="#youtube"
+                            href="https://twitter.com/dekut_catholic"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
@@ -262,7 +264,7 @@ const Footer = () => {
                             <FaTwitter className="text-lg group-hover:text-blue-400 text-white rounded-full" />
                         </a>
                         <a
-                            href="#youtube"
+                            href="https://instagram.com/dekut_catholic_chaplaincy?igshid=YmMyMTA2M2Y="
                             target="_blank"
                             rel="noopener noreferrer"
                             className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-300 group"
