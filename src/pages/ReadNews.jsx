@@ -57,7 +57,7 @@ const ReadNews = () => {
                                 {blog?.title}
                             </h2>
 
-                            <div className="flex items-center gap-4">
+                            <div className="flex_ hidden items-center gap-4">
                                 <img
                                     src={blog?.author?.avatar}
                                     className="w-10 h-10 rounded-full"
