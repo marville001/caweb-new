@@ -23,8 +23,8 @@ const Mass = () => {
 
           <div className="h-60 md:h-80 my-8">
             <img
-              className="w-full h-full"
-              src="https://www.usccb.org/sites/default/files/styles/panel_image/public/2020-02/bishop.jpg?itok=advFQGkx"
+              className="w-full h-full object-cover"
+              src="https://res.cloudinary.com/dekutcatholicchaplaincy/image/upload/v1656174278/Screenshot_2022-06-25_192350_sgqwrq.png"
               alt=""
             />
           </div>
