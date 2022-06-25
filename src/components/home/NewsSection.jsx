@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useBlogs } from "../../contexts/blogs.context";
 
 const NewsSection = () => {
-    const { loading, blogs, total, setPageSize, pageSize } = useBlogs();
+    const { blogs } = useBlogs();
 
     return (
         <div className="container py-0 mt-4">
@@ -16,7 +16,7 @@ const NewsSection = () => {
                     </h2>
 
                     <div className="divide-y">
-                        {blogs?.map((blog, i) => (
+                        {[...blogs?.slice(0, 4)]?.map((blog, i) => (
                             <div key={i} className="pb-6 pt-6">
                                 <p className="text-lg mb-2">{blog?.title}</p>
                                 <Link
