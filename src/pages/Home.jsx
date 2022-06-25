@@ -42,8 +42,6 @@ const Home = () => {
         dispatch(getGalleryImages({ page: 1, pageSize: 20 }));
     }, [dispatch]);
 
-    console.log(size);
-
     return (
         <div className="home py-0">
             {/* Hero Section */}
@@ -401,7 +399,9 @@ const Home = () => {
                         messages from us.
                     </p>
                     <a
-                        href="#watch"
+                        href="https://www.youtube.com/channel/UCN8LML2jye7oj6w-bhcGLAg"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="uppercase py-2 px-8 text-lg bg-sea-green inline-block my-6 text-white"
                     >
                         Watch now
@@ -417,7 +417,8 @@ const Home = () => {
                             perPage: size < 500 ? 1 : size < 900 ? 2 : 3,
                             gap: 10,
                             autoplay: true,
-                            pauseOnHover: false,
+                            pauseOnHover: true,
+                            type: "loop",
                         }}
                         aria-label="React Splide Example"
                     >
