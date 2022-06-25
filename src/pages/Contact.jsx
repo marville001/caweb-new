@@ -19,7 +19,6 @@ const Contact = () => {
     const [success, setSuccess] = useState("");
 
     const handleContactSubmit = async (data) => {
-        console.log(data);
         setError("");
         setSuccess("");
         setLoading(true);

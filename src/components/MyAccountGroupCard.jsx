@@ -31,7 +31,6 @@ const MyAccountGroupCard = ({ scc }) => {
 			});
 			dispatch(getProfileFetch());
         } catch (error) {
-            console.log(error);
             setIsJoining(false);
             toast.error(parseError(error), {
                 position: "top-right",

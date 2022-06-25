@@ -19,7 +19,6 @@ const Event = () => {
                 setEvent(data.event);
             } catch (error) {
                 setLoading(false);
-                console.log({ error });
             }
         };
         loadEvent();

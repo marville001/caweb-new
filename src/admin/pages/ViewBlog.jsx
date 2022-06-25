@@ -16,9 +16,6 @@ const ViewBlog = () => {
             try {
                 setLoading(true);
                 const res = await get(`blogs/${slug}`, "admin");
-
-                console.log(res);
-
                 if (res?.blog) {
                     setBlog(res?.blog);
                 }

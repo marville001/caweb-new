@@ -95,8 +95,6 @@ const EditBlog = () => {
         loadBlog();
     }, [slug]);
 
-    console.log(blog);
-
     return (
         <div className="px-2 sm:px-0">
             <Link
