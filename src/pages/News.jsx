@@ -52,8 +52,8 @@ const News = () => {
                             </Link>
 
                             <div className="p-3">
-                                <div className="flex justify-between opacity-75">
-                                    <h3>
+                                <div className="flex justify-end opacity-75">
+                                    <h3 className="hidden">
                                         By: {blog?.author?.firstname}{" "}
                                         {blog?.author?.lastname}
                                     </h3>
