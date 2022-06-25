@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.4.3",
+    "@splidejs/react-splide": "^0.7.8",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -11,7 +12,6 @@
     "buffer": "^6.0.3",
     "draft-js": "^0.11.7",
     "html-react-parser": "^1.4.14",
-    "mongoose": "^6.4.0",
     "react": "^17.0.2",
     "react-cool-img": "^1.2.12",
     "react-dom": "^17.0.2",

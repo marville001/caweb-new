@@ -9,16 +9,16 @@ const ImageContainer = ({ image }) => {
         <div className="relative overflow-hidden rounded-md">
             <Img
                 style={{ backgroundColor: "grey", width: "480", height: "320" }}
-                className="w-full h-64 object-cover hover:cursor-zoom-in"
+                className="w-full object-fit aspect-auto hover:cursor-zoom-in"
                 src={image.image}
                 alt={image.title}
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gray-900/80 px-5 py-2">
+            <div className="absolute inset-x-0 bottom-0 bg-gray-900/80 px-5 py-4">
                 <h4 className="text-sm text-white font-bold">{image.title}</h4>
-                <div className="text-xs text-slate-200 my-3 font-light">
+                {/* <div className="text-xs text-slate-200 my-3 font-light">
                     {image.description.length > 60 && "..."}
                     {image.description.substring(0, 60)}
-                </div>
+                </div> */}
             </div>
         </div>
     );

@@ -13,16 +13,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { getGalleryImages } from "../redux/actions/galleryAction";
 import { fetchEventsAction } from "../redux/actions/events";
 
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import { useState } from "react";
+
 const Home = () => {
     const { images } = useSelector((state) => state.galleryState);
     const { events } = useSelector((state) => state.eventsState);
 
+    const [size, setSize] = useState(0);
+
     const dispatch = useDispatch();
+
+    const handleResize = (e) => {
+        setSize(window.innerWidth);
+    };
+
+    useEffect(() => {
+        setSize(window.innerWidth);
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     useEffect(() => {
         dispatch(fetchEventsAction());
         dispatch(getGalleryImages({ page: 1, pageSize: 20 }));
     }, [dispatch]);
+
+    console.log(size);
 
     return (
         <div className="home py-0">
@@ -388,32 +408,33 @@ const Home = () => {
                     </a>
                 </div>
             </div>
-
-            {/* <div className="img">
-        <img
-          src="https://dekutca.dkut.ac.ke/htmlcodes/library/htmlphpcodes/include/dekutuploading/gallery/gallery.5d3d7c690a5a17.93414579"
-          alt="banner imag"
-          className="w-full h-96"
-        />
-      </div> */}
-
-            {/* Gallery carousel */}
-
-            <div className="my-10 mx-5 overflow-x-hidden  images-carousel-container">
-                <div className="flex gap-2 images-carousel">
-                    {images?.map(({ image, _id, title }) => (
-                        <div
-                            key={_id}
-                            className="min-w-[200px] md:min-w-[260px] lg:min-w-[300px] h-60 lg:h-64 rounded-md overflow-hidden "
-                        >
-                            <Img
-                                className="w-full h-full"
-                                src={image}
-                                alt={title}
-                            />
-                        </div>
-                    ))}
+            <div className="my-10 mx-5">
+                <div className="max-w-6xl mx-auto">
+                    <Splide
+                        options={{
+                            rewind: true,
+                            arrows: true,
+                            perPage: size < 500 ? 1 : size < 900 ? 2 : 3,
+                            gap: 10,
+                            autoplay: true,
+                            pauseOnHover: false,
+                        }}
+                        aria-label="React Splide Example"
+                    >
+                        {images?.map(({ image, _id, title }) => (
+                            <SplideSlide key={_id}>
+                                <div className="h-auto sm:h-60 lg:h-64 rounded-md overflow-hidden ">
+                                    <Img
+                                        className="w-full h-full"
+                                        src={image}
+                                        alt={title}
+                                    />
+                                </div>
+                            </SplideSlide>
+                        ))}
+                    </Splide>
                 </div>
+
                 <div className="flex justify-center my-4">
                     <Link
                         to="/gallery"
