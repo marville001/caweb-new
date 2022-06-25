@@ -55,13 +55,15 @@ const ViewImageModal = ({
                 aria-label="React Splide Example"
             >
                 {images?.map(({ image, _id, title }) => (
-                    <SplideSlide key={_id}>
-                        <div className="w-[80vw] h-[80vh] mt-10 m-auto">
-                            <Img
-                                className="w-auto h-auto"
-                                src={image}
-                                alt={title}
-                            />
+                    <SplideSlide key={_id} className="h-full">
+                        <div className="h-screen w-screen flex items-center">
+                            <div className="w-[80vw] h-[80vh] mt-10 m-auto flex items-center">
+                                <Img
+                                    className="w-auto min-h-[400px] h-auto object-cover"
+                                    src={image}
+                                    alt={title}
+                                />
+                            </div>
                         </div>
                     </SplideSlide>
                 ))}
