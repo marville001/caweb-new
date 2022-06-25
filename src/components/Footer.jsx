@@ -101,9 +101,7 @@ const Footer = () => {
                             About DEKUTCC
                         </h3>
                         <p className="text-white text-md font-light">
-                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                            elit. Consequatur, dolores ex eaque, suscipit qui
-                            cupiditate neque
+                            Welcome to Blessed Sister Irene Stefani DeKUT Catholic Chaplaincy.Blessed Irene Stefani DeKUT Catholic Chaplaincy is a community of catholic students of Dedan Kimathi University...
                         </p>
                     </div>
                     <div className="flex-[2] mt-4 md:p-4">

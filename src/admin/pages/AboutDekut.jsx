@@ -1,4 +1,4 @@
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { createAboutAction, fetchAboutAction } from "../../redux/actions/about";
@@ -20,11 +20,7 @@ const AboutDekut = () => {
 
     const handleSaveAbout = async (data) => {
         setLoading(true);
-        const res = dispatch(createAboutAction(state, about?._id));
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
+        const res = await dispatch(createAboutAction(state, about?._id));
 
         if (!res.success) {
             toast.error(res.message, {
@@ -37,7 +33,10 @@ const AboutDekut = () => {
             });
             return;
         }
-        toast.success("Event added successfully", {
+
+        setLoading(false)
+
+        toast.success("About Updated successfully", {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

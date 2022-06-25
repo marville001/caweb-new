@@ -69,7 +69,7 @@ const MainLayout = ({ children }) => {
 
     useEffect(() => {
       window.scrollTo({
-            top: 40,
+            top: 5,
             left: 100,
             behavior: 'smooth'
       })

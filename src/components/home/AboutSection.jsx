@@ -20,13 +20,7 @@ const AboutSection = () => {
                     </h1>
                     <div className="bg-orange-600 h-1 w-16 mt-3"></div>
                     <p className="my-16 text-lg opacity-90">
-                        Welcome to the website for Dedan Kimathi University of
-                        Technology. Sister Irene Stephani Catholic Chaplaincy.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Doloribus fuga exercitationem sunt in eum, perferendis
-                        maiores aperiam quas alias explicabo harum. Est cumque
-                        earum dignissimos ipsa quaerat doloribus ullam
-                        officia....
+                        Welcome to Blessed Sister Irene Stefani DeKUT Catholic Chaplaincy.Blessed Irene Stefani DeKUT Catholic Chaplaincy is a community of catholic students of Dedan Kimathi University. Our chaplaincy is under The Archdiocese of Nyeri which is found in the central part of Kenya. Archdiocese of Nyeri is under the patronage of Archibishop Anthony Muheria. As a chaplaincy, our mission is To witness and proclaim the kingdom of God through holistic formation of the human person through; prayer, fellowship, communal projects and acts of charity...
                     </p>
                     <Link
                         to="/about"
