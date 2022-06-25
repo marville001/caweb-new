@@ -12,9 +12,9 @@ const UsersPage = () => {
         (state) => state.usersState
     );
 
-    let [isOpen, setIsOpen] = useState(false);
-    let [pageSize, setPageSize] = useState(5);
-    let [page, setPage] = useState(1);
+    const [isOpen, setIsOpen] = useState(false);
+    const [pageSize, setPageSize] = useState(5);
+    const [page, setPage] = useState(1);
     const [search, setSearch] = useState("");
 
     const closeModal = () => {
