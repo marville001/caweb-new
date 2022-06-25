@@ -12,7 +12,7 @@ const Events = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchEventsAction());
+        dispatch(fetchEventsAction({page: 1, pageSize: 10}));
     }, [dispatch]);
 
     return (

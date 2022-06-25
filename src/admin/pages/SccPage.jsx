@@ -125,7 +125,7 @@ const SccPage = () => {
     useEffect(() => {
         dispatch(getSccAction(key));
         dispatch(getSccsAction());
-        dispatch(fetchEventsAction("admin"));
+        dispatch(fetchEventsAction({page: 1, pageSize: 10}, "admin"));
         dispatch(fetchPositionsAction("admin"));
         dispatch(fetchLeadersAction("admin"));
     }, [dispatch, key]);

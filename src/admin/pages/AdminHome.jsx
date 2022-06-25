@@ -87,7 +87,7 @@ const AdminHome = () => {
         dispatch(getAdmins());
         dispatch(getSccsAction());
         dispatch(getUsers());
-        dispatch(fetchEventsAction("admin"));
+        dispatch(fetchEventsAction({page: 1, pageSize: 10}, "admin"));
         dispatch(getPrayers());
     }, [dispatch]);
 

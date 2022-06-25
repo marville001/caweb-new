@@ -1,386 +1,48 @@
 import React, { useEffect } from "react";
-import { FaChevronRight, FaCalendarAlt, FaBible } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
-import { Navigation, Pagination, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import Img from "react-cool-img";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getGalleryImages } from "../redux/actions/galleryAction";
 import { fetchEventsAction } from "../redux/actions/events";
 
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
-import { useState } from "react";
 
-const Home = () => {
-    const { images } = useSelector((state) => state.galleryState);
-    const { events } = useSelector((state) => state.eventsState);
+import HeroSection from "../components/home/HeroSection";
+import AboutSection from "../components/home/AboutSection";
+import VideoSection from "../components/home/VideoSection";
+import ContactSection from "../components/home/ContactSection";
+import NewsSection from "../components/home/NewsSection";
+import ImagesSection from "../components/home/ImagesSection";
+import EventsSection from "../components/home/EventsSection";
 
-    const [size, setSize] = useState(0);
+const Home = () => {    
+    
+
+    
 
     const dispatch = useDispatch();
-
-    const handleResize = (e) => {
-        setSize(window.innerWidth);
-    };
-
+    
     useEffect(() => {
-        setSize(window.innerWidth);
-
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    useEffect(() => {
-        dispatch(fetchEventsAction());
+        dispatch(fetchEventsAction({page: 1, pageSize: 6}));
         dispatch(getGalleryImages({ page: 1, pageSize: 20 }));
     }, [dispatch]);
 
     return (
         <div className="home py-0">
             {/* Hero Section */}
-            <div
-                className="flex flex-col justify-end items-end relative z-10 md:-top-14"
-                style={{
-                    backgroundImage: "url(/assets/images/hero-image-1.jpg)",
-                    backgroundSize: "cover",
-                    backgroundPositionY: "center",
-                    minHeight: "70vh",
-                    backgroundColor: "rgba(0,0,0,1)",
-                }}
-            >
-                {/* Swipper carousel */}
-                <Swiper
-                    modules={[Autoplay, Navigation, Pagination]}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    navigation
-                    autoplay={{
-                        delay: 6000,
-                        disableOnInteraction: false,
-                    }}
-                    pagination={{ clickable: true }}
-                    scrollbar={{ draggable: true }}
-                    className="w-[100%] md:px-10 lg:w-[90%] h-full sm:mx-0 md:mx-10 lg:mx-24 bg-[rgba(0,0,0,.3)]"
-                >
-                    <SwiperSlide>
-                        <div className="md:container p-4 px-10 bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                            <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                A Message For You
-                            </h1>
-                            <p className="text-slate-100 md:w-4/6 text-lg font-light my-4">
-                                We are grateful that you have visited our
-                                website and hope that you might choose to
-                                encounter God with us in our celebrations of
-                                sacred liturgies and in our ministries. Whether
-                                you are visiting us for the first time,
-                                returning to the practice of your Catholic faith
-                                or looking to learn more about Dekut Catholic
-                                Chaplaincy, please know that we are happy to
-                                have you here.
-                            </p>
-                            <Link
-                                to="/about"
-                                className="bg-sea-green text-center block w-40 p-2 my-4 text-slate-100"
-                            >
-                                LEARN MORE
-                            </Link>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="md:container min-h-[400px] p-4 px-10 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                            <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                Gifts of the Holy Spirit
-                            </h1>
-                            <div className="text-slate-100 md:w-4/6 text-lg font-light my-4 grid-cols-2 grid sm:grid-cols-3 gap-x-5 sm:min-w-[600px] pr-16">
-                                <span className="mr-5 block">Wisdom</span>
-                                <span className="mr-5 block">
-                                    Understanding
-                                </span>
-                                <span className="mr-5 block">Counsel</span>
-                                <span className="mr-5 block">Knowledge</span>
-                                <span className="mr-5 block">Fortitude</span>
-                                <span className="mr-5 block">Piety</span>
-                                <span className="mr-5 block">Piety</span>
-                                <span className="mr-5 block">
-                                    Fear of the Lord
-                                </span>
-                            </div>
-                            <Link
-                                to="/about"
-                                className="bg-sea-green text-center block w-40 p-2 my-4 self-start text-slate-100"
-                            >
-                                LEARN MORE
-                            </Link>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="md:container min-h-[400px] p-4 px-10 w-full bg-[#0b416c] md:bg-inherit md:h-[70vh] grid md:place-content-center ">
-                            <h1 className="text-white font-semibold text-3xl md:text-5xl mb-2">
-                                Fruits of the Holy Spirit
-                            </h1>
-                            <div className="text-slate-100 md:w-4/6 text-lg font-light my-4 grid-cols-2 grid sm:grid-cols-3 gap-x-5 sm:min-w-[600px] pr-16">
-                                <span className="mr-5 block">Charity</span>
-                                <span className="mr-5 block">Joy</span>
-                                <span className="mr-5 block">Peace</span>
-                                <span className="mr-5 block">Patience</span>
-                                <span className="mr-5 block">Kindness</span>
-                                <span className="mr-5 block">Goodness</span>
-                                <span className="mr-5 block">Generosity</span>
-                                <span className="mr-5 block">Gentleness</span>
-                                <span className="mr-5 block">Faithfulness</span>
-                                <span className="mr-5 block">Modesty</span>
-                                <span className="mr-5 block">Self Control</span>
-                                <span className="mr-5 block">Chastity</span>
-                            </div>
-                            <Link
-                                to="/about"
-                                className="bg-sea-green text-center block w-40 p-2 my-4 self-start text-slate-100"
-                            >
-                                LEARN MORE
-                            </Link>
-                        </div>
-                    </SwiperSlide>
-                </Swiper>
-            </div>
+            <HeroSection />
+            
 
-            <div className="bg-white min-h-[40vh] py-8 md:py-12">
-                <div className="mx-auto flex flex-col md:flex-row p-4 sm:p-10 max-w-7xl">
-                    <img
-                        src="https://d35r3vzpjv6bi5.cloudfront.net/26554/pictures/2020/9/Rectangle%2022.jpg?t=1600197744000"
-                        alt=""
-                        className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
-                    />
-                    <div className=" mt-8 md:mt-0 md:px-12">
-                        <h3 className="text-orange-600 font-bold tracking-widest">
-                            NEW TO OUR CHAPLAIN?
-                        </h3>
+            {/* About Section */}
+            <AboutSection />
 
-                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">
-                            About DEKUTCC
-                        </h1>
-                        <div className="bg-orange-600 h-1 w-16 mt-3"></div>
-                        <p className="my-16 text-lg opacity-90">
-                            Welcome to the website for Dedan Kimathi University
-                            of Technology. Sister Irene Stephani Catholic
-                            Chaplaincy. Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Doloribus fuga exercitationem sunt
-                            in eum, perferendis maiores aperiam quas alias
-                            explicabo harum. Est cumque earum dignissimos ipsa
-                            quaerat doloribus ullam officia....
-                        </p>
-                        <Link
-                            to="/about"
-                            className="bg-dodge-blue text-white uppercase py-2 px-12 rounded-full "
-                        >
-                            LEarn more
-                        </Link>
-                    </div>
-                </div>
-            </div>
-            <div
-                className="min-h-[600px]"
-                style={{
-                    backgroundImage: "url(/assets/images/banner.png)",
-                    backgroundSize: "cover",
-                    backgroundPositionY: "center",
-                }}
-            >
-                <h2 className="text-3xl text-white text-center py-10">
-                    Ordinary Sunday Mass
-                </h2>
-                <div className="container flex justify-center flex-col md:flex-row my-10 gap-5">
-                    <div className="flex-2 flex justify-center">
-                        <iframe
-                            className="w-full h-[250px] sm:h-[350px] md:w-[400px] lg:w-[600px] lg:h-[400px]"
-                            src="https://www.youtube.com/embed/ioMv8_pMM_o"
-                            title="YouTube video player"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen
-                        ></iframe>
-                    </div>
-                    <div className="flex-2 flex flex-col justify-center md:justify-start">
-                        <h3 className="text-2xl text-white max-w-lg text-center md:text-left">
-                            To view all our live stream, please visit our
-                            youtube channel.
-                        </h3>
+            {/* Video Section */}
+            <VideoSection />
 
-                        <div className="flex justify-center md:justify-start my-8">
-                            <a
-                                target="_blank"
-                                rel="noreferrer"
-                                href="https://www.youtube.com/channel/UCN8LML2jye7oj6w-bhcGLAg"
-                                className="bg-sea-green py-2 px-8 inline-block text-white uppercase tracking-wider"
-                            >
-                                View Our Channel
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {/* Contact Section */}
+            <ContactSection />
 
-            <div className="bg-white min-h-[40vh] py-8 md:py-12">
-                <div className="mx-auto flex flex-col md:flex-row p-4 sm:p-10 max-w-6xl">
-                    <img
-                        src="https://d35r3vzpjv6bi5.cloudfront.net/26337/pictures/2020/8/archdiocese-samples-003%20red.jpg?t=1597432008000"
-                        alt=""
-                        className="rounded-xl max-w-lg h-56 lg:h-auto object-cover"
-                    />
-                    <div className=" mt-8 md:mt-0 md:px-12">
-                        <h3 className="text-orange-600 font-bold tracking-widest">
-                            NEED ASSISTANCE?
-                        </h3>
-
-                        <h1 className="text-dodge-blue uppercase font-bold text-xl mt-6 tracking-widest">
-                            Contact us
-                        </h1>
-                        <div className="bg-orange-600 h-1 w-16 mt-3"></div>
-                        <p className="my-16 text-lg opacity-90">
-                            Not sure where to begin? Click below to get in
-                            touch. A member of the DEKUTCC Commitee will reach
-                            out to personally assist you.
-                        </p>
-                        <Link
-                            to="/contact-us"
-                            className="bg-dodge-blue text-white uppercase py-2 px-8 rounded-full "
-                        >
-                            Contact Us
-                        </Link>
-                    </div>
-                </div>
-            </div>
-
-            {/*  */}
-            <div className="container py-0 mt-4">
-                <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-2">
-                    {/* News Section */}
-                    <div className="bg-white shadow-xl md:row-start-1 md:col-start-4 md:col-span-2 border-t-[10px] rounded border-sea-green text-center capitalize p-5 md:ml-6 md:row-span-2">
-                        <h2 className="text-3xl font-semibold text-slate-800">
-                            Latest News
-                        </h2>
-
-                        <div className="divide-y">
-                            {[1, 2, 3].map((_, i) => (
-                                <div key={i} className="pb-6 pt-6">
-                                    <p className="text-lg mb-2">
-                                        U.S. Bishops’ Migration Chairman
-                                        Addresses Future of Immigration Reform
-                                    </p>
-                                    <a
-                                        href="#rr"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex justify-center items-center text-dodge-blue font-semibold"
-                                    >
-                                        Read More{" "}
-                                        <FaChevronRight className="ml-2" />
-                                    </a>
-                                </div>
-                            ))}
-
-                            <a
-                                href="#rr"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="pt-8 flex justify-center items-center text-dodge-blue font-semibold"
-                            >
-                                View More <FaChevronRight className="ml-2" />
-                            </a>
-                        </div>
-                    </div>
-
-                    {/* Cards section */}
-                    <div className="flex flex-col sm:flex-row gap-5 my-5 md:mt-auto  md:col-span-3">
-                        <a href="#s" className="flex-1 shadow-xl bg-white p-1">
-                            <h2 className="text-xl p-3 mb-4 text-slate-800 font-normal uppercase">
-                                Our Spotlight
-                            </h2>
-                            <div className="w-full h-48">
-                                <img
-                                    src="https://www.usccb.org/sites/default/files/styles/card_1/public/2021-10/LOGO-INGLESE-PNG2-logo-only.png.jpg?itok=gtkBT26U"
-                                    alt="334434"
-                                    className="object-fill w-full h-full"
-                                />
-                            </div>
-                            <div className="p-3 bg-white text-xl">
-                                <h2 className="text-slate-800 font-semibold">
-                                    Synod on Synodality
-                                </h2>
-                            </div>
-                        </a>
-                        <a
-                            href="#s"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 shadow-xl bg-white p-1"
-                        >
-                            <h2 className="text-xl p-3 mb-4 text-slate-800 font-normal uppercase">
-                                Daily Reflection
-                            </h2>
-                            <div className="w-full h-48">
-                                <img
-                                    src="https://www.usccb.org/sites/default/files/styles/card_1/public/video_thumbnails/5CZqnG7yYec.jpg?h=c673cd1c&itok=7FW-JuUK"
-                                    alt="334434"
-                                    className="object-fill w-full h-full"
-                                />
-                            </div>
-                            <div className="p-5 bg-white text-xl">
-                                <h2 className="text-slate-800 font-semibold">
-                                    Reflection 20 2022 01 02 Reflection 20
-                                </h2>
-                            </div>
-                        </a>
-                    </div>
-
-                    {/* Daily Readings */}
-                    <div className="md:row-start-2 md:col-start-1 md:col-span-3 py-6">
-                        <h2 className="text-slate-800 font-semibold flex items-center text-2xl">
-                            <FaCalendarAlt className="inline mr-4" /> Daily
-                            Readings
-                        </h2>
-                        <div className="flex flex-col gap-5 pt-5">
-                            <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
-                                <div className="flex-shrink pr-8  flex items-center justify-center">
-                                    <FaBible />
-                                </div>
-                                <div className="flex-1 text-center">
-                                    The Epiphany of the Lord:{" "}
-                                    <span className="text-sm ml-4 text-slate-600">
-                                        Lectionary: 20
-                                    </span>
-                                </div>
-                                <a
-                                    href="#ddddd"
-                                    className="flex-shrink pl-8 text-dodge-blue"
-                                >
-                                    Read More
-                                </a>
-                            </div>
-                            <div className="flex shadow-2xl bg-white py-4 px-2 divide-x divide-slate-300">
-                                <div className="flex-shrink pr-8  flex items-center justify-center">
-                                    <FaBible />
-                                </div>
-                                <div className="flex-1 text-center ">
-                                    2022 - 01 - 02 USCCB Daily Mass Readings:
-                                </div>
-                                <a
-                                    href="#listen"
-                                    className="flex-shrink px-4 pl-8 text-dodge-blue"
-                                >
-                                    Listen
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {/* News Section */}
+            <NewsSection />
+            
 
             {/* Watch mass */}
             <div className="bg-white mt-4 text-center">
@@ -408,89 +70,13 @@ const Home = () => {
                     </a>
                 </div>
             </div>
-            <div className="my-10 mx-5">
-                <div className="max-w-6xl mx-auto">
-                    <Splide
-                        options={{
-                            rewind: true,
-                            arrows: true,
-                            perPage: size < 500 ? 1 : size < 900 ? 2 : 3,
-                            gap: 10,
-                            autoplay: true,
-                            pauseOnHover: true,
-                            type: "loop",
-                        }}
-                        aria-label="React Splide Example"
-                    >
-                        {images?.map(({ image, _id, title }) => (
-                            <SplideSlide key={_id}>
-                                <div className="h-auto sm:h-60 lg:h-64 rounded-md overflow-hidden ">
-                                    <Img
-                                        className="w-full h-full"
-                                        src={image}
-                                        alt={title}
-                                    />
-                                </div>
-                            </SplideSlide>
-                        ))}
-                    </Splide>
-                </div>
+            
+            {/* Images Section */}
+            <ImagesSection />
 
-                <div className="flex justify-center my-4">
-                    <Link
-                        to="/gallery"
-                        className="bg-dodge-blue px-6 py-2 rounded-md text-white font-bold"
-                    >
-                        View Our Gallery
-                    </Link>
-                </div>
-            </div>
+            {/* Events Section */}
+            <EventsSection />
 
-            <div className="container my-8 md:p-8 lg:p-10">
-                <h2 className="text-3xl font-semibold text-dodge-blue mb-4">
-                    Upcoming Events
-                </h2>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8">
-                    {[...events?.slice(0, 6)].map((event, i) => (
-                        <Link
-                            to="#event"
-                            key={i}
-                            className="relative bg-white min-h-[300px]"
-                        >
-                            <img
-                                src={event.image}
-                                alt=""
-                                className="w-full h-full"
-                            />
-                            <div className=" absolute bottom-0 inset-x-0 bg-white">
-                                <h3 className="text-sm my-2 font-semibold">
-                                    {new Date(event.date)
-                                        .toDateString()
-                                        .toString()}
-                                </h3>
-
-                                <span className="text-sm sm:text-lg text-dodge-blue">
-                                    {event.title}
-                                </span>
-
-                                <p className="mb-2 mt-2 font-normal">
-                                    {event.description?.substring(0, 30) +
-                                        "..."}
-                                </p>
-                            </div>
-                        </Link>
-                    ))}
-                </div>
-                <div className="py-6 flex justify-center">
-                    <Link
-                        to="/events"
-                        className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90"
-                    >
-                        View More
-                    </Link>
-                </div>
-            </div>
         </div>
     );
 };

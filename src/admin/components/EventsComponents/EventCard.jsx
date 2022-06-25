@@ -20,7 +20,7 @@ const EventCard = ({ event }) => {
             setDeleting(true);
 
             await _delete(`events/${event._id}`, "admin");
-            dispatch(fetchEventsAction("admin"));
+            dispatch(fetchEventsAction({page: 1, pageSize: 10}, "admin"));
 
             setDeleting(false);
             toast.success("Event Deleted successfully", {

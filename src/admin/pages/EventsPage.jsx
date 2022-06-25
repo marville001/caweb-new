@@ -12,7 +12,7 @@ const EventsPage = () => {
 
     useEffect(() => {
         dispatch(getSccsAction());
-        dispatch(fetchEventsAction("admin"));
+        dispatch(fetchEventsAction({page: 1, pageSize: 10},"admin"));
     }, [dispatch]);
 
     return (

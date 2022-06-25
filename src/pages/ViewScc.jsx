@@ -20,7 +20,7 @@ const ViewScc = () => {
     useEffect(() => {
         dispatch(getSccAction(key));
         dispatch(getSccsAction());
-        dispatch(fetchEventsAction());
+        dispatch(fetchEventsAction({page: 1, pageSize: 10},));
     }, [dispatch, key]);
 
     if (isLoadingScc) {

@@ -48,7 +48,7 @@ const EditEvent = () => {
                 },
                 "admin"
             );
-            dispatch(fetchEventsAction("admin"));
+            dispatch(fetchEventsAction({page: 1, pageSize: 10},"admin"));
 
             setLoading(false);
             toast.success("Event Updated successfully", {
