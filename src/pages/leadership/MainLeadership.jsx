@@ -45,15 +45,15 @@ const MainLeadership = () => {
                 </div>
             )}
 
-            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3  my-10">
+            <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  my-10">
                 {mainLeaders?.map((leader) => (
                     <div
                         key={leader?._id}
                         className={`w-full sm:w-auto sm:min-w-[250px]  bg-white shadow-sm pb-3 rounded-lg overflow-hidden`}
                     >
-                        <div className=" w-full h-48 bg-gray-500">
+                        <div className=" w-full h-56 overflow-hidden bg-gray-500">
                             <img
-                                className="h-full w-full object-cover object-top"
+                                className="w-full h-full object-cover object-top"
                                 src={leader?.image}
                                 alt=""
                             />
