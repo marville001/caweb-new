@@ -6,37 +6,47 @@ import { get } from "../redux/actions/http";
 const News = () => {
     const [blogs, setBlogs] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [total, setTotal] = useState(10);
 
-    const loadBlogs = async () => {
+    const [pageSize, setPageSize] = useState(10);
+    const [page, setPage] = useState(1);
+
+    const loadBlogs = async ({ page = 1, pageSize = 10, search = "" }) => {
         try {
             setLoading(true);
-            const res = await get("blogs", "admin");
+            const res = await get(
+                `blogs?page=${page}&pagesize=${pageSize}&search=${search}`
+            );
             setLoading(false);
             if (res?.blogs) {
                 setBlogs(res.blogs);
+                setTotal(res.total);
             }
         } catch (error) {
             setLoading(false);
         }
     };
     useEffect(() => {
-        loadBlogs();
-    }, []);
+        loadBlogs({ page, pageSize, search: "" });
+    }, [page, pageSize]);
 
     return (
         <div className="container  py-14">
             <h1 className="text-3xl md:text-4xl text-center text-dodge-blue font-bold tracking-wider">
                 Our News
             </h1>
-
-            {loading ? (
+            {loading && (
                 <div className="flex py-6 justify-center">
                     <FaSpinner className="animate-spin text-3xl" />
                 </div>
-            ) : blogs?.length > 0 ? (
+            )}{" "}
+            {blogs?.length > 0 ? (
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8 py-12">
                     {blogs.map((blog, i) => (
-                        <div className="_shadow border-2 rounded-md overflow-hidden self-start">
+                        <div
+                            key={blog?._id}
+                            className="_shadow border-2 rounded-md overflow-hidden self-start"
+                        >
                             {/* eslint-disable-next-line no-template-curly-in-string */}
                             <Link to={`/news/${blog?.slug}`}>
                                 <img
@@ -47,7 +57,6 @@ const News = () => {
                                     }
                                     className="w-full h-52 object-fit"
                                     alt=""
-                                    srcset=""
                                 />
                             </Link>
 
@@ -90,10 +99,21 @@ const News = () => {
                     </h3>
                 </div>
             )}
+            
 
-            {9 > 10 && (
-                <div className="py-6 flex justify-center">
-                    <button className="bg-sea-green text-white py-3  px-8 text-lg font-medium -tracking-tighter hover:opacity-90">
+            {/* Load more button */}
+            {blogs.length < total && blogs.length !== 0 && (
+                <div className="flex justify-center">
+                    <button
+                        type="button"
+                        disabled={loading}
+                        className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
+                        onClick={() => {
+                            setPageSize(pageSize + 10);
+                            setPage(1);
+                        }}
+                    >
+                        {loading && <FaSpinner className="mr-2 animate-spin" />}
                         Load More
                     </button>
                 </div>

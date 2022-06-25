@@ -52,8 +52,7 @@ const BlogsCard = ({ blog, loadBlogs }) => {
                             : "https://wtwp.com/wp-content/uploads/2015/06/placeholder-image-300x225.png"
                     }
                     className="w-full h-52 object-fit"
-                    alt=""
-                    srcset=""
+                    alt={blog?.title}
                 />
             </Link>
 
