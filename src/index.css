@@ -110,8 +110,11 @@ body {
 .swiper-button-prev {
     /* background-color: #fff; */
     color: #fff !important;
+    position: absolute;
+    top: 0px;
+    right: 40px!important;
 }
-@media screen and (max-width: 1480px) {
+@media screen and (max-width: 900px) {
     .swiper-button-next,
     .swiper-button-prev {
         display: none !important;
