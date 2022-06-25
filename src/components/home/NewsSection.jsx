@@ -1,7 +1,11 @@
 import React from "react";
 import { FaBible, FaCalendarAlt, FaChevronRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useBlogs } from "../../contexts/blogs.context";
 
 const NewsSection = () => {
+    const { loading, blogs, total, setPageSize, pageSize } = useBlogs();
+
     return (
         <div className="container py-0 mt-4">
             <div className="grid grid-cols-1 md:grid-cols-5 grid-rows-2">
@@ -12,32 +16,25 @@ const NewsSection = () => {
                     </h2>
 
                     <div className="divide-y">
-                        {[1, 2, 3].map((_, i) => (
+                        {blogs?.map((blog, i) => (
                             <div key={i} className="pb-6 pt-6">
-                                <p className="text-lg mb-2">
-                                    U.S. Bishops’ Migration Chairman Addresses
-                                    Future of Immigration Reform
-                                </p>
-                                <a
-                                    href="#rr"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <p className="text-lg mb-2">{blog?.title}</p>
+                                <Link
+                                    to={`/news/${blog?.slug}`}
                                     className="flex justify-center items-center text-dodge-blue font-semibold"
                                 >
                                     Read More{" "}
                                     <FaChevronRight className="ml-2" />
-                                </a>
+                                </Link>
                             </div>
                         ))}
 
-                        <a
-                            href="#rr"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <Link
+                            to={`/news/`}
                             className="pt-8 flex justify-center items-center text-dodge-blue font-semibold"
                         >
                             View More <FaChevronRight className="ml-2" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
 

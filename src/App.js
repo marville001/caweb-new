@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import {
     AdminAccount,
@@ -65,13 +65,15 @@ const AdminDashboard = React.lazy(() => import("./admin/AdminDashboard"));
 
 const MainLayout = ({ children }) => {
 
+    const {pathname} = useLocation()
+
     useEffect(() => {
       window.scrollTo({
-            top: 100,
+            top: 40,
             left: 100,
             behavior: 'smooth'
       })
-    }, [])
+    }, [pathname])
     
     return (
         <div className="min-h-[75vh] relative">

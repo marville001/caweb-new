@@ -1,34 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { FaLongArrowAltRight, FaSpinner } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { get } from "../redux/actions/http";
+import { useBlogs } from "../contexts/blogs.context";
 
 const News = () => {
-    const [blogs, setBlogs] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [total, setTotal] = useState(10);
-
-    const [pageSize, setPageSize] = useState(10);
-    const [page, setPage] = useState(1);
-
-    const loadBlogs = async ({ page = 1, pageSize = 10, search = "" }) => {
-        try {
-            setLoading(true);
-            const res = await get(
-                `blogs?page=${page}&pagesize=${pageSize}&search=${search}`
-            );
-            setLoading(false);
-            if (res?.blogs) {
-                setBlogs(res.blogs);
-                setTotal(res.total);
-            }
-        } catch (error) {
-            setLoading(false);
-        }
-    };
-    useEffect(() => {
-        loadBlogs({ page, pageSize, search: "" });
-    }, [page, pageSize]);
+    
+    const {loading, blogs, total, setPageSize, pageSize} = useBlogs()
 
     return (
         <div className="container  py-14">
@@ -110,7 +86,6 @@ const News = () => {
                         className="bg-dodge-blue px-8 py-2 text-sm font-medium text-white rounded-md disabled:bg-slate-700 disabled:cursor-not-allowed flex disabled:text-gray-400 items-center justify-center"
                         onClick={() => {
                             setPageSize(pageSize + 10);
-                            setPage(1);
                         }}
                     >
                         {loading && <FaSpinner className="mr-2 animate-spin" />}
