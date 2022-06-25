@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { toast } from "react-toastify";
+import parseError from "../../../utils/parseError"
 
 const ImageUpload = ({ setUrl, imageUrl }) => {
     const [loading, setLoading] = useState(false);
@@ -33,9 +34,11 @@ const ImageUpload = ({ setUrl, imageUrl }) => {
                 closeOnClick: true,
             });
         } catch (error) {
-            toast.error("Failed to upload file. ", {
+            setUrl("")
+            setLoading(false)
+            toast.error(parseError(error), {
                 position: "bottom-right",
-                autoClose: 3000,
+                autoClose: 10000,
                 hideProgressBar: true,
                 closeOnClick: true,
             });

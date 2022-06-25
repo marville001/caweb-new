@@ -16,7 +16,7 @@ const EventsSection = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:mt-8">
                         {events?.map((event, i) => (
                             <Link
-                                to="#event"
+                                to={`/events/${event?.key}`}
                                 key={i}
                                 className="relative bg-white min-h-[300px]"
                             >

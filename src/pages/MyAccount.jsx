@@ -8,6 +8,7 @@ import { updateImage } from "../redux/actions/userActions";
 import { put } from "../redux/actions/http";
 import axios from "axios";
 import { toast } from "react-toastify";
+import parseError from "../utils/parseError";
 
 const MyAccount = () => {
     const { user, isUpdatingImage } = useSelector(
@@ -34,20 +35,31 @@ const MyAccount = () => {
 
         if (files.length === 0) return;
 
-        setIsUploadingImage(true);
-        const formData = new FormData();
-        formData.append("file", files[0]);
-        formData.append("upload_preset", "dekutca-chaplaincy");
-        formData.append("cloud_name", "dekutcatholicchaplaincy");
+        try {
+            setIsUploadingImage(true);
+            const formData = new FormData();
+            formData.append("file", files[0]);
+            formData.append("upload_preset", "dekutca-chaplaincy");
+            formData.append("cloud_name", "dekutcatholicchaplaincy");
 
-        const { data } = await axios.post(
-            "https://api.cloudinary.com/v1_1/dekutcatholicchaplaincy/image/upload",
-            formData
-        );
+            const { data } = await axios.post(
+                "https://api.cloudinary.com/v1_1/dekutcatholicchaplaincy/image/upload",
+                formData
+            );
 
-        setIsUploadingImage(false);
-        const url = data.url.toString().replace("http:", "https:");
-        setImage(url);
+            setIsUploadingImage(false);
+            const url = data.url.toString().replace("http:", "https:");
+            setImage(url);
+        } catch (error) {
+            setImage("");
+            setIsUploadingImage(false);
+            toast.error(parseError(error), {
+                position: "bottom-right",
+                autoClose: 10000,
+                hideProgressBar: true,
+                closeOnClick: true,
+            });
+        }
     };
 
     const handleUpdateImage = async () => {

@@ -28,22 +28,33 @@ const SccEditPage = () => {
 
         if (files.length === 0) return;
 
-        setIsUploadingImage(true);
-        const formData = new FormData();
-        formData.append("file", files[0]);
-        formData.append("upload_preset", "dekutca-chaplaincy");
-        formData.append("cloud_name", "dekutcatholicchaplaincy");
+        try {
+            setIsUploadingImage(true);
+            const formData = new FormData();
+            formData.append("file", files[0]);
+            formData.append("upload_preset", "dekutca-chaplaincy");
+            formData.append("cloud_name", "dekutcatholicchaplaincy");
 
-        const { data } = await axios.post(
-            "https://api.cloudinary.com/v1_1/dekutcatholicchaplaincy/image/upload",
-            formData
-        );
+            const { data } = await axios.post(
+                "https://api.cloudinary.com/v1_1/dekutcatholicchaplaincy/image/upload",
+                formData
+            );
 
-        setIsUploadingImage(false);
+            setIsUploadingImage(false);
 
-        const url = data.url.toString().replace("http:", "https:");
-        setImage(url);
-        setValue("image", url);
+            const url = data.url.toString().replace("http:", "https:");
+            setImage(url);
+            setValue("image", url);
+        } catch (error) {
+            setImage("");
+            setIsUploadingImage(false);
+            toast.error(parseError(error), {
+                position: "bottom-right",
+                autoClose: 10000,
+                hideProgressBar: true,
+                closeOnClick: true,
+            });
+        }
     };
 
     const handleUpdateScc = async (data) => {
