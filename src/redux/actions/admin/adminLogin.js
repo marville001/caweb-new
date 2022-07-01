@@ -8,7 +8,7 @@ const adminLogin = (user) => async (dispatch) => {
     localStorage.setItem("adminToken", data.token);
     dispatch({
       type: ADMIN_LOGIN.SUCCESS,
-      admin: data.admin,
+      admin: data.user,
     });
   } catch (error) {
     dispatch({

@@ -93,8 +93,8 @@ const AdminHome = () => {
 
     useEffect(() => {
         const majorSccs = sccs
-            ?.filter((scc) => scc.category === "major")
-            .map((scc) => ({ name: scc.name, value: scc.members.length }));
+            ?.filter((scc) => scc?.category === "major")
+            .map((scc) => ({ name: scc.name, value: 4 }));
         setSccsData(majorSccs);
     }, [sccs]);
 

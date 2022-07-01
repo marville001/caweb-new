@@ -18,7 +18,7 @@ const AdminLogin = () => {
   };
   
   useEffect(() => {
-    if (admin._id) {
+    if (admin?._id) {
       navigate("/admin");
     }
   }, [admin, navigate]);

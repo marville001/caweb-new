@@ -9,9 +9,9 @@ import parseError from "../utils/parseError";
 const MyAccountGroupCard = ({ scc }) => {
     const { user } = useSelector((state) => state.accountUsers);
 
-	const [isJoining, setIsJoining] = useState(false);
-	
-	const dispatch = useDispatch();
+    const [isJoining, setIsJoining] = useState(false);
+
+    const dispatch = useDispatch();
 
     const handleJoinGroup = async () => {
         try {
@@ -28,8 +28,8 @@ const MyAccountGroupCard = ({ scc }) => {
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-			});
-			dispatch(getProfileFetch());
+            });
+            dispatch(getProfileFetch());
         } catch (error) {
             setIsJoining(false);
             toast.error(parseError(error), {
@@ -44,18 +44,19 @@ const MyAccountGroupCard = ({ scc }) => {
         }
     };
 
+    console.log(user.memberships, scc);
+
     return (
         <div
             style={{
                 backgroundImage: `url(${scc?.image})`,
             }}
-            
             className="inline-block _shadow mt-4 bg-cover rounded-lg overflow-hidden"
         >
             <div className=" bg-dodge-blue w-full h-full  p-4 text-white bg-opacity-70">
                 <h3 className="font-bold">{scc?.name}</h3>
 
-                {user?.groups?.includes(scc?._id) ? (
+                {user?.memberships?.map((g) => g.groupId)?.includes(scc?._id) ? (
                     <button className="bg-sea-green mt-4 py-2 px-6 rounded-md text-sm text-white opacity-80 cursor-not-allowed">
                         Joined
                     </button>
