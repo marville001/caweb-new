@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getPrayers } from "../../redux/actions/admin/prayers";
 import { _delete } from "../../redux/actions/http";
@@ -69,12 +70,12 @@ const PrayersPage = () => {
         <div className="rounded-md  p-4">
             <div className="flex justify-between">
                 <h4 className="text-2xl text-dodge-blue font-bold">Prayers</h4>
-                <button
-                    onClick={openAddPrayerModal}
+                <Link
+                    to="/admin/prayers/new"
                     className="p-2 bg-sea-green py-1 px-4 text-white uppercase font-normal rounded-md"
                 >
                     Add Prayer
-                </button>
+                </Link>
             </div>
             {error && (
                 <div className="bg-red-100 p-2 flex justify-center">
