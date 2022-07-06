@@ -76,7 +76,7 @@ const MainLeadership = () => {
                 </h4>
                 <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
                     {leaders
-                        ?.filter((leader) => leader?.churchCommittee === true)
+                        ?.filter((leader) => leader?.churchCommittee === 1)
                         .map((leader) => (
                             <div
                                 key={leader?._id}

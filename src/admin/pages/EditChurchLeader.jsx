@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaChevronLeft, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
 import {
@@ -10,7 +10,6 @@ import {
     updateLeaderAction,
 } from "../../redux/actions/leaders";
 import { fetchPositionsAction } from "../../redux/actions/positions";
-import parseError from "../../utils/parseError";
 import ImageUpload from "../components/common/ImageUpload";
 
 const year = new Date().getFullYear() - 2;
@@ -45,22 +44,23 @@ const EditChurchLeader = () => {
             return;
         }
 
-        try {
-            setLoading(true);
+        setLoading(true);
 
-            dispatch(
-                updateLeaderAction(
-                    {
-                        ...data,
-                        image: imageUrl,
-                        churchCommittee: leader.churchCommittee,
-                    },
-                    id,
-                    "admin"
-                )
-            );
-            setLoading(false);
-            toast.success("Leader Updated successfully", {
+        const res = await dispatch(
+            updateLeaderAction(
+                {
+                    ...data,
+                    image: imageUrl,
+                    churchCommittee: !!leader.churchCommittee,
+                },
+                id,
+                "admin"
+            )
+        );
+        setLoading(false);
+
+        if (!res.success) {
+            toast.error(res.message, {
                 position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
@@ -68,22 +68,22 @@ const EditChurchLeader = () => {
                 pauseOnHover: true,
                 draggable: true,
             });
+            return;
+        }
 
-            if (leader.churchCommittee) {
-                navigate("/admin/leaders");
-            } else {
-                navigate(`/admin/sccs/${leader?.scc?.key}`);
-            }
-        } catch (error) {
-            setLoading(false);
-            toast.error(parseError(error), {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-            });
+        toast.success("Leader Updated successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
+
+        if (leader.churchCommittee) {
+            navigate("/admin/leaders");
+        } else {
+            navigate(`/admin/sccs/${leader?.scc?.key}`);
         }
     };
 
@@ -100,19 +100,25 @@ const EditChurchLeader = () => {
             setValue("title", leader?.title?._id ?? "");
             setValue("scc", leader?.scc?._id ?? "");
             setValue("description", leader?.description ?? "");
-            setValue("isActive", leader?.isActive);
+            setValue("isActive", !!leader?.isActive);
             setValue("period", leader?.period);
         }
     }, [leader, setValue]);
 
     return (
         <div className="px-0">
-            <Link
-                to="/admin/leaders"
+            <div
+                onClick={() => {
+                    if (leader.churchCommittee) {
+                        navigate("/admin/leaders");
+                    } else {
+                        navigate(`/admin/sccs/${leader?.scc?.key}`);
+                    }
+                }}
                 className="my-5 flex items-center text-sm space-x-3 cursor-pointer"
             >
                 <FaChevronLeft /> <span>Go Back</span>
-            </Link>
+            </div>
 
             <div className="max-w-2xl mx-auto _shadow rounded-md border-2">
                 {loading_leader ? (
@@ -241,7 +247,7 @@ const EditChurchLeader = () => {
                                     <option value="">Select Period</option>
                                     {years.map((year) => (
                                         <option
-                                            value={year + "-" + year + 1}
+                                            value={year + "-" + (year + 1)}
                                             key={year}
                                         >
                                             {year + "-" + (year + 1)}

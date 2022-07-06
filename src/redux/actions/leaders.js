@@ -42,11 +42,14 @@ export const updateLeaderAction = (details,id,  type="user") => async (dispatch)
      dispatch({
       type: UPDATE_LEADER.SUCCESS,
       leader: data.leader,
-    });
+     });
+    
+    return {success: true}
   } catch (error) {
     dispatch({
       type: UPDATE_LEADER.FAIL,
       error: parseError(error),
     });
+    return {success: false, message: parseError(error)}
   }
 };

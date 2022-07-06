@@ -5,15 +5,13 @@ import { HiPlusCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { getSccAction, getSccsAction } from "../../redux/actions/admin/sccs";
+import { getSccAction } from "../../redux/actions/admin/sccs";
 import { fetchEventsAction } from "../../redux/actions/events";
 import { put, _delete } from "../../redux/actions/http";
 import { fetchLeadersAction } from "../../redux/actions/leaders";
-import { fetchPositionsAction } from "../../redux/actions/positions";
 
 import parseError from "../../utils/parseError";
 import ConfirmDeleteModal from "../components/common/ConfirmDeleteModal";
-import NewSccLeaderModal from "../components/scc/NewSccLeaderModal";
 
 const categories = {
     major: "Major Scc",
@@ -27,8 +25,6 @@ const SccPage = () => {
 
     const [gallery, setGallery] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [addSccLeaderModalOpen, setAddSccLeaderModalOpen] = useState(false);
-    const [currentScc, setCurrentScc] = useState("");
 
     const [deleteSccModalOpen, setDeleteSccModalOpen] = useState(false);
     const [deletingScc, setDeletingScc] = useState(false);
@@ -54,7 +50,7 @@ const SccPage = () => {
                 formData
             );
 
-            const url = data.url.toString().replace("http:", "https:")
+            const url = data.url.toString().replace("http:", "https:");
 
             const res = await put(
                 `sccs/gallery/${scc._id}`,
@@ -62,7 +58,7 @@ const SccPage = () => {
                 "admin"
             );
 
-            setGallery([res.image, ...gallery]);
+            setGallery([{ image: res.image, _id: res.image }, ...gallery]);
 
             setLoading(false);
             toast.success("Image added successfully", {
@@ -93,8 +89,8 @@ const SccPage = () => {
             await _delete(`sccs/${scc._id}`, "admin");
             setDeletingScc(false);
             setDeleteSccModalOpen(false);
-            
-            navigate("/admin/sccs")
+
+            navigate("/admin/sccs");
 
             toast.success("Scc Deleted successfully", {
                 position: "top-right",
@@ -119,14 +115,11 @@ const SccPage = () => {
 
     useEffect(() => {
         setGallery(scc?.gallery);
-        setCurrentScc(scc?._id);
     }, [scc]);
 
     useEffect(() => {
         dispatch(getSccAction(key));
-        dispatch(getSccsAction());
-        dispatch(fetchEventsAction({page: 1, pageSize: 10}, "admin"));
-        dispatch(fetchPositionsAction("admin"));
+        dispatch(fetchEventsAction({ page: 1, pageSize: 10 }, "admin"));
         dispatch(fetchLeadersAction("admin"));
     }, [dispatch, key]);
 
@@ -188,8 +181,8 @@ const SccPage = () => {
                                 </h2>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 my-4 gap-4">
-                                    {gallery?.map((image) => (
-                                        <div key={image}>
+                                    {gallery?.map(({ image, _id }) => (
+                                        <div key={_id}>
                                             <img
                                                 className="w-full h-40"
                                                 src={image}
@@ -249,22 +242,22 @@ const SccPage = () => {
                             Scc Leadership
                         </h2>
 
-                        <div
+                        <Link
+                            to={`/admin/sccs/${scc._id}/new`}
                             className="text-dodge-blue cursor-pointer flex items-center space-x-2"
-                            onClick={() => setAddSccLeaderModalOpen(true)}
                         >
                             <HiPlusCircle />
                             <span>Add Leader</span>
-                        </div>
+                        </Link>
                     </div>
                     <div className="w-full h-[2px] bg-gray-500 opacity-25 my-3" />
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 my-6">
                         {leaders
                             ?.filter(
                                 (leader) =>
-                                    leader.churchCommittee === false &&
+                                    leader.churchCommittee === 0 &&
                                     leader.groupId === scc._id &&
-                                    leader.scc?._id === scc._id
+                                    leader.scc === scc._id
                             )
                             ?.map((leader) => (
                                 <div
@@ -314,12 +307,6 @@ const SccPage = () => {
                     </button>
                 </div>
             </div>
-
-            <NewSccLeaderModal
-                currentScc={currentScc}
-                isOpen={addSccLeaderModalOpen}
-                closeModal={() => setAddSccLeaderModalOpen(false)}
-            />
 
             <ConfirmDeleteModal
                 isOpen={deleteSccModalOpen}

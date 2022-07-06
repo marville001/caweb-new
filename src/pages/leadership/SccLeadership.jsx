@@ -35,9 +35,9 @@ export default function SccLeadership() {
                         {leaders
                             ?.filter(
                                 (leader) =>
-                                    leader.churchCommittee === false &&
+                                    leader.churchCommittee === 0 &&
                                     leader.groupId === id &&
-                                    leader.scc?._id === id
+                                    leader.scc === id
                             )
                             .map((leader) => (
                                 <LeaderCard scc={true} key={leader?._id} leader={leader} />
@@ -45,9 +45,9 @@ export default function SccLeadership() {
                     </div>
                     {leaders?.filter(
                         (leader) =>
-                            leader.churchCommittee === false &&
+                            leader.churchCommittee === 0 &&
                             leader.groupId === id &&
-                            leader.scc?._id === id
+                            leader.scc === id
                     ).length === 0 && (
                         <h2 className="text-center my-6 font-bold text-2xl uppercase opacity-30">
                             No Leader Found

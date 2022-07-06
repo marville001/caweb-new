@@ -155,7 +155,7 @@ const ChurchLeadership = () => {
                     onClick={() => setShowCommittee((prev) => !prev)}
                     className="flex gap-5 justify-between cursor-pointer items-center"
                 >
-                    <h2 className="font-bold text-lg">Church Committee</h2>
+                    <h2 className="font-bold text-lg">Church Executive</h2>
 
                     <div className="flex items-center space-x-2 py-2 cursor-pointer px-6 rounded-md text-seagreen  text-sm hover:opacity-75">
                         {showCommittee ? <FaChevronUp /> : <FaChevronDown />}
@@ -186,7 +186,7 @@ const ChurchLeadership = () => {
                     >
                         {leaders
                             ?.filter(
-                                (leader) => leader.churchCommittee === true
+                                (leader) => leader.churchCommittee === 1
                             )
                             ?.map((leader) => (
                                 <div
