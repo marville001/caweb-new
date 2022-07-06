@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaTrash } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { getUsers } from "../../../redux/actions/admin/users";
@@ -7,12 +6,6 @@ import { _delete } from "../../../redux/actions/http";
 import parseError from "../../../utils/parseError";
 
 import ConfirmDeleteModal from "../common/ConfirmDeleteModal";
-
-const sccs = {
-    stangelus: "St Angelus",
-    stpeters: "St Peters",
-    stjoseph: "St Joseph",
-};
 
 const UsersTable = ({ page, pageSize }) => {
     const { users } = useSelector((state) => state.usersState);
@@ -23,10 +16,10 @@ const UsersTable = ({ page, pageSize }) => {
 
     const dispatch = useDispatch();
 
-    const openDeleteUserModal = (user) => {
-        setSelectedUser(user);
-        setConfirmDeleteModalOpen(true);
-    };
+    // const openDeleteUserModal = (user) => {
+    //     setSelectedUser(user);
+    //     setConfirmDeleteModalOpen(true);
+    // };
 
     const handleDeleteUser = async () => {
         setLoading(true);
@@ -100,9 +93,9 @@ const UsersTable = ({ page, pageSize }) => {
                         >
                             Scc Group
                         </th>
-                        <th scope="col" className="relative px-5 py-3">
+                        {/* <th scope="col" className="relative px-5 py-3">
                             <span className="sr-only">Edit</span>
-                        </th>
+                        </th> */}
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
@@ -140,17 +133,17 @@ const UsersTable = ({ page, pageSize }) => {
                             </td>
                             <td className="px-5 py-4 whitespace-nowrap">
                                 <div className="text-sm text-gray-500">
-                                    {sccs[person.scc]}
+                                    {person?.scc?.name}
                                 </div>
                             </td>
-                            <td className="px-5 py-4 whitespace-nowrap">
+                            {/* <td className="px-5 py-4 whitespace-nowrap">
                                 <div
                                     onClick={() => openDeleteUserModal(person)}
                                     className="flex items-center space-x-1 text-red-700 text-xs p-2 rounded-full cursor-pointer hover:opacity-60"
                                 >
                                     <FaTrash />
                                 </div>
-                            </td>
+                            </td> */}
                         </tr>
                     ))}
                 </tbody>

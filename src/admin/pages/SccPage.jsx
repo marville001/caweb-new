@@ -54,7 +54,7 @@ const SccPage = () => {
                 formData
             );
 
-            const url = data.url.toString().replace("http:", "https:")
+            const url = data.url.toString().replace("http:", "https:");
 
             const res = await put(
                 `sccs/gallery/${scc._id}`,
@@ -62,7 +62,7 @@ const SccPage = () => {
                 "admin"
             );
 
-            setGallery([res.image, ...gallery]);
+            setGallery([{ image: res.image, _id: res.image }, ...gallery]);
 
             setLoading(false);
             toast.success("Image added successfully", {
@@ -93,8 +93,8 @@ const SccPage = () => {
             await _delete(`sccs/${scc._id}`, "admin");
             setDeletingScc(false);
             setDeleteSccModalOpen(false);
-            
-            navigate("/admin/sccs")
+
+            navigate("/admin/sccs");
 
             toast.success("Scc Deleted successfully", {
                 position: "top-right",
@@ -125,7 +125,7 @@ const SccPage = () => {
     useEffect(() => {
         dispatch(getSccAction(key));
         dispatch(getSccsAction());
-        dispatch(fetchEventsAction({page: 1, pageSize: 10}, "admin"));
+        dispatch(fetchEventsAction({ page: 1, pageSize: 10 }, "admin"));
         dispatch(fetchPositionsAction("admin"));
         dispatch(fetchLeadersAction("admin"));
     }, [dispatch, key]);
@@ -188,8 +188,8 @@ const SccPage = () => {
                                 </h2>
 
                                 <div className="grid grid-cols-1 sm:grid-cols-3 my-4 gap-4">
-                                    {gallery?.map((image) => (
-                                        <div key={image}>
+                                    {gallery?.map(({ image, _id }) => (
+                                        <div key={_id}>
                                             <img
                                                 className="w-full h-40"
                                                 src={image}

@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { FaBible, FaSpinner } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getSccsAction } from "../../redux/actions/admin/sccs";
-import AddSccModal from "../components/SccsPageComponents/AddSccModal";
 
 const SccsPage = () => {
-    let [addSccModalOpen, setAddSccModalOpen] = useState(false);
-
     const { sccs, isLoadingSccs } = useSelector((state) => state.sccsState);
 
     const dispatch = useDispatch();
-
-    const closeAddSccModal = () => {
-        setAddSccModalOpen(false);
-    };
-
-    const openAddSccModal = () => {
-        setAddSccModalOpen(true);
-    };
 
     useEffect(() => {
         dispatch(getSccsAction());
@@ -50,20 +39,15 @@ const SccsPage = () => {
                     </Link>
                 ))}
 
-                <div
-                    onClick={openAddSccModal}
+                <Link
+                    to={`/admin/sccs/new`}
                     className="p-2 py-4 border-2 border-dodge-blue text-center text-dodge-blue rounded-md
                         cursor-pointer hover:-translate-y-1
                         "
                 >
                     Add Scc Group
-                </div>
+                </Link>
             </div>
-
-            <AddSccModal
-                isOpen={addSccModalOpen}
-                closeModal={closeAddSccModal}
-            />
         </div>
     );
 };

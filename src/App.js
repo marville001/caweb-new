@@ -38,6 +38,7 @@ import NewBlog from "./admin/pages/NewBlog";
 import ViewBlog from "./admin/pages/ViewBlog";
 import EditBlog from "./admin/pages/EditBlog";
 import ReadNews from "./pages/ReadNews";
+import NewScc from "./admin/pages/NewScc";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -141,6 +142,7 @@ const App = () => {
                         <Route path="users" element={<AdminPrivateRoute><UsersPage /></AdminPrivateRoute>} />
                         <Route path="prayers" element={<AdminPrivateRoute><PrayersPage /></AdminPrivateRoute>} />
                         <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
+                        <Route path="sccs/new"  element={ <AdminPrivateRoute> <NewScc /> </AdminPrivateRoute> }/>
                         <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
                         <Route path="sccs/:key/edit"  element={ <AdminPrivateRoute> <SccEditPage /> </AdminPrivateRoute> }/>
                         <Route path="leaders"  element={ <AdminPrivateRoute> <ChurchLeadership /> </AdminPrivateRoute> }/>
