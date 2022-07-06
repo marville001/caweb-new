@@ -186,7 +186,7 @@ const ChurchLeadership = () => {
                     >
                         {leaders
                             ?.filter(
-                                (leader) => leader.churchCommittee === true
+                                (leader) => leader.churchCommittee === 1
                             )
                             ?.map((leader) => (
                                 <div
