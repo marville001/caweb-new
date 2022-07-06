@@ -41,6 +41,7 @@ import ReadNews from "./pages/ReadNews";
 import NewScc from "./admin/pages/NewScc";
 import NewSccLeader from "./admin/pages/NewSccLeader";
 import NewPrayer from "./admin/pages/NewPrayer";
+import EditPrayer from "./admin/pages/EditPrayer";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -144,6 +145,7 @@ const App = () => {
                         <Route path="users" element={<AdminPrivateRoute><UsersPage /></AdminPrivateRoute>} />
                         <Route path="prayers" element={<AdminPrivateRoute><PrayersPage /></AdminPrivateRoute>} />
                         <Route path="prayers/new" element={<AdminPrivateRoute><NewPrayer /></AdminPrivateRoute>} />
+                        <Route path="prayers/:id/edit" element={<AdminPrivateRoute><EditPrayer /></AdminPrivateRoute>} />
                         <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
                         <Route path="sccs/new"  element={ <AdminPrivateRoute> <NewScc /> </AdminPrivateRoute> }/>
                         <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
