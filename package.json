@@ -25,7 +25,7 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.1.0",
-    "recharts": "^2.1.8",
+    "recharts": "^2.1.14",
     "redux": "^4.1.2",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
@@ -61,6 +61,7 @@
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.0",
+    "daisyui": "^2.31.0",
     "postcss": "^8.4.5",
     "tailwindcss": "^3.0.7"
   }
