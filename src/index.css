@@ -112,11 +112,51 @@ body {
     color: #fff !important;
     position: absolute;
     top: 0px;
-    right: 40px!important;
+    right: 40px !important;
 }
 @media screen and (max-width: 900px) {
     .swiper-button-next,
     .swiper-button-prev {
         display: none !important;
     }
+}
+
+/* Custom */
+
+.no-scroll::-webkit-scrollbar {
+    display: none !important;
+}
+
+.table-normal tbody tr:nth-child(even) th,
+.table-normal tbody tr:nth-child(even) td {
+    --tw-bg-opacity: 1;
+    background-color: transparent !important;
+}
+.table th:first-child {
+    position: static !important;
+}
+
+cbtn.btn-disabled,
+cbtn.btn-disabled:hover,
+cbtn.btn[disabled],
+cbtn.btn[disabled]:hover {
+    --tw-border-opacity: 1 !important;
+    background-color: currentColor;
+    --tw-bg-opacity: 0.4 !important;
+    color: white !important;
+    --tw-text-opacity: 0.4 !important;
+}
+
+.btn[disabled]:hover {
+    --tw-border-opacity: 0.2 !important;
+}
+
+.btn-disabled,
+.btn[disabled] {
+    pointer-events: all;
+}
+
+.bordered-table th,
+.bordered-table td {
+    @apply border;
 }

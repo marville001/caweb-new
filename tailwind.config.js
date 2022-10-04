@@ -16,11 +16,18 @@ module.exports = {
                 "dodge-blue": "#236092",
                 "sea-green": "#407b54",
                 steelblue: "#4458b8",
+                accent: "#ffb716",
             },
         },
     },
     plugins: [
         require("@tailwindcss/forms"),
         require("@tailwindcss/typography"),
+        require("daisyui"),
     ],
+
+    daisyui: {
+        styled: true,
+        themes: false,
+    },
 };
