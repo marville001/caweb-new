@@ -42,6 +42,7 @@ import NewScc from "./admin/pages/NewScc";
 import NewSccLeader from "./admin/pages/NewSccLeader";
 import NewPrayer from "./admin/pages/NewPrayer";
 import EditPrayer from "./admin/pages/EditPrayer";
+import Navbar from "./components/navbar/Navbar";
 
 const CommingSoon = React.lazy(() => import("./components/CommingSoon"));
 const About = React.lazy(() => import("./pages/About"));
@@ -61,24 +62,29 @@ const Gallery = React.lazy(() => import("./pages/Gallery"));
 const Register = React.lazy(() => import("./pages/Register"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 const Scc = React.lazy(() => import("./pages/Scc"));
-const MainLeadership = React.lazy(() => import("./pages/leadership/MainLeadership"));
+const MainLeadership = React.lazy(() =>
+    import("./pages/leadership/MainLeadership")
+);
 const Leadership = React.lazy(() => import("./pages/leadership"));
-const SccLeadership = React.lazy(() => import("./pages/leadership/SccLeadership"));
-const SccLeadershipWelcome = React.lazy(() => import("./pages/leadership/SccLeadershipWelcome"));
+const SccLeadership = React.lazy(() =>
+    import("./pages/leadership/SccLeadership")
+);
+const SccLeadershipWelcome = React.lazy(() =>
+    import("./pages/leadership/SccLeadershipWelcome")
+);
 const AdminDashboard = React.lazy(() => import("./admin/AdminDashboard"));
 
 const MainLayout = ({ children }) => {
-
-    const {pathname} = useLocation()
+    const { pathname } = useLocation();
 
     useEffect(() => {
-      window.scrollTo({
+        window.scrollTo({
             top: 5,
             left: 100,
-            behavior: 'smooth'
-      })
-    }, [pathname])
-    
+            behavior: "smooth",
+        });
+    }, [pathname]);
+
     return (
         <div className="min-h-[75vh] relative">
             <Header />
@@ -97,75 +103,552 @@ const App = () => {
     return (
         <>
             <React.Suspense fallback={<Loading />}>
+                <Navbar />
                 <Routes>
-                    <Route exact path="/" element={<MainLayout><Home /></MainLayout>} />
-                    <Route exact path="/login" element={<MainLayout><Login /></MainLayout>} />
-                    <Route exact path="/register" element={ <MainLayout> <Register /> </MainLayout> } />
-                    <Route exact path="/forgot-password" element={ <MainLayout> <ForgotPassword /> </MainLayout> } />
-                    <Route exact path="/reset-password/:token" element={ <MainLayout> <ResetPassword /> </MainLayout> } />
-                    <Route exact path="/events" element={<MainLayout><Events /></MainLayout>} />
-                    <Route exact path="/events/:key" element={<MainLayout><Event /></MainLayout>} />
-                    <Route exact path="/readings" element={<MainLayout><Home /></MainLayout>} />
-                    <Route exact path="/about" element={<MainLayout><About /></MainLayout>} />
-                    <Route exact path="/contact-us" element={<MainLayout><Contact /></MainLayout>} />
-                    <Route exact path="/contact" element={<MainLayout><Contact /></MainLayout>} />
-                    <Route path="leadership" element={<Leadership /> } >
-                        <Route exact path="" element={<MainLayout><MainLeadership /> </MainLayout>} />
-                        <Route exact path="scc" element={<MainLayout><SccLeadershipWelcome /></MainLayout>} />
+                    <Route
+                        exact
+                        path="/"
+                        element={
+                            <MainLayout>
+                                <Home />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/login"
+                        element={
+                            <MainLayout>
+                                <Login />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/register"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <Register />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/forgot-password"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <ForgotPassword />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/reset-password/:token"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <ResetPassword />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/events"
+                        element={
+                            <MainLayout>
+                                <Events />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/events/:key"
+                        element={
+                            <MainLayout>
+                                <Event />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/readings"
+                        element={
+                            <MainLayout>
+                                <Home />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/about"
+                        element={
+                            <MainLayout>
+                                <About />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/contact-us"
+                        element={
+                            <MainLayout>
+                                <Contact />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/contact"
+                        element={
+                            <MainLayout>
+                                <Contact />
+                            </MainLayout>
+                        }
+                    />
+                    <Route path="leadership" element={<Leadership />}>
+                        <Route
+                            exact
+                            path=""
+                            element={
+                                <MainLayout>
+                                    <MainLeadership />{" "}
+                                </MainLayout>
+                            }
+                        />
+                        <Route
+                            exact
+                            path="scc"
+                            element={
+                                <MainLayout>
+                                    <SccLeadershipWelcome />
+                                </MainLayout>
+                            }
+                        />
                         <Route path="*" element={<NotFound />} />
                     </Route>
-                    <Route exact path="/mass" element={<MainLayout><Mass /></MainLayout> }  />
-                    <Route exact path="/prayers" element={ <MainLayout> <Prayers />  </MainLayout> } />
-                    <Route exact path="/scc" element={<MainLayout><Scc /></MainLayout>}/>
-                    <Route exact path="/scc/:key" element={<MainLayout><ViewScc /></MainLayout>}/>
-                    <Route exact path="/scc/leaders/:id" element={<MainLayout><SccLeadership /></MainLayout>}/>
-                    <Route exact path="/get-connected" element={ <MainLayout> <GetConnected /> </MainLayout> } />
-                    <Route exact path="/my-account" element={ <MainLayout> <MyAccount /> </MainLayout> } />
-                    <Route exact path="/my-account/groups" element={ <MainLayout> <MyGroups /> </MainLayout> } />
-                    <Route exact path="/my-account/subscriptions" element={ <MainLayout> <MySubscriptions /> </MainLayout> } />
-                    <Route exact path="/gallery" element={<MainLayout> <Gallery /> </MainLayout>} />
-                    <Route exact path="/news" element={<MainLayout> <News /> </MainLayout>} />
-                    <Route exact path="/news/:slug" element={<MainLayout> <ReadNews /> </MainLayout>} />
-                    
+                    <Route
+                        exact
+                        path="/mass"
+                        element={
+                            <MainLayout>
+                                <Mass />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/prayers"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <Prayers />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/scc"
+                        element={
+                            <MainLayout>
+                                <Scc />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/scc/:key"
+                        element={
+                            <MainLayout>
+                                <ViewScc />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/scc/leaders/:id"
+                        element={
+                            <MainLayout>
+                                <SccLeadership />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/get-connected"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <GetConnected />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/my-account"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <MyAccount />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/my-account/groups"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <MyGroups />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/my-account/subscriptions"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <MySubscriptions />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/gallery"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <Gallery />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/news"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <News />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/news/:slug"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <ReadNews />{" "}
+                            </MainLayout>
+                        }
+                    />
+
                     {/* <Route exact path="/daily-readings" element={<MainLayout><DailyReadings /></MainLayout> } /> */}
-                    <Route exact path="/daily-readings" element={<MainLayout><CommingSoon /></MainLayout> } />
-                    <Route exact path="/bible" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
-                    <Route exact path="/library" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
-                    <Route exact path="/resources" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
-                    <Route exact path="/store" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
-                    <Route exact path="/help" element={ <MainLayout> <CommingSoon /> </MainLayout> } />
-                    <Route exact path="/take-action" element={<MainLayout> <CommingSoon /> </MainLayout>} />
-                    
-                    <Route path="*" element={ <MainLayout> <NotFound /> </MainLayout> } />
+                    <Route
+                        exact
+                        path="/daily-readings"
+                        element={
+                            <MainLayout>
+                                <CommingSoon />
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/bible"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <CommingSoon />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/library"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <CommingSoon />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/resources"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <CommingSoon />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/store"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <CommingSoon />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/help"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <CommingSoon />{" "}
+                            </MainLayout>
+                        }
+                    />
+                    <Route
+                        exact
+                        path="/take-action"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <CommingSoon />{" "}
+                            </MainLayout>
+                        }
+                    />
+
+                    <Route
+                        path="*"
+                        element={
+                            <MainLayout>
+                                {" "}
+                                <NotFound />{" "}
+                            </MainLayout>
+                        }
+                    />
                     <Route path="/admin" element={<AdminDashboard />}>
-                        <Route index element={<AdminPrivateRoute><AdminHome /></AdminPrivateRoute>} />
+                        <Route
+                            index
+                            element={
+                                <AdminPrivateRoute>
+                                    <AdminHome />
+                                </AdminPrivateRoute>
+                            }
+                        />
                         <Route path="login" element={<AdminLogin />} />
-                        <Route path="home" element={<AdminPrivateRoute> <AdminHome /></AdminPrivateRoute>} />
-                        <Route path="my-account" element={<AdminPrivateRoute><AdminAccount /></AdminPrivateRoute>} />
-                        <Route path="users" element={<AdminPrivateRoute><UsersPage /></AdminPrivateRoute>} />
-                        <Route path="prayers" element={<AdminPrivateRoute><PrayersPage /></AdminPrivateRoute>} />
-                        <Route path="prayers/new" element={<AdminPrivateRoute><NewPrayer /></AdminPrivateRoute>} />
-                        <Route path="prayers/:id/edit" element={<AdminPrivateRoute><EditPrayer /></AdminPrivateRoute>} />
-                        <Route path="sccs"  element={ <AdminPrivateRoute> <SccsPage /> </AdminPrivateRoute> }/>
-                        <Route path="sccs/new"  element={ <AdminPrivateRoute> <NewScc /> </AdminPrivateRoute> }/>
-                        <Route path="sccs/:key"  element={ <AdminPrivateRoute> <SccPage /> </AdminPrivateRoute> }/>
-                        <Route path="sccs/:id/new"  element={ <AdminPrivateRoute> <NewSccLeader /> </AdminPrivateRoute> }/>
-                        <Route path="sccs/:key/edit"  element={ <AdminPrivateRoute> <SccEditPage /> </AdminPrivateRoute> }/>
-                        <Route path="leaders"  element={ <AdminPrivateRoute> <ChurchLeadership /> </AdminPrivateRoute> }/>
-                        <Route path="leaders/:id/edit"  element={ <AdminPrivateRoute> <EditChurchLeader /> </AdminPrivateRoute> }/>
-                        <Route path="leaders/new"  element={ <AdminPrivateRoute> <NewChurchLeader /> </AdminPrivateRoute> }/>
-                        <Route path="leaders/position/new"  element={ <AdminPrivateRoute> <NewLeaderPosition /> </AdminPrivateRoute> }/>
-                        <Route path="leaders/position/:id"  element={ <AdminPrivateRoute> <EditLeaderPosition /> </AdminPrivateRoute> }/>
-                        <Route path="events" element={<AdminPrivateRoute><EventsPage /></AdminPrivateRoute>} />
-                        <Route path="events/new" element={<AdminPrivateRoute><NewEvent /></AdminPrivateRoute>} />
-                        <Route path="events/:id" element={<AdminPrivateRoute><EditEvent /></AdminPrivateRoute>} />
-                        <Route path="gallery" element={<AdminPrivateRoute><GalleryPage /></AdminPrivateRoute>} />
-                        <Route path="about-dekut" element={<AdminPrivateRoute><AboutDekut /></AdminPrivateRoute>} />
-                        <Route path="blogs" element={<AdminPrivateRoute><Blogs /></AdminPrivateRoute>} />
-                        <Route path="blogs/new" element={<AdminPrivateRoute><NewBlog /></AdminPrivateRoute>} />
-                        <Route path="blogs/:slug" element={<AdminPrivateRoute><ViewBlog /></AdminPrivateRoute>} />
-                        <Route path="blogs/edit/:slug" element={<AdminPrivateRoute><EditBlog /></AdminPrivateRoute>} />
-                        <Route path="*" element={
+                        <Route
+                            path="home"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <AdminHome />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="my-account"
+                            element={
+                                <AdminPrivateRoute>
+                                    <AdminAccount />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="users"
+                            element={
+                                <AdminPrivateRoute>
+                                    <UsersPage />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="prayers"
+                            element={
+                                <AdminPrivateRoute>
+                                    <PrayersPage />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="prayers/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    <NewPrayer />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="prayers/:id/edit"
+                            element={
+                                <AdminPrivateRoute>
+                                    <EditPrayer />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="sccs"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <SccsPage />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="sccs/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <NewScc />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="sccs/:key"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <SccPage />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="sccs/:id/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <NewSccLeader />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="sccs/:key/edit"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <SccEditPage />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="leaders"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <ChurchLeadership />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="leaders/:id/edit"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <EditChurchLeader />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="leaders/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <NewChurchLeader />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="leaders/position/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <NewLeaderPosition />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="leaders/position/:id"
+                            element={
+                                <AdminPrivateRoute>
+                                    {" "}
+                                    <EditLeaderPosition />{" "}
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="events"
+                            element={
+                                <AdminPrivateRoute>
+                                    <EventsPage />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="events/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    <NewEvent />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="events/:id"
+                            element={
+                                <AdminPrivateRoute>
+                                    <EditEvent />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="gallery"
+                            element={
+                                <AdminPrivateRoute>
+                                    <GalleryPage />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="about-dekut"
+                            element={
+                                <AdminPrivateRoute>
+                                    <AboutDekut />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="blogs"
+                            element={
+                                <AdminPrivateRoute>
+                                    <Blogs />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="blogs/new"
+                            element={
+                                <AdminPrivateRoute>
+                                    <NewBlog />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="blogs/:slug"
+                            element={
+                                <AdminPrivateRoute>
+                                    <ViewBlog />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="blogs/edit/:slug"
+                            element={
+                                <AdminPrivateRoute>
+                                    <EditBlog />
+                                </AdminPrivateRoute>
+                            }
+                        />
+                        <Route
+                            path="*"
+                            element={
                                 <div className="m-16 p-4 flex flex-col items-center justify-center">
                                     <h1 className="text-7xl text-dodge-blue font-bold">
                                         404
@@ -179,10 +662,10 @@ const App = () => {
                         />
                     </Route>
                 </Routes>
-            </React.Suspense> 
+            </React.Suspense>
             <ToastContainer />
         </>
     );
-}
+};
 
 export default App;

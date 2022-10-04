@@ -16,6 +16,7 @@ module.exports = {
                 "dodge-blue": "#236092",
                 "sea-green": "#407b54",
                 steelblue: "#4458b8",
+                accent: "#ffb716",
             },
         },
     },
@@ -27,19 +28,6 @@ module.exports = {
 
     daisyui: {
         styled: true,
-        themes: [
-            {
-                mytheme: {
-                    primary: "#00C194",
-                    secondary: "#0e2e50",
-                    accent: "#627be0",
-                    warning: "#f3a004",
-                    error: "#cf074e",
-                    info: "#0e2e50",
-                    neutral: "#ffffff",
-                    "base-100": "#ffffff",
-                },
-            },
-        ],
+        themes: false,
     },
 };
